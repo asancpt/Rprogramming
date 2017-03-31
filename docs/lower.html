@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="print.html">
-<link rel="next" href="read-csv.html">
+<link rel="prev" href="upper.html">
+<link rel="next" href="print.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -161,12 +161,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-import-export" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Data Import / Export</h1>
-<blockquote>
-<p>2017-03-29 배균섭 교수님 강의</p>
-</blockquote>
-<p>이번 시간에는 자료를 불러오고 조작을 가한 뒤 저장하는 방법에 대해 알아보겠습니다.</p> 
+<div id="lower" class="section level2">
+<h2><span class="header-section-number">1.3</span> 하위수준 그림 함수</h2>
+<ul>
+<li>points : 점추가</li>
+<li>lines : 선 추가</li>
+<li>abline : 기준선 추가</li>
+<li>mtext : 텍스트 추가</li>
+<li>legend : 설명(legend) 추가</li>
+<li>polygon : polygon 추가</li>
+</ul>
+<div id="-----add" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> 점, 선, 설명 추가 하기 {add}</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(pct.<span class="dv">95</span><span class="op">$</span>TIME, pct.<span class="dv">95</span><span class="op">$</span>PCT50, <span class="dt">main=</span><span class="st">&quot;PK of Drug X&quot;</span>
+     , <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Time (h)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Concentration (ng/ml)&quot;</span>
+     , <span class="dt">ylim=</span><span class="kw">range</span>(<span class="dv">0</span>,<span class="dv">80</span>), <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-13-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], <span class="dt">main=</span><span class="st">&quot;PK of Drug X&quot;</span>
+     , <span class="dt">type=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Time (h)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Concentration (ng/ml)&quot;</span>
+     , <span class="dt">ylim=</span><span class="kw">range</span>(<span class="dv">0</span>,<span class="dv">80</span>))
+<span class="kw">points</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">lines</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], <span class="dt">col=</span><span class="st">&quot;black&quot;</span>, <span class="dt">lwd=</span><span class="dv">1</span>)
+<span class="kw">abline</span>(<span class="dv">40</span>, <span class="dv">0</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)                               <span class="co"># abline(a,b): y=a+b*x</span>
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;Individual concentrations&quot;</span>)
+       , <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-13-2.svg" width="672" /></p>
+</div>
+<div id="polygon-" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> polygon 함수</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">6</span>), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)
+<span class="kw">polygon</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="dt">col=</span><span class="st">&quot;lightgreen&quot;</span>)</code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-14-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)
+<span class="kw">polygon</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>),
+        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>),
+        <span class="dt">border =</span> <span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>),
+        <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;solid&quot;</span>))</code></pre></div>
+<p><img src="bookdown_files/figure-html/unnamed-chunk-14-2.svg" width="672" /></p>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -195,8 +227,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="print.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="read-csv.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="upper.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="print.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -225,7 +257,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/2017-03-29-Script.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/2017-03-22-Graphics.Rmd",
 "text": "Edit"
 },
 "download": ["bookdown.epub", "bookdown.mobi"],

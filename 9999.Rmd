@@ -1,0 +1,27 @@
+# (APPENDIX) Appendix {-}
+
+
+
+# As-is R Files
+
+교수님께서 주신 원본 R 파일 입니다.
+
+## Lecture 3
+
+```{r code = readLines("R/Graphics.R", encoding = "UTF-8"), eval = FALSE}
+```
+
+## Lecture 4
+
+```{r code = readLines("R/Script20170329.R", encoding = "UTF-8"), eval = FALSE}
+```
+
+# Acknowledgement
+
+이 웹북을 만드는데 도움을 주신 분들은 다음과 같습니다.
+
+1. Dr. Jekyll 
+2. Hyde 
+
+# Reference {-}
+

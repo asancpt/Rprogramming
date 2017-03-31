@@ -1,6 +1,6 @@
 --- 
 title: "R Programming - Lecture Notes"
-author: "Kyun-Seop Bae, Hyeongsuk Lim"
+author: "Kyun-Seop Bae"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: krantz
@@ -25,6 +25,8 @@ options(
   htmltools.dir.version = FALSE, formatR.indent = 2,
   width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
 )
+
+knitr::opts_chunk$set(results = 'markup')
 
 lapply(c('pkr'), function(pkg) {
   if (system.file(package = pkg) == '') install.packages(pkg)
@@ -65,7 +67,7 @@ Skype 모임 참가 <https://meet.lync.com/uucp-acp/ksbae/SKGJ3BNQ>
 
 2017년 3월, 배균섭 배상
 
-```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link='https://asancpt.github.io/Rprogramming', out.width = 300}
+```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link='https://asancpt.github.io/Rprogramming/', out.width = 300}
 knitr::include_graphics('images/cover.jpg', dpi = NA)
 ```
 
@@ -146,3 +148,12 @@ Chrome 등 웹브라우저에서 위 주소를 입력하면 직접 대화방으�
 > Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수 있을런지요?
 
 Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. 출석은 Skype로 커버해야 합니다. 출석의 성적 반영비율은 25%이지만, 규정상 4회 이상 결석이면 성적이 나갈 수 없습니다.
+
+> Q. 첫 수업 때, certification 관련 말씀을 하셨는데, 정확히 coursera 사이트에서 어떤 것을 듣고, 제출을 해야하는지 궁금합니다.
+(비슷한 내용이 많아, 어떤것을 들어야하는지 헷갈립니다.)
+
+Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming과 관련된 것이라면 자유로이 골라서 들으면 됩니다. 대표적인 두 가지만 들자면 다음과 같습니다.
+ 
+- <https://www.coursera.org/learn/r-programming>
+- <https://www.coursera.org/learn/r-programming-environment>
+ 

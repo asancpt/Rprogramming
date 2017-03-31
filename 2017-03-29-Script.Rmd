@@ -1,12 +1,32 @@
 # Data Import / Export
 
-```{r}
-#setwd("D:/Rt")
+> 2017-03-29 배균섭 교수님 강의
+
+이번 시간에는 자료를 불러오고 조작을 가한 뒤 저장하는 방법에 대해 알아보겠습니다.
+
+## Read.csv
+
+```{r eval = FALSE}
+setwd("D:/Rt")
 dir()
+mydata = read.csv("MyData2017.csv", as.is=TRUE)
+```
 
-#mydata = read.csv("MyData2017.csv", as.is=TRUE)
+## Theoph 데이타
 
+R에 기본적으로 들어있는 약동학 자료에 대해 살펴보겠습니다.
+
+```{r}
 Theoph
+```
+
+R console에서 `?Theoph`를 타이핑 치면 좀 더 자세한 정보를 얻을 수 있습니다.
+
+## lattice
+
+lattice 패키지를 불러온 뒤 그림을 그려보겠습니다.
+
+```{r}
 library(lattice) # trellis
 
 xyplot(conc ~ Time | Subject, data=Theoph)
@@ -21,7 +41,13 @@ xyplot(conc ~ Time | as.factor(ID), data=Theoph, type="b")
 
 write.csv(Theoph, "Theoph.csv", row.names=FALSE, quote=FALSE, na="")
 
+```
 
+## Subseting and write.csv
+
+자료를 편집하고, subset을 만들고 각각을 파일로 저장하는 방법에 대해 알아보겠습니다.
+
+```{r}
 IDs = sort(unique(Theoph[,"ID"])) ; IDs
 nID = length(IDs) ; nID
 
@@ -37,12 +63,18 @@ adm = cbind(IDs, rep(0, nID), rep(320, nID))
 colnames(adm) = c("ID", "TIME", "AMT")
 write.csv(adm, "2-adm.csv", row.names=FALSE, quote=FALSE, na="")
 
-
 demog = read.csv("1-demog.csv", as.is=TRUE)
 adm = read.csv("2-adm.csv", as.is=TRUE)
 dv = read.csv("3-dv.csv", as.is=TRUE)
 
 AdmDv = merge(adm, dv, by=intersect(colnames(adm), colnames(dv)), all=TRUE)
-
-DataAll = merge(demog, AdmDv, by=c("ID"), all=TRUE)
+AdmDv
 ```
+
+자료를 병합(`merge`)해 보겠습니다.
+
+```{r}
+DataAll = merge(demog, AdmDv, by=c("ID"), all=TRUE)
+DataAll
+```
+
