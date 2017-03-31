@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 360.00 288.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    line, polyline, path, rect, circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<rect x='69.07' y='204.12' width='141.32' height='8.90' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='69.07' y='190.35' width='141.32' height='13.77' style='stroke-width: 0.75; fill: #969696;' />
+<rect x='69.07' y='169.88' width='141.32' height='20.46' style='stroke-width: 0.75; fill: #C3C3C3;' />
+<rect x='69.07' y='138.69' width='141.32' height='31.19' style='stroke-width: 0.75; fill: #E6E6E6;' />
+<rect x='69.07' y='88.48' width='141.32' height='50.21' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='222.55' y='206.40' width='42.51' height='6.62' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='222.55' y='197.50' width='42.51' height='8.90' style='stroke-width: 0.75; fill: #969696;' />
+<rect x='222.55' y='182.06' width='42.51' height='15.44' style='stroke-width: 0.75; fill: #C3C3C3;' />
+<rect x='222.55' y='158.55' width='42.51' height='23.51' style='stroke-width: 0.75; fill: #E6E6E6;' />
+<rect x='222.55' y='117.24' width='42.51' height='41.31' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='271.38' y='201.30' width='25.67' height='11.72' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='271.38' y='182.82' width='25.67' height='18.49' style='stroke-width: 0.75; fill: #969696;' />
+<rect x='271.38' y='154.67' width='25.67' height='28.15' style='stroke-width: 0.75; fill: #C3C3C3;' />
+<rect x='271.38' y='113.13' width='25.67' height='41.54' style='stroke-width: 0.75; fill: #E6E6E6;' />
+<rect x='271.38' y='59.04' width='25.67' height='54.09' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='301.31' y='206.63' width='18.43' height='6.39' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='301.31' y='196.28' width='18.43' height='10.35' style='stroke-width: 0.75; fill: #969696;' />
+<rect x='301.31' y='181.60' width='18.43' height='14.68' style='stroke-width: 0.75; fill: #C3C3C3;' />
+<rect x='301.31' y='154.90' width='18.43' height='26.70' style='stroke-width: 0.75; fill: #E6E6E6;' />
+<rect x='301.31' y='116.86' width='18.43' height='38.04' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<text x='138.87' y='240.48' style='font-size: 12.00px; font-family: Arial;' textLength='58.02px' lengthAdjust='spacingAndGlyphs'>Rural Male</text>
+<text x='210.62' y='240.48' style='font-size: 12.00px; font-family: Arial;' textLength='72.02px' lengthAdjust='spacingAndGlyphs'>Rural Female</text>
+<line x1='59.04' y1='213.02' x2='59.04' y2='60.87' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='213.02' x2='51.84' y2='213.02' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='174.98' x2='51.84' y2='174.98' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='136.94' x2='51.84' y2='136.94' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='98.90' x2='51.84' y2='98.90' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='60.87' x2='51.84' y2='60.87' style='stroke-width: 0.75;' />
+<text transform='translate(41.76,216.36) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text transform='translate(41.76,181.66) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text transform='translate(41.76,146.95) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text transform='translate(41.76,108.92) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>150</text>
+<text transform='translate(41.76,70.88) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>200</text>
+</svg>

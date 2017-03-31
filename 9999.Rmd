@@ -1,7 +1,5 @@
 # (APPENDIX) Appendix {-}
 
-
-
 # As-is R Files
 
 교수님께서 주신 원본 R 파일 입니다.
@@ -16,6 +14,31 @@
 ```{r code = readLines("R/Script20170329.R", encoding = "UTF-8"), eval = FALSE}
 ```
 
+# Using Coursera 
+
+> PAGK에 보낸 이메일을 그대로 옮겼습니다.
+
+배균섭 교수님의 추천을 받아 다음과 같은 강의와 책을 공유하고자 합니다. Coursera.com 에 유익한 R 강좌가 열렸습니다. "Mastering Software Development in R Specialization"이란 제목의 강좌인데 4개 Course를 무료로 들을 수 있게 되어있습니다. <https://www.coursera.org/specializations/r> 이것이 본래의 Link인데 여기서 각각의 Course를 찾거나 혹은 아래의 링크를 각각 클릭하여 하단에 나오는 "Audit"을 클릭하면 무료로 들을 수 있습니다. 
+
+Audit 버튼이 안보이신다고 하신 분들이 몇분 계셔서 첨언합니다. 
+Coursera 회원가입하시고 로그인 한 뒤, Enroll Now를 누르시면 Audit 혹은 청강하기 라디오버튼을 보실 수 있습니다. 앱에서도 마찬가지입니다. 
+이외에도 코세라에는 많은 유익한 강의가 있는 것 같습니다. 다만 코스(Course)의 묶음인 "Specialization" 에서는 유료등록(Enroll) 밖에 없으므로 Certificate가 필요하지 않다면, 각각의 코스를 구글검색 혹은 코세라 내에서 검색해서 "Audit(청강)" 하시면 무료로 강의를 들을 수 있습니다. 
+
+- <https://www.coursera.org/learn/r-programming-environment>
+- <https://www.coursera.org/learn/advanced-r>
+- <https://www.coursera.org/learn/r-packages>
+- <https://www.coursera.org/learn/r-data-visualization>
+
+<https://bookdown.org/rdpeng/RProgDA/> 이 링크는 무료로 공개된 강의 책자입니다. 
+강의를 듣지 않고 책으로 보고 싶으신 분은 참고하시면 됩니다.
+
+# R Tips
+
+- Changing defualt R console size and etc : 배균섭 교수님께서 알려주신 tip을 참고하여 video clip을 만들었습니다. 매일같이 마주하게 되는 R console이 너무 작게 느껴지셨다면 다음의 동영상을 참고하셔서 초기 세팅 (Rconsole 파일)을 바꿔서 해결할 수 있습니다. <https://youtu.be/uSunEN8W5Mo>
+
+
+`r if (knitr:::is_html_output()) knitr::include_url("http://www.youtube.com/embed/uSunEN8W5Mo?rel=0")`
+
 # Acknowledgement
 
 이 웹북을 만드는데 도움을 주신 분들은 다음과 같습니다.
@@ -23,5 +46,12 @@
 1. Dr. Jekyll 
 2. Hyde 
 
-# Reference {-}
+`r if (knitr:::is_html_output()) '# References {-}'`
+
+```{r include = FALSE}
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'htmlwidgets', 'webshot', 'DT',
+  'miniUI', 'tufte', 'servr', 'citr', 'rticles'
+), 'packages.bib')
+```
 

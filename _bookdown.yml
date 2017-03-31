@@ -1,7 +1,7 @@
-book_filename: bookdown
-repo: https://github.com/rstudio/bookdown/
+book_filename: Rprogramming
+repo: https://github.com/asancpt/Rprogramming/
 output_dir: docs
-clean: [packages.bib, bookdown.bbl]
+#clean: [packages.bib, bookdown.bbl]
 language:
   label:
     fig: "FIGURE "

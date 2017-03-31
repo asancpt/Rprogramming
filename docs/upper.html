@@ -139,8 +139,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>A.1</b> Lecture 3</a></li>
 <li class="chapter" data-level="A.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>A.2</b> Lecture 4</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>B</b> Acknowledgement</a></li>
-<li class="chapter" data-level="" data-path="reference.html"><a href="reference.html"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="B" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>B</b> Using Coursera</a></li>
+<li class="chapter" data-level="C" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>C</b> R Tips</a></li>
+<li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
 
@@ -196,18 +198,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="scatter-plot" class="section level3">
 <h3><span class="header-section-number">1.2.2</span> scatter plot</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>])</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-3-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], <span class="dt">log=</span><span class="st">&quot;y&quot;</span>)</code></pre></div>
 <pre><code>## Warning in xy.coords(x, y, xlabel, ylabel, log): 86 y
 ## values &lt;= 0 omitted from logarithmic plot</code></pre>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-3-2.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], <span class="kw">log</span>(dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>]))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-3.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-3-3.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>]
      , <span class="dt">xlab=</span><span class="st">&quot;Time (hr)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Concentration (ng/mL)&quot;</span> 
      , <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">1</span>, <span class="dt">main=</span><span class="st">&quot;PK time-course of Drug X&quot;</span>
      , <span class="dt">xlim =</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">218</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-4.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-3-4.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(dta<span class="op">$</span>TIME[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], dta<span class="op">$</span>DV[dta<span class="op">$</span>MDV<span class="op">==</span><span class="dv">0</span>], <span class="dt">axes=</span>F,
      , <span class="dt">xlab=</span><span class="st">&quot;Time (hr)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Concentration (ng/mL)&quot;</span> 
      , <span class="dt">type=</span><span class="st">&quot;o&quot;</span>, <span class="dt">pch=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="dv">1</span>, <span class="dt">main=</span><span class="st">&quot;PK time-course of Drug X&quot;</span>
@@ -215,64 +217,64 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at=</span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">218</span>, <span class="dv">24</span>))
 <span class="kw">axis</span>(<span class="dv">2</span>)
 <span class="kw">box</span>()</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-3-5.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-3-5.svg" width="672" /></p>
 </div>
 <div id="histogram" class="section level3">
 <h3><span class="header-section-number">1.2.3</span> Histogram</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d.demog &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;DEMOG.csv&quot;</span>)
 
 <span class="kw">hist</span>(d.demog<span class="op">$</span>HT)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-4-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-4-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(d.demog<span class="op">$</span>HT, <span class="dt">breaks=</span><span class="dv">10</span>)
 <span class="kw">hist</span>(d.demog<span class="op">$</span>HT, <span class="dt">nclass=</span><span class="dv">10</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-4-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-4-2.svg" width="672" /></p>
 <div id="with-density-line" class="section level4">
 <h4><span class="header-section-number">1.2.3.1</span> with density line</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span> (d.demog<span class="op">$</span>HT, <span class="dt">probability=</span><span class="ot">TRUE</span>, <span class="dt">breaks=</span><span class="dv">10</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(d.demog<span class="op">$</span>HT))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span> (d.demog<span class="op">$</span>HT, <span class="dt">probability=</span><span class="ot">TRUE</span>, <span class="dt">breaks=</span><span class="dv">9</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>
       , <span class="dt">main=</span><span class="st">&quot;Histogram for Height&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Probability (%)&quot;</span>)
 <span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at=</span><span class="kw">seq</span>(<span class="kw">min</span>(d.demog<span class="op">$</span>HT), <span class="kw">max</span>(d.demog<span class="op">$</span>HT), <span class="dv">3</span>))
 <span class="kw">lines</span>(<span class="kw">density</span>(d.demog<span class="op">$</span>HT))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-5-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-5-2.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span> (d.demog<span class="op">$</span>HT, <span class="dt">probability=</span><span class="ot">TRUE</span>, <span class="dt">breaks=</span><span class="dv">9</span>, <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>
       , <span class="dt">main=</span><span class="st">&quot;Histogram for Height&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Height (cm)&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Probability (%)&quot;</span>
       , <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">border =</span> <span class="st">&quot;pink&quot;</span>)
 <span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at=</span><span class="kw">seq</span>(<span class="kw">min</span>(d.demog<span class="op">$</span>HT), <span class="kw">max</span>(d.demog<span class="op">$</span>HT), <span class="dv">3</span>))
 <span class="kw">lines</span>(<span class="kw">density</span>(d.demog<span class="op">$</span>HT))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-5-3.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-5-3.svg" width="672" /></p>
 </div>
 </div>
 <div id="box-whisker-plot" class="section level3">
 <h3><span class="header-section-number">1.2.4</span> Box-Whisker Plot</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(d.demog<span class="op">$</span>WT)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(d.demog<span class="op">$</span>WT <span class="op">~</span><span class="st"> </span>d.demog<span class="op">$</span>SEX)
 
 <span class="kw">boxplot</span>(<span class="kw">split</span>(d.demog<span class="op">$</span>WT, d.demog<span class="op">$</span>SEX))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-6-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-6-2.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(WT <span class="op">~</span><span class="st"> </span>SEX, <span class="dt">data=</span>d.demog)
 
 <span class="kw">boxplot</span>(d.demog<span class="op">$</span>WT <span class="op">~</span><span class="st"> </span>d.demog<span class="op">$</span>SEX
         , <span class="dt">names=</span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>), <span class="dt">ylab=</span><span class="st">&quot;AGE, year&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="kw">min</span>(d.demog<span class="op">$</span>WT)<span class="op">-</span><span class="dv">2</span>, <span class="kw">max</span>(d.demog<span class="op">$</span>WT)<span class="op">+</span><span class="dv">2</span>)
         , <span class="dt">col=</span><span class="st">&quot;pink&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-6-3.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-6-3.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(d.demog<span class="op">$</span>WT <span class="op">~</span><span class="st"> </span>d.demog<span class="op">$</span>SEX
         , <span class="dt">names=</span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>), <span class="dt">ylab=</span><span class="st">&quot;AGE, year&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="kw">min</span>(d.demog<span class="op">$</span>WT)<span class="op">-</span><span class="dv">2</span>, <span class="kw">max</span>(d.demog<span class="op">$</span>WT)<span class="op">+</span><span class="dv">2</span>)
         , <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;salmon&quot;</span>), <span class="dt">width=</span><span class="kw">c</span>(<span class="fl">0.6</span>, <span class="dv">1</span>))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-6-4.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-6-4.svg" width="672" /></p>
 <p>-varwidth: if varwidth is TRUE, the boxes are drawn with widths proportional to the square-roots of the number of observations in the groups.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(d.demog<span class="op">$</span>WT <span class="op">~</span><span class="st"> </span>d.demog<span class="op">$</span>SEX
         , <span class="dt">names=</span><span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>), <span class="dt">ylab=</span><span class="st">&quot;AGE, year&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="kw">min</span>(d.demog<span class="op">$</span>WT)<span class="op">-</span><span class="dv">2</span>, <span class="kw">max</span>(d.demog<span class="op">$</span>WT)<span class="op">+</span><span class="dv">2</span>)
         , <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;lightblue&quot;</span>, <span class="st">&quot;salmon&quot;</span>)
         , <span class="dt">varwidth=</span><span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
 </div>
 <div id="bar-plot" class="section level3">
 <h3><span class="header-section-number">1.2.5</span> Bar Plot</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(d.demog<span class="op">$</span>HT)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">VADeaths</code></pre></div>
 <pre><code>##       Rural Male Rural Female Urban Male Urban Female
 ## 50-54       11.7          8.7       15.4          8.4
@@ -281,26 +283,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 65-69       41.0         30.9       54.6         35.1
 ## 70-74       66.0         54.3       71.1         50.0</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">border =</span> <span class="st">&quot;dark blue&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-2.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">20</span>))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-3.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-3.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">col =</span> <span class="kw">heat.colors</span>(<span class="dv">8</span>))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-4.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-4.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">col =</span> <span class="kw">gray.colors</span>(<span class="dv">4</span>))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-5.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-5.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">col =</span> <span class="kw">gray.colors</span>(<span class="dv">4</span>), <span class="dt">log=</span><span class="st">&quot;x&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-6.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-6.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">col =</span> <span class="kw">gray.colors</span>(<span class="dv">4</span>), <span class="dt">log=</span><span class="st">&quot;y&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-7.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-7.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(VADeaths, <span class="dt">col =</span> <span class="kw">gray.colors</span>(<span class="dv">4</span>), <span class="dt">log=</span><span class="st">&quot;xy&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-8-8.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-8-8.svg" width="672" /></p>
 </div>
 <div id="pie-chart" class="section level3">
 <h3><span class="header-section-number">1.2.6</span> pie chart</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">drug.X.market &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.12</span>, <span class="fl">0.29</span>, <span class="fl">0.32</span>, <span class="fl">0.22</span>, <span class="fl">0.11</span>, <span class="fl">0.28</span>)
 <span class="kw">names</span>(drug.X.market) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;South Korea&quot;</span>,<span class="st">&quot;China&quot;</span>,<span class="st">&quot;USA&quot;</span>,<span class="st">&quot;Japan&quot;</span>,<span class="st">&quot;Austria&quot;</span>,<span class="st">&quot;EU&quot;</span>)
 <span class="kw">pie</span>(drug.X.market)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
 </div>
 <div id="matplot-" class="section level3">
 <h3><span class="header-section-number">1.2.7</span> matplot 함수</h3>
@@ -308,19 +310,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h4><span class="header-section-number">1.2.7.1</span> matrix와 column 사이의 그림</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pct.<span class="dv">95</span> &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;pct95.csv&quot;</span>)
 <span class="kw">matplot</span>(pct.<span class="dv">95</span>[,<span class="dv">1</span>], pct.<span class="dv">95</span>[,<span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(pct.<span class="dv">95</span>)], <span class="dt">pch=</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">matplot</span>(pct.<span class="dv">95</span>[,<span class="dv">1</span>], pct.<span class="dv">95</span>[,<span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(pct.<span class="dv">95</span>)], <span class="dt">pch=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">lty=</span><span class="dv">1</span>, <span class="dt">lwd=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>))</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-10-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-10-2.svg" width="672" /></p>
 </div>
 </div>
 <div id="scatter-plot-matrices-pairs-plots" class="section level3">
 <h3><span class="header-section-number">1.2.8</span> Scatter plot matrices (pairs plots)</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(d.demog)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
 <div id="add-a-loess-smoother-type" class="section level4">
 <h4><span class="header-section-number">1.2.8.1</span> add a loess smoother, type</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(d.demog, <span class="dt">panel =</span> panel.smooth)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panel.cor &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">digits=</span><span class="dv">2</span>, <span class="dt">prefix=</span><span class="st">&quot;&quot;</span>, cex.cor)
 {
     usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
@@ -333,7 +335,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 }
 
 <span class="kw">pairs</span>(d.demog, <span class="dt">lower.panel=</span>panel.smooth, <span class="dt">upper.panel=</span>panel.cor) </code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-12-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-12-2.svg" width="672" /></p>
 </div>
 </div>
 </div>
@@ -397,7 +399,7 @@ gitbook.start({
 "link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/2017-03-22-Graphics.Rmd",
 "text": "Edit"
 },
-"download": ["bookdown.epub", "bookdown.mobi"],
+"download": ["Rprogramming.pdf", "Rprogramming.epub", "Rprogramming.mobi"],
 "toc": {
 "collapse": "subsection"
 }

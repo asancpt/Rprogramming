@@ -3,9 +3,11 @@ title: "R Programming - Lecture Notes"
 author: "Kyun-Seop Bae"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
-documentclass: krantz
+documentclass: book
+#documentclass: krantz
 #bibliography: [book.bib, packages.bib]
-#biblio-style: apalike
+bibliography: [packages.bib]
+biblio-style: apalike
 link-citations: yes
 colorlinks: yes
 lot: yes
@@ -83,11 +85,11 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 교수님께서 세우신 방침에 따라 수업시간에 출석을 부르지 않을 예정입니다. 
 수강하시는 화면(Skype)을 휴대폰으로 사진 찍으시거나 강의실의 스크린을 사진으로 촬영하셔서 <sec@acp.kr> / <shan@acp.kr> 로 동시에 보내주시면 됩니다. 
-
-
 가급적 "2017-03-31 한성필 출석" 과 같은 식의 제목을 유지해 주시면 처리하는데 큰 도움이 될 것 같습니다.
 
-아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인 `bookdown`을 사용해 웹북을 제작 중에 있습니다. 
+**출석 체크를 위해 전체메일을 사용하지 말아주십시오!**
+
+아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인 `bookdown`을 사용해 웹북을 제작 중에 있습니다. [@R-bookdown]
 여러분이 읽고 있는 이 책 자체가 R 코드의 일종인 `Rmarkdown`의 결과물이라고 보시면 됩니다. 
 [Github 저장소](https://github.com/asancpt/Rprogramming)가 있으니 소스 코드를 보실 수 있습니다. 
 누구나 소스를 편집하여 `Pull Request`를 요청할 수 있으므로 혹시 Github를 사용하셔서 웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오.
@@ -97,9 +99,6 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 2017년 3월, 한성필 올림
 
-```{block2, note-text, type='rmdnote'}
-출석 체크를 위해 전체메일을 사용하지 말아주십시오! Do not use r@acr.kr to prove your attendence!
-```
 
 
 ## FAQ {-}

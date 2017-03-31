@@ -139,8 +139,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>A.1</b> Lecture 3</a></li>
 <li class="chapter" data-level="A.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>A.2</b> Lecture 4</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>B</b> Acknowledgement</a></li>
-<li class="chapter" data-level="" data-path="reference.html"><a href="reference.html"><i class="fa fa-check"></i>Reference</a></li>
+<li class="chapter" data-level="B" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>B</b> Using Coursera</a></li>
+<li class="chapter" data-level="C" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>C</b> R Tips</a></li>
+<li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
 
@@ -163,20 +165,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="lattice" class="section level2">
 <h2><span class="header-section-number">2.3</span> lattice</h2>
-<p>lattice 패키지를 불러온 뒤 그림을 그려보겠습니다.</p>
+<p>lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. <span class="citation">(Sarkar <a href="#ref-R-lattice">2017</a>)</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lattice) <span class="co"># trellis</span>
 
 <span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Subject, <span class="dt">data=</span>Theoph)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Subject, <span class="dt">data=</span>Theoph, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-19-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-19-2.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Theoph[,<span class="st">&quot;ID&quot;</span>] =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(Theoph[,<span class="st">&quot;Subject&quot;</span>]))
 
 <span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>ID, <span class="dt">data=</span>Theoph, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-19-3.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-19-3.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span><span class="kw">as.factor</span>(ID), <span class="dt">data=</span>Theoph, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</code></pre></div>
-<p><img src="bookdown_files/figure-html/unnamed-chunk-19-4.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-19-4.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(Theoph, <span class="st">&quot;Theoph.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">na=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-lattice">
+<p>Sarkar, Deepayan. 2017. <em>Lattice: Trellis Graphics for R</em>. <a href="https://CRAN.R-project.org/package=lattice" class="uri">https://CRAN.R-project.org/package=lattice</a>.</p>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -238,7 +246,7 @@ gitbook.start({
 "link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/2017-03-29-Script.Rmd",
 "text": "Edit"
 },
-"download": ["bookdown.epub", "bookdown.mobi"],
+"download": ["Rprogramming.pdf", "Rprogramming.epub", "Rprogramming.mobi"],
 "toc": {
 "collapse": "subsection"
 }
