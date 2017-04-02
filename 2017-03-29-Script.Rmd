@@ -24,7 +24,7 @@ R console에서 `?Theoph`를 타이핑 치면 좀 더 자세한 정보를 얻을
 
 ## lattice
 
-lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. [@R-lattice]
+lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. [@R-lattice] \index{lattice}
 
 ```{r}
 library(lattice) # trellis

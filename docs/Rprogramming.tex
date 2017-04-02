@@ -1,4 +1,4 @@
-\documentclass[12pt,]{book}
+\documentclass[12pt,]{krantz}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -19,13 +19,13 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-\hypersetup{unicode=true,
+\hypersetup{
             pdftitle={R Programming - Lecture Notes},
             pdfauthor={Kyun-Seop Bae},
             colorlinks=true,
@@ -77,6 +77,8 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
 \usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -106,33 +108,103 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-  \title{R Programming - Lecture Notes}
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \author{Kyun-Seop Bae}
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  \predate{\centering\large\emph}
-  \postdate{\par}
-  \date{2017-03-31}
-
-\usepackage{kotex}
 \usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{kotex}
+\usepackage[bf,singlelinecheck=off]{caption}
+
+\setmainfont[UprightFeatures={SmallCapsFont=AlegreyaSC-Regular}]{Alegreya}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\ifxetex
+  \usepackage{letltxmacro}
+  \setlength{\XeTeXLinkMargin}{1pt}
+  \LetLtxMacro\SavedIncludeGraphics\includegraphics
+  \def\includegraphics#1#{% #1 catches optional stuff (star/opt. arg.)
+    \IncludeGraphicsAux{#1}%
+  }%
+  \newcommand*{\IncludeGraphicsAux}[2]{%
+    \XeTeXLinkBox{%
+      \SavedIncludeGraphics#1{#2}%
+    }%
+  }%
+\fi
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}
+
+\newenvironment{rmdblock}[1]
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{kframe}
+  \item
+  }
+  {
+  \end{kframe}
+  \end{itemize}
+  }
+\newenvironment{rmdnote}
+  {\begin{rmdblock}{note}}
+  {\end{rmdblock}}
+\newenvironment{rmdcaution}
+  {\begin{rmdblock}{caution}}
+  {\end{rmdblock}}
+\newenvironment{rmdimportant}
+  {\begin{rmdblock}{important}}
+  {\end{rmdblock}}
+\newenvironment{rmdtip}
+  {\begin{rmdblock}{tip}}
+  {\end{rmdblock}}
+\newenvironment{rmdwarning}
+  {\begin{rmdblock}{warning}}
+  {\end{rmdblock}}
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
 \usepackage{amsthm}
 \makeatletter
 \def\thm@space@setup{%
@@ -140,22 +212,36 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
-\newenvironment{rmdnote}
-  {\begin{rmdblock}{note}}
-  {\end{rmdblock}}
+
+\frontmatter
+
+\title{R Programming - Lecture Notes}
+\author{Kyun-Seop Bae}
+\date{2017-04-02}
 
 \begin{document}
 \maketitle
 
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage
+\thispagestyle{empty}
+\begin{center}
+\includegraphics{images/dedication.pdf}
+\end{center}
+
+\setlength{\abovedisplayskip}{-5pt}
+\setlength{\abovedisplayshortskip}{-5pt}
+
 {
 \hypersetup{linkcolor=black}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 \listoftables
 \listoffigures
 \chapter*{Preface}\label{preface}
-\addcontentsline{toc}{chapter}{Preface}
+
 
 안녕하십니까?
 
@@ -208,7 +294,7 @@ Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
 \end{figure}
 
 \section*{Teaching Assistant}\label{teaching-assistant}
-\addcontentsline{toc}{section}{Teaching Assistant}
+
 
 안녕하십니까? 서울아산병원 임상약리학과 전공의 한성필입니다. 수업과
 관련된 여러 제반 업무를 담당하고 있습니다. 언제든 의문사항 있으면
@@ -227,21 +313,21 @@ Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
 
 아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인
 \texttt{bookdown}을 사용해 웹북을 제작 중에 있습니다. \citep{R-bookdown}
-여러분이 읽고 있는 이 책 자체가 R 코드의 일종인 \texttt{Rmarkdown}의
-결과물이라고 보시면 됩니다.
+\index{bookdown} 여러분이 읽고 있는 이 책 자체가 R 코드의 일종인
+\texttt{Rmarkdown}의 결과물이라고 보시면 됩니다.
 \href{https://github.com/asancpt/Rprogramming}{Github 저장소}가 있으니
 소스 코드를 보실 수 있습니다. 누구나 소스를 편집하여
 \texttt{Pull\ Request}를 요청할 수 있으므로 혹시 Github를 사용하셔서
 웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오. 혹은
 웹북의 각 페이지 아래쪽에 Disqus 창을 달아놓았으므로, 궁금한 점을 메모로
-남겨주셔도 좋습니다.
+남겨주셔도 좋습니다. \index{disqus}
 
 감사합니다.
 
 2017년 3월, 한성필 올림
 
 \section*{FAQ}\label{faq}
-\addcontentsline{toc}{section}{FAQ}
+
 
 \begin{quote}
 Q. 미국학회 참석으로 수업시간이 귀국행 비행기 기내에 있을거같아 출석이
@@ -335,6 +421,8 @@ Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming�
 \item
   \url{https://www.coursera.org/learn/r-programming-environment}
 \end{itemize}
+
+\mainmatter
 
 \chapter{Graphics}\label{graphics}
 
@@ -826,8 +914,8 @@ type}\label{add-a-loess-smoother-type}
 \end{Shaded}
 
 \begin{verbatim}
-## pdf 
-##   2
+## cairo_pdf 
+##         2
 \end{verbatim}
 
 \subsection{PNG graphics devices}\label{png-graphics-devices}
@@ -850,8 +938,8 @@ type}\label{add-a-loess-smoother-type}
 \end{Shaded}
 
 \begin{verbatim}
-## pdf 
-##   2
+## cairo_pdf 
+##         2
 \end{verbatim}
 
 \chapter{Data Import / Export}\label{data-import-export}
@@ -1025,6 +1113,7 @@ R console에서 \texttt{?Theoph}를 타이핑 치면 좀 더 자세한 정보를
 \section{lattice}\label{lattice}
 
 lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. \citep{R-lattice}
+\index{lattice}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1397,7 +1486,9 @@ lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. \citep{R-lat
 ## 132 12 60.5 24.15  NA  1.17
 \end{verbatim}
 
-\appendix
+\cleardoublepage 
+
+\appendix \addcontentsline{toc}{chapter}{\appendixname}
 
 
 \chapter{As-is R Files}\label{as-is-r-files}
@@ -1791,5 +1882,7 @@ Certificate가 필요하지 않다면, 각각의 코스를 구글검색 혹은 �
 
 \bibliography{packages.bib}
 
+\backmatter
+\printindex
 
 \end{document}
