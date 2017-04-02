@@ -1,0 +1,239 @@
+# (PART) Part II. Basics {-}
+
+# Let's start! {#start}
+
+기본적인 R 의 사용법에 대해 알아보도록 하겠습니다.
+우선 가장 중요한 것은 적절한 dataset을 설정하는 것입니다.
+약동학(pharmacokinetics)과 관련된 두개의 유명한 dataset이 R 자체적으로 내장되어 있습니다.
+`Theoph`와 `Indometh`가 그 예입니다.
+
+그러나 여기서는 좀더 다양한 분석을 하기 위해서 다음과 같은 dataset이 들어있는 패키지를 사용하도록 하겠습니다.
+
+```{r eval = FALSE}
+# 패키지 설치
+install.pacakges("devtools")
+devtools::install_github("dpastoor/PKPDdatasets")
+
+# Install the yarrr package
+install.packages('yarrr')
+
+# Load the package
+library(yarrr)
+
+```
+
+이제 패키지를 불러옵니다.
+
+```{r}
+library(PKPDdatasets)
+library(yarrr)
+```
+
+우리가 사용할 데이타셋은 이것입니다. 
+
+IV and oral pharmacokinetic data for daptomycin
+
+Description
+
+A dataset containing simulated dapagliflozin PK. A single IV dose followed by 3 escalating oral doses
+
+ID. Numerical ID (1-24)
+
+TIME. Nominal Time after first dose (hrs)
+
+TAD. Time After Dose (hrs)
+
+COBS. Observed Concentration (ug/L)
+
+AMT_IV. IV dose amount when given (ug)
+
+AMT_ORAL. Oral dose amount when given (ug)
+
+OCC. Occasion, associated with each dosing event
+
+AGE. Age (years)
+
+WEIGHT Weight (kg)
+
+GENDER. Gender flag (female=1, male=0)
+
+FORMULATION Formulation associated with dose (IV or oral)
+
+Usage
+
+data(dapa_IV_oral)
+Format
+
+A data frame with 1536 rows and 11 variables
+
+
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+```{r, fig.cap= "Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/cover.jpg"))
+```
+
+What's the first exercise on the first day of pirate swimming lessons? While it would be cute if they all had little inflatable pirate ships to swim around in -- unfortunately this is not the case. Instead, those baby aht_trial2 take a walk off their baby planks so they can get a taste of what they're in for. Turns out, learning R is the same way. Let's jump in. In this chapter, you'll see how easy it is to calculate basic statistics and create plots in R. Don't worry if the code you're running doesn't make immediate sense -- just marvel at how easy it is to do this in R!
+
+In this section, we'll analyze a dataset called...wait for it...aht_trial2! The dataset contains data from a survey of 1,000 aht_trial2. The data is contained in the `yarrr` package, so make sure you've installed and loaded the package:
+
+
+
+
+## Exploring data
+
+Next, we'll look at the help menu for the aht_trial2 dataset using the question mark `?aht_trial2`. When you run this, you should see a small help window open up in RStudio that gives you some information about the dataset.
+
+```{r, eval = FALSE}
+?aht_trial2
+```
+
+
+First, let's take a look at the first few rows of the dataset using the `head()` function. This will show you the first few rows of the data.
+
+```{r}
+# Look at the first few rows of the data
+head(aht_trial2)
+```
+
+You can look at the names of the columns in the dataset with the `names()` function
+
+```{r}
+# What are the names of the columns?
+names(aht_trial2)
+```
+
+Finally, you can also view the entire dataset in a separate window using the `View()` function:
+
+```{r eval = FALSE}
+# View the entire dataset in a new window
+View(aht_trial2)
+```
+
+
+## Descriptive statistics
+
+Now let's calculate some basic statistics on the entire dataset. We'll calculate the mean age, maximum height, and number of aht_trial2 of each sex:
+
+```{r}
+# What is the mean age?
+mean(aht_trial2$AGE)
+
+# What was the tallest pirate?
+max(aht_trial2$WEIGHT)
+
+# How many aht_trial2 are there of each sex?
+table(aht_trial2$RACE)
+```
+
+Now, let's calculate statistics for different groups of aht_trial2. For example, the following code will use the `aggregate()` function to calculate the mean age of aht_trial2, separately for each sex.
+
+```{r}
+# Calculate the mean age, separately for each sex
+aggregate(formula = DBP ~ RACE,
+          data = aht_trial2,
+          FUN = mean)
+```
+
+
+## Plotting
+
+Cool stuff, now let's make a plot! We'll plot the relationship between pirate's height and weight using the `plot()` function
+
+```{r}
+# Create scatterplot
+plot(x = aht_trial2$DELSBP,        # X coordinates
+     y = aht_trial2$DBP)        # y-coordinates
+```
+
+Now let's make a fancier version of the same plot by adding some customization 
+
+```{r}
+# Create scatterplot
+plot(x = aht_trial2$DELSBP,        # X coordinates
+     y = aht_trial2$DBP,        # y-coordinates
+     main = 'My first scatterplot of pirate data!',
+     xlab = 'Height (in cm)',   # x-axis label
+     ylab = 'Weight (in kg)',   # y-axis label
+     pch = 16,                  # Filled circles
+     col = gray(.0, .1))        # Transparent gray
+```
+
+Now let's make it even better by adding gridlines and a blue regression line to measure the strength of the relationship.
+
+```{r}
+# Create scatterplot
+plot(x = aht_trial2$DELSBP,        # X coordinates
+     y = aht_trial2$DBP,        # y-coordinates
+     main = 'My first scatterplot of pirate data!',
+     xlab = 'Height (in cm)',   # x-axis label
+     ylab = 'Weight (in kg)',   # y-axis label
+     pch = 16,                  # Filled circles
+     col = gray(.0, .1))        # Transparent gray
+
+grid()        # Add gridlines
+
+# Create a linear regression model
+model <- lm(formula = DBP ~ DELSBP, # 순서에 조심!
+            data = aht_trial2)
+
+abline(model, col = 'blue')      # Add regression to plot
+```
+
+
+Scatterplots are great for showing the relationship between two continuous variables, but what if your independent variable is not continuous? In this case, pirateplots are a good option. Let's create a pirateplot using the `pirateplot()` function to show the distribution of pirate's age based on their favorite sword:
+
+```{r}
+pirateplot(formula = DBP ~ RACE, 
+           data = aht_trial2,
+           main = "Pirateplot of ages by favorite sword")
+```
+
+Now let's make another pirateplot showing the relationship between sex and height using a different plotting theme and the `"pony"` color palette:
+
+```{r}
+pirateplot(formula = SCREATININE ~ GENDER,               # Plot weight as a function of sex
+           data = aht_trial2,                       
+           main = "Pirateplot of height by sex",
+           pal = "pony",                         # Use the info color palette
+           theme = 3)                            # Use theme 3
+```
+
+
+## Hypothesis tests
+
+Now, let's do some basic hypothesis tests. First, let's conduct a two-sample t-test to see if there is a significant difference between the ages of aht_trial2 who do wear a headband, and those who do not:
+
+```{r}
+# Age by headband t-test
+t.test(formula =  DELSBP ~ GENDER,
+       data = aht_trial2,
+       alternative = 'two.sided')
+```
+
+With a p-value of 0.7259, we don't have sufficient evidence say there is a difference in the men age of aht_trial2 who wear headbands and those that do not.
+
+Next, let's test if there a significant correlation between a pirate's height and weight using the `cor.test()` function:
+
+```{r}
+cor.test(formula = ~ DELSBP + DELDBP,
+         data = aht_trial2)
+```
+
+We got a p-value of `p < 2.2e-16`, that's scientific notation for `p < .00000000000000016` -- which is pretty much 0. Thus, we'd conclude that there is a significant (positive) relationship between a pirate's height and weight.
+
+Now, let's do an ANOVA testing if there is a difference between the number of tattoos aht_trial2 have based on their favorite sword
+
+```{r}
+# Create tattoos model
+tat.sword.lm <- lm(formula = DELDBP ~ RACE,
+                   data = aht_trial2)
+
+# Get ANOVA table
+anova(tat.sword.lm)
+```
+
+Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirate's have are different based on their favorite sword.

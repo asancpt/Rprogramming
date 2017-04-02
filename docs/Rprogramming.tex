@@ -27,7 +27,7 @@
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
 \hypersetup{
             pdftitle={R Programming - Lecture Notes},
-            pdfauthor={Kyun-Seop Bae},
+            pdfauthor={Kyun-Seop Bae, Sungpil Han},
             colorlinks=true,
             linkcolor=Maroon,
             citecolor=Blue,
@@ -115,8 +115,9 @@
 
 \usepackage{booktabs}
 \usepackage{longtable}
-\usepackage{kotex}
 \usepackage[bf,singlelinecheck=off]{caption}
+
+\usepackage{kotex}
 
 \setmainfont[UprightFeatures={SmallCapsFont=AlegreyaSC-Regular}]{Alegreya}
 
@@ -216,9 +217,20 @@
 \frontmatter
 
 \title{R Programming - Lecture Notes}
-\author{Kyun-Seop Bae}
+\author{Kyun-Seop Bae, Sungpil Han}
 \date{2017-04-02}
 
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 \begin{document}
 \maketitle
 
@@ -226,9 +238,9 @@
 %\cleardoublepage\newpage\thispagestyle{empty}\null
 %\cleardoublepage\newpage
 \thispagestyle{empty}
-\begin{center}
-\includegraphics{images/dedication.pdf}
-\end{center}
+%\begin{center}
+%\includegraphics{images/dedication.pdf}
+%\end{center}
 
 \setlength{\abovedisplayskip}{-5pt}
 \setlength{\abovedisplayshortskip}{-5pt}
@@ -423,6 +435,8 @@ Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming�
 \end{itemize}
 
 \mainmatter
+
+\part{Lecture Notes}\label{part-lecture-notes}
 
 \chapter{Graphics}\label{graphics}
 
@@ -1486,6 +1500,411 @@ lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. \citep{R-lat
 ## 132 12 60.5 24.15  NA  1.17
 \end{verbatim}
 
+\part{Part II. Basics}\label{part-part-ii.-basics}
+
+\chapter{Let's start!}\label{start}
+
+기본적인 R 의 사용법에 대해 알아보도록 하겠습니다. 우선 가장 중요한 것은
+적절한 dataset을 설정하는 것입니다. 약동학(pharmacokinetics)과 관련된
+두개의 유명한 dataset이 R 자체적으로 내장되어 있습니다.
+\texttt{Theoph}와 \texttt{Indometh}가 그 예입니다.
+
+그러나 여기서는 좀더 다양한 분석을 하기 위해서 다음과 같은 dataset이
+들어있는 패키지를 사용하도록 하겠습니다.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 패키지 설치}
+\KeywordTok{install.pacakges}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install_github}\NormalTok{(}\StringTok{"dpastoor/PKPDdatasets"}\NormalTok{)}
+
+\CommentTok{# Install the yarrr package}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{'yarrr'}\NormalTok{)}
+
+\CommentTok{# Load the package}
+\KeywordTok{library}\NormalTok{(yarrr)}
+\end{Highlighting}
+\end{Shaded}
+
+이제 패키지를 불러옵니다.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(PKPDdatasets)}
+\KeywordTok{library}\NormalTok{(yarrr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: jpeg
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: BayesFactor
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: coda
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## ************
+## Welcome to BayesFactor 0.9.12-2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
+## 
+## Type BFManual() to open the manual.
+## ************
+\end{verbatim}
+
+\begin{verbatim}
+## yarrr v0.1.4. Citation info at citation('yarrr'). Package guide at yarrr.guide()
+\end{verbatim}
+
+\begin{verbatim}
+## Email me at Nathaniel.D.Phillips.is@gmail.com
+\end{verbatim}
+
+우리가 사용할 데이타셋은 이것입니다.
+
+IV and oral pharmacokinetic data for daptomycin
+
+Description
+
+A dataset containing simulated dapagliflozin PK. A single IV dose
+followed by 3 escalating oral doses
+
+ID. Numerical ID (1-24)
+
+TIME. Nominal Time after first dose (hrs)
+
+TAD. Time After Dose (hrs)
+
+COBS. Observed Concentration (ug/L)
+
+AMT\_IV. IV dose amount when given (ug)
+
+AMT\_ORAL. Oral dose amount when given (ug)
+
+OCC. Occasion, associated with each dosing event
+
+AGE. Age (years)
+
+WEIGHT Weight (kg)
+
+GENDER. Gender flag (female=1, male=0)
+
+FORMULATION Formulation associated with dose (IV or oral)
+
+Usage
+
+data(dapa\_IV\_oral) Format
+
+A data frame with 1536 rows and 11 variables
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/cover} 
+
+}
+
+\caption{Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.}\label{fig:unnamed-chunk-25}
+\end{figure}
+
+What's the first exercise on the first day of pirate swimming lessons?
+While it would be cute if they all had little inflatable pirate ships to
+swim around in -- unfortunately this is not the case. Instead, those
+baby aht\_trial2 take a walk off their baby planks so they can get a
+taste of what they're in for. Turns out, learning R is the same way.
+Let's jump in. In this chapter, you'll see how easy it is to calculate
+basic statistics and create plots in R. Don't worry if the code you're
+running doesn't make immediate sense -- just marvel at how easy it is to
+do this in R!
+
+In this section, we'll analyze a dataset called\ldots{}wait for
+it\ldots{}aht\_trial2! The dataset contains data from a survey of 1,000
+aht\_trial2. The data is contained in the \texttt{yarrr} package, so
+make sure you've installed and loaded the package:
+
+\section{Exploring data}\label{exploring-data}
+
+Next, we'll look at the help menu for the aht\_trial2 dataset using the
+question mark \texttt{?aht\_trial2}. When you run this, you should see a
+small help window open up in RStudio that gives you some information
+about the dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?aht_trial2}
+\end{Highlighting}
+\end{Shaded}
+
+First, let's take a look at the first few rows of the dataset using the
+\texttt{head()} function. This will show you the first few rows of the
+data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Look at the first few rows of the data}
+\KeywordTok{head}\NormalTok{(aht_trial2)}
+\NormalTok{##   ID  AGE WEIGHT SCREATININE SERUMALT GENDER      RACE}
+\NormalTok{## 1  1 44.2  63.62        1.12    16.22   Male Caucasian}
+\NormalTok{## 2  2 47.2  67.13        1.10    16.03 Female  Hispanic}
+\NormalTok{## 3  3 44.5  58.14        1.03    15.64 Female     Black}
+\NormalTok{## 4  4 50.8  68.80        0.92    15.44   Male Caucasian}
+\NormalTok{## 5  5 44.0  63.66        1.02    18.55 Female     Other}
+\NormalTok{## 6  6 47.6  71.62        1.02    18.13 Female Caucasian}
+\NormalTok{##   DELDBP DELSBP     TRT DOSE}
+\NormalTok{## 1   4.04 -28.48 Placebo    0}
+\NormalTok{## 2 -16.79 -25.32 Placebo    0}
+\NormalTok{## 3 -10.01 -49.50 Placebo    0}
+\NormalTok{## 4 -13.61   2.33 Placebo    0}
+\NormalTok{## 5 -15.79 -24.01 Placebo    0}
+\NormalTok{## 6  -4.15 -45.69 Placebo    0}
+\end{Highlighting}
+\end{Shaded}
+
+You can look at the names of the columns in the dataset with the
+\texttt{names()} function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# What are the names of the columns?}
+\KeywordTok{names}\NormalTok{(aht_trial2)}
+\NormalTok{##  [1] "ID"          "AGE"         "WEIGHT"     }
+\NormalTok{##  [4] "SCREATININE" "SERUMALT"    "GENDER"     }
+\NormalTok{##  [7] "RACE"        "DELDBP"      "DELSBP"     }
+\NormalTok{## [10] "TRT"         "DOSE"}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, you can also view the entire dataset in a separate window using
+the \texttt{View()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# View the entire dataset in a new window}
+\KeywordTok{View}\NormalTok{(aht_trial2)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Descriptive statistics}\label{descriptive-statistics}
+
+Now let's calculate some basic statistics on the entire dataset. We'll
+calculate the mean age, maximum height, and number of aht\_trial2 of
+each sex:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# What is the mean age?}
+\KeywordTok{mean}\NormalTok{(aht_trial2}\OperatorTok{$}\NormalTok{AGE)}
+\NormalTok{## [1] 49.72}
+
+\CommentTok{# What was the tallest pirate?}
+\KeywordTok{max}\NormalTok{(aht_trial2}\OperatorTok{$}\NormalTok{WEIGHT)}
+\NormalTok{## [1] 87.05}
+
+\CommentTok{# How many aht_trial2 are there of each sex?}
+\KeywordTok{table}\NormalTok{(aht_trial2}\OperatorTok{$}\NormalTok{RACE)}
+\NormalTok{## }
+\NormalTok{##     Asian     Black Caucasian  Hispanic     Other }
+\NormalTok{##        11        23        47         8        11}
+\end{Highlighting}
+\end{Shaded}
+
+Now, let's calculate statistics for different groups of aht\_trial2. For
+example, the following code will use the \texttt{aggregate()} function
+to calculate the mean age of aht\_trial2, separately for each sex.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Calculate the mean age, separately for each sex}
+\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ DBP }\OperatorTok{~}\StringTok{ }\NormalTok{RACE,}
+          \DataTypeTok{data =}\NormalTok{ aht_trial2,}
+          \DataTypeTok{FUN =}\NormalTok{ mean)}
+\NormalTok{## Error in eval(expr, envir, enclos): 객체 'DBP'를 찾을 수 없습니다}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Plotting}\label{plotting}
+
+Cool stuff, now let's make a plot! We'll plot the relationship between
+pirate's height and weight using the \texttt{plot()} function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create scatterplot}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ aht_trial2}\OperatorTok{$}\NormalTok{DELSBP,        }\CommentTok{# X coordinates}
+     \DataTypeTok{y =}\NormalTok{ aht_trial2}\OperatorTok{$}\NormalTok{DBP)        }\CommentTok{# y-coordinates}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-32-1.pdf}
+
+Now let's make a fancier version of the same plot by adding some
+customization
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create scatterplot}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ aht_trial2}\OperatorTok{$}\NormalTok{DELSBP,        }\CommentTok{# X coordinates}
+     \DataTypeTok{y =}\NormalTok{ aht_trial2}\OperatorTok{$}\NormalTok{DBP,        }\CommentTok{# y-coordinates}
+     \DataTypeTok{main =} \StringTok{'My first scatterplot of pirate data!'}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{'Height (in cm)'}\NormalTok{,   }\CommentTok{# x-axis label}
+     \DataTypeTok{ylab =} \StringTok{'Weight (in kg)'}\NormalTok{,   }\CommentTok{# y-axis label}
+     \DataTypeTok{pch =} \DecValTok{16}\NormalTok{,                  }\CommentTok{# Filled circles}
+     \DataTypeTok{col =} \KeywordTok{gray}\NormalTok{(.}\DecValTok{0}\NormalTok{, .}\DecValTok{1}\NormalTok{))        }\CommentTok{# Transparent gray}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-33-1.pdf}
+
+Now let's make it even better by adding gridlines and a blue regression
+line to measure the strength of the relationship.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create scatterplot}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ aht_trial2}\OperatorTok{$}\NormalTok{DELSBP,        }\CommentTok{# X coordinates}
+     \DataTypeTok{y =}\NormalTok{ aht_trial2}\OperatorTok{$}\NormalTok{DBP,        }\CommentTok{# y-coordinates}
+     \DataTypeTok{main =} \StringTok{'My first scatterplot of pirate data!'}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{'Height (in cm)'}\NormalTok{,   }\CommentTok{# x-axis label}
+     \DataTypeTok{ylab =} \StringTok{'Weight (in kg)'}\NormalTok{,   }\CommentTok{# y-axis label}
+     \DataTypeTok{pch =} \DecValTok{16}\NormalTok{,                  }\CommentTok{# Filled circles}
+     \DataTypeTok{col =} \KeywordTok{gray}\NormalTok{(.}\DecValTok{0}\NormalTok{, .}\DecValTok{1}\NormalTok{))        }\CommentTok{# Transparent gray}
+
+\KeywordTok{grid}\NormalTok{()        }\CommentTok{# Add gridlines}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{# Create a linear regression model}
+\NormalTok{model <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ DBP }\OperatorTok{~}\StringTok{ }\NormalTok{DELSBP, }\CommentTok{# 순서에 조심!}
+            \DataTypeTok{data =}\NormalTok{ aht_trial2)}
+\NormalTok{## Error in eval(expr, envir, enclos): 객체 'DBP'를 찾을 수 없습니다}
+
+\KeywordTok{abline}\NormalTok{(model, }\DataTypeTok{col =} \StringTok{'blue'}\NormalTok{)      }\CommentTok{# Add regression to plot}
+\NormalTok{## Error in abline(model, col = "blue"): 객체 'model'를 찾을 수 없습니다}
+\end{Highlighting}
+\end{Shaded}
+
+Scatterplots are great for showing the relationship between two
+continuous variables, but what if your independent variable is not
+continuous? In this case, pirateplots are a good option. Let's create a
+pirateplot using the \texttt{pirateplot()} function to show the
+distribution of pirate's age based on their favorite sword:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pirateplot}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ DBP }\OperatorTok{~}\StringTok{ }\NormalTok{RACE, }
+           \DataTypeTok{data =}\NormalTok{ aht_trial2,}
+           \DataTypeTok{main =} \StringTok{"Pirateplot of ages by favorite sword"}\NormalTok{)}
+\NormalTok{## Error in eval(expr, envir, enclos): 객체 'DBP'를 찾을 수 없습니다}
+\end{Highlighting}
+\end{Shaded}
+
+Now let's make another pirateplot showing the relationship between sex
+and height using a different plotting theme and the \texttt{"pony"}
+color palette:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pirateplot}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ SCREATININE }\OperatorTok{~}\StringTok{ }\NormalTok{GENDER,               }\CommentTok{# Plot weight as a function of sex}
+           \DataTypeTok{data =}\NormalTok{ aht_trial2,                       }
+           \DataTypeTok{main =} \StringTok{"Pirateplot of height by sex"}\NormalTok{,}
+           \DataTypeTok{pal =} \StringTok{"pony"}\NormalTok{,                         }\CommentTok{# Use the info color palette}
+           \DataTypeTok{theme =} \DecValTok{3}\NormalTok{)                            }\CommentTok{# Use theme 3}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+\section{Hypothesis tests}\label{hypothesis-tests}
+
+Now, let's do some basic hypothesis tests. First, let's conduct a
+two-sample t-test to see if there is a significant difference between
+the ages of aht\_trial2 who do wear a headband, and those who do not:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Age by headband t-test}
+\KeywordTok{t.test}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{  DELSBP }\OperatorTok{~}\StringTok{ }\NormalTok{GENDER,}
+       \DataTypeTok{data =}\NormalTok{ aht_trial2,}
+       \DataTypeTok{alternative =} \StringTok{'two.sided'}\NormalTok{)}
+\NormalTok{## }
+\NormalTok{##  Welch Two Sample t-test}
+\NormalTok{## }
+\NormalTok{## data:  DELSBP by GENDER}
+\NormalTok{## t = 0.83, df = 87, p-value = 0.4}
+\NormalTok{## alternative hypothesis: true difference in means is not equal to 0}
+\NormalTok{## 95 percent confidence interval:}
+\NormalTok{##  -4.557 11.056}
+\NormalTok{## sample estimates:}
+\NormalTok{## mean in group Female   mean in group Male }
+\NormalTok{##               -24.61               -27.86}
+\end{Highlighting}
+\end{Shaded}
+
+With a p-value of 0.7259, we don't have sufficient evidence say there is
+a difference in the men age of aht\_trial2 who wear headbands and those
+that do not.
+
+Next, let's test if there a significant correlation between a pirate's
+height and weight using the \texttt{cor.test()} function:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor.test}\NormalTok{(}\DataTypeTok{formula =} \OperatorTok{~}\StringTok{ }\NormalTok{DELSBP }\OperatorTok{+}\StringTok{ }\NormalTok{DELDBP,}
+         \DataTypeTok{data =}\NormalTok{ aht_trial2)}
+\NormalTok{## }
+\NormalTok{##  Pearson's product-moment correlation}
+\NormalTok{## }
+\NormalTok{## data:  DELSBP and DELDBP}
+\NormalTok{## t = 0.48, df = 98, p-value = 0.6}
+\NormalTok{## alternative hypothesis: true correlation is not equal to 0}
+\NormalTok{## 95 percent confidence interval:}
+\NormalTok{##  -0.1489  0.2430}
+\NormalTok{## sample estimates:}
+\NormalTok{##     cor }
+\NormalTok{## 0.04891}
+\end{Highlighting}
+\end{Shaded}
+
+We got a p-value of \texttt{p\ \textless{}\ 2.2e-16}, that's scientific
+notation for \texttt{p\ \textless{}\ .00000000000000016} -- which is
+pretty much 0. Thus, we'd conclude that there is a significant
+(positive) relationship between a pirate's height and weight.
+
+Now, let's do an ANOVA testing if there is a difference between the
+number of tattoos aht\_trial2 have based on their favorite sword
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create tattoos model}
+\NormalTok{tat.sword.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ DELDBP }\OperatorTok{~}\StringTok{ }\NormalTok{RACE,}
+                   \DataTypeTok{data =}\NormalTok{ aht_trial2)}
+
+\CommentTok{# Get ANOVA table}
+\KeywordTok{anova}\NormalTok{(tat.sword.lm)}
+\NormalTok{## Analysis of Variance Table}
+\NormalTok{## }
+\NormalTok{## Response: DELDBP}
+\NormalTok{##           Df Sum Sq Mean Sq F value Pr(>F)}
+\NormalTok{## RACE       4    810     202    1.05   0.39}
+\NormalTok{## Residuals 95  18401     194}
+\end{Highlighting}
+\end{Shaded}
+
+Sure enough, we see another very small p-value of
+\texttt{p\ \textless{}\ 2.2e-16}, suggesting that the number of tattoos
+pirate's have are different based on their favorite sword.
+
 \cleardoublepage 
 
 \appendix \addcontentsline{toc}{chapter}{\appendixname}
@@ -1499,6 +1918,8 @@ lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. \citep{R-lat
 
 \begin{Shaded}
 \begin{Highlighting}[]
+
+
 \NormalTok{#################################################}
 \NormalTok{##---------------------------------------------##}
 \NormalTok{##                  Graphics                   ##}

@@ -1,6 +1,6 @@
 --- 
 title: "R Programming - Lecture Notes"
-author: "Kyun-Seop Bae"
+author: "Kyun-Seop Bae, Sungpil Han"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 #documentclass: book
@@ -28,9 +28,9 @@ options(
   width = 55, digits = 4, warnPartialMatchAttr = FALSE, warnPartialMatchDollar = FALSE
 )
 
-knitr::opts_chunk$set(results = 'markup')
+knitr::opts_chunk$set(results = 'markup', cache = TRUE, error = TRUE)
 
-lapply(c('pkr'), function(pkg) {
+lapply(c('pkr', 'knitr'), function(pkg) {
   if (system.file(package = pkg) == '') install.packages(pkg)
 })
 
