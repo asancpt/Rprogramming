@@ -29,10 +29,12 @@ options(
 )
 
 CACHE <- TRUE
-CACHE <- FALSE
+#CACHE <- FALSE
 
 knitr::opts_chunk$set(results = 'markup', cache = CACHE, error = TRUE)
 
+library(knitr)
+library(readxl)
 library(dplyr)
 library(zoo)
 
@@ -90,10 +92,10 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 안녕하십니까? 서울아산병원 임상약리학과 전공의 한성필입니다. 
 수업과 관련된 여러 제반 업무를 담당하고 있습니다. 
-언제든 의문사항 있으면 <r@acr.kr> 로 전체 메일 보내시거나 교수님 <k@acr.kr> 혹은 제 개인 메일 <shan@acp.kr> 로 연락해 주십시오.
+언제든 의문사항 있으면 r@acr.kr 로 전체 메일 보내시거나 교수님 k@acr.kr 혹은 제 개인 메일 shan@acp.kr로 연락해 주십시오.
 
 교수님께서 세우신 방침에 따라 수업시간에 출석을 부르지 않을 예정입니다. 
-수강하시는 화면(Skype)을 휴대폰으로 사진 찍으시거나 강의실의 스크린을 사진으로 촬영하셔서 <sec@acp.kr> / <shan@acp.kr> 로 동시에 보내주시면 됩니다. 
+수강하시는 화면(Skype)을 휴대폰으로 사진 찍으시거나 강의실의 스크린을 사진으로 촬영하셔서 sec@acp.kr / shan@acp.kr 로 동시에 보내주시면 됩니다. 
 가급적 "2017-03-31 한성필 출석" 과 같은 식의 제목을 유지해 주시면 처리하는데 큰 도움이 될 것 같습니다.
 
 **출석 체크를 위해 전체메일을 사용하지 말아주십시오!**
@@ -169,7 +171,6 @@ Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming�
 > Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수 있을런지요?
 
 Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. 출석은 Skype로 커버해야 합니다. 출석의 성적 반영비율은 25%이지만, 규정상 4회 이상 결석이면 성적이 나갈 수 없습니다.
-
 
 \mainmatter
 

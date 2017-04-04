@@ -1,0 +1,5 @@
+# R language
+
+> 2017-03-15 배균섭 교수님 강의
+
+[R Language Definition](https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf)의 초반 내용에 대해 설명하였습니다.

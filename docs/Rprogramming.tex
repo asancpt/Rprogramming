@@ -312,7 +312,7 @@ Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
 관련된 여러 제반 업무를 담당하고 있습니다. 언제든 의문사항 있으면
 \href{mailto:r@acr.kr}{\nolinkurl{r@acr.kr}} 로 전체 메일 보내시거나
 교수님 \href{mailto:k@acr.kr}{\nolinkurl{k@acr.kr}} 혹은 제 개인 메일
-\href{mailto:shan@acp.kr}{\nolinkurl{shan@acp.kr}} 로 연락해 주십시오.
+\href{mailto:shan@acp.kr로}{\nolinkurl{shan@acp.kr로}} 연락해 주십시오.
 
 교수님께서 세우신 방침에 따라 수업시간에 출석을 부르지 않을 예정입니다.
 수강하시는 화면(Skype)을 휴대폰으로 사진 찍으시거나 강의실의 스크린을
@@ -446,6 +446,15 @@ Skype로 커버해야 합니다. 출석의 성적 반영비율은 25\%이지만,
 이상 결석이면 성적이 나갈 수 없습니다.
 
 \mainmatter
+
+\chapter{R language}\label{r-language}
+
+\begin{quote}
+2017-03-15 배균섭 교수님 강의
+\end{quote}
+
+\href{https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf}{R
+Language Definition}의 초반 내용에 대해 설명하였습니다.
 
 \chapter{Graphics}\label{graphics}
 
@@ -976,158 +985,63 @@ type}\label{add-a-loess-smoother-type}
 
 \section{Read.csv}\label{read.csv}
 
+\texttt{setwd} 명령어를 통해서 자료가 있는 작업 공간을 설정할 수
+있습니다. 설정 후에서는 \texttt{dir()}을 통해 파일의 이름을 확인 할 수
+있습니다. \texttt{read.csv}를 통해서 자료를 R에서 사용할 수 있게 됩니다.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{setwd}\NormalTok{(}\StringTok{"D:/Rt"}\NormalTok{)}
 \KeywordTok{dir}\NormalTok{()}
-\NormalTok{mydata =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"MyData2017.csv"}\NormalTok{, }\DataTypeTok{as.is=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{mydata <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"MyData2017.csv"}\NormalTok{, }\DataTypeTok{as.is=}\OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \section{Theoph 데이타}\label{theoph-}
 
-R에 기본적으로 들어있는 약동학 자료에 대해 살펴보겠습니다.
+R에 기본적으로 들어있는 \texttt{Theoph} 약동학 자료에 대해
+살펴보겠습니다.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Theoph}
+\KeywordTok{head}\NormalTok{(Theoph, }\DataTypeTok{n =} \DecValTok{11}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##     Subject   Wt Dose  Time  conc
-## 1         1 79.6 4.02  0.00  0.74
-## 2         1 79.6 4.02  0.25  2.84
-## 3         1 79.6 4.02  0.57  6.57
-## 4         1 79.6 4.02  1.12 10.50
-## 5         1 79.6 4.02  2.02  9.66
-## 6         1 79.6 4.02  3.82  8.58
-## 7         1 79.6 4.02  5.10  8.36
-## 8         1 79.6 4.02  7.03  7.47
-## 9         1 79.6 4.02  9.05  6.89
-## 10        1 79.6 4.02 12.12  5.94
-## 11        1 79.6 4.02 24.37  3.28
-## 12        2 72.4 4.40  0.00  0.00
-## 13        2 72.4 4.40  0.27  1.72
-## 14        2 72.4 4.40  0.52  7.91
-## 15        2 72.4 4.40  1.00  8.31
-## 16        2 72.4 4.40  1.92  8.33
-## 17        2 72.4 4.40  3.50  6.85
-## 18        2 72.4 4.40  5.02  6.08
-## 19        2 72.4 4.40  7.03  5.40
-## 20        2 72.4 4.40  9.00  4.55
-## 21        2 72.4 4.40 12.00  3.01
-## 22        2 72.4 4.40 24.30  0.90
-## 23        3 70.5 4.53  0.00  0.00
-## 24        3 70.5 4.53  0.27  4.40
-## 25        3 70.5 4.53  0.58  6.90
-## 26        3 70.5 4.53  1.02  8.20
-## 27        3 70.5 4.53  2.02  7.80
-## 28        3 70.5 4.53  3.62  7.50
-## 29        3 70.5 4.53  5.08  6.20
-## 30        3 70.5 4.53  7.07  5.30
-## 31        3 70.5 4.53  9.00  4.90
-## 32        3 70.5 4.53 12.15  3.70
-## 33        3 70.5 4.53 24.17  1.05
-## 34        4 72.7 4.40  0.00  0.00
-## 35        4 72.7 4.40  0.35  1.89
-## 36        4 72.7 4.40  0.60  4.60
-## 37        4 72.7 4.40  1.07  8.60
-## 38        4 72.7 4.40  2.13  8.38
-## 39        4 72.7 4.40  3.50  7.54
-## 40        4 72.7 4.40  5.02  6.88
-## 41        4 72.7 4.40  7.02  5.78
-## 42        4 72.7 4.40  9.02  5.33
-## 43        4 72.7 4.40 11.98  4.19
-## 44        4 72.7 4.40 24.65  1.15
-## 45        5 54.6 5.86  0.00  0.00
-## 46        5 54.6 5.86  0.30  2.02
-## 47        5 54.6 5.86  0.52  5.63
-## 48        5 54.6 5.86  1.00 11.40
-## 49        5 54.6 5.86  2.02  9.33
-## 50        5 54.6 5.86  3.50  8.74
-## 51        5 54.6 5.86  5.02  7.56
-## 52        5 54.6 5.86  7.02  7.09
-## 53        5 54.6 5.86  9.10  5.90
-## 54        5 54.6 5.86 12.00  4.37
-## 55        5 54.6 5.86 24.35  1.57
-## 56        6 80.0 4.00  0.00  0.00
-## 57        6 80.0 4.00  0.27  1.29
-## 58        6 80.0 4.00  0.58  3.08
-## 59        6 80.0 4.00  1.15  6.44
-## 60        6 80.0 4.00  2.03  6.32
-## 61        6 80.0 4.00  3.57  5.53
-## 62        6 80.0 4.00  5.00  4.94
-## 63        6 80.0 4.00  7.00  4.02
-## 64        6 80.0 4.00  9.22  3.46
-## 65        6 80.0 4.00 12.10  2.78
-## 66        6 80.0 4.00 23.85  0.92
-## 67        7 64.6 4.95  0.00  0.15
-## 68        7 64.6 4.95  0.25  0.85
-## 69        7 64.6 4.95  0.50  2.35
-## 70        7 64.6 4.95  1.02  5.02
-## 71        7 64.6 4.95  2.02  6.58
-## 72        7 64.6 4.95  3.48  7.09
-## 73        7 64.6 4.95  5.00  6.66
-## 74        7 64.6 4.95  6.98  5.25
-## 75        7 64.6 4.95  9.00  4.39
-## 76        7 64.6 4.95 12.05  3.53
-## 77        7 64.6 4.95 24.22  1.15
-## 78        8 70.5 4.53  0.00  0.00
-## 79        8 70.5 4.53  0.25  3.05
-## 80        8 70.5 4.53  0.52  3.05
-## 81        8 70.5 4.53  0.98  7.31
-## 82        8 70.5 4.53  2.02  7.56
-## 83        8 70.5 4.53  3.53  6.59
-## 84        8 70.5 4.53  5.05  5.88
-## 85        8 70.5 4.53  7.15  4.73
-## 86        8 70.5 4.53  9.07  4.57
-## 87        8 70.5 4.53 12.10  3.00
-## 88        8 70.5 4.53 24.12  1.25
-## 89        9 86.4 3.10  0.00  0.00
-## 90        9 86.4 3.10  0.30  7.37
-## 91        9 86.4 3.10  0.63  9.03
-## 92        9 86.4 3.10  1.05  7.14
-## 93        9 86.4 3.10  2.02  6.33
-## 94        9 86.4 3.10  3.53  5.66
-## 95        9 86.4 3.10  5.02  5.67
-## 96        9 86.4 3.10  7.17  4.24
-## 97        9 86.4 3.10  8.80  4.11
-## 98        9 86.4 3.10 11.60  3.16
-## 99        9 86.4 3.10 24.43  1.12
-## 100      10 58.2 5.50  0.00  0.24
-## 101      10 58.2 5.50  0.37  2.89
-## 102      10 58.2 5.50  0.77  5.22
-## 103      10 58.2 5.50  1.02  6.41
-## 104      10 58.2 5.50  2.05  7.83
-## 105      10 58.2 5.50  3.55 10.21
-## 106      10 58.2 5.50  5.05  9.18
-## 107      10 58.2 5.50  7.08  8.02
-## 108      10 58.2 5.50  9.38  7.14
-## 109      10 58.2 5.50 12.10  5.68
-## 110      10 58.2 5.50 23.70  2.42
-## 111      11 65.0 4.92  0.00  0.00
-## 112      11 65.0 4.92  0.25  4.86
-## 113      11 65.0 4.92  0.50  7.24
-## 114      11 65.0 4.92  0.98  8.00
-## 115      11 65.0 4.92  1.98  6.81
-## 116      11 65.0 4.92  3.60  5.87
-## 117      11 65.0 4.92  5.02  5.22
-## 118      11 65.0 4.92  7.03  4.45
-## 119      11 65.0 4.92  9.03  3.62
-## 120      11 65.0 4.92 12.12  2.69
-## 121      11 65.0 4.92 24.08  0.86
-## 122      12 60.5 5.30  0.00  0.00
-## 123      12 60.5 5.30  0.25  1.25
-## 124      12 60.5 5.30  0.50  3.96
-## 125      12 60.5 5.30  1.00  7.82
-## 126      12 60.5 5.30  2.00  9.72
-## 127      12 60.5 5.30  3.52  9.75
-## 128      12 60.5 5.30  5.07  8.57
-## 129      12 60.5 5.30  7.07  6.59
-## 130      12 60.5 5.30  9.03  6.11
-## 131      12 60.5 5.30 12.05  4.57
-## 132      12 60.5 5.30 24.15  1.17
+##    Subject   Wt Dose  Time  conc
+## 1        1 79.6 4.02  0.00  0.74
+## 2        1 79.6 4.02  0.25  2.84
+## 3        1 79.6 4.02  0.57  6.57
+## 4        1 79.6 4.02  1.12 10.50
+## 5        1 79.6 4.02  2.02  9.66
+## 6        1 79.6 4.02  3.82  8.58
+## 7        1 79.6 4.02  5.10  8.36
+## 8        1 79.6 4.02  7.03  7.47
+## 9        1 79.6 4.02  9.05  6.89
+## 10       1 79.6 4.02 12.12  5.94
+## 11       1 79.6 4.02 24.37  3.28
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tail}\NormalTok{(Theoph, }\DataTypeTok{n =} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Subject   Wt Dose  Time conc
+## 122      12 60.5  5.3  0.00 0.00
+## 123      12 60.5  5.3  0.25 1.25
+## 124      12 60.5  5.3  0.50 3.96
+## 125      12 60.5  5.3  1.00 7.82
+## 126      12 60.5  5.3  2.00 9.72
+## 127      12 60.5  5.3  3.52 9.75
+## 128      12 60.5  5.3  5.07 8.57
+## 129      12 60.5  5.3  7.07 6.59
+## 130      12 60.5  5.3  9.03 6.11
+## 131      12 60.5  5.3 12.05 4.57
+## 132      12 60.5  5.3 24.15 1.17
 \end{verbatim}
 
 R console에서 \texttt{?Theoph}를 타이핑 치면 좀 더 자세한 정보를 얻을 수
@@ -1519,18 +1433,25 @@ lattice 패키지를 불러온 뒤 그림을 그려보겠습니다. \citep{R-lat
 
 \section{The basics}\label{the-basics}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk1}The basics - The first functions to learn}\\
+\begin{table}
+
+\caption{\label{tab:knitchunk1}The basics - The first functions to learn}
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
 ? & H & Y & \\
 str & M & Y & strucutre\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk2}The basics - Important operators and assignment}\\
+\begin{table}
+
+\caption{\label{tab:knitchunk2}The basics - Important operators and assignment}
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1547,10 +1468,14 @@ with & L & N & Evaluate an Expression in a Data Environment\\
 assign & L & N & Assign a Value to a Name\\
 get & L & N & Return the Value of a Named Object\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk3}The basics - Comparison }\\
+\begin{table}
+
+\caption{\label{tab:knitchunk3}The basics - Comparison }
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1561,10 +1486,14 @@ is.na & H & Y & \\
 complete.cases & L & N & Find Complete Cases\\
 is.finite & M & Y & \\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk4}The basics - Basic math}\\
+\begin{table}
+
+\caption{\label{tab:knitchunk4}The basics - Basic math}
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1616,10 +1545,14 @@ sd & H & Y & \\
 var & H & Y & \\
 rle & L & N & Run Length Encoding\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk5}The basics - Functions to do with functions}\\
+\begin{table}
+
+\caption{\label{tab:knitchunk5}The basics - Functions to do with functions}
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1629,10 +1562,14 @@ on.exit & L & Y & \\
 return & H & N & \\
 invisible & L & N & Change the Print Mode to Invisible\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk6}The basics - Logical - sets }\\
+\begin{table}
+
+\caption{\label{tab:knitchunk6}The basics - Logical - sets }
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1647,10 +1584,14 @@ setdiff & L & Y & \\
 setequal & L & Y & \\
 which & L & N & Which indices are TRUE?\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk7}The basics - Vectors and matrices}\\
+\begin{table}
+
+\caption{\label{tab:knitchunk7}The basics - Vectors and matrices}
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1675,10 +1616,14 @@ sweep & L & N & Sweep out Array Summaries\\
 as.matrix & H & Y & \\
 data.matrix & L & N & Convert a Data Frame to a Numeric Matrix\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk8}The basics - Making vectors }\\
+\begin{table}
+
+\caption{\label{tab:knitchunk8}The basics - Making vectors }
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1697,10 +1642,14 @@ factorial & M & Y & \\
 combn & L & N & Generate All Combinations of n Elements, Taken m at a Time\\
 (is/as).(character/numeric/logical/...) & H & Y & \\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk9}The basics - Lists - data.frames }\\
+\begin{table}
+
+\caption{\label{tab:knitchunk9}The basics - Lists - data.frames }
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1711,10 +1660,14 @@ as.data.frame & H & Y & \\
 split & H & Y & \\
 expand.grid & L & N & Create a Data Frame from All Combinations of Factor Variables\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk10}The basics - Control flow }\\
+\begin{table}
+
+\caption{\label{tab:knitchunk10}The basics - Control flow }
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1729,10 +1682,14 @@ break & M & Y & \\
 switch & L & Y & \\
 ifelse & L & N & Conditional Element Selection\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
-\begin{longtable}[t]{llll}
-\caption{\label{tab:knitchunk11}The basics - Apply - friends}\\
+\begin{table}
+
+\caption{\label{tab:knitchunk11}The basics - Apply - friends}
+\centering
+\begin{tabular}[t]{llll}
 \toprule
 Keyword & Bae Freq & Essential & Comment\\
 \midrule
@@ -1743,7 +1700,8 @@ apply & M & N & Apply Functions Over Array Margins\\
 tapply & L & N & Apply a Function Over a Ragged Array\\
 replicate & L & N & Apply a Function over a List or Vector\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{table}
 
 \section{Common data structures}\label{common-data-structures}
 
@@ -1751,32 +1709,23 @@ replicate & L & N & Apply a Function over a List or Vector\\
 
 \caption{\label{tab:knitchunk12}Common data structures - Date time}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 ISOdate & L & N & \\
-\hline
 ISOdatetime & L & N & \\
-\hline
 strftime & H & Y & Date-time Conversion Functions to and from Character\\
-\hline
 strptime & H & Y & Date-time Conversion Functions to and from Character\\
-\hline
 date & M & Y & \\
-\hline
+\addlinespace
 difftime & H & Y & \\
-\hline
 julian & L & Y & Extract Parts of a POSIXt or Date Object\\
-\hline
 months & L & N & Extract Parts of a POSIXt or Date Object\\
-\hline
 quarters & L & N & Extract Parts of a POSIXt or Date Object\\
-\hline
 weekdays & L & N & Extract Parts of a POSIXt or Date Object\\
-\hline
 library(lubridate) & L & N & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1784,32 +1733,23 @@ library(lubridate) & L & N & \\
 
 \caption{\label{tab:knitchunk13}Common data structures - Character manipulation }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 grep & H & Y & Pattern Matching and Replacement\\
-\hline
 agrep & L & N & Approximate String Matching (Fuzzy Matching)\\
-\hline
 gsub & M & Y & or use sub\\
-\hline
 strsplit & H & Y & \\
-\hline
 chartr & L & N & Character Translation and Casefolding\\
-\hline
+\addlinespace
 nchar & M & Y & \\
-\hline
 tolower & M & Y & \\
-\hline
 toupper & H & Y & \\
-\hline
 substr & H & Y & \\
-\hline
 paste & H & Y & \\
-\hline
 library(stringr) & L & N & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1817,28 +1757,21 @@ library(stringr) & L & N & \\
 
 \caption{\label{tab:knitchunk14}Common data structures - Factors }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 factor & M & Y & \\
-\hline
 levels & M & Y & \\
-\hline
 nlevels & L & N & \\
-\hline
 reorder & L & N & Reorder Levels of a Factor\\
-\hline
 relevel & L & N & Reorder Levels of Factor\\
-\hline
+\addlinespace
 cut & L & Y & \\
-\hline
 findInterval & L & N & Find Interval Numbers or Indices\\
-\hline
 interaction & L & N & Compute Factor Interactions\\
-\hline
 options(stringsAsFactors = FALSE) & L & N & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1846,20 +1779,16 @@ options(stringsAsFactors = FALSE) & L & N & \\
 
 \caption{\label{tab:knitchunk15}Common data structures - Array manipulation}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 array & L & N & Multi-way Arrays\\
-\hline
 dim & H & Y & \\
-\hline
 dimnames & M & Y & \\
-\hline
 aperm & L & N & Array Transposition\\
-\hline
 library(abind) & L & N & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1869,28 +1798,21 @@ library(abind) & L & N & \\
 
 \caption{\label{tab:knitchunk16}Statistics - Ordering and tabulating }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 duplicated & L & Y & Determine Duplicated Elements\\
-\hline
 unique & H & Y & \\
-\hline
 merge & L & N & \\
-\hline
 order & H & Y & \\
-\hline
 rank & L & Y & \\
-\hline
+\addlinespace
 quantile & L & Y & \\
-\hline
 sort & H & Y & \\
-\hline
 table & M & Y & \\
-\hline
 ftable & L & Y & Flat Contingency Tables\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1898,48 +1820,33 @@ ftable & L & Y & Flat Contingency Tables\\
 
 \caption{\label{tab:knitchunk17}Statistics - Linear models }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 fitted & L & Y & Extract Model Fitted Values\\
-\hline
 predict & H & Y & \\
-\hline
 resid & L & Y & Extract Model Residuals\\
-\hline
 rstandard & L & Y & Regression Deletion Diagnostics\\
-\hline
 lm & H & Y & \\
-\hline
+\addlinespace
 glm & H & Y & \\
-\hline
 hat & L & Y & \\
-\hline
 influence.measures & M & Y & Regression Deletion Diagnostics\\
-\hline
 logLik & L & Y & \\
-\hline
 df & M & Y & \\
-\hline
+\addlinespace
 deviance & M & Y & \\
-\hline
 formula & H & Y & \\
-\hline
 \textasciitilde{} & H & Y & \\
-\hline
 I & H & Y & \\
-\hline
 anova & H & Y & \\
-\hline
+\addlinespace
 coef & M & Y & \\
-\hline
 confint & M & Y & \\
-\hline
 vcov & H & Y & \\
-\hline
 contrasts & L & Y & Get and Set Contrast Matrices\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1947,12 +1854,12 @@ contrasts & L & Y & Get and Set Contrast Matrices\\
 
 \caption{\label{tab:knitchunk18}Statistics - Miscellaneous tests}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 apropos("\textbackslash{}\textbackslash{}.test\$") & L & Y & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1960,12 +1867,12 @@ apropos("\textbackslash{}\textbackslash{}.test\$") & L & Y & \\
 
 \caption{\label{tab:knitchunk19}Statistics - Random variables }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 (q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom, & H & Y & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1973,30 +1880,22 @@ Keyword & Bae Freq & Essential & Comment\\
 
 \caption{\label{tab:knitchunk20}Statistics - Matrix algebra }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 crossprod & L & Y & Matrix Crossproduct\\
-\hline
 tcrossprod & L & N & Matrix Crossproduct\\
-\hline
 eigen & H & Y & \\
-\hline
 qr & L & Y & \\
-\hline
 svd & L & Y & \\
-\hline
+\addlinespace
 \%*\% & H & Y & \\
-\hline
 \%o\% & L & Y & Outer Product of Arrays\\
-\hline
 outer & H & Y & \\
-\hline
 rcond & L & N & Compute or Estimate the Condition Number of a Matrix\\
-\hline
 solve & H & Y & Solve a System of Equations\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2006,30 +1905,22 @@ solve & H & Y & Solve a System of Equations\\
 
 \caption{\label{tab:knitchunk21}Working with R - Workspace }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 ls & H & Y & List Objects\\
-\hline
 exists & M & Y & \\
-\hline
 rm & M & Y & \\
-\hline
 getwd & H & Y & \\
-\hline
 setwd & H & Y & \\
-\hline
+\addlinespace
 q & L & Y & \\
-\hline
 source & H & Y & \\
-\hline
 install.packages & H & Y & \\
-\hline
 library & H & Y & \\
-\hline
 require & H & Y & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2037,28 +1928,21 @@ require & H & Y & \\
 
 \caption{\label{tab:knitchunk22}Working with R - Help}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 help & L & N & \\
-\hline
 ? & H & Y & \\
-\hline
 help.search & L & N & \\
-\hline
 apropos & L & Y & \\
-\hline
 RSiteSearch & L & N & Search for Key Words or Phrases in Documentation\\
-\hline
+\addlinespace
 citation & L & Y & \\
-\hline
 demo & L & Y & \\
-\hline
 example & L & Y & \\
-\hline
 vignette & L & Y & View, List or Get R Source of Package Vignettes\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2066,28 +1950,21 @@ vignette & L & Y & View, List or Get R Source of Package Vignettes\\
 
 \caption{\label{tab:knitchunk23}Working with R - Debugging}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 traceback & L & Y & \\
-\hline
 browser & L & Y & Environment Browser\\
-\hline
 recover & L & Y & Browsing after an Error\\
-\hline
 options(error = ) & L & Y & \\
-\hline
 stop & L & Y & Stop Function Execution\\
-\hline
+\addlinespace
 warning & H & Y & \\
-\hline
 message & L & Y & \\
-\hline
 tryCatch & L & Y & \\
-\hline
 try & L & Y & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2097,26 +1974,20 @@ try & L & Y & \\
 
 \caption{\label{tab:knitchunk24}I/O - Output}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 print & H & Y & \\
-\hline
 cat & H & Y & \\
-\hline
 message & L & Y & \\
-\hline
 warning & H & Y & \\
-\hline
 dput & L & N & Write an Object to a File or Recreate it\\
-\hline
+\addlinespace
 format & H & Y & \\
-\hline
 sink & L & Y & Send R Output to a File\\
-\hline
 capture.output & L & Y & Send Output to a Character String or File\\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2124,38 +1995,27 @@ capture.output & L & Y & Send Output to a Character String or File\\
 
 \caption{\label{tab:knitchunk25}I/O - Reading and writing data}
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 data & L & N & Loads specified data sets, or list the available data sets.\\
-\hline
 count.fields & L & N & \\
-\hline
 read.csv & H & Y & \\
-\hline
 write.csv & H & Y & \\
-\hline
 read.delim & L & N & \\
-\hline
+\addlinespace
 write.delim & L & N & \\
-\hline
 read.fwf & L & N & \\
-\hline
 readLines & M & Y & \\
-\hline
 writeLines & M & Y & \\
-\hline
 readRDS & L & N & Serialization Interface for Single Objects\\
-\hline
+\addlinespace
 saveRDS & L & N & \\
-\hline
 load & L & Y & \\
-\hline
 save & L & Y & \\
-\hline
 library(foreign) & L & N & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2163,48 +2023,33 @@ library(foreign) & L & N & \\
 
 \caption{\label{tab:knitchunk26}I/O - Files and directories }
 \centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{tabular}[t]{llll}
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 dir & H & Y & \\
-\hline
 basename & L & Y & removes all of the path up to and including the last path separator\\
-\hline
 dirname & L & Y & \\
-\hline
 tools::file\_ext & L & Y & \\
-\hline
 file.path & L & Y & \\
-\hline
+\addlinespace
 path.expand & L & Y & Expand File Paths\\
-\hline
 normalizePath & L & Y & Express File Paths in Canonical Form\\
-\hline
 file.choose & L & Y & \\
-\hline
 file.copy & L & Y & \\
-\hline
 file.create & L & Y & \\
-\hline
+\addlinespace
 file.remove & L & Y & \\
-\hline
 file.rename & L & Y & \\
-\hline
 dir.create & L & Y & \\
-\hline
 file.exists & L & Y & \\
-\hline
 file.info & L & Y & \\
-\hline
+\addlinespace
 tempdir & L & Y & \\
-\hline
 tempfile & L & Y & \\
-\hline
 download.file & L & Y & \\
-\hline
 library(downloader) & L & N & \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -2540,7 +2385,29 @@ library(downloader) & L & N & \\
 \end{Highlighting}
 \end{Shaded}
 
-\chapter{Using Coursera}\label{using-coursera}
+\chapter{R Tips}\label{r-tips}
+
+\begin{itemize}
+\tightlist
+\item
+  Materials
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://cran.r-project.org/manuals.html}
+  \item
+    \url{https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf}
+  \end{itemize}
+\item
+  Changing defualt R console size and etc : 배균섭 교수님께서 알려주신
+  tip을 참고하여 video clip을 만들었습니다. 매일같이 마주하게 되는 R
+  console이 너무 작게 느껴지셨다면 다음의 동영상을 참고하셔서 초기 세팅
+  (Rconsole 파일)을 바꿔서 해결할 수 있습니다.
+  \url{https://youtu.be/uSunEN8W5Mo}
+\end{itemize}
+
+\section{Using Coursera}\label{using-coursera}
 
 \begin{quote}
 PAGK에 보낸 이메일을 그대로 옮겼습니다.
@@ -2576,18 +2443,6 @@ Certificate가 필요하지 않다면, 각각의 코스를 구글검색 혹은 �
 
 \url{https://bookdown.org/rdpeng/RProgDA/} 이 링크는 무료로 공개된 강의
 책자입니다. 강의를 듣지 않고 책으로 보고 싶으신 분은 참고하시면 됩니다.
-
-\chapter{R Tips}\label{r-tips}
-
-\begin{itemize}
-\tightlist
-\item
-  Changing defualt R console size and etc : 배균섭 교수님께서 알려주신
-  tip을 참고하여 video clip을 만들었습니다. 매일같이 마주하게 되는 R
-  console이 너무 작게 느껴지셨다면 다음의 동영상을 참고하셔서 초기 세팅
-  (Rconsole 파일)을 바꿔서 해결할 수 있습니다.
-  \url{https://youtu.be/uSunEN8W5Mo}
-\end{itemize}
 
 \chapter{Acknowledgement}\label{acknowledgement}
 

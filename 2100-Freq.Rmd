@@ -11,11 +11,6 @@ editor_options:
 자주 쓰는 함수 및 명령어에 대해 알아보겠습니다.
 
 ```{r, results = 'asis', echo = FALSE}
-library(knitr)
-library(readxl)
-library(dplyr)
-library(zoo)
-
 Freq <- read_excel("data-raw/R-Keyword-Functions-Freq-Essential.xlsx", 
     sheet = "Sheet1")
 Freqlist <- bind_cols(Freq %>% select(1, 2) %>%  na.locf, Freq %>% select(-1, -2, Keyword = 3)) %>% 
@@ -38,7 +33,7 @@ Datatableskdata <- NULL
 for (i in c(1:11)) {
     knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]),
                             "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
-                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = TRUE)\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = FALSE)\n\n
                             ```")
     Datatableskdata <- c(Datatableskdata, knit_expanded)
 }
@@ -54,7 +49,7 @@ Datatableskdata <- NULL
 for (i in 12:15) {
     knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
                             "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
-                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = TRUE)\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = FALSE)\n\n
                             ```")
     Datatableskdata <- c(Datatableskdata, knit_expanded)
 }
@@ -71,7 +66,7 @@ Datatableskdata <- NULL
 for (i in 16:20) {
     knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
                             "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
-                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = TRUE)\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = FALSE)\n\n
                             ```")
     Datatableskdata <- c(Datatableskdata, knit_expanded)
 }
@@ -88,7 +83,7 @@ Datatableskdata <- NULL
 for (i in 21:23) {
     knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
                             "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
-                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = TRUE)\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = FALSE)\n\n
                             ```")
     Datatableskdata <- c(Datatableskdata, knit_expanded)
 }
@@ -105,7 +100,7 @@ Datatableskdata <- NULL
 for (i in 24:26) {
     knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
                             "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
-                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = TRUE)\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = FALSE)\n\n
                             ```")
     Datatableskdata <- c(Datatableskdata, knit_expanded)
 }

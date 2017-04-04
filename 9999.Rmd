@@ -16,7 +16,18 @@
 ```{r code = readLines("R/Script20170329.R", encoding = "UTF-8"), eval = FALSE}
 ```
 
-# Using Coursera 
+
+# R Tips
+
+- Materials
+    - <https://cran.r-project.org/manuals.html>
+    - <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
+
+- Changing defualt R console size and etc : 배균섭 교수님께서 알려주신 tip을 참고하여 video clip을 만들었습니다. 매일같이 마주하게 되는 R console이 너무 작게 느껴지셨다면 다음의 동영상을 참고하셔서 초기 세팅 (Rconsole 파일)을 바꿔서 해결할 수 있습니다. <https://youtu.be/uSunEN8W5Mo>
+
+<!-- `r if (knitr:::is_html_output()) knitr::include_url("http://www.youtube.com/embed/uSunEN8W5Mo?rel=0")` -->
+
+## Using Coursera 
 
 > PAGK에 보낸 이메일을 그대로 옮겼습니다.
 
@@ -33,13 +44,6 @@ Coursera 회원가입하시고 로그인 한 뒤, Enroll Now를 누르시면 Aud
 
 <https://bookdown.org/rdpeng/RProgDA/> 이 링크는 무료로 공개된 강의 책자입니다. 
 강의를 듣지 않고 책으로 보고 싶으신 분은 참고하시면 됩니다.
-
-# R Tips
-
-- Changing defualt R console size and etc : 배균섭 교수님께서 알려주신 tip을 참고하여 video clip을 만들었습니다. 매일같이 마주하게 되는 R console이 너무 작게 느껴지셨다면 다음의 동영상을 참고하셔서 초기 세팅 (Rconsole 파일)을 바꿔서 해결할 수 있습니다. <https://youtu.be/uSunEN8W5Mo>
-
-
-<!-- `r if (knitr:::is_html_output()) knitr::include_url("http://www.youtube.com/embed/uSunEN8W5Mo?rel=0")` -->
 
 # Acknowledgement
 
