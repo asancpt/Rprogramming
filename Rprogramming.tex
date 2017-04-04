@@ -1747,466 +1747,293 @@ replicate & L & N & Apply a Function over a List or Vector\\
 
 \section{Common data structures}\label{common-data-structures}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk12}Common data structures - Date time}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk12}Common data structures - Date time}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 ISOdate & L & N & \\
-\hline
 ISOdatetime & L & N & \\
-\hline
 strftime & H & Y & Date-time Conversion Functions to and from Character\\
-\hline
 strptime & H & Y & Date-time Conversion Functions to and from Character\\
-\hline
 date & M & Y & \\
-\hline
+\addlinespace
 difftime & H & Y & \\
-\hline
 julian & L & Y & Extract Parts of a POSIXt or Date Object\\
-\hline
 months & L & N & Extract Parts of a POSIXt or Date Object\\
-\hline
 quarters & L & N & Extract Parts of a POSIXt or Date Object\\
-\hline
 weekdays & L & N & Extract Parts of a POSIXt or Date Object\\
-\hline
 library(lubridate) & L & N & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk13}Common data structures - Character manipulation }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk13}Common data structures - Character manipulation }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 grep & H & Y & Pattern Matching and Replacement\\
-\hline
 agrep & L & N & Approximate String Matching (Fuzzy Matching)\\
-\hline
 gsub & M & Y & or use sub\\
-\hline
 strsplit & H & Y & \\
-\hline
 chartr & L & N & Character Translation and Casefolding\\
-\hline
+\addlinespace
 nchar & M & Y & \\
-\hline
 tolower & M & Y & \\
-\hline
 toupper & H & Y & \\
-\hline
 substr & H & Y & \\
-\hline
 paste & H & Y & \\
-\hline
 library(stringr) & L & N & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk14}Common data structures - Factors }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk14}Common data structures - Factors }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 factor & M & Y & \\
-\hline
 levels & M & Y & \\
-\hline
 nlevels & L & N & \\
-\hline
 reorder & L & N & Reorder Levels of a Factor\\
-\hline
 relevel & L & N & Reorder Levels of Factor\\
-\hline
+\addlinespace
 cut & L & Y & \\
-\hline
 findInterval & L & N & Find Interval Numbers or Indices\\
-\hline
 interaction & L & N & Compute Factor Interactions\\
-\hline
 options(stringsAsFactors = FALSE) & L & N & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk15}Common data structures - Array manipulation}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk15}Common data structures - Array manipulation}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 array & L & N & Multi-way Arrays\\
-\hline
 dim & H & Y & \\
-\hline
 dimnames & M & Y & \\
-\hline
 aperm & L & N & Array Transposition\\
-\hline
 library(abind) & L & N & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
 \section{Statistics}\label{statistics}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk16}Statistics - Ordering and tabulating }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk16}Statistics - Ordering and tabulating }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 duplicated & L & Y & Determine Duplicated Elements\\
-\hline
 unique & H & Y & \\
-\hline
 merge & L & N & \\
-\hline
 order & H & Y & \\
-\hline
 rank & L & Y & \\
-\hline
+\addlinespace
 quantile & L & Y & \\
-\hline
 sort & H & Y & \\
-\hline
 table & M & Y & \\
-\hline
 ftable & L & Y & Flat Contingency Tables\\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk17}Statistics - Linear models }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk17}Statistics - Linear models }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 fitted & L & Y & Extract Model Fitted Values\\
-\hline
 predict & H & Y & \\
-\hline
 resid & L & Y & Extract Model Residuals\\
-\hline
 rstandard & L & Y & Regression Deletion Diagnostics\\
-\hline
 lm & H & Y & \\
-\hline
+\addlinespace
 glm & H & Y & \\
-\hline
 hat & L & Y & \\
-\hline
 influence.measures & M & Y & Regression Deletion Diagnostics\\
-\hline
 logLik & L & Y & \\
-\hline
 df & M & Y & \\
-\hline
+\addlinespace
 deviance & M & Y & \\
-\hline
 formula & H & Y & \\
-\hline
 \textasciitilde{} & H & Y & \\
-\hline
 I & H & Y & \\
-\hline
 anova & H & Y & \\
-\hline
+\addlinespace
 coef & M & Y & \\
-\hline
 confint & M & Y & \\
-\hline
 vcov & H & Y & \\
-\hline
 contrasts & L & Y & Get and Set Contrast Matrices\\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk18}Statistics - Miscellaneous tests}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk18}Statistics - Miscellaneous tests}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 apropos("\textbackslash{}\textbackslash{}.test\$") & L & Y & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk19}Statistics - Random variables }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk19}Statistics - Random variables }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 (q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom, & H & Y & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk20}Statistics - Matrix algebra }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk20}Statistics - Matrix algebra }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 crossprod & L & Y & Matrix Crossproduct\\
-\hline
 tcrossprod & L & N & Matrix Crossproduct\\
-\hline
 eigen & H & Y & \\
-\hline
 qr & L & Y & \\
-\hline
 svd & L & Y & \\
-\hline
+\addlinespace
 \%*\% & H & Y & \\
-\hline
 \%o\% & L & Y & Outer Product of Arrays\\
-\hline
 outer & H & Y & \\
-\hline
 rcond & L & N & Compute or Estimate the Condition Number of a Matrix\\
-\hline
 solve & H & Y & Solve a System of Equations\\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
 \section{Working with R}\label{working-with-r}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk21}Working with R - Workspace }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk21}Working with R - Workspace }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 ls & H & Y & List Objects\\
-\hline
 exists & M & Y & \\
-\hline
 rm & M & Y & \\
-\hline
 getwd & H & Y & \\
-\hline
 setwd & H & Y & \\
-\hline
+\addlinespace
 q & L & Y & \\
-\hline
 source & H & Y & \\
-\hline
 install.packages & H & Y & \\
-\hline
 library & H & Y & \\
-\hline
 require & H & Y & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk22}Working with R - Help}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk22}Working with R - Help}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 help & L & N & \\
-\hline
 ? & H & Y & \\
-\hline
 help.search & L & N & \\
-\hline
 apropos & L & Y & \\
-\hline
 RSiteSearch & L & N & Search for Key Words or Phrases in Documentation\\
-\hline
+\addlinespace
 citation & L & Y & \\
-\hline
 demo & L & Y & \\
-\hline
 example & L & Y & \\
-\hline
 vignette & L & Y & View, List or Get R Source of Package Vignettes\\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk23}Working with R - Debugging}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk23}Working with R - Debugging}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 traceback & L & Y & \\
-\hline
 browser & L & Y & Environment Browser\\
-\hline
 recover & L & Y & Browsing after an Error\\
-\hline
 options(error = ) & L & Y & \\
-\hline
 stop & L & Y & Stop Function Execution\\
-\hline
+\addlinespace
 warning & H & Y & \\
-\hline
 message & L & Y & \\
-\hline
 tryCatch & L & Y & \\
-\hline
 try & L & Y & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
 \section{I/O}\label{io}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk24}I/O - Output}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk24}I/O - Output}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 print & H & Y & \\
-\hline
 cat & H & Y & \\
-\hline
 message & L & Y & \\
-\hline
 warning & H & Y & \\
-\hline
 dput & L & N & Write an Object to a File or Recreate it\\
-\hline
+\addlinespace
 format & H & Y & \\
-\hline
 sink & L & Y & Send R Output to a File\\
-\hline
 capture.output & L & Y & Send Output to a Character String or File\\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk25}I/O - Reading and writing data}
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk25}I/O - Reading and writing data}\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 data & L & N & Loads specified data sets, or list the available data sets.\\
-\hline
 count.fields & L & N & \\
-\hline
 read.csv & H & Y & \\
-\hline
 write.csv & H & Y & \\
-\hline
 read.delim & L & N & \\
-\hline
+\addlinespace
 write.delim & L & N & \\
-\hline
 read.fwf & L & N & \\
-\hline
 readLines & M & Y & \\
-\hline
 writeLines & M & Y & \\
-\hline
 readRDS & L & N & Serialization Interface for Single Objects\\
-\hline
+\addlinespace
 saveRDS & L & N & \\
-\hline
 load & L & Y & \\
-\hline
 save & L & Y & \\
-\hline
 library(foreign) & L & N & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
-\begin{table}
-
-\caption{\label{tab:knitchunk26}I/O - Files and directories }
-\centering
-\begin{tabular}[t]{l|l|l|l}
-\hline
+\begin{longtable}[t]{llll}
+\caption{\label{tab:knitchunk26}I/O - Files and directories }\\
+\toprule
 Keyword & Bae Freq & Essential & Comment\\
-\hline
+\midrule
 dir & H & Y & \\
-\hline
 basename & L & Y & removes all of the path up to and including the last path separator\\
-\hline
 dirname & L & Y & \\
-\hline
 tools::file\_ext & L & Y & \\
-\hline
 file.path & L & Y & \\
-\hline
+\addlinespace
 path.expand & L & Y & Expand File Paths\\
-\hline
 normalizePath & L & Y & Express File Paths in Canonical Form\\
-\hline
 file.choose & L & Y & \\
-\hline
 file.copy & L & Y & \\
-\hline
 file.create & L & Y & \\
-\hline
+\addlinespace
 file.remove & L & Y & \\
-\hline
 file.rename & L & Y & \\
-\hline
 dir.create & L & Y & \\
-\hline
 file.exists & L & Y & \\
-\hline
 file.info & L & Y & \\
-\hline
+\addlinespace
 tempdir & L & Y & \\
-\hline
 tempfile & L & Y & \\
-\hline
 download.file & L & Y & \\
-\hline
 library(downloader) & L & N & \\
-\hline
-\end{tabular}
-\end{table}
+\bottomrule
+\end{longtable}
 
 \cleardoublepage 
 

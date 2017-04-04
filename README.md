@@ -1,28 +1,3 @@
---- 
-title: "R Programming - Lecture Notes"
-author: "Kyun-Seop Bae"
-date: "2017-04-02"
-knit: "bookdown::render_book"
-documentclass: book
-#documentclass: krantz
-#bibliography: [book.bib, packages.bib]
-bibliography: [packages.bib]
-biblio-style: apalike
-link-citations: yes
-colorlinks: yes
-lot: yes
-lof: yes
-fontsize: 12pt
-monofont: "Source Code Pro"
-monofontoptions: "Scale=0.7"
-site: bookdown::bookdown_site
-description: "R Programming - Lecture Notes"
-url: 'https\://asancpt.github.io/Rprogramming/'
-github-repo: asancpt/Rprogramming
-cover-image: images/cover.jpg
----
-
-
 
 # Preface {-}
 
@@ -75,11 +50,11 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 **출석 체크를 위해 전체메일을 사용하지 말아주십시오!**
 
-아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인 `bookdown`을 사용해 웹북을 제작 중에 있습니다. [@R-bookdown]
+아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인 `bookdown`을 사용해 웹북을 제작 중에 있습니다. [@R-bookdown] \index{bookdown}
 여러분이 읽고 있는 이 책 자체가 R 코드의 일종인 `Rmarkdown`의 결과물이라고 보시면 됩니다. 
 [Github 저장소](https://github.com/asancpt/Rprogramming)가 있으니 소스 코드를 보실 수 있습니다. 
-누구나 소스를 편집하여 `Pull Request`를 요청할 수 있으므로 혹시 Github를 사용하셔서 웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오.
-혹은 웹북의 각 페이지 아래쪽에 Disqus 창을 달아놓았으므로, 궁금한 점을 메모로 남겨주셔도 좋습니다. 
+누구나 소스를 편집하여 `Pull Request`를 요청할 수 있으므로 혹시 Github를 사용하셔서 웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오. \index{Github}
+<!-- 혹은 웹북의 각 페이지 아래쪽에 Disqus 창을 달아놓았으므로, 궁금한 점을 메모로 남겨주셔도 좋습니다. \index{disqus} -->
 
 감사합니다.
 
@@ -89,18 +64,7 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 ## FAQ {-}
 
-
-
-
-
-> Q. 미국학회 참석으로 수업시간이 귀국행 비행기 기내에 있을거같아 출석이 안될것 같습니다. 방법이 있을지요?
-
-결석 사유서를 제출해 주시면 출석 처리 하겠습니다. [대학원 홈페이지 참고 바랍니다.](http://www.medulsan.ac.kr/graduate/?mid=72&curpage=files)  이 링크로 들어가시면 가장 위에 있습니다. (`결석사유서.hwp`) 
-참고로 수업 영상은 녹화하여 Youtube에 비공개 링크를 만들 예정이라서 추후에 관련 영상을 시청할 수 있을 것 같습니다.
-결석사유서를 제출한다고 100% 출석이 인정되는 것은 아닙니다. 
-이것이 기본적으로는 offline강의이기 때문에 강의시간에 강의실에 있든지, 또는 온라인으로 접속해 있어야 합니다. 
-출석사유서를 제출하거나, 추후 동영상 시청을 해서 그 증거(사진)을 제출하는 경우에 감점을 줄여드릴 수 있습니다. 예를 들어, 결석시에는 2점 감점인데, 결석사유서를 제출하면 1점만 감점한다는지, 동영상을 보면 0.5점만 감점한다는지 하는 것입니다. 
-결석 사유서 제출 시 출석 처리 원칙에 대한 설명을 드리오니, 참고하시길 바랍니다.
+### 접속 관련 {-}
 
 > Q. 스카이프를 한번도 안써봐서 이참에 사용법을 배우고있는데, 수업시작시에 상대방을 어떻게 검색해서 들어가면 될지 알려주시면 감사하겠습니다.
 
@@ -126,19 +90,38 @@ Chrome 등 웹브라우저에서 위 주소를 입력하면 직접 대화방으�
 
 수업 시작 30분 전부터 대화방을 개설하여 놓도록 하겠습니다.
 
+### 출석관련 {-}
+
+> Q. 미국학회 참석으로 수업시간이 귀국행 비행기 기내에 있을거같아 출석이 안될것 같습니다. 방법이 있을지요?
+
+결석 사유서를 제출해 주시면 출석 처리 하겠습니다. [대학원 홈페이지 참고 바랍니다.](http://www.medulsan.ac.kr/graduate/?mid=72&curpage=files)  이 링크로 들어가시면 가장 위에 있습니다. (`결석사유서.hwp`) 
+참고로 수업 영상은 녹화하여 Youtube에 비공개 링크를 만들 예정이라서 추후에 관련 영상을 시청할 수 있을 것 같습니다.
+결석사유서를 제출한다고 100% 출석이 인정되는 것은 아닙니다. 
+이것이 기본적으로는 offline강의이기 때문에 강의시간에 강의실에 있든지, 또는 온라인으로 접속해 있어야 합니다. 
+출석사유서를 제출하거나, 추후 동영상 시청을 해서 그 증거(사진)을 제출하는 경우에 감점을 줄여드릴 수 있습니다. 예를 들어, 결석시에는 2점 감점인데, 결석사유서를 제출하면 1점만 감점한다는지, 동영상을 보면 0.5점만 감점한다는지 하는 것입니다. 
+결석 사유서 제출 시 출석 처리 원칙에 대한 설명을 드리오니, 참고하시길 바랍니다.
+
+
+### 과제 관련 {-}
+
 > Q. 과제물이 있다고 들었는데 언제 assign하게 되는지요?
 
 과제물은 빨라야 5주차 이후에 나갑니다.
 
-> Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수 있을런지요?
-
-Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. 출석은 Skype로 커버해야 합니다. 출석의 성적 반영비율은 25%이지만, 규정상 4회 이상 결석이면 성적이 나갈 수 없습니다.
+### Coursera 관련 {-}
 
 > Q. 첫 수업 때, certification 관련 말씀을 하셨는데, 정확히 coursera 사이트에서 어떤 것을 듣고, 제출을 해야하는지 궁금합니다.
-(비슷한 내용이 많아, 어떤것을 들어야하는지 헷갈립니다.)
+(비슷한 내용이 많아, 어떤것을 들어야하는지 헷갈립니다.) \index{Coursera}
 
 Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming과 관련된 것이라면 자유로이 골라서 들으면 됩니다. 대표적인 두 가지만 들자면 다음과 같습니다.
  
 - <https://www.coursera.org/learn/r-programming>
 - <https://www.coursera.org/learn/r-programming-environment>
- 
+
+> Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수 있을런지요?
+
+Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. 출석은 Skype로 커버해야 합니다. 출석의 성적 반영비율은 25%이지만, 규정상 4회 이상 결석이면 성적이 나갈 수 없습니다.
+
+
+\mainmatter
+
