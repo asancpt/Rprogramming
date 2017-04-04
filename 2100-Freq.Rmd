@@ -1,0 +1,121 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Frequently Used Functions
+
+> 2017-04-05 배균섭 교수님 강의
+
+자주 쓰는 함수 및 명령어에 대해 알아보겠습니다.
+
+```{r, results = 'asis', echo = FALSE}
+library(knitr)
+library(readxl)
+library(dplyr)
+library(zoo)
+
+Freq <- read_excel("data-raw/R-Keyword-Functions-Freq-Essential.xlsx", 
+    sheet = "Sheet1")
+Freqlist <- bind_cols(Freq %>% select(1, 2) %>%  na.locf, Freq %>% select(-1, -2, Keyword = 3)) %>% 
+    filter(!is.na(Essential)) %>% 
+    mutate(Title = paste(Category, Subcategory)) %>% 
+    mutate(Title = gsub("#|&", "-", Title)) %>% 
+    #mutate(Keyword = gsub("\\[\\[", "\\\\[\\\\[", Keyword)) %>% 
+    filter(Keyword != "[[") %>% 
+    mutate(Title = factor(Title, ordered = FALSE, levels = unique(Title))) %>% 
+    mutate(Comment = ifelse(is.na(Comment), "", Comment))
+
+Freqfinal <- lapply(split(Freqlist, Freqlist[, "Title"]), 
+       function(x) x %>% select(-Category, -Subcategory, -Title))
+
+#sapply(names(Test)[2:3], function(x) {
+#    print(x)
+#    format(kable(Test[[x]], format = "markdown"))
+#})
+
+```
+
+## The basics
+
+```{r, echo = FALSE}
+Datatableskdata <- NULL
+for (i in c(1:11)) {
+    knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]),
+                            "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"], booktabs = TRUE, longtable = TRUE)\n\n
+                            ```")
+    Datatableskdata <- c(Datatableskdata, knit_expanded)
+}
+```
+
+<!--- knit those table chunk statements --> 
+`r paste(knit(text = Datatableskdata, encoding = 'UTF-8'), collapse = '\n')`
+
+## Common data structures
+
+```{r, echo = FALSE}
+Datatableskdata <- NULL
+for (i in 12:15) {
+    knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
+                            "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"])\n\n
+                            ```")
+    Datatableskdata <- c(Datatableskdata, knit_expanded)
+}
+```
+
+<!--- knit those table chunk statements --> 
+`r paste(knit(text = Datatableskdata, encoding = 'UTF-8'), collapse = '\n')`
+
+
+## Statistics
+
+```{r, echo = FALSE}
+Datatableskdata <- NULL
+for (i in 16:20) {
+    knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
+                            "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"])\n\n
+                            ```")
+    Datatableskdata <- c(Datatableskdata, knit_expanded)
+}
+```
+
+<!--- knit those table chunk statements --> 
+`r paste(knit(text = Datatableskdata, encoding = 'UTF-8'), collapse = '\n')`
+
+
+## Working with R 
+
+```{r, echo = FALSE}
+Datatableskdata <- NULL
+for (i in 21:23) {
+    knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
+                            "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"])\n\n
+                            ```")
+    Datatableskdata <- c(Datatableskdata, knit_expanded)
+}
+```
+
+<!--- knit those table chunk statements --> 
+`r paste(knit(text = Datatableskdata, encoding = 'UTF-8'), collapse = '\n')`
+
+
+## I/O
+
+```{r, echo = FALSE}
+Datatableskdata <- NULL
+for (i in 24:26) {
+    knit_expanded <- paste0(#"\n\n### ", gsub("^.*- ", "", names(Freqfinal)[i]), "\n",
+                            "\n\n```{r knitchunk", i,", results='asis', echo=FALSE}\n\n
+                            knitr::kable(Freqfinal[[", i, "]], caption = names(Freqfinal)[",i,"])\n\n
+                            ```")
+    Datatableskdata <- c(Datatableskdata, knit_expanded)
+}
+```
+
+<!--- knit those table chunk statements --> 
+`r paste(knit(text = Datatableskdata, encoding = 'UTF-8'), collapse = '\n')`

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="lecture-3.html">
-<link rel="next" href="using-coursera.html">
+<link rel="prev" href="statistics.html">
+<link rel="next" href="io.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -175,56 +175,217 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lecture-4" class="section level2">
-<h2><span class="header-section-number">A.2</span> Lecture 4</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 2017-03-29</span>
-
-<span class="kw">setwd</span>(<span class="st">&quot;D:/Rt&quot;</span>)
-<span class="kw">dir</span>()
-
-mydata =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;MyData2017.csv&quot;</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
-
-Theoph
-<span class="kw">library</span>(lattice) <span class="co"># trellis</span>
-
-<span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Subject, <span class="dt">data=</span>Theoph)
-
-<span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Subject, <span class="dt">data=</span>Theoph, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)
-
-Theoph[,<span class="st">&quot;ID&quot;</span>] =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">as.character</span>(Theoph[,<span class="st">&quot;Subject&quot;</span>]))
-
-<span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>ID, <span class="dt">data=</span>Theoph, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)
-
-<span class="kw">xyplot</span>(conc <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span><span class="kw">as.factor</span>(ID), <span class="dt">data=</span>Theoph, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)
-
-<span class="kw">write.csv</span>(Theoph, <span class="st">&quot;Theoph.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">na=</span><span class="st">&quot;&quot;</span>)
-
-
-IDs =<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(Theoph[,<span class="st">&quot;ID&quot;</span>])) ; IDs
-nID =<span class="st"> </span><span class="kw">length</span>(IDs) ; nID
-
-demog =<span class="st"> </span><span class="kw">unique</span>(Theoph[,<span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>,<span class="st">&quot;Wt&quot;</span>)])
-<span class="kw">colnames</span>(demog) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>)
-<span class="kw">write.csv</span>(demog, <span class="st">&quot;1-demog.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">na=</span><span class="st">&quot;&quot;</span>)
-
-DV =<span class="st"> </span>Theoph[,<span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>,<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;conc&quot;</span>)]
-<span class="kw">colnames</span>(DV) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;DV&quot;</span>)
-<span class="kw">write.csv</span>(DV, <span class="st">&quot;3-DV.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">na=</span><span class="st">&quot;&quot;</span>)
-
-adm =<span class="st"> </span><span class="kw">cbind</span>(IDs, <span class="kw">rep</span>(<span class="dv">0</span>, nID), <span class="kw">rep</span>(<span class="dv">320</span>, nID))
-<span class="kw">colnames</span>(adm) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;TIME&quot;</span>, <span class="st">&quot;AMT&quot;</span>)
-<span class="kw">write.csv</span>(adm, <span class="st">&quot;2-adm.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">na=</span><span class="st">&quot;&quot;</span>)
-
-
-demog =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;1-demog.csv&quot;</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
-adm =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;2-adm.csv&quot;</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
-dv =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;3-dv.csv&quot;</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
-
-AdmDv =<span class="st"> </span><span class="kw">merge</span>(adm, dv, <span class="dt">by=</span><span class="kw">intersect</span>(<span class="kw">colnames</span>(adm), <span class="kw">colnames</span>(dv)), <span class="dt">all=</span><span class="ot">TRUE</span>)
-
-DataAll =<span class="st"> </span><span class="kw">merge</span>(demog, AdmDv, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>), <span class="dt">all=</span><span class="ot">TRUE</span>)</code></pre></div>
+<div id="working-with-r" class="section level2">
+<h2><span class="header-section-number">3.4</span> Working with R</h2>
+<!--- knit those table chunk statements -->
+<table>
+<caption><span id="tab:knitchunk21">TABLE 3.21: </span>Working with R - Workspace</caption>
+<thead>
+<tr class="header">
+<th align="left">Keyword</th>
+<th align="left">Bae Freq</th>
+<th align="left">Essential</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ls</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left">List Objects</td>
+</tr>
+<tr class="even">
+<td align="left">exists</td>
+<td align="left">M</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">rm</td>
+<td align="left">M</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">getwd</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">setwd</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">q</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">source</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">install.packages</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">library</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">require</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:knitchunk22">TABLE 3.22: </span>Working with R - Help</caption>
+<thead>
+<tr class="header">
+<th align="left">Keyword</th>
+<th align="left">Bae Freq</th>
+<th align="left">Essential</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">help</td>
+<td align="left">L</td>
+<td align="left">N</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">?</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">help.search</td>
+<td align="left">L</td>
+<td align="left">N</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">apropos</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">RSiteSearch</td>
+<td align="left">L</td>
+<td align="left">N</td>
+<td align="left">Search for Key Words or Phrases in Documentation</td>
+</tr>
+<tr class="even">
+<td align="left">citation</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">demo</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">example</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">vignette</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left">View, List or Get R Source of Package Vignettes</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:knitchunk23">TABLE 3.23: </span>Working with R - Debugging</caption>
+<thead>
+<tr class="header">
+<th align="left">Keyword</th>
+<th align="left">Bae Freq</th>
+<th align="left">Essential</th>
+<th align="left">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">traceback</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">browser</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left">Environment Browser</td>
+</tr>
+<tr class="odd">
+<td align="left">recover</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left">Browsing after an Error</td>
+</tr>
+<tr class="even">
+<td align="left">options(error = )</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">stop</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left">Stop Function Execution</td>
+</tr>
+<tr class="even">
+<td align="left">warning</td>
+<td align="left">H</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">message</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">tryCatch</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">try</td>
+<td align="left">L</td>
+<td align="left">Y</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
 </div>
-<!-- </div> -->
 <div id="disqus_thread"></div>
 <script>
     /**
@@ -252,8 +413,8 @@ DataAll =<span class="st"> </span><span class="kw">merge</span>(demog, AdmDv, <s
           </div>
         </div>
       </div>
-<a href="lecture-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-coursera.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="io.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -282,7 +443,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/9999.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/2100-Freq.Rmd",
 "text": "Edit"
 },
 "download": ["Rprogramming.pdf"],

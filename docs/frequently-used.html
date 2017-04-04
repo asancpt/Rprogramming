@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="io.html">
-<link rel="next" href="exploring-data.html">
+<link rel="prev" href="subseting-and-write-csv.html">
+<link rel="next" href="the-basics.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -209,48 +209,258 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="start" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Overview</h1>
-<p>기본적인 R 의 사용법에 대해 알아보도록 하겠습니다. 우선 가장 중요한 것은 적절한 dataset을 설정하는 것입니다. 약동학(pharmacokinetics)과 관련된 두개의 유명한 dataset이 R 자체적으로 내장되어 있습니다. <code>Theoph</code>와 <code>Indometh</code>가 그 예입니다.</p>
-<p>그러나 여기서는 좀더 다양한 분석을 하기 위해서 다음과 같은 dataset이 들어있는 패키지를 사용하도록 하겠습니다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 패키지 설치</span>
-<span class="kw">install.pacakges</span>(<span class="st">&quot;devtools&quot;</span>)
-devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;dpastoor/PKPDdatasets&quot;</span>)
-
-<span class="co"># Install the yarrr package</span>
-<span class="kw">install.packages</span>(<span class="st">&#39;yarrr&#39;</span>)
-
-<span class="co"># Load the package</span>
-<span class="kw">library</span>(yarrr)</code></pre></div>
-<p>이제 패키지를 불러옵니다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PKPDdatasets)
-<span class="kw">library</span>(yarrr)</code></pre></div>
-<p>우리가 사용할 데이타셋은 이것입니다.</p>
-<p>IV and oral pharmacokinetic data for daptomycin</p>
-<p>Description</p>
-<p>A dataset containing simulated dapagliflozin PK. A single IV dose followed by 3 escalating oral doses</p>
-<p>ID. Numerical ID (1-24)</p>
-<p>TIME. Nominal Time after first dose (hrs)</p>
-<p>TAD. Time After Dose (hrs)</p>
-<p>COBS. Observed Concentration (ug/L)</p>
-<p>AMT_IV. IV dose amount when given (ug)</p>
-<p>AMT_ORAL. Oral dose amount when given (ug)</p>
-<p>OCC. Occasion, associated with each dosing event</p>
-<p>AGE. Age (years)</p>
-<p>WEIGHT Weight (kg)</p>
-<p>GENDER. Gender flag (female=1, male=0)</p>
-<p>FORMULATION Formulation associated with dose (IV or oral)</p>
-<p>Usage</p>
-<p>data(dapa_IV_oral) Format</p>
-<p>A data frame with 1536 rows and 11 variables</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
-<img src="images/cover.jpg" alt="Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look." width="75%" />
-<p class="caption">
-FIGURE 4.1: Despite what you might find at family friendly waterparks – this is NOT how real pirate swimming lessons look.
-</p>
-</div>
-<p>What’s the first exercise on the first day of pirate swimming lessons? While it would be cute if they all had little inflatable pirate ships to swim around in – unfortunately this is not the case. Instead, those baby aht_trial2 take a walk off their baby planks so they can get a taste of what they’re in for. Turns out, learning R is the same way. Let’s jump in. In this chapter, you’ll see how easy it is to calculate basic statistics and create plots in R. Don’t worry if the code you’re running doesn’t make immediate sense – just marvel at how easy it is to do this in R!</p>
-<p>In this section, we’ll analyze a dataset called…wait for it…aht_trial2! The dataset contains data from a survey of 1,000 aht_trial2. The data is contained in the <code>yarrr</code> package, so make sure you’ve installed and loaded the package:</p> 
+<div id="frequently-used" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Frequently Used</h1>
+<blockquote>
+<p>2017-04-04 배균섭 교수님 강의</p>
+</blockquote>
+<p>[1] The basics - The first functions to learn<br />
+[2] The basics - The first functions to learn<br />
+[3] The basics - Important operators and assignment [4] The basics - Important operators and assignment [5] The basics - Important operators and assignment [6] The basics - Important operators and assignment [7] The basics - Important operators and assignment [8] The basics - Important operators and assignment [9] The basics - Important operators and assignment [10] The basics - Important operators and assignment [11] The basics - Important operators and assignment [12] The basics - Important operators and assignment [13] The basics - Important operators and assignment [14] The basics - Important operators and assignment [15] The basics - Comparison<br />
+[16] The basics - Comparison<br />
+[17] The basics - Comparison<br />
+[18] The basics - Comparison<br />
+[19] The basics - Comparison<br />
+[20] The basics - Comparison<br />
+[21] The basics - Basic math<br />
+[22] The basics - Basic math<br />
+[23] The basics - Basic math<br />
+[24] The basics - Basic math<br />
+[25] The basics - Basic math<br />
+[26] The basics - Basic math<br />
+[27] The basics - Basic math<br />
+[28] The basics - Basic math<br />
+[29] The basics - Basic math<br />
+[30] The basics - Basic math<br />
+[31] The basics - Basic math<br />
+[32] The basics - Basic math<br />
+[33] The basics - Basic math<br />
+[34] The basics - Basic math<br />
+[35] The basics - Basic math<br />
+[36] The basics - Basic math<br />
+[37] The basics - Basic math<br />
+[38] The basics - Basic math<br />
+[39] The basics - Basic math<br />
+[40] The basics - Basic math<br />
+[41] The basics - Basic math<br />
+[42] The basics - Basic math<br />
+[43] The basics - Basic math<br />
+[44] The basics - Basic math<br />
+[45] The basics - Basic math<br />
+[46] The basics - Basic math<br />
+[47] The basics - Basic math<br />
+[48] The basics - Basic math<br />
+[49] The basics - Basic math<br />
+[50] The basics - Basic math<br />
+[51] The basics - Basic math<br />
+[52] The basics - Basic math<br />
+[53] The basics - Basic math<br />
+[54] The basics - Basic math<br />
+[55] The basics - Basic math<br />
+[56] The basics - Basic math<br />
+[57] The basics - Basic math<br />
+[58] The basics - Basic math<br />
+[59] The basics - Basic math<br />
+[60] The basics - Basic math<br />
+[61] The basics - Functions to do with functions<br />
+[62] The basics - Functions to do with functions<br />
+[63] The basics - Functions to do with functions<br />
+[64] The basics - Functions to do with functions<br />
+[65] The basics - Functions to do with functions<br />
+[66] The basics - Logical &amp; sets<br />
+[67] The basics - Logical &amp; sets<br />
+[68] The basics - Logical &amp; sets<br />
+[69] The basics - Logical &amp; sets<br />
+[70] The basics - Logical &amp; sets<br />
+[71] The basics - Logical &amp; sets<br />
+[72] The basics - Logical &amp; sets<br />
+[73] The basics - Logical &amp; sets<br />
+[74] The basics - Logical &amp; sets<br />
+[75] The basics - Vectors and matrices<br />
+[76] The basics - Vectors and matrices<br />
+[77] The basics - Vectors and matrices<br />
+[78] The basics - Vectors and matrices<br />
+[79] The basics - Vectors and matrices<br />
+[80] The basics - Vectors and matrices<br />
+[81] The basics - Vectors and matrices<br />
+[82] The basics - Vectors and matrices<br />
+[83] The basics - Vectors and matrices<br />
+[84] The basics - Vectors and matrices<br />
+[85] The basics - Vectors and matrices<br />
+[86] The basics - Vectors and matrices<br />
+[87] The basics - Vectors and matrices<br />
+[88] The basics - Vectors and matrices<br />
+[89] The basics - Vectors and matrices<br />
+[90] The basics - Vectors and matrices<br />
+[91] The basics - Vectors and matrices<br />
+[92] The basics - Making vectors<br />
+[93] The basics - Making vectors<br />
+[94] The basics - Making vectors<br />
+[95] The basics - Making vectors<br />
+[96] The basics - Making vectors<br />
+[97] The basics - Making vectors<br />
+[98] The basics - Making vectors<br />
+[99] The basics - Making vectors<br />
+[100] The basics - Making vectors<br />
+[101] The basics - Making vectors<br />
+[102] The basics - Making vectors<br />
+[103] The basics - Making vectors<br />
+[104] The basics - Lists &amp; data.frames<br />
+[105] The basics - Lists &amp; data.frames<br />
+[106] The basics - Lists &amp; data.frames<br />
+[107] The basics - Lists &amp; data.frames<br />
+[108] The basics - Lists &amp; data.frames<br />
+[109] The basics - Lists &amp; data.frames<br />
+[110] The basics - Control flow<br />
+[111] The basics - Control flow<br />
+[112] The basics - Control flow<br />
+[113] The basics - Control flow<br />
+[114] The basics - Control flow<br />
+[115] The basics - Control flow<br />
+[116] The basics - Control flow<br />
+[117] The basics - Control flow<br />
+[118] The basics - Control flow<br />
+[119] The basics - Apply &amp; friends<br />
+[120] The basics - Apply &amp; friends<br />
+[121] The basics - Apply &amp; friends<br />
+[122] The basics - Apply &amp; friends<br />
+[123] The basics - Apply &amp; friends<br />
+[124] The basics - Apply &amp; friends<br />
+[125] Common data structures - Date time<br />
+[126] Common data structures - Date time<br />
+[127] Common data structures - Date time<br />
+[128] Common data structures - Date time<br />
+[129] Common data structures - Date time<br />
+[130] Common data structures - Date time<br />
+[131] Common data structures - Date time<br />
+[132] Common data structures - Date time<br />
+[133] Common data structures - Date time<br />
+[134] Common data structures - Date time<br />
+[135] Common data structures - Date time<br />
+[136] Common data structures - Character manipulation [137] Common data structures - Character manipulation [138] Common data structures - Character manipulation [139] Common data structures - Character manipulation [140] Common data structures - Character manipulation [141] Common data structures - Character manipulation [142] Common data structures - Character manipulation [143] Common data structures - Character manipulation [144] Common data structures - Character manipulation [145] Common data structures - Character manipulation [146] Common data structures - Character manipulation [147] Common data structures - Factors<br />
+[148] Common data structures - Factors<br />
+[149] Common data structures - Factors<br />
+[150] Common data structures - Factors<br />
+[151] Common data structures - Factors<br />
+[152] Common data structures - Factors<br />
+[153] Common data structures - Factors<br />
+[154] Common data structures - Factors<br />
+[155] Common data structures - Factors<br />
+[156] Common data structures - Array manipulation<br />
+[157] Common data structures - Array manipulation<br />
+[158] Common data structures - Array manipulation<br />
+[159] Common data structures - Array manipulation<br />
+[160] Common data structures - Array manipulation<br />
+[161] Statistics - Ordering and tabulating<br />
+[162] Statistics - Ordering and tabulating<br />
+[163] Statistics - Ordering and tabulating<br />
+[164] Statistics - Ordering and tabulating<br />
+[165] Statistics - Ordering and tabulating<br />
+[166] Statistics - Ordering and tabulating<br />
+[167] Statistics - Ordering and tabulating<br />
+[168] Statistics - Ordering and tabulating<br />
+[169] Statistics - Ordering and tabulating<br />
+[170] Statistics - Linear models<br />
+[171] Statistics - Linear models<br />
+[172] Statistics - Linear models<br />
+[173] Statistics - Linear models<br />
+[174] Statistics - Linear models<br />
+[175] Statistics - Linear models<br />
+[176] Statistics - Linear models<br />
+[177] Statistics - Linear models<br />
+[178] Statistics - Linear models<br />
+[179] Statistics - Linear models<br />
+[180] Statistics - Linear models<br />
+[181] Statistics - Linear models<br />
+[182] Statistics - Linear models<br />
+[183] Statistics - Linear models<br />
+[184] Statistics - Linear models<br />
+[185] Statistics - Linear models<br />
+[186] Statistics - Linear models<br />
+[187] Statistics - Linear models<br />
+[188] Statistics - Linear models<br />
+[189] Statistics - Miscellaneous tests<br />
+[190] Statistics - Random variables<br />
+[191] Statistics - Matrix algebra<br />
+[192] Statistics - Matrix algebra<br />
+[193] Statistics - Matrix algebra<br />
+[194] Statistics - Matrix algebra<br />
+[195] Statistics - Matrix algebra<br />
+[196] Statistics - Matrix algebra<br />
+[197] Statistics - Matrix algebra<br />
+[198] Statistics - Matrix algebra<br />
+[199] Statistics - Matrix algebra<br />
+[200] Statistics - Matrix algebra<br />
+[201] Working with R - Workspace<br />
+[202] Working with R - Workspace<br />
+[203] Working with R - Workspace<br />
+[204] Working with R - Workspace<br />
+[205] Working with R - Workspace<br />
+[206] Working with R - Workspace<br />
+[207] Working with R - Workspace<br />
+[208] Working with R - Workspace<br />
+[209] Working with R - Workspace<br />
+[210] Working with R - Workspace<br />
+[211] Working with R - Help<br />
+[212] Working with R - Help<br />
+[213] Working with R - Help<br />
+[214] Working with R - Help<br />
+[215] Working with R - Help<br />
+[216] Working with R - Help<br />
+[217] Working with R - Help<br />
+[218] Working with R - Help<br />
+[219] Working with R - Help<br />
+[220] Working with R - Debugging<br />
+[221] Working with R - Debugging<br />
+[222] Working with R - Debugging<br />
+[223] Working with R - Debugging<br />
+[224] Working with R - Debugging<br />
+[225] Working with R - Debugging<br />
+[226] Working with R - Debugging<br />
+[227] Working with R - Debugging<br />
+[228] Working with R - Debugging<br />
+[229] I/O - Output<br />
+[230] I/O - Output<br />
+[231] I/O - Output<br />
+[232] I/O - Output<br />
+[233] I/O - Output<br />
+[234] I/O - Output<br />
+[235] I/O - Output<br />
+[236] I/O - Output<br />
+[237] I/O - Reading and writing data<br />
+[238] I/O - Reading and writing data<br />
+[239] I/O - Reading and writing data<br />
+[240] I/O - Reading and writing data<br />
+[241] I/O - Reading and writing data<br />
+[242] I/O - Reading and writing data<br />
+[243] I/O - Reading and writing data<br />
+[244] I/O - Reading and writing data<br />
+[245] I/O - Reading and writing data<br />
+[246] I/O - Reading and writing data<br />
+[247] I/O - Reading and writing data<br />
+[248] I/O - Reading and writing data<br />
+[249] I/O - Reading and writing data<br />
+[250] I/O - Reading and writing data<br />
+[251] I/O - Files and directories<br />
+[252] I/O - Files and directories<br />
+[253] I/O - Files and directories<br />
+[254] I/O - Files and directories<br />
+[255] I/O - Files and directories<br />
+[256] I/O - Files and directories<br />
+[257] I/O - Files and directories<br />
+[258] I/O - Files and directories<br />
+[259] I/O - Files and directories<br />
+[260] I/O - Files and directories<br />
+[261] I/O - Files and directories<br />
+[262] I/O - Files and directories<br />
+[263] I/O - Files and directories<br />
+[264] I/O - Files and directories<br />
+[265] I/O - Files and directories<br />
+[266] I/O - Files and directories<br />
+[267] I/O - Files and directories<br />
+[268] I/O - Files and directories<br />
+[269] I/O - Files and directories<br />
+26 Levels: The basics - The first functions to learn …</p> 
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -279,8 +489,8 @@ FIGURE 4.1: Despite what you might find at family friendly waterparks – this i
           </div>
         </div>
       </div>
-<a href="io.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exploring-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="subseting-and-write-csv.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -309,7 +519,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/3000-jumping.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/2100-Freq.Rmd",
 "text": "Edit"
 },
 "download": ["Rprogramming.pdf"],
