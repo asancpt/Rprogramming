@@ -16,7 +16,7 @@ fontsize: 11pt
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
-description: "R Programming - Lecture Notes"
+description: "2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다."
 url: 'https\://asancpt.github.io/Rprogramming/'
 github-repo: asancpt/Rprogramming
 cover-image: images/cover.jpg
@@ -101,8 +101,8 @@ The online version of this book is licensed under the [Creative Commons Attribut
 아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인 `bookdown`을 사용해 웹북을 제작 중에 있습니다. [@R-bookdown] \index{bookdown}
 여러분이 읽고 있는 이 책 자체가 R 코드의 일종인 `Rmarkdown`의 결과물이라고 보시면 됩니다. 
 [Github 저장소](https://github.com/asancpt/Rprogramming)가 있으니 소스 코드를 보실 수 있습니다. 
-누구나 소스를 편집하여 `Pull Request`를 요청할 수 있으므로 혹시 Github를 사용하셔서 웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오.
-혹은 웹북의 각 페이지 아래쪽에 Disqus 창을 달아놓았으므로, 궁금한 점을 메모로 남겨주셔도 좋습니다. \index{disqus} 
+누구나 소스를 편집하여 `Pull Request`를 요청할 수 있으므로 혹시 Github를 사용하셔서 웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오. \index{Github}
+<!-- 혹은 웹북의 각 페이지 아래쪽에 Disqus 창을 달아놓았으므로, 궁금한 점을 메모로 남겨주셔도 좋습니다. \index{disqus} -->
 
 감사합니다.
 
@@ -159,16 +159,12 @@ Chrome 등 웹브라우저에서 위 주소를 입력하면 직접 대화방으�
 ### Coursera 관련 {-}
 
 > Q. 첫 수업 때, certification 관련 말씀을 하셨는데, 정확히 coursera 사이트에서 어떤 것을 듣고, 제출을 해야하는지 궁금합니다.
-(비슷한 내용이 많아, 어떤것을 들어야하는지 헷갈립니다.)
+(비슷한 내용이 많아, 어떤것을 들어야하는지 헷갈립니다.) \index{Coursera}
 
 Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming과 관련된 것이라면 자유로이 골라서 들으면 됩니다. 대표적인 두 가지만 들자면 다음과 같습니다.
  
 - <https://www.coursera.org/learn/r-programming>
 - <https://www.coursera.org/learn/r-programming-environment>
-
-
-
-
 
 > Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수 있을런지요?
 

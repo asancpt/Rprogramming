@@ -14,8 +14,8 @@ bookdown::gitbook:
     sharing:
       github: yes
       facebook: yes 
-  includes:
-    after_body: disqus.html
+#  includes:
+#    after_body: disqus.html
 bookdown::html_chapters:
   css: [css/style.css, css/toc.css]
 #bookdown::pdf_book:

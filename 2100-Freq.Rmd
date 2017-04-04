@@ -29,12 +29,6 @@ Freqlist <- bind_cols(Freq %>% select(1, 2) %>%  na.locf, Freq %>% select(-1, -2
 
 Freqfinal <- lapply(split(Freqlist, Freqlist[, "Title"]), 
        function(x) x %>% select(-Category, -Subcategory, -Title))
-
-#sapply(names(Test)[2:3], function(x) {
-#    print(x)
-#    format(kable(Test[[x]], format = "markdown"))
-#})
-
 ```
 
 ## The basics
