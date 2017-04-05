@@ -12,7 +12,7 @@ editor_options:
 
 ## Command
 
-```{r code = readLines("R/Script20170405.R")}
+```{r code = readLines("R/Script20170405.R", encoding = "UTF-8"), eval = TRUE}
 ```
 
 

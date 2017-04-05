@@ -92,22 +92,22 @@ for (i in 1:10) {
   print(2*i)
 }
 
-# if ~ else ~
-if (   ) {
-# Statements 1
-} else {
-# Statements 2
-}
-
-if (   ) {
-# Statements 1
-} else if (   ) {
-# Statements 2
-} else if (   ) {
-# Statements 3
-} else {
-# Statements 4  
-}
+# # if ~ else ~
+# if (   ) {
+# # Statements 1
+# } else {
+# # Statements 2
+# }
+# 
+# if (   ) {
+# # Statements 1
+# } else if (   ) {
+# # Statements 2
+# } else if (   ) {
+# # Statements 3
+# } else {
+# # Statements 4  
+# }
 
    
 #
@@ -180,7 +180,7 @@ area = function(f, a, b, eps=1.0e-06, lim=10)
 {
   fun1 = function(f, a, b, fa, fb, a0, eps, lim, fun) 
   {
-  ## function 'fun1¡¯is only visible inside 'area¡¯
+  ## function 'fun1'is only visible inside 'area'
     d = (a + b)/2
     h = (b - a)/4
     fd = f(d)
@@ -236,7 +236,7 @@ open.account = function(total)
     withdraw = function(amount) 
     {
       if(amount > total)
-      stop("You don¡¯t have that much money!\n")
+      stop("You don't have that much money!\n")
       total <<- total - amount
       cat(amount, "withdrawn. Your balance is", total, "\n\n")
     },

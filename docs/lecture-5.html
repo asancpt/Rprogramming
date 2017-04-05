@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Programming - Lecture Notes</title>
+  <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
+  <meta name="generator" content="bookdown 0.3.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Programming - Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://asancpt.github.io/Rprogramming/" />
+  <meta property="og:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+  <meta property="og:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="github-repo" content="asancpt/Rprogramming" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Programming - Lecture Notes" />
+  
+  <meta name="twitter:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="twitter:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+
+<meta name="author" content="Kyun-Seop Bae, Sungpil Han">
+
+
+<meta name="date" content="2017-04-05">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="lecture-4.html">
+<link rel="next" href="r-tips.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">R programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="teaching-assistant.html"><a href="teaching-assistant.html"><i class="fa fa-check"></i>Teaching Assistant</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html"><i class="fa fa-check"></i>FAQ</a><ul>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>접속 관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#ecb69cec849deab480eba0a8"><i class="fa fa-check"></i>출석관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>과제 관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#coursera-"><i class="fa fa-check"></i>Coursera 관련</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>1</b> R language</a></li>
+<li class="chapter" data-level="2" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>2</b> Graphics</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="upper.html"><a href="upper.html"><i class="fa fa-check"></i><b>2.2</b> 상위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="upper.html"><a href="upper.html#-----arguments"><i class="fa fa-check"></i><b>2.2.1</b> 상위수준 그림 함수의 주요 인자 (arguments)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="upper.html"><a href="upper.html#scatter-plot"><i class="fa fa-check"></i><b>2.2.2</b> scatter plot</a></li>
+<li class="chapter" data-level="2.2.3" data-path="upper.html"><a href="upper.html#histogram"><i class="fa fa-check"></i><b>2.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="2.2.4" data-path="upper.html"><a href="upper.html#box-whisker-plot"><i class="fa fa-check"></i><b>2.2.4</b> Box-Whisker Plot</a></li>
+<li class="chapter" data-level="2.2.5" data-path="upper.html"><a href="upper.html#bar-plot"><i class="fa fa-check"></i><b>2.2.5</b> Bar Plot</a></li>
+<li class="chapter" data-level="2.2.6" data-path="upper.html"><a href="upper.html#pie-chart"><i class="fa fa-check"></i><b>2.2.6</b> pie chart</a></li>
+<li class="chapter" data-level="2.2.7" data-path="upper.html"><a href="upper.html#matplot-"><i class="fa fa-check"></i><b>2.2.7</b> matplot 함수</a></li>
+<li class="chapter" data-level="2.2.8" data-path="upper.html"><a href="upper.html#scatter-plot-matrices-pairs-plots"><i class="fa fa-check"></i><b>2.2.8</b> Scatter plot matrices (pairs plots)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lower.html"><a href="lower.html"><i class="fa fa-check"></i><b>2.3</b> 하위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="lower.html"><a href="lower.html#-----add"><i class="fa fa-check"></i><b>2.3.1</b> 점, 선, 설명 추가 하기 {add}</a></li>
+<li class="chapter" data-level="2.3.2" data-path="lower.html"><a href="lower.html#polygon-"><i class="fa fa-check"></i><b>2.3.2</b> polygon 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="print.html"><a href="print.html"><i class="fa fa-check"></i><b>2.4</b> 그림 출력하기</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="print.html"><a href="print.html#pdf-graphics-devices"><i class="fa fa-check"></i><b>2.4.1</b> pdf graphics devices</a></li>
+<li class="chapter" data-level="2.4.2" data-path="print.html"><a href="print.html#png-graphics-devices"><i class="fa fa-check"></i><b>2.4.2</b> PNG graphics devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>3</b> Data Import / Export</a><ul>
+<li class="chapter" data-level="3.1" data-path="read-csv.html"><a href="read-csv.html"><i class="fa fa-check"></i><b>3.1</b> Read.csv</a></li>
+<li class="chapter" data-level="3.2" data-path="theoph-.html"><a href="theoph-.html"><i class="fa fa-check"></i><b>3.2</b> Theoph 데이타</a></li>
+<li class="chapter" data-level="3.3" data-path="lattice.html"><a href="lattice.html"><i class="fa fa-check"></i><b>3.3</b> lattice</a></li>
+<li class="chapter" data-level="3.4" data-path="subseting-and-write-csv.html"><a href="subseting-and-write-csv.html"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="command.html"><a href="command.html"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
+<li class="chapter" data-level="4.2" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
+<li class="chapter" data-level="4.3" data-path="common-data-structures.html"><a href="common-data-structures.html"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
+<li class="chapter" data-level="4.4" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
+<li class="chapter" data-level="4.6" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>A</b> As-is R Files</a><ul>
+<li class="chapter" data-level="A.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>A.1</b> Lecture 3</a></li>
+<li class="chapter" data-level="A.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>A.2</b> Lecture 4</a></li>
+<li class="chapter" data-level="A.3" data-path="lecture-5.html"><a href="lecture-5.html"><i class="fa fa-check"></i><b>A.3</b> Lecture 5</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>B</b> R Tips</a><ul>
+<li class="chapter" data-level="B.1" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>B.1</b> Using Coursera</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>C</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Programming - Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lecture-5" class="section level2">
+<h2><span class="header-section-number">A.3</span> Lecture 5</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 2017-04-05 R-intro.pdf Chapter 08</span>
+
+pois
+?dbeta
+<span class="kw">dnorm</span>(<span class="dv">0</span>)
+<span class="kw">pnorm</span>(<span class="dv">0</span>)
+<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="fl">1.96</span>)
+?pnorm
+<span class="kw">pnorm</span>(<span class="fl">1.96</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)
+<span class="kw">qnorm</span>(<span class="fl">0.5</span>)
+<span class="kw">qnorm</span>(<span class="fl">0.975</span>)
+<span class="kw">format</span>(<span class="kw">qnorm</span>(<span class="fl">0.975</span>), <span class="dt">digits=</span><span class="dv">22</span>)
+<span class="kw">rnorm</span>(<span class="dv">5</span>)
+<span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>)
+x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">1</span>)
+<span class="kw">mean</span>(x)
+<span class="kw">sd</span>(x)
+
+<span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">2.43</span>, <span class="dt">df =</span> <span class="dv">13</span>)
+
+<span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">2.43</span>, <span class="dt">df =</span> <span class="dv">1000</span>)
+
+<span class="kw">qnorm</span>(<span class="fl">0.995</span>)
+<span class="kw">qf</span>(<span class="fl">0.01</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)
+
+?fivenum
+faithful
+<span class="kw">str</span>(faithful)
+eruptions
+<span class="kw">attach</span>(faithful)
+eruptions
+waiting
+
+<span class="kw">stem</span>(waiting)
+<span class="kw">sort</span>(eruptions)
+
+<span class="kw">hist</span>(eruptions)
+<span class="kw">hist</span>(eruptions, <span class="kw">seq</span>(<span class="fl">1.6</span>, <span class="fl">5.2</span>, <span class="fl">0.2</span>), <span class="dt">prob=</span><span class="ot">TRUE</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(eruptions, <span class="dt">bw=</span><span class="fl">0.1</span>))
+<span class="kw">rug</span>(eruptions)
+?hist
+?density
+<span class="kw">lines</span>(<span class="kw">density</span>(eruptions, <span class="dt">bw=</span><span class="st">&quot;SJ&quot;</span>))
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(eruptions), <span class="dt">do.points=</span><span class="ot">FALSE</span>, <span class="dt">verticals=</span><span class="ot">TRUE</span>)
+?plot
+<span class="kw">ecdf</span>(eruptions)
+x =<span class="st"> </span><span class="kw">ecdf</span>(eruptions)
+x
+<span class="kw">str</span>(x)
+<span class="kw">x</span>()
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(eruptions), <span class="dt">do.points=</span><span class="ot">FALSE</span>)
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(eruptions))
+long &lt;-<span class="st"> </span>eruptions[eruptions <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="fl">5.4</span>, <span class="fl">0.01</span>)
+<span class="kw">pnorm</span>(x, <span class="dt">mean=</span><span class="kw">mean</span>(long), <span class="dt">sd=</span><span class="kw">sqrt</span>(<span class="kw">var</span>(long)))
+
+?par
+x &lt;-<span class="st"> </span><span class="kw">rt</span>(<span class="dv">250</span>, <span class="dt">df =</span> <span class="dv">5</span>)
+<span class="kw">qqnorm</span>(x); <span class="kw">qqline</span>(x)
+<span class="kw">curve</span>(dnorm, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>)
+y =<span class="st"> </span><span class="kw">density</span>(x)
+<span class="kw">lines</span>(y, <span class="dt">lty=</span><span class="dv">3</span>)
+?ppoints
+<span class="kw">ppoints</span>(<span class="dv">250</span>)
+<span class="kw">ppoints</span>(<span class="dv">10</span>)
+
+<span class="kw">qqplot</span>(<span class="kw">qt</span>(<span class="kw">ppoints</span>(<span class="dv">250</span>), <span class="dt">df =</span> <span class="dv">5</span>), x, <span class="dt">xlab =</span> <span class="st">&quot;Q-Q plot for t dsn&quot;</span>)
+<span class="kw">windows</span>()
+<span class="kw">qqplot</span>(<span class="kw">qt</span>(<span class="kw">runif</span>(<span class="dv">250</span>), <span class="dt">df =</span> <span class="dv">5</span>), x, <span class="dt">xlab =</span> <span class="st">&quot;Q-Q plot for t dsn&quot;</span>)
+?shapiro.test
+?ks.test
+?t.test
+
+
+A =<span class="st"> </span><span class="kw">c</span>(<span class="fl">79.98</span>, <span class="fl">80.04</span>, <span class="fl">80.02</span>, <span class="fl">80.04</span>, <span class="fl">80.03</span>, <span class="fl">80.03</span>, <span class="fl">80.04</span>, <span class="fl">79.97</span>, <span class="fl">80.05</span>, <span class="fl">80.03</span>, <span class="fl">80.02</span>, <span class="fl">80.00</span>, <span class="fl">80.02</span>)
+B =<span class="st"> </span><span class="kw">c</span>(<span class="fl">80.02</span>, <span class="fl">79.94</span>, <span class="fl">79.98</span>, <span class="fl">79.97</span>, <span class="fl">79.97</span>, <span class="fl">80.03</span>, <span class="fl">79.95</span>, <span class="fl">79.97</span>)
+<span class="kw">boxplot</span>(A, B)
+<span class="kw">t.test</span>(A, B)
+
+<span class="kw">var.test</span>(A, B)
+<span class="kw">t.test</span>(A, B, <span class="dt">var.equal=</span><span class="ot">TRUE</span>)
+<span class="kw">wilcox.test</span>(A, B)
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(A), <span class="dt">do.points=</span><span class="ot">FALSE</span>, <span class="dt">verticals=</span><span class="ot">TRUE</span>, <span class="dt">xlim=</span><span class="kw">range</span>(A, B))
+<span class="kw">plot</span>(<span class="kw">ecdf</span>(B), <span class="dt">do.points=</span><span class="ot">FALSE</span>, <span class="dt">verticals=</span><span class="ot">TRUE</span>, <span class="dt">add=</span><span class="ot">TRUE</span>)
+<span class="kw">ks.test</span>(A, B)
+
+<span class="co"># Chapter 9 Grouping, loops and conditional execution</span>
+
+<span class="co"># { } does grouping</span>
+<span class="co"># Usefulness of loops: for &gt;&gt; while &gt;&gt; repeat</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {
+  <span class="kw">print</span>(<span class="dv">2</span><span class="op">*</span>i)
+}
+
+<span class="co"># # if ~ else ~</span>
+<span class="co"># if (   ) {</span>
+<span class="co"># # Statements 1</span>
+<span class="co"># } else {</span>
+<span class="co"># # Statements 2</span>
+<span class="co"># }</span>
+<span class="co"># </span>
+<span class="co"># if (   ) {</span>
+<span class="co"># # Statements 1</span>
+<span class="co"># } else if (   ) {</span>
+<span class="co"># # Statements 2</span>
+<span class="co"># } else if (   ) {</span>
+<span class="co"># # Statements 3</span>
+<span class="co"># } else {</span>
+<span class="co"># # Statements 4  </span>
+<span class="co"># }</span>
+
+   
+<span class="co">#</span>
+<span class="co">#</span>
+
+<span class="co"># Chapter 10 Writing your own functions</span>
+
+twosam =<span class="st"> </span><span class="cf">function</span>(y1, y2) 
+{
+  n1  =<span class="st"> </span><span class="kw">length</span>(y1)
+  n2  =<span class="st"> </span><span class="kw">length</span>(y2)
+  yb1 =<span class="st"> </span><span class="kw">mean</span>(y1)
+  yb2 =<span class="st"> </span><span class="kw">mean</span>(y2)
+  s1  =<span class="st"> </span><span class="kw">var</span>(y1)
+  s2  =<span class="st"> </span><span class="kw">var</span>(y2) 
+  s   =<span class="st"> </span>((n1 <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">*</span>s1 <span class="op">+</span><span class="st"> </span>(n2 <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">*</span>s2)<span class="op">/</span>(n1 <span class="op">+</span><span class="st"> </span>n2 <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)
+  tst =<span class="st"> </span>(yb1 <span class="op">-</span><span class="st"> </span>yb2)<span class="op">/</span><span class="kw">sqrt</span>(s<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>n1 <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>n2))
+  <span class="kw">return</span> (tst)
+}
+
+x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)
+y =<span class="st"> </span><span class="kw">rt</span>(<span class="dv">10</span>, <span class="dv">5</span>)
+
+<span class="kw">twosam</span>(x, y)
+
+T.test =<span class="st"> </span><span class="cf">function</span>(y1, y2) 
+{
+  n1  =<span class="st"> </span><span class="kw">length</span>(y1)
+  n2  =<span class="st"> </span><span class="kw">length</span>(y2)
+  yb1 =<span class="st"> </span><span class="kw">mean</span>(y1)
+  yb2 =<span class="st"> </span><span class="kw">mean</span>(y2)
+  s1  =<span class="st"> </span><span class="kw">var</span>(y1)
+  s2  =<span class="st"> </span><span class="kw">var</span>(y2) 
+  s   =<span class="st"> </span>((n1 <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">*</span>s1 <span class="op">+</span><span class="st"> </span>(n2 <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">*</span>s2)<span class="op">/</span>(n1 <span class="op">+</span><span class="st"> </span>n2 <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)
+
+  tst =<span class="st"> </span>(yb1 <span class="op">-</span><span class="st"> </span>yb2)<span class="op">/</span><span class="kw">sqrt</span>(s<span class="op">*</span>(<span class="dv">1</span><span class="op">/</span>n1 <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span>n2))
+  DF =<span class="st"> </span>n1 <span class="op">+</span><span class="st"> </span>n2 <span class="op">-</span><span class="st"> </span><span class="dv">2</span>
+  p.val =<span class="st"> </span><span class="kw">pt</span>(tst, <span class="dt">df=</span>DF)
+  
+  Res =<span class="st"> </span><span class="kw">list</span>(tst, DF, p.val)
+  <span class="kw">names</span>(Res) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;t&quot;</span>, <span class="st">&quot;df&quot;</span>, <span class="st">&quot;p-value&quot;</span>)
+  
+  <span class="kw">return</span> (Res)
+}
+
+<span class="kw">T.test</span>(x, y)
+
+
+bslash =<span class="st"> </span><span class="cf">function</span>(X, y) 
+{
+  X =<span class="st"> </span><span class="kw">qr</span>(X)
+  <span class="kw">return</span> (<span class="kw">qr.coef</span>(X, y))
+}
+
+regcoeff =<span class="st"> </span><span class="kw">bslash</span>(Xmat, yvar)
+
+
+<span class="st">&quot;%^%&quot;</span> =<span class="st"> </span><span class="cf">function</span>(S, pow) <span class="kw">with</span>(<span class="kw">eigen</span>(S), vectors <span class="op">%*%</span><span class="st"> </span>(<span class="kw">abs</span>(values)<span class="op">^</span>pow <span class="op">*</span><span class="st"> </span><span class="kw">t</span>(vectors)))
+
+M =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">nrow=</span><span class="dv">2</span>) ; M
+M <span class="op">%^%</span><span class="st"> </span><span class="fl">0.5</span>
+sqrtM =<span class="st"> </span>M<span class="op">%^%</span><span class="fl">0.5</span> ; sqrtM
+sqrtM <span class="op">%*%</span><span class="st"> </span>sqrtM
+
+
+
+
+
+area =<span class="st"> </span><span class="cf">function</span>(f, a, b, <span class="dt">eps=</span><span class="fl">1.0e-06</span>, <span class="dt">lim=</span><span class="dv">10</span>) 
+{
+  fun1 =<span class="st"> </span><span class="cf">function</span>(f, a, b, fa, fb, a0, eps, lim, fun) 
+  {
+  ## function &#39;fun1&#39;is only visible inside &#39;area&#39;
+    d =<span class="st"> </span>(a <span class="op">+</span><span class="st"> </span>b)<span class="op">/</span><span class="dv">2</span>
+    h =<span class="st"> </span>(b <span class="op">-</span><span class="st"> </span>a)<span class="op">/</span><span class="dv">4</span>
+    fd =<span class="st"> </span><span class="kw">f</span>(d)
+    a1 =<span class="st"> </span>h <span class="op">*</span><span class="st"> </span>(fa <span class="op">+</span><span class="st"> </span>fd)
+    a2 =<span class="st"> </span>h <span class="op">*</span><span class="st"> </span>(fd <span class="op">+</span><span class="st"> </span>fb)
+    <span class="cf">if</span> (<span class="kw">abs</span>(a0 <span class="op">-</span><span class="st"> </span>a1 <span class="op">-</span><span class="st"> </span>a2) <span class="op">&lt;</span><span class="st"> </span>eps <span class="op">||</span><span class="st"> </span>lim <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
+      <span class="kw">return</span> (a1 <span class="op">+</span><span class="st"> </span>a2)
+    <span class="cf">else</span> {
+      <span class="kw">return</span> (<span class="kw">fun</span>(f, a, d, fa, fd, a1, eps, lim <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, fun) <span class="op">+</span><span class="st"> </span><span class="kw">fun</span>(f, d, b, fd, fb, a2, eps, lim <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, fun))
+    }
+  }
+  fa =<span class="st"> </span><span class="kw">f</span>(a)
+  fb =<span class="st"> </span><span class="kw">f</span>(b)
+  a0 =<span class="st"> </span>((fa <span class="op">+</span><span class="st"> </span>fb) <span class="op">*</span><span class="st"> </span>(b <span class="op">-</span><span class="st"> </span>a))<span class="op">/</span><span class="dv">2</span>
+  <span class="kw">fun1</span>(f, a, b, fa, fb, a0, eps, lim, fun1)
+} 
+
+<span class="kw">area</span>(dnorm, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">integrate</span>(dnorm, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">pnorm</span>(<span class="dv">1</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">0</span>)
+
+
+f =<span class="st"> </span><span class="cf">function</span>(x) 
+{
+  y =<span class="st"> </span><span class="dv">2</span><span class="op">*</span>x
+  <span class="kw">print</span>(x)
+  <span class="kw">print</span>(y)
+  <span class="kw">print</span>(z)
+}
+
+<span class="kw">f</span>(<span class="dv">1</span>)
+z =<span class="st"> </span><span class="dv">3</span>
+<span class="kw">f</span>(<span class="dv">1</span>)
+
+
+cube =<span class="st"> </span><span class="cf">function</span>(n) {
+  sq =<span class="st"> </span><span class="cf">function</span>() n<span class="op">*</span>n
+  n<span class="op">*</span><span class="kw">sq</span>()
+}
+
+<span class="kw">cube</span>(<span class="dv">5</span>)
+
+open.account =<span class="st"> </span><span class="cf">function</span>(total) 
+{
+  <span class="kw">list</span>(
+    <span class="dt">deposit =</span> <span class="cf">function</span>(amount) 
+    {
+      <span class="cf">if</span>(amount <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>)
+      <span class="kw">stop</span>(<span class="st">&quot;Deposits must be positive!</span><span class="ch">\n</span><span class="st">&quot;</span>)
+      total &lt;&lt;-<span class="st"> </span>total <span class="op">+</span><span class="st"> </span>amount
+      <span class="kw">cat</span>(amount, <span class="st">&quot;deposited. Your balance is&quot;</span>, total, <span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">&quot;</span>)
+    },
+    <span class="dt">withdraw =</span> <span class="cf">function</span>(amount) 
+    {
+      <span class="cf">if</span>(amount <span class="op">&gt;</span><span class="st"> </span>total)
+      <span class="kw">stop</span>(<span class="st">&quot;You don&#39;t have that much money!</span><span class="ch">\n</span><span class="st">&quot;</span>)
+      total &lt;&lt;-<span class="st"> </span>total <span class="op">-</span><span class="st"> </span>amount
+      <span class="kw">cat</span>(amount, <span class="st">&quot;withdrawn. Your balance is&quot;</span>, total, <span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">&quot;</span>)
+    },
+    <span class="dt">balance =</span> <span class="cf">function</span>() 
+    {
+      <span class="kw">cat</span>(<span class="st">&quot;Your balance is&quot;</span>, total, <span class="st">&quot;</span><span class="ch">\n\n</span><span class="st">&quot;</span>)
+    }
+  )
+}
+
+ross =<span class="st"> </span><span class="kw">open.account</span>(<span class="dv">100</span>)
+robert =<span class="st"> </span><span class="kw">open.account</span>(<span class="dv">200</span>)
+
+ross<span class="op">$</span><span class="kw">balance</span>()
+robert<span class="op">$</span><span class="kw">balance</span>()
+ross<span class="op">$</span><span class="kw">deposit</span>(<span class="dv">50</span>)
+ross<span class="op">$</span><span class="kw">balance</span>()
+ross<span class="op">$</span><span class="kw">withdraw</span>(<span class="dv">500</span>)</code></pre></div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lecture-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-tips.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/9999.Rmd",
+"text": "Edit"
+},
+"download": ["Rprogramming.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
