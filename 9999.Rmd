@@ -16,6 +16,10 @@
 ```{r code = readLines("R/Script20170329.R", encoding = "UTF-8"), eval = FALSE}
 ```
 
+## Lecture 5
+
+```{r code = readLines("R/Script20170405.R", encoding = "UTF-8"), eval = FALSE}
+```
 
 # R Tips
 

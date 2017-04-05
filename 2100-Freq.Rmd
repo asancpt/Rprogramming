@@ -10,6 +10,12 @@ editor_options:
 
 자주 쓰는 함수 및 명령어에 대해 알아보겠습니다.
 
+## Command
+
+```{r code = readLines("R/Script20170405.R")}
+```
+
+
 ```{r, results = 'asis', echo = FALSE}
 Freq <- read_excel("data-raw/R-Keyword-Functions-Freq-Essential.xlsx", 
     sheet = "Sheet1")
