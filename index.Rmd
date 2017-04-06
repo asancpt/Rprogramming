@@ -89,7 +89,6 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 ![Creative Commons License](images/by-nc-sa.png)  
 
-[![DOI](https://zenodo.org/badge/86778696.svg)](https://zenodo.org/badge/latestdoi/86778696)
 
 ## Teaching Assistant {-}
 
