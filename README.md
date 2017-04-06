@@ -36,9 +36,12 @@ Skype 모임 참가 <https://meet.lync.com/uucp-acp/ksbae/SKGJ3BNQ>
 
 
 
+
 The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
 ![Creative Commons License](images/by-nc-sa.png)  
+
+[![DOI](https://zenodo.org/badge/86778696.svg)](https://zenodo.org/badge/latestdoi/86778696)
 
 ## Teaching Assistant {-}
 
@@ -123,6 +126,13 @@ Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming�
 > Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수 있을런지요?
 
 Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. 출석은 Skype로 커버해야 합니다. 출석의 성적 반영비율은 25%이지만, 규정상 4회 이상 결석이면 성적이 나갈 수 없습니다.
+
+## Syllabus {-}
+
+![Syllabus page 1](inst/Syllabus-0.png)
+
+![Syllabus page 2](inst/Syllabus-1.png)
+
 
 \mainmatter
 

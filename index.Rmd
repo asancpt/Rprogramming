@@ -84,9 +84,12 @@ Skype 모임 참가 <https://meet.lync.com/uucp-acp/ksbae/SKGJ3BNQ>
 knitr::include_graphics('images/cover.jpg', dpi = NA)
 ```
 
+
 The online version of this book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). 
 
 ![Creative Commons License](images/by-nc-sa.png)  
+
+[![DOI](https://zenodo.org/badge/86778696.svg)](https://zenodo.org/badge/latestdoi/86778696)
 
 ## Teaching Assistant {-}
 
