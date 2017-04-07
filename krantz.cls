@@ -277,34 +277,34 @@
 \let\normaltextheight\textheight
 \else
 %%%Uncomment to get 6x9 trim
-\textheight = 43pc
+%%%%\textheight = 43pc
+%%%%  %\advance\textheight by \topskip
+%%%%\addtolength\textheight{3pt}
+%%%%  \textwidth 26pc
+%%%%\addtolength\textwidth{.5pt}
+%%%% \topmargin0in
+%%%%  \oddsidemargin1.1875in
+%%%%  \evensidemargin1.1875in
+%%%%  \htrim5.05pc
+%%%%  \vtrimtop7.7pc
+%%%%  \vtrimbot5.44pc
+%%%%%  \hoffset-5pt
+%%%%  \voffset45pt
+%%%%\let\normaltextheight\textheight
+\textheight = 45pc
   %\advance\textheight by \topskip
 \addtolength\textheight{3pt}
-  \textwidth 26pc
+  \textwidth 28pc
 \addtolength\textwidth{.5pt}
- \topmargin0in
+  \topmargin0in
   \oddsidemargin1.1875in
   \evensidemargin1.1875in
-  \htrim5.05pc
-  \vtrimtop7.7pc
-  \vtrimbot5.44pc
-%  \hoffset-5pt
-  \voffset45pt
+  \htrim.7365in
+  \vtrimtop1.068in
+  \vtrimbot1.068in
+  \hoffset-15pt
+  \voffset39pt
 \let\normaltextheight\textheight
-%\textheight = 45pc
-%  %\advance\textheight by \topskip
-%\addtolength\textheight{3pt}
-%  \textwidth 28pc
-%\addtolength\textwidth{.5pt}
-%  \topmargin0in
-%  \oddsidemargin1.1875in
-%  \evensidemargin1.1875in
-%  \htrim.7365in
-%  \vtrimtop1.068in
-%  \vtrimbot1.068in
-%  \hoffset-15pt
-%  \voffset39pt
-%\let\normaltextheight\textheight
 
   \fi
 \fi

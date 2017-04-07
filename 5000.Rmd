@@ -1,0 +1,45 @@
+# Rstudio and some useful packages 2 - ggplot2 {#ggplot2}
+
+> 9주차 강의 예정 자료입니다.
+
+이번 시간에는 ggplot2의 사용법을 예제를 통해 알아보겠습니다. [@R-ggplot2]
+<https://rpubs.com/kimwoohyung/ggplot2>의 자료를 많이 참고하였습니다.
+<https://rpubs.com/mccannecology/53464>도 좋은 자료입니다.
+
+## Introduction
+
+먼저 다음과 같은 패키지가 필요합니다.
+
+```{r, echo = TRUE, message = FALSE}
+library(ggplot2)
+library(gcookbook)
+library(plyr)
+library(reshape2)
+```
+
+Scatter plot을 geom_point()를 사용해서 그려보도록 하겠습니다.
+
+```{r}
+plot(mtcars$wt, mtcars$mpg)
+qplot(mtcars$wt, mtcars$mpg)
+ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+```
+
+```{r}
+
+tophit <- tophitters2001[1:25,]
+tophit <- tophit[,c("name", "lg", "avg")]
+
+# y축 이산형 그래프 
+ggplot(tophit, aes(x = avg, y = name, col=lg)) + geom_point()
+
+
+# 그래프 정렬하기 & 그래프 격자 없애기 & 수평선 점선으로 바꾸기
+ggplot(tophit, aes(x = avg, y = reorder(name, avg))) + geom_point(size = 3) + theme_bw() + 
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_line(color = "grey60", linetype = "dashed"))
+
+```
+
+

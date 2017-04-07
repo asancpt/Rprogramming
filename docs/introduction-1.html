@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-04-05">
+<meta name="date" content="2017-04-07">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -142,19 +142,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.4" data-path="subseting-and-write-csv.html"><a href="subseting-and-write-csv.html"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
-<li class="chapter" data-level="4.1" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>4.1</b> The basics</a></li>
-<li class="chapter" data-level="4.2" data-path="common-data-structures.html"><a href="common-data-structures.html"><i class="fa fa-check"></i><b>4.2</b> Common data structures</a></li>
-<li class="chapter" data-level="4.3" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>4.3</b> Statistics</a></li>
-<li class="chapter" data-level="4.4" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>4.4</b> Working with R</a></li>
-<li class="chapter" data-level="4.5" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4.5</b> I/O</a></li>
+<li class="chapter" data-level="4.1" data-path="command.html"><a href="command.html"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
+<li class="chapter" data-level="4.2" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
+<li class="chapter" data-level="4.3" data-path="common-data-structures.html"><a href="common-data-structures.html"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
+<li class="chapter" data-level="4.4" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
+<li class="chapter" data-level="4.6" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Week 9 : Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
 <li class="chapter" data-level="5.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>A</b> As-is R Files</a><ul>
 <li class="chapter" data-level="A.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>A.1</b> Lecture 3</a></li>
 <li class="chapter" data-level="A.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>A.2</b> Lecture 4</a></li>
+<li class="chapter" data-level="A.3" data-path="lecture-5.html"><a href="lecture-5.html"><i class="fa fa-check"></i><b>A.3</b> Lecture 5</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>B</b> R Tips</a><ul>
 <li class="chapter" data-level="B.1" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>B.1</b> Using Coursera</a></li>
@@ -183,472 +185,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="introduction-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;ggplot2&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:yarrr&#39;:
-## 
-##     diamonds</code></pre>
-<pre><code>## The following object is masked from &#39;package:pkr&#39;:
-## 
-##     unit</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gcookbook)
-<span class="kw">library</span>(plyr)</code></pre></div>
-<pre><code>## -----------------------------------------------------</code></pre>
-<pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
-## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-## library(plyr); library(dplyr)</code></pre>
-<pre><code>## -----------------------------------------------------</code></pre>
-<pre><code>## 
-## Attaching package: &#39;plyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     arrange, count, desc, failwith, id, mutate,
-##     rename, summarise, summarize</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reshape2)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
-## scatter plot   (geom_point)
-######################################################################################
-<span class="kw">plot</span>(mtcars<span class="op">$</span>wt, mtcars<span class="op">$</span>mpg)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-1.svg" width="672" /></p>
+<p>먼저 다음과 같은 패키지가 필요합니다.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(gcookbook)
+<span class="kw">library</span>(plyr)
+<span class="kw">library</span>(reshape2)</code></pre></div>
+<p>Scatter plot을 geom_point()를 사용해서 그려보도록 하겠습니다.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mtcars<span class="op">$</span>wt, mtcars<span class="op">$</span>mpg)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-30-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(mtcars<span class="op">$</span>wt, mtcars<span class="op">$</span>mpg)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-2.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-30-2.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> wt, <span class="dt">y =</span> mpg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-3.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-30-3.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tophit &lt;-<span class="st"> </span>tophitters2001[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>,]
 tophit &lt;-<span class="st"> </span>tophit[,<span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;lg&quot;</span>, <span class="st">&quot;avg&quot;</span>)]
 
 <span class="co"># y축 이산형 그래프 </span>
 <span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name, <span class="dt">col=</span>lg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-4.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프 정렬하기 &amp; 그래프 격자 없애기 &amp; 수평선 점선으로 바꾸기</span>
 <span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> <span class="kw">reorder</span>(name, avg))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.x =</span> <span class="kw">element_blank</span>(),
         <span class="dt">panel.grid.minor.x =</span> <span class="kw">element_blank</span>(),
         <span class="dt">panel.grid.major.y =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-5.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x, y축 바꿔서 그치기 &amp; 그래프 격자 없애기 &amp; 수직선 점선으로 바꾸기 &amp; X축 값 정의 및 회전</span>
-<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(name, avg), <span class="dt">y =</span> avg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">60</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),
-        <span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>(),
-        <span class="dt">panel.grid.minor.y =</span> <span class="kw">element_blank</span>(),
-        <span class="dt">panel.grid.major.x =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-6.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두개 변수로 정의하여 그리기</span>
-nameorder &lt;-<span class="st"> </span>tophit<span class="op">$</span>name[<span class="kw">order</span>(tophit<span class="op">$</span>lg, tophit<span class="op">$</span>avg)]
-tophit<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">factor</span>(tophit<span class="op">$</span>name, <span class="dt">levels =</span> nameorder)
-
-<span class="co"># 격자 선이 그래프의 끝에서 끝까지 횡단하지 않고, 점까지만 가도록 표현 [ geom_segment ]</span>
-<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">yend =</span> name), <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">color =</span> lg)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;NL&quot;</span>, <span class="st">&quot;AL&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>(), <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.55</span>), <span class="co"># 범례를 그래프 안쪽으로 옮김 </span>
-        <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-7.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그룹 별 그래프 분할 </span>
-<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">yend =</span> name), <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="kw">aes</span>(<span class="dt">color =</span> lg)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;NL&quot;</span>, <span class="st">&quot;AL&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(lg <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">space =</span> <span class="st">&quot;free_y&quot;</span>) </code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-8.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그룹 별 데이터 구별</span>
-<span class="co"># 색상기준</span>
-<span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-9.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 모양 기준</span>
-<span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-10.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-11.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-12.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 기준 정의에 따라 구별</span>
-hw &lt;-heightweight
-hw<span class="op">$</span>weightGroup &lt;-<span class="st"> </span><span class="kw">cut</span>(hw<span class="op">$</span>weightLb, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>, <span class="dv">100</span>, <span class="ot">Inf</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt; 100&quot;</span>, <span class="st">&quot;&gt;= 100&quot;</span>))
-
-<span class="co"># x축이 이산형일 때 점들을 랜덤하게 조금식 이동시켜 표현 </span>
-<span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-13.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="co"># 이동 적용</span></code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-14.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 적합된 회귀선 추가하기</span>
-sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) 
-sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-15.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-16.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#그룹 별 회귀선 추가하기</span>
-sps &lt;-<span class="st"> </span><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)
-sps <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-17.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 예측값 실제값 그래프로 표현하기 (함수)</span>
-predictvals &lt;-<span class="st"> </span><span class="cf">function</span>(model, xvar, yvar, <span class="dt">xrange =</span> <span class="ot">NULL</span>, <span class="dt">sample =</span> <span class="dv">100</span>, ...){
-  <span class="cf">if</span>(<span class="kw">is.null</span>(xrange)){
-    <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">class</span>(model) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lm&quot;</span>, <span class="st">&quot;glm&quot;</span>)))
-      xrange &lt;-<span class="st"> </span><span class="kw">range</span>(model<span class="op">$</span>model[[xvar]])
-    <span class="cf">else</span> <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">class</span>(model) <span class="op">%in%</span><span class="st"> &quot;loess&quot;</span>))
-      xrange &lt;-<span class="st"> </span><span class="kw">range</span>(model<span class="op">$</span>x)
-  }
-  
-  newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(xrange[<span class="dv">1</span>], xrange[<span class="dv">2</span>], <span class="dt">length.out =</span> sample))
-  <span class="kw">names</span>(newdata) &lt;-<span class="st"> </span>xvar
-  newdata[[yvar]] &lt;-<span class="st"> </span><span class="kw">predict</span>(model, <span class="dt">newdata =</span> newdata, ...)
-  newdata
-}
-
-modlinear &lt;-<span class="st"> </span><span class="kw">lm</span>(heightIn <span class="op">~</span><span class="st"> </span>ageYear, heightweight)
-modloess &lt;-<span class="st"> </span><span class="kw">loess</span>(heightIn <span class="op">~</span><span class="st"> </span>ageYear, heightweight)
-
-lm_predicted   &lt;-<span class="st"> </span><span class="kw">predictvals</span>(modlinear, <span class="st">&quot;ageYear&quot;</span>, <span class="st">&quot;heightIn&quot;</span>)
-loess_predicted &lt;-<span class="st"> </span><span class="kw">predictvals</span>(modloess, <span class="st">&quot;ageYear&quot;</span>, <span class="st">&quot;heightIn&quot;</span>)
-
-sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;grey40&quot;</span>)
-sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> lm_predicted, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> loess_predicted, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-18.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#산점도의 점에 라벨 붙이기</span>
-sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span> <span class="op">&amp;</span><span class="st"> </span>healthexp <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span>),
-             <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
-
-<span class="co"># 특정 값에 특정 단어로 라벨 붙이기</span>
-sp <span class="op">+</span><span class="st"> </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">4350</span>, <span class="dt">y =</span> <span class="fl">5.4</span>, <span class="dt">label =</span> <span class="st">&quot;Canada&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">7400</span>, <span class="dt">y =</span> <span class="fl">6.8</span>, <span class="dt">label =</span> <span class="st">&quot;USA&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-19.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터 값을 라벨로 붙이기</span>
-sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-20.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 라벨의 위치를 데이터값보다 조금 크게 설정</span>
-sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-21.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x =</span> healthexp <span class="op">+</span><span class="st"> </span><span class="dv">100</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">hjust =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-22.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 특정 값만 라벨 붙이기</span>
-cdat &lt;-<span class="st"> </span><span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span> <span class="op">&amp;</span><span class="st"> </span>healthexp <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span>)
-cdat<span class="op">$</span>Name1 &lt;-<span class="st"> </span>cdat<span class="op">$</span>Name 
-idx &lt;-<span class="st"> </span>cdat<span class="op">$</span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andorra&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Canada&quot;</span>) 
-cdat<span class="op">$</span>Name1[<span class="op">!</span>idx] &lt;-<span class="st"> </span><span class="ot">NA</span>
-<span class="kw">ggplot</span>(cdat, <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name1), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</code></pre></div>
-<pre><code>## Warning: Removed 24 rows containing missing values
-## (geom_text).</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-23.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Warning: Removed 24 rows containing missing values (geom_text).
-
-
-<span class="co"># 거품그래프(balloon plot)</span>
-hec &lt;-<span class="st"> </span>HairEyeColor[,,<span class="st">&quot;Male&quot;</span>] <span class="op">+</span><span class="st"> </span>HairEyeColor[,,<span class="st">&quot;Female&quot;</span>]
-hec &lt;-<span class="st"> </span><span class="kw">melt</span>(hec, <span class="dt">value.name =</span> <span class="st">&quot;count&quot;</span>) 
-<span class="kw">ggplot</span>(hec, <span class="kw">aes</span>(<span class="dt">x =</span> Eye, <span class="dt">y =</span> Hair)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> count), <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;cornsilk&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_size_area</span>(<span class="dt">max_size =</span> <span class="dv">20</span>, <span class="dt">guide =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">as.numeric</span>(Hair)<span class="op">-</span><span class="kw">sqrt</span>(count)<span class="op">/</span><span class="dv">22</span>, <span class="dt">label =</span> count), <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-24.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 산점도 행렬 만들기</span>
-c2009 &lt;-<span class="st"> </span><span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span>, <span class="dt">select =</span> <span class="kw">c</span>(Name, GDP, laborrate, healthexp, infmortality)) 
-<span class="kw">plot</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>])</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-25.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panel.hist &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...)
-{
-  usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
-  <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(usr[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">0</span>, <span class="fl">1.5</span>) )
-  h &lt;-<span class="st"> </span><span class="kw">hist</span>(x, <span class="dt">plot =</span> <span class="ot">FALSE</span>)
-  breaks &lt;-<span class="st"> </span>h<span class="op">$</span>breaks; nB &lt;-<span class="st"> </span><span class="kw">length</span>(breaks)
-  y &lt;-<span class="st"> </span>h<span class="op">$</span>counts; y &lt;-<span class="st"> </span>y<span class="op">/</span><span class="kw">max</span>(y)
-  <span class="kw">rect</span>(breaks[<span class="op">-</span>nB], <span class="dv">0</span>, breaks[<span class="op">-</span><span class="dv">1</span>], y, <span class="dt">col =</span> <span class="st">&quot;cyan&quot;</span>, ...)
-}
-panel.cor &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...)
-{
-  usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
-  <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))
-  r &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">cor</span>(x, y))
-  txt &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">c</span>(r, <span class="fl">0.123456789</span>), <span class="dt">digits =</span> digits)[<span class="dv">1</span>]
-  txt &lt;-<span class="st"> </span><span class="kw">paste0</span>(prefix, txt)
-  <span class="cf">if</span>(<span class="kw">missing</span>(cex.cor)) cex.cor &lt;-<span class="st"> </span><span class="fl">0.8</span><span class="op">/</span><span class="kw">strwidth</span>(txt)
-  <span class="kw">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="dt">cex =</span> cex.cor <span class="op">*</span><span class="st"> </span>r)
-}
-panel.lm &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">col =</span> <span class="kw">par</span>(<span class="st">&quot;col&quot;</span>), <span class="dt">bg =</span> <span class="ot">NA</span>, <span class="dt">pch =</span> <span class="kw">par</span>(<span class="st">&quot;pch&quot;</span>), <span class="dt">cex =</span> <span class="dv">1</span>, <span class="dt">col.smooth =</span> <span class="st">&quot;black&quot;</span>, ...){
-  <span class="kw">points</span>(x, y, <span class="dt">pch =</span> pch, <span class="dt">col =</span> col, <span class="dt">bg =</span> bg, <span class="dt">cex =</span> cex)
-  <span class="kw">abline</span>(stats<span class="op">::</span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x), <span class="dt">col =</span> col.smooth, ...)
-}
-<span class="co"># 데이터에 대한 LOWESS선(평활선) 추가 </span>
-<span class="kw">pairs</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">upper.panel =</span> panel.cor, <span class="dt">diag.panel =</span> panel.hist, <span class="dt">lower.panel =</span> panel.lm)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-26.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터에 대한 회귀적합선 추가 </span>
-<span class="kw">pairs</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">upper.panel =</span> panel.cor, <span class="dt">diag.panel =</span> panel.hist, <span class="dt">lower.panel =</span> panel.smooth)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-27.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
-## scatter + line plot  (geom_point/ geom_line)
-######################################################################################
-<span class="kw">plot</span>(pressure<span class="op">$</span>temperature, pressure<span class="op">$</span>pressure, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)
-<span class="kw">points</span>(pressure<span class="op">$</span>temperature, pressure<span class="op">$</span>pressure)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-28.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(temperature, pressure, <span class="dt">data =</span> pressure, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;line&quot;</span>, <span class="st">&quot;point&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-29.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pressure, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> pressure)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-30.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
-## line plot  (geom_line)
-######################################################################################
-<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="kw">max</span>(BOD<span class="op">$</span>demand))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-31.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">expand_limits</span>(<span class="dt">y =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-32.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-33.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 이산형 변수값에 따른 구분 </span>
-tg &lt;-<span class="st"> </span><span class="kw">ddply</span>(ToothGrowth, <span class="kw">c</span>(<span class="st">&quot;supp&quot;</span>, <span class="st">&quot;dose&quot;</span>), summarize, <span class="dt">length =</span> <span class="kw">mean</span>(len))
-<span class="co"># 색상으로 구분</span>
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">color =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-34.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(dose), <span class="dt">y =</span> length, <span class="dt">color =</span> supp, <span class="dt">group =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-35.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># group = supp 주의! : 이 명령문이 없으면 데이터를 어떻게 묶어서 그릴지 모름</span>
-<span class="co"># Line type으로 구분</span>
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">linetype =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-36.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 형태로 구분</span>
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">shape =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-37.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 색상으로 구분</span>
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">fill =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">shape =</span> <span class="dv">21</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-38.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두 선이 겹칠때 하나의 선을 옆으로 이동시켜 표현  </span>
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">shape =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.1</span>)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.1</span>), <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-39.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 선 형태 바꾸기 [ linetype ]</span>
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">color =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">22</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-40.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 형태 바꾸기 [ shape ]</span>
-#################################
-pd &lt;-<span class="st"> </span><span class="kw">position_dodge</span>(<span class="fl">0.2</span>)       <span class="co">#</span>
-#################################
-
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">fill =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> pd) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">position =</span> pd) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-41.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample Data</span>
-sunspotyear &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Year     =</span> <span class="kw">as.numeric</span>(<span class="kw">time</span>(sunspot.year)),
-                          <span class="dt">Sunspots =</span> <span class="kw">as.numeric</span>(sunspot.year))
-<span class="co"># 음영 영역 그래프 그리기</span>
-<span class="kw">ggplot</span>(sunspotyear, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Sunspots)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-42.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 음영 투명도 설정하기 [ alpha ]</span>
-<span class="kw">ggplot</span>(sunspotyear, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Sunspots)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-43.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 누적 영역 그래프 그리기</span>
-<span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-44.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 영역색상 그라데이션 넣기</span>
-<span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">breaks =</span> <span class="kw">rev</span>(<span class="kw">levels</span>(uspopage<span class="op">$</span>AgeGroup)))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-45.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터 순서정렬하기 &amp; 양쪽 테두리 지우기 </span>
-<span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup, <span class="dt">order =</span> <span class="kw">desc</span>(AgeGroup))) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-46.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  비율 누적 영역 그래프 그리기</span>
-uspopage_prop &lt;-<span class="st"> </span><span class="kw">ddply</span>(uspopage, <span class="st">&quot;Year&quot;</span>, transform, <span class="dt">Percent =</span> Thousands <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(Thousands) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) 
-<span class="kw">ggplot</span>(uspopage_prop, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Percent, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">breaks =</span> <span class="kw">rev</span>(<span class="kw">levels</span>(uspopage<span class="op">$</span>AgeGroup)))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-47.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프에 신뢰 영역 추가하기</span>
-clim &lt;-<span class="st"> </span><span class="kw">subset</span>(climate, Source <span class="op">==</span><span class="st"> &quot;Berkeley&quot;</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Anomaly10y&quot;</span>, <span class="st">&quot;Unc10y&quot;</span>))
-<span class="co"># 신뢰영역 음영으로 표현 </span>
-<span class="kw">ggplot</span>(clim, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Anomaly10y <span class="op">-</span><span class="st"> </span>Unc10y, <span class="dt">ymax =</span> Anomaly10y <span class="op">+</span><span class="st"> </span>Unc10y), <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-48.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 신뢰영역 점선으로 표현</span>
-<span class="kw">ggplot</span>(clim, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Anomaly10y <span class="op">-</span><span class="st"> </span>Unc10y), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Anomaly10y <span class="op">+</span><span class="st"> </span>Unc10y), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-49.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span>
-######################################################################################
-## barplot  (geom_bar)
-######################################################################################
-<span class="kw">barplot</span>(BOD<span class="op">$</span>demand, <span class="dt">names.arg =</span> BOD<span class="op">$</span>Time)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-50.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(mtcars<span class="op">$</span>cyl))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-51.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x값을 숫자로 인식</span>
-<span class="co"># qplot(BOD$Time, BOD$demand, geom = &quot;bar&quot;, stat = &quot;identity&quot;)</span>
-<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-52.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x값을 요인으로 변환</span>
-<span class="co"># qplot(as.factor(BOD$Time), BOD$demand, geom = &quot;bar&quot;, stat = &quot;identity&quot;)</span>
-<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(Time), <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-53.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 색상 채우기/테두리 설정하기 (fill : 채우기/ colour(or color) : 테두리)</span>
-<span class="kw">ggplot</span>(pg_mean, <span class="kw">aes</span>(<span class="dt">x =</span> group, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-54.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 묶어서 표현하기(나누어 표현하고 싶은 변수를 색상으로 지정)  </span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-55.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dodge : &quot;피하다&quot;라는 의미로 막대를 새로운 값을 기준으로 나누어 표현 </span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Pastel1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-56.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 빈도수 막대 그래프 그리기 </span>
-<span class="co"># x가 이산형</span>
-<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> cut)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-57.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x가 연속형</span>
-<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> carat)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-58.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 색상 넣기/ 축 이름 정의하기(reorder) </span>
-upc &lt;-<span class="st"> </span><span class="kw">subset</span>(uspopchange, <span class="kw">rank</span>(Change) <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>)
-<span class="kw">ggplot</span>(upc, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(Abb, Change), <span class="dt">y =</span> Change, <span class="dt">fill =</span> Region)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#669933&quot;</span>, <span class="st">&quot;#FFCC66&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;State&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-59.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 양수/음수 다른 색상으로 표현 (구분 inde를 만들어 색상 변수로 지정)</span>
-csub &lt;-<span class="st"> </span><span class="kw">subset</span>(climate, Source <span class="op">==</span><span class="st"> &quot;Berkeley&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1900</span> )
-csub<span class="op">$</span>pos &lt;-<span class="st"> </span>csub<span class="op">$</span>Anomaly10y <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span>
-<span class="kw">ggplot</span>(csub, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y, <span class="dt">fill =</span> pos)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-60.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그래프 테두리 두께 설정(size) / 범례 지우기(guide = FALSE)</span>
-<span class="kw">ggplot</span>(csub, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y, <span class="dt">fill =</span> pos)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.0001</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#CCEEFF&quot;</span>, <span class="st">&quot;#FFDDDD&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-61.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 너비/ 간격 조절하기(width : 최대 너비는 1)</span>
-<span class="kw">ggplot</span>(pg_mean, <span class="kw">aes</span>(<span class="dt">x =</span> group, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-62.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그룹 간의 간격 조절하기 (default : 0.9) </span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.4</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-63.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그룹 내부간의 간격 조절 (default : 0.9)</span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.3</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.5</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-64.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 범례 순서 바꾸기 (reverse = TRUE) </span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-65.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 쌓는 순서 바꾸기  </span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar, <span class="dt">order =</span> <span class="kw">desc</span>(Cultivar))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-66.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 비율 누적 막대 그래프 그리기(막대 전체가 100%가 되도록)</span>
-ce &lt;-<span class="st"> </span><span class="kw">ddply</span>(cabbage_exp, <span class="st">&quot;Date&quot;</span>, transform, <span class="dt">percent_weight =</span> Weight <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(Weight) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>)
-<span class="kw">ggplot</span>(ce, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> percent_weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-67.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대에 라벨 추가하기 [ geom_text ]</span>
-<span class="co"># 선 상단 [ vjust &lt; 0 ]</span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="op">-</span><span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-68.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 선 하단 [ vjust &gt; 0 ]</span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-69.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프 범위 설정</span>
-<span class="co"># max(데이터)로 지정</span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="op">-</span><span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="kw">max</span>(cabbage_exp<span class="op">$</span>Weight) <span class="op">*</span><span class="st"> </span><span class="fl">1.05</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-70.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대의 상단보다 조금 높은 위치로 지정(데이터에 따라 자동 조정)</span>
-<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Weight <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Weight)) </code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-71.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 누적 합계 그래프 그리기</span>
-ce &lt;-<span class="st"> </span><span class="kw">arrange</span>(cabbage_exp, Date, Cultivar)
-ce &lt;-<span class="st"> </span><span class="kw">ddply</span>(ce, <span class="st">&quot;Date&quot;</span>, transform, <span class="dt">label =</span> <span class="kw">cumsum</span>(Weight))
-<span class="co"># ddply(data.frame, 그룹 기준 마지막 변수)</span>
-<span class="kw">ggplot</span>(ce, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> label, <span class="dt">label =</span> <span class="kw">paste</span>(<span class="kw">format</span>(Weight, <span class="dt">nsmall=</span><span class="dv">2</span>), <span class="st">&quot;kg&quot;</span>)), <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">vjust =</span> <span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Pastel1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-72.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
-## histogram  (geom_histogram)
-######################################################################################
-<span class="kw">hist</span>(mtcars<span class="op">$</span>mpg)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-73.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 상자(bin) 개수 지정</span>
-<span class="kw">hist</span>(mtcars<span class="op">$</span>mpg, <span class="dt">breaks =</span> <span class="dv">10</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-74.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(mpg, <span class="dt">data =</span> mtcars, <span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-75.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot(mtcars, aes(x = mpg)) + geom_histogram() </span>
-<span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-76.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">ggplot</span>(faithful, <span class="kw">aes</span>(<span class="dt">x =</span> waiting))
-h <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">8</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">origin =</span> <span class="dv">31</span>)</code></pre></div>
-<pre><code>## Warning: `origin` is deprecated. Please use `boundary`
-## instead.</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-77.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Warning: `origin` is deprecated. Please use `boundary` instead.
-
-
-<span class="co"># 그룹화된 데이터로 여러개의 히스토그램 만들기</span>
-<span class="kw">library</span>(MASS)</code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;MASS&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     select</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-78.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-
-
-<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-79.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-
-
-<span class="co"># 그룹 라벨 정의 </span>
-birthwt1 &lt;-<span class="st"> </span>birthwt
-birthwt1<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw">factor</span>(birthwt1<span class="op">$</span>smoke)
-<span class="kw">levels</span>(birthwt1<span class="op">$</span>smoke)</code></pre></div>
-<pre><code>## [1] &quot;0&quot; &quot;1&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## [1] &quot;0&quot; &quot;1&quot;
-birthwt<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw">revalue</span>(birthwt1<span class="op">$</span>smoke, <span class="kw">c</span>(<span class="st">&quot;0&quot;</span> =<span class="st"> &quot;Nosmoke&quot;</span>, <span class="st">&quot;1&quot;</span> =<span class="st"> &quot;Smoke&quot;</span>))
-
-<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-80.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-
-
-######################################################################################
-## boxplot  (geom_boxplot)
-######################################################################################
-<span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp, <span class="dt">data =</span> ToothGrowth)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-81.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-82.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> supp, <span class="dt">y =</span> len))<span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-83.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두 변수의 상호작용을 X축으로</span>
-<span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">+</span><span class="st"> </span>dose, <span class="dt">data =</span> ToothGrowth)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-84.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">interaction</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>dose), ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-85.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(supp, dose), <span class="dt">y =</span> len)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-86.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
-## 함수곡선 그리기  (stat_function)
-######################################################################################
-<span class="co"># 사용자함수 정의</span>
-myfun &lt;-<span class="st"> </span><span class="cf">function</span>(xvar){
-  <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>xvar <span class="op">+</span><span class="st"> </span><span class="dv">10</span>))
-}
-
-<span class="kw">curve</span>(<span class="kw">myfun</span>(x), <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">20</span>)
-<span class="kw">curve</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">myfun</span>(x), <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-87.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># qplot(c(0,20), fun = myfun, stat = &quot;function&quot;, geom = &quot;line&quot;)</span>
-<span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20</span>)), <span class="kw">aes</span>(<span class="dt">x =</span>x)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> myfun, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-29-88.svg" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-2.svg" width="672" /></p>
 
 
 </div>

@@ -4,17 +4,23 @@ author: "Kyun-Seop Bae, Sungpil Han"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 #documentclass: book
+#papersize: A4
+fontsize: 10pt
 documentclass: krantz
-#bibliography: [book.bib, packages.bib]
+#geometry: "margin=4in"               
+#geometry: "a4paper,left=1.5in,right=1.5in,top=1in,bottom=1in"
+#geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=5in,bottom=3in,foot=1in"
+#geometry: "a4paper, nohead, nomarginpar"
+#geometry: "total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot"
+#geometry: "a4paper, nohead, nomarginpar, left=1.5in,right=1.5in,top=1in,bottom=1in, includeheadfoot"
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.7"
+lot: yes
+lof: yes
 bibliography: [packages.bib, manual.bib]
 biblio-style: apalike
 link-citations: yes
 colorlinks: yes
-lot: yes
-lof: yes
-fontsize: 11pt
-monofont: "Source Code Pro"
-monofontoptions: "Scale=0.7"
 site: bookdown::bookdown_site
 description: "2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다."
 url: 'https\://asancpt.github.io/Rprogramming/'
