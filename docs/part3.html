@@ -195,8 +195,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="part3" class="section level2">
 <h2><span class="header-section-number">5.4</span> Part3</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># 점 형태 바꾸기 [ shape ]</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 형태 바꾸기 [ shape ]</span>
 #################################
 pd &lt;-<span class="st"> </span><span class="kw">position_dodge</span>(<span class="fl">0.2</span>)       <span class="co">#</span>
 #################################
@@ -204,101 +203,71 @@ pd &lt;-<span class="st"> </span><span class="kw">position_dodge</span>(<span cl
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">fill =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> pd) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">position =</span> pd) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># sample Data</span>
+<p><img src="Rprogramming_files/figure-html/part3-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample Data</span>
 sunspotyear &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Year     =</span> <span class="kw">as.numeric</span>(<span class="kw">time</span>(sunspot.year)),
                           <span class="dt">Sunspots =</span> <span class="kw">as.numeric</span>(sunspot.year))
 <span class="co"># 음영 영역 그래프 그리기</span>
 <span class="kw">ggplot</span>(sunspotyear, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Sunspots)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 음영 투명도 설정하기 [ alpha ]</span>
+<p><img src="Rprogramming_files/figure-html/part3-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 음영 투명도 설정하기 [ alpha ]</span>
 <span class="kw">ggplot</span>(sunspotyear, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Sunspots)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 누적 영역 그래프 그리기</span>
+<p><img src="Rprogramming_files/figure-html/part3-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 누적 영역 그래프 그리기</span>
 <span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-4.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 영역색상 그라데이션 넣기</span>
+<p><img src="Rprogramming_files/figure-html/part3-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 영역색상 그라데이션 넣기</span>
 <span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">breaks =</span> <span class="kw">rev</span>(<span class="kw">levels</span>(uspopage<span class="op">$</span>AgeGroup)))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-5.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 데이터 순서정렬하기 &amp; 양쪽 테두리 지우기 </span>
+<p><img src="Rprogramming_files/figure-html/part3-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터 순서정렬하기 &amp; 양쪽 테두리 지우기 </span>
 <span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup, <span class="dt">order =</span> <span class="kw">desc</span>(AgeGroup))) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-6.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co">#  비율 누적 영역 그래프 그리기</span>
+<p><img src="Rprogramming_files/figure-html/part3-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  비율 누적 영역 그래프 그리기</span>
 uspopage_prop &lt;-<span class="st"> </span><span class="kw">ddply</span>(uspopage, <span class="st">&quot;Year&quot;</span>, transform, <span class="dt">Percent =</span> Thousands <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(Thousands) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) 
 <span class="kw">ggplot</span>(uspopage_prop, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Percent, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">breaks =</span> <span class="kw">rev</span>(<span class="kw">levels</span>(uspopage<span class="op">$</span>AgeGroup)))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-7.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 그래프에 신뢰 영역 추가하기</span>
+<p><img src="Rprogramming_files/figure-html/part3-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프에 신뢰 영역 추가하기</span>
 clim &lt;-<span class="st"> </span><span class="kw">subset</span>(climate, Source <span class="op">==</span><span class="st"> &quot;Berkeley&quot;</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Anomaly10y&quot;</span>, <span class="st">&quot;Unc10y&quot;</span>))
 <span class="co"># 신뢰영역 음영으로 표현 </span>
 <span class="kw">ggplot</span>(clim, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Anomaly10y <span class="op">-</span><span class="st"> </span>Unc10y, <span class="dt">ymax =</span> Anomaly10y <span class="op">+</span><span class="st"> </span>Unc10y), <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-8.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 신뢰영역 점선으로 표현</span>
+<p><img src="Rprogramming_files/figure-html/part3-8.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 신뢰영역 점선으로 표현</span>
 <span class="kw">ggplot</span>(clim, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Anomaly10y <span class="op">-</span><span class="st"> </span>Unc10y), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Anomaly10y <span class="op">+</span><span class="st"> </span>Unc10y), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-9.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># </span>
+<p><img src="Rprogramming_files/figure-html/part3-9.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span>
 ######################################################################################
 ## barplot  (geom_bar)
 ######################################################################################
 <span class="kw">barplot</span>(BOD<span class="op">$</span>demand, <span class="dt">names.arg =</span> BOD<span class="op">$</span>Time)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-10.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">barplot</span>(<span class="kw">table</span>(mtcars<span class="op">$</span>cyl))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-11.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># x값을 숫자로 인식</span>
+<p><img src="Rprogramming_files/figure-html/part3-10.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(mtcars<span class="op">$</span>cyl))</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-11.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x값을 숫자로 인식</span>
 <span class="co"># qplot(BOD$Time, BOD$demand, geom = &quot;bar&quot;, stat = &quot;identity&quot;)</span>
 <span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-12.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># x값을 요인으로 변환</span>
+<p><img src="Rprogramming_files/figure-html/part3-12.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x값을 요인으로 변환</span>
 <span class="co"># qplot(as.factor(BOD$Time), BOD$demand, geom = &quot;bar&quot;, stat = &quot;identity&quot;)</span>
 <span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(Time), <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-13.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 색상 채우기/테두리 설정하기 (fill : 채우기/ colour(or color) : 테두리)</span>
+<p><img src="Rprogramming_files/figure-html/part3-13.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 색상 채우기/테두리 설정하기 (fill : 채우기/ colour(or color) : 테두리)</span>
 <span class="kw">ggplot</span>(pg_mean, <span class="kw">aes</span>(<span class="dt">x =</span> group, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-14.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 묶어서 표현하기(나누어 표현하고 싶은 변수를 색상으로 지정)  </span>
+<p><img src="Rprogramming_files/figure-html/part3-14.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 묶어서 표현하기(나누어 표현하고 싶은 변수를 색상으로 지정)  </span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-15.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># dodge : &quot;피하다&quot;라는 의미로 막대를 새로운 값을 기준으로 나누어 표현 </span>
+<p><img src="Rprogramming_files/figure-html/part3-15.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dodge : &quot;피하다&quot;라는 의미로 막대를 새로운 값을 기준으로 나누어 표현 </span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Pastel1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part3-16.png" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/part3-16.svg" width="672" /></p>
 </div>
             </section>
 

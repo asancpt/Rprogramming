@@ -195,23 +195,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="part2" class="section level2">
 <h2><span class="header-section-number">5.3</span> Part2</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># 거품그래프(balloon plot)</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 거품그래프(balloon plot)</span>
 hec &lt;-<span class="st"> </span>HairEyeColor[,,<span class="st">&quot;Male&quot;</span>] <span class="op">+</span><span class="st"> </span>HairEyeColor[,,<span class="st">&quot;Female&quot;</span>]
 hec &lt;-<span class="st"> </span><span class="kw">melt</span>(hec, <span class="dt">value.name =</span> <span class="st">&quot;count&quot;</span>) 
 <span class="kw">ggplot</span>(hec, <span class="kw">aes</span>(<span class="dt">x =</span> Eye, <span class="dt">y =</span> Hair)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> count), <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;cornsilk&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_size_area</span>(<span class="dt">max_size =</span> <span class="dv">20</span>, <span class="dt">guide =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">as.numeric</span>(Hair)<span class="op">-</span><span class="kw">sqrt</span>(count)<span class="op">/</span><span class="dv">22</span>, <span class="dt">label =</span> count), <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 산점도 행렬 만들기</span>
+<p><img src="Rprogramming_files/figure-html/part2-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 산점도 행렬 만들기</span>
 c2009 &lt;-<span class="st"> </span><span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span>, <span class="dt">select =</span> <span class="kw">c</span>(Name, GDP, laborrate, healthexp, infmortality)) 
 <span class="kw">plot</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>])</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-panel.hist &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...)
+<p><img src="Rprogramming_files/figure-html/part2-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panel.hist &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...)
 {
   usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
   <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(usr[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">0</span>, <span class="fl">1.5</span>) )
@@ -236,82 +231,54 @@ panel.lm &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <s
 }
 <span class="co"># 데이터에 대한 LOWESS선(평활선) 추가 </span>
 <span class="kw">pairs</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">upper.panel =</span> panel.cor, <span class="dt">diag.panel =</span> panel.hist, <span class="dt">lower.panel =</span> panel.lm)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 데이터에 대한 회귀적합선 추가 </span>
+<p><img src="Rprogramming_files/figure-html/part2-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터에 대한 회귀적합선 추가 </span>
 <span class="kw">pairs</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">upper.panel =</span> panel.cor, <span class="dt">diag.panel =</span> panel.hist, <span class="dt">lower.panel =</span> panel.smooth)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-4.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-######################################################################################
+<p><img src="Rprogramming_files/figure-html/part2-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
 ## scatter + line plot  (geom_point/ geom_line)
 ######################################################################################
 <span class="kw">plot</span>(pressure<span class="op">$</span>temperature, pressure<span class="op">$</span>pressure, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)
 <span class="kw">points</span>(pressure<span class="op">$</span>temperature, pressure<span class="op">$</span>pressure)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-5.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">qplot</span>(temperature, pressure, <span class="dt">data =</span> pressure, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;line&quot;</span>, <span class="st">&quot;point&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-6.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(pressure, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> pressure)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-7.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-######################################################################################
+<p><img src="Rprogramming_files/figure-html/part2-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(temperature, pressure, <span class="dt">data =</span> pressure, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;line&quot;</span>, <span class="st">&quot;point&quot;</span>))</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pressure, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> pressure)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
 ## line plot  (geom_line)
 ######################################################################################
 <span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="kw">max</span>(BOD<span class="op">$</span>demand))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-8.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">expand_limits</span>(<span class="dt">y =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-9.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-10.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 이산형 변수값에 따른 구분 </span>
+<p><img src="Rprogramming_files/figure-html/part2-8.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">expand_limits</span>(<span class="dt">y =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-9.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-10.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 이산형 변수값에 따른 구분 </span>
 tg &lt;-<span class="st"> </span><span class="kw">ddply</span>(ToothGrowth, <span class="kw">c</span>(<span class="st">&quot;supp&quot;</span>, <span class="st">&quot;dose&quot;</span>), summarize, <span class="dt">length =</span> <span class="kw">mean</span>(len))
 <span class="co"># 색상으로 구분</span>
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">color =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-11.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(dose), <span class="dt">y =</span> length, <span class="dt">color =</span> supp, <span class="dt">group =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-12.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># group = supp 주의! : 이 명령문이 없으면 데이터를 어떻게 묶어서 그릴지 모름</span>
+<p><img src="Rprogramming_files/figure-html/part2-11.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(dose), <span class="dt">y =</span> length, <span class="dt">color =</span> supp, <span class="dt">group =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-12.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># group = supp 주의! : 이 명령문이 없으면 데이터를 어떻게 묶어서 그릴지 모름</span>
 <span class="co"># Line type으로 구분</span>
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">linetype =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-13.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 점 형태로 구분</span>
+<p><img src="Rprogramming_files/figure-html/part2-13.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 형태로 구분</span>
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">shape =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-14.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 점 색상으로 구분</span>
+<p><img src="Rprogramming_files/figure-html/part2-14.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 색상으로 구분</span>
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">fill =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">shape =</span> <span class="dv">21</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-15.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 두 선이 겹칠때 하나의 선을 옆으로 이동시켜 표현  </span>
+<p><img src="Rprogramming_files/figure-html/part2-15.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두 선이 겹칠때 하나의 선을 옆으로 이동시켜 표현  </span>
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">shape =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.1</span>)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.1</span>), <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-16.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 선 형태 바꾸기 [ linetype ]</span>
+<p><img src="Rprogramming_files/figure-html/part2-16.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 선 형태 바꾸기 [ linetype ]</span>
 <span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">color =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">22</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part2-17.png" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/part2-17.svg" width="672" /></p>
 </div>
             </section>
 

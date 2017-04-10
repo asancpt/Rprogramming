@@ -38,7 +38,7 @@ CACHE <- TRUE
 CACHE <- FALSE
 
 knitr::opts_chunk$set(results = 'markup', cache = CACHE, 
-    error = TRUE, collapse = TRUE, dev = 'png')
+    error = TRUE, collapse = FALSE)# , dev = c('png', 'pdf'))
 
 myPackages <- c('knitr')
 lapply(myPackages, function(pkg) {

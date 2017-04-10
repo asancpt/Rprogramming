@@ -195,167 +195,126 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="part4" class="section level2">
 <h2><span class="header-section-number">5.5</span> Part4</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># 빈도수 막대 그래프 그리기 </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 빈도수 막대 그래프 그리기 </span>
 <span class="co"># x가 이산형</span>
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> cut)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># x가 연속형</span>
+<p><img src="Rprogramming_files/figure-html/part4-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x가 연속형</span>
 <span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> carat)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 색상 넣기/ 축 이름 정의하기(reorder) </span>
+<p><img src="Rprogramming_files/figure-html/part4-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 색상 넣기/ 축 이름 정의하기(reorder) </span>
 upc &lt;-<span class="st"> </span><span class="kw">subset</span>(uspopchange, <span class="kw">rank</span>(Change) <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>)
 <span class="kw">ggplot</span>(upc, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(Abb, Change), <span class="dt">y =</span> Change, <span class="dt">fill =</span> Region)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#669933&quot;</span>, <span class="st">&quot;#FFCC66&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;State&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 양수/음수 다른 색상으로 표현 (구분 inde를 만들어 색상 변수로 지정)</span>
+<p><img src="Rprogramming_files/figure-html/part4-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 양수/음수 다른 색상으로 표현 (구분 inde를 만들어 색상 변수로 지정)</span>
 csub &lt;-<span class="st"> </span><span class="kw">subset</span>(climate, Source <span class="op">==</span><span class="st"> &quot;Berkeley&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1900</span> )
 csub<span class="op">$</span>pos &lt;-<span class="st"> </span>csub<span class="op">$</span>Anomaly10y <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span>
 <span class="kw">ggplot</span>(csub, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y, <span class="dt">fill =</span> pos)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-4.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 그래프 테두리 두께 설정(size) / 범례 지우기(guide = FALSE)</span>
+<p><img src="Rprogramming_files/figure-html/part4-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그래프 테두리 두께 설정(size) / 범례 지우기(guide = FALSE)</span>
 <span class="kw">ggplot</span>(csub, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y, <span class="dt">fill =</span> pos)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.0001</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#CCEEFF&quot;</span>, <span class="st">&quot;#FFDDDD&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-5.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 너비/ 간격 조절하기(width : 최대 너비는 1)</span>
+<p><img src="Rprogramming_files/figure-html/part4-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 너비/ 간격 조절하기(width : 최대 너비는 1)</span>
 <span class="kw">ggplot</span>(pg_mean, <span class="kw">aes</span>(<span class="dt">x =</span> group, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-6.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 그룹 간의 간격 조절하기 (default : 0.9) </span>
+<p><img src="Rprogramming_files/figure-html/part4-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그룹 간의 간격 조절하기 (default : 0.9) </span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.4</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-7.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 그룹 내부간의 간격 조절 (default : 0.9)</span>
+<p><img src="Rprogramming_files/figure-html/part4-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그룹 내부간의 간격 조절 (default : 0.9)</span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.3</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.5</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-8.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 범례 순서 바꾸기 (reverse = TRUE) </span>
+<p><img src="Rprogramming_files/figure-html/part4-8.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 범례 순서 바꾸기 (reverse = TRUE) </span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-9.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대 쌓는 순서 바꾸기  </span>
+<p><img src="Rprogramming_files/figure-html/part4-9.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 쌓는 순서 바꾸기  </span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar, <span class="dt">order =</span> <span class="kw">desc</span>(Cultivar))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-10.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 비율 누적 막대 그래프 그리기(막대 전체가 100%가 되도록)</span>
+<p><img src="Rprogramming_files/figure-html/part4-10.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 비율 누적 막대 그래프 그리기(막대 전체가 100%가 되도록)</span>
 ce &lt;-<span class="st"> </span><span class="kw">ddply</span>(cabbage_exp, <span class="st">&quot;Date&quot;</span>, transform, <span class="dt">percent_weight =</span> Weight <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(Weight) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>)
 <span class="kw">ggplot</span>(ce, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> percent_weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-11.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대에 라벨 추가하기 [ geom_text ]</span>
+<p><img src="Rprogramming_files/figure-html/part4-11.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대에 라벨 추가하기 [ geom_text ]</span>
 <span class="co"># 선 상단 [ vjust &lt; 0 ]</span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="op">-</span><span class="fl">0.2</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-12.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 선 하단 [ vjust &gt; 0 ]</span>
+<p><img src="Rprogramming_files/figure-html/part4-12.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 선 하단 [ vjust &gt; 0 ]</span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-13.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 그래프 범위 설정</span>
+<p><img src="Rprogramming_files/figure-html/part4-13.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프 범위 설정</span>
 <span class="co"># max(데이터)로 지정</span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="op">-</span><span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="kw">max</span>(cabbage_exp<span class="op">$</span>Weight) <span class="op">*</span><span class="st"> </span><span class="fl">1.05</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-14.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 막대의 상단보다 조금 높은 위치로 지정(데이터에 따라 자동 조정)</span>
+<p><img src="Rprogramming_files/figure-html/part4-14.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대의 상단보다 조금 높은 위치로 지정(데이터에 따라 자동 조정)</span>
 <span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Weight <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Weight)) </code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-15.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 누적 합계 그래프 그리기</span>
+<p><img src="Rprogramming_files/figure-html/part4-15.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 누적 합계 그래프 그리기</span>
 ce &lt;-<span class="st"> </span><span class="kw">arrange</span>(cabbage_exp, Date, Cultivar)
 ce &lt;-<span class="st"> </span><span class="kw">ddply</span>(ce, <span class="st">&quot;Date&quot;</span>, transform, <span class="dt">label =</span> <span class="kw">cumsum</span>(Weight))
 <span class="co"># ddply(data.frame, 그룹 기준 마지막 변수)</span>
 <span class="kw">ggplot</span>(ce, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> label, <span class="dt">label =</span> <span class="kw">paste</span>(<span class="kw">format</span>(Weight, <span class="dt">nsmall=</span><span class="dv">2</span>), <span class="st">&quot;kg&quot;</span>)), <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">vjust =</span> <span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Pastel1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-16.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-######################################################################################
+<p><img src="Rprogramming_files/figure-html/part4-16.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
 ## histogram  (geom_histogram)
 ######################################################################################
 <span class="kw">hist</span>(mtcars<span class="op">$</span>mpg)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-17.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 상자(bin) 개수 지정</span>
+<p><img src="Rprogramming_files/figure-html/part4-17.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 상자(bin) 개수 지정</span>
 <span class="kw">hist</span>(mtcars<span class="op">$</span>mpg, <span class="dt">breaks =</span> <span class="dv">10</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-18.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">qplot</span>(mpg, <span class="dt">data =</span> mtcars, <span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-19.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># ggplot(mtcars, aes(x = mpg)) + geom_histogram() </span>
+<p><img src="Rprogramming_files/figure-html/part4-18.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(mpg, <span class="dt">data =</span> mtcars, <span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-19.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot(mtcars, aes(x = mpg)) + geom_histogram() </span>
 <span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-20.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-h &lt;-<span class="st"> </span><span class="kw">ggplot</span>(faithful, <span class="kw">aes</span>(<span class="dt">x =</span> waiting))
-h <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">8</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">origin =</span> <span class="dv">31</span>)
-## Warning: `origin` is deprecated. Please use `boundary`
-## instead.</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-21.png" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/part4-20.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">ggplot</span>(faithful, <span class="kw">aes</span>(<span class="dt">x =</span> waiting))
+h <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">8</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">origin =</span> <span class="dv">31</span>)</code></pre></div>
+<pre><code>## Warning: `origin` is deprecated. Please use `boundary`
+## instead.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-21.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Warning: `origin` is deprecated. Please use `boundary` instead.
 
 
 <span class="co"># 그룹화된 데이터로 여러개의 히스토그램 만들기</span>
-<span class="kw">library</span>(MASS)
+<span class="kw">library</span>(MASS)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
-## Attaching package: &#39;MASS&#39;
-## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     select
-<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)
-## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-22.png" width="672" /></p>
+##     select</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-22.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 
-<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)
-## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-23.png" width="672" /></p>
+<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-23.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 
 <span class="co"># 그룹 라벨 정의 </span>
 birthwt1 &lt;-<span class="st"> </span>birthwt
 birthwt1<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw">factor</span>(birthwt1<span class="op">$</span>smoke)
-<span class="kw">levels</span>(birthwt1<span class="op">$</span>smoke)
-## [1] &quot;0&quot; &quot;1&quot;
-## [1] &quot;0&quot; &quot;1&quot;
+<span class="kw">levels</span>(birthwt1<span class="op">$</span>smoke)</code></pre></div>
+<pre><code>## [1] &quot;0&quot; &quot;1&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## [1] &quot;0&quot; &quot;1&quot;
 birthwt<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw">revalue</span>(birthwt1<span class="op">$</span>smoke, <span class="kw">c</span>(<span class="st">&quot;0&quot;</span> =<span class="st"> &quot;Nosmoke&quot;</span>, <span class="st">&quot;1&quot;</span> =<span class="st"> &quot;Smoke&quot;</span>))
 
-<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)
-## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-24.png" width="672" /></p>
+<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-24.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 
@@ -363,31 +322,19 @@ birthwt<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class=
 ## boxplot  (geom_boxplot)
 ######################################################################################
 <span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp, <span class="dt">data =</span> ToothGrowth)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-25.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">qplot</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-26.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> supp, <span class="dt">y =</span> len))<span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-27.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 두 변수의 상호작용을 X축으로</span>
+<p><img src="Rprogramming_files/figure-html/part4-25.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-26.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> supp, <span class="dt">y =</span> len))<span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-27.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두 변수의 상호작용을 X축으로</span>
 <span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">+</span><span class="st"> </span>dose, <span class="dt">data =</span> ToothGrowth)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-28.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">qplot</span>(<span class="kw">interaction</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>dose), ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-29.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(supp, dose), <span class="dt">y =</span> len)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-30.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-######################################################################################
+<p><img src="Rprogramming_files/figure-html/part4-28.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">interaction</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>dose), ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-29.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(supp, dose), <span class="dt">y =</span> len)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-30.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
 ## 함수곡선 그리기  (stat_function)
 ######################################################################################
 <span class="co"># 사용자함수 정의</span>
@@ -397,12 +344,10 @@ myfun &lt;-<span class="st"> </span><span class="cf">function</span>(xvar){
 
 <span class="kw">curve</span>(<span class="kw">myfun</span>(x), <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">20</span>)
 <span class="kw">curve</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">myfun</span>(x), <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-31.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># qplot(c(0,20), fun = myfun, stat = &quot;function&quot;, geom = &quot;line&quot;)</span>
+<p><img src="Rprogramming_files/figure-html/part4-31.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># qplot(c(0,20), fun = myfun, stat = &quot;function&quot;, geom = &quot;line&quot;)</span>
 <span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20</span>)), <span class="kw">aes</span>(<span class="dt">x =</span>x)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> myfun, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/part4-32.png" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/part4-32.svg" width="672" /></p>
 
 
 </div>

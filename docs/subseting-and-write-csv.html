@@ -196,12 +196,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="subseting-and-write.csv" class="section level2">
 <h2><span class="header-section-number">3.4</span> Subseting and write.csv</h2>
 <p>자료를 편집하고, subset을 만들고 각각을 파일로 저장하는 방법에 대해 알아보겠습니다.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">IDs =<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(Theoph[,<span class="st">&quot;ID&quot;</span>])) ; IDs
-##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
-nID =<span class="st"> </span><span class="kw">length</span>(IDs) ; nID
-## [1] 12
-
-demog =<span class="st"> </span><span class="kw">unique</span>(Theoph[,<span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>,<span class="st">&quot;Wt&quot;</span>)])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">IDs =<span class="st"> </span><span class="kw">sort</span>(<span class="kw">unique</span>(Theoph[,<span class="st">&quot;ID&quot;</span>])) ; IDs</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nID =<span class="st"> </span><span class="kw">length</span>(IDs) ; nID</code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">demog =<span class="st"> </span><span class="kw">unique</span>(Theoph[,<span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>,<span class="st">&quot;Wt&quot;</span>)])
 <span class="kw">colnames</span>(demog) =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>, <span class="st">&quot;BWT&quot;</span>)
 <span class="kw">write.csv</span>(demog, <span class="st">&quot;1-demog.csv&quot;</span>, <span class="dt">row.names=</span><span class="ot">FALSE</span>, <span class="dt">quote=</span><span class="ot">FALSE</span>, <span class="dt">na=</span><span class="st">&quot;&quot;</span>)
 
@@ -218,8 +217,8 @@ adm =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">
 dv =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;3-dv.csv&quot;</span>, <span class="dt">as.is=</span><span class="ot">TRUE</span>)
 
 AdmDv =<span class="st"> </span><span class="kw">merge</span>(adm, dv, <span class="dt">by=</span><span class="kw">intersect</span>(<span class="kw">colnames</span>(adm), <span class="kw">colnames</span>(dv)), <span class="dt">all=</span><span class="ot">TRUE</span>)
-AdmDv
-##     ID  TIME AMT    DV
+AdmDv</code></pre></div>
+<pre><code>##     ID  TIME AMT    DV
 ## 1    1  0.00 320  0.74
 ## 2    1  0.25  NA  2.84
 ## 3    1  0.57  NA  6.57
@@ -351,11 +350,11 @@ AdmDv
 ## 129 12  7.07  NA  6.59
 ## 130 12  9.03  NA  6.11
 ## 131 12 12.05  NA  4.57
-## 132 12 24.15  NA  1.17</code></pre></div>
+## 132 12 24.15  NA  1.17</code></pre>
 <p>자료를 병합(<code>merge</code>)해 보겠습니다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DataAll =<span class="st"> </span><span class="kw">merge</span>(demog, AdmDv, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;ID&quot;</span>), <span class="dt">all=</span><span class="ot">TRUE</span>)
-DataAll
-##     ID  BWT  TIME AMT    DV
+DataAll</code></pre></div>
+<pre><code>##     ID  BWT  TIME AMT    DV
 ## 1    1 79.6  0.00 320  0.74
 ## 2    1 79.6  0.25  NA  2.84
 ## 3    1 79.6  0.57  NA  6.57
@@ -487,7 +486,7 @@ DataAll
 ## 129 12 60.5  7.07  NA  6.59
 ## 130 12 60.5  9.03  NA  6.11
 ## 131 12 60.5 12.05  NA  4.57
-## 132 12 60.5 24.15  NA  1.17</code></pre></div>
+## 132 12 60.5 24.15  NA  1.17</code></pre>
 
 </div>
 <!-- </div> -->

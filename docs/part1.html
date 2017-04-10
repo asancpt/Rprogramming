@@ -200,30 +200,25 @@ tophit &lt;-<span class="st"> </span>tophit[,<span class="kw">c</span>(<span cla
 
 <span class="co"># y축 이산형 그래프 </span>
 <span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name, <span class="dt">col=</span>lg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/Part1-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">ggplot</span>(acs, <span class="kw">aes</span>(<span class="dt">x =</span> BMI, <span class="dt">y =</span> LDLC, <span class="dt">col=</span>Dx)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
-## Warning: Removed 106 rows containing missing values
-## (geom_point).</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/Part1-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 그래프 정렬하기 &amp; 그래프 격자 없애기 &amp; 수평선 점선으로 바꾸기</span>
+<p><img src="Rprogramming_files/figure-html/Part1-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(acs, <span class="kw">aes</span>(<span class="dt">x =</span> BMI, <span class="dt">y =</span> LDLC, <span class="dt">col=</span>Dx)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code>## Warning: Removed 106 rows containing missing values
+## (geom_point).</code></pre>
+<p><img src="Rprogramming_files/figure-html/Part1-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프 정렬하기 &amp; 그래프 격자 없애기 &amp; 수평선 점선으로 바꾸기</span>
 <span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> <span class="kw">reorder</span>(name, avg))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.x =</span> <span class="kw">element_blank</span>(),
         <span class="dt">panel.grid.minor.x =</span> <span class="kw">element_blank</span>(),
         <span class="dt">panel.grid.major.y =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/Part1-3.png" width="672" /></p>
+<p><img src="Rprogramming_files/figure-html/Part1-3.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x, y축 바꿔서 그치기 &amp; 그래프 격자 없애기 &amp; 수직선 점선으로 바꾸기 &amp; X축 값 정의 및 회전</span>
 <span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(name, avg), <span class="dt">y =</span> avg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">60</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),
         <span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>(),
         <span class="dt">panel.grid.minor.y =</span> <span class="kw">element_blank</span>(),
         <span class="dt">panel.grid.major.x =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 두개 변수로 정의하여 그리기</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두개 변수로 정의하여 그리기</span>
 nameorder &lt;-<span class="st"> </span>tophit<span class="op">$</span>name[<span class="kw">order</span>(tophit<span class="op">$</span>lg, tophit<span class="op">$</span>avg)]
 tophit<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">factor</span>(tophit<span class="op">$</span>name, <span class="dt">levels =</span> nameorder)
 
@@ -233,70 +228,48 @@ tophit<span class="op">$</span>name &lt;-<span class="st"> </span><span class="k
 <span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;NL&quot;</span>, <span class="st">&quot;AL&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>(), <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.55</span>), <span class="co"># 범례를 그래프 안쪽으로 옮김 </span>
         <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>))</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 그룹 별 그래프 분할 </span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그룹 별 그래프 분할 </span>
 <span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">yend =</span> name), <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="kw">aes</span>(<span class="dt">color =</span> lg)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;NL&quot;</span>, <span class="st">&quot;AL&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(lg <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">space =</span> <span class="st">&quot;free_y&quot;</span>) </code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-3.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 그룹 별 데이터 구별</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그룹 별 데이터 구별</span>
 <span class="co"># 색상기준</span>
 <span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-4.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 점 모양 기준</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 모양 기준</span>
 <span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-5.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-6.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-7.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 기준 정의에 따라 구별</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 기준 정의에 따라 구별</span>
 hw &lt;-heightweight
 hw<span class="op">$</span>weightGroup &lt;-<span class="st"> </span><span class="kw">cut</span>(hw<span class="op">$</span>weightLb, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>, <span class="dv">100</span>, <span class="ot">Inf</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt; 100&quot;</span>, <span class="st">&quot;&gt;= 100&quot;</span>))
 
 <span class="co"># x축이 이산형일 때 점들을 랜덤하게 조금식 이동시켜 표현 </span>
 <span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-8.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="co"># 이동 적용</span></code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-9.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 적합된 회귀선 추가하기</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-8.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="co"># 이동 적용</span></code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-9.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 적합된 회귀선 추가하기</span>
 sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) 
 sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-10.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-11.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co">#그룹 별 회귀선 추가하기</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-10.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-11.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#그룹 별 회귀선 추가하기</span>
 sps &lt;-<span class="st"> </span><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)
-sps <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()
-## `geom_smooth()` using method = &#39;loess&#39;</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-12.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 예측값 실제값 그래프로 표현하기 (함수)</span>
+sps <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-12.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 예측값 실제값 그래프로 표현하기 (함수)</span>
 predictvals &lt;-<span class="st"> </span><span class="cf">function</span>(model, xvar, yvar, <span class="dt">xrange =</span> <span class="ot">NULL</span>, <span class="dt">sample =</span> <span class="dv">100</span>, ...){
   <span class="cf">if</span>(<span class="kw">is.null</span>(xrange)){
     <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">class</span>(model) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lm&quot;</span>, <span class="st">&quot;glm&quot;</span>)))
@@ -321,42 +294,32 @@ sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(heightweight, <s
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;grey40&quot;</span>)
 sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> lm_predicted, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> loess_predicted, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-13.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co">#산점도의 점에 라벨 붙이기</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-13.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#산점도의 점에 라벨 붙이기</span>
 sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span> <span class="op">&amp;</span><span class="st"> </span>healthexp <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span>),
              <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
 
 <span class="co"># 특정 값에 특정 단어로 라벨 붙이기</span>
 sp <span class="op">+</span><span class="st"> </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">4350</span>, <span class="dt">y =</span> <span class="fl">5.4</span>, <span class="dt">label =</span> <span class="st">&quot;Canada&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">7400</span>, <span class="dt">y =</span> <span class="fl">6.8</span>, <span class="dt">label =</span> <span class="st">&quot;USA&quot;</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-14.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 데이터 값을 라벨로 붙이기</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-14.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터 값을 라벨로 붙이기</span>
 sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-15.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 라벨의 위치를 데이터값보다 조금 크게 설정</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-15.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 라벨의 위치를 데이터값보다 조금 크게 설정</span>
 sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-16.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x =</span> healthexp <span class="op">+</span><span class="st"> </span><span class="dv">100</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">hjust =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-17.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-
-<span class="co"># 특정 값만 라벨 붙이기</span>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-16.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x =</span> healthexp <span class="op">+</span><span class="st"> </span><span class="dv">100</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">hjust =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-17.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 특정 값만 라벨 붙이기</span>
 cdat &lt;-<span class="st"> </span><span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span> <span class="op">&amp;</span><span class="st"> </span>healthexp <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span>)
 cdat<span class="op">$</span>Name1 &lt;-<span class="st"> </span>cdat<span class="op">$</span>Name 
 idx &lt;-<span class="st"> </span>cdat<span class="op">$</span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andorra&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Canada&quot;</span>) 
 cdat<span class="op">$</span>Name1[<span class="op">!</span>idx] &lt;-<span class="st"> </span><span class="ot">NA</span>
-<span class="kw">ggplot</span>(cdat, <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name1), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)
-## Warning: Removed 24 rows containing missing values
-## (geom_text).</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-18.png" width="672" /></p>
+<span class="kw">ggplot</span>(cdat, <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name1), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</code></pre></div>
+<pre><code>## Warning: Removed 24 rows containing missing values
+## (geom_text).</code></pre>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-32-18.svg" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Warning: Removed 24 rows containing missing values (geom_text).</code></pre></div>
 </div>
             </section>
