@@ -35,22 +35,21 @@ options(
 )
 
 CACHE <- TRUE
-#CACHE <- FALSE
+CACHE <- FALSE
 
-knitr::opts_chunk$set(results = 'markup', cache = CACHE, error = TRUE)
+knitr::opts_chunk$set(results = 'markup', cache = CACHE, 
+    error = TRUE, collapse = TRUE, dev = 'png')
+
+myPackages <- c('knitr')
+lapply(myPackages, function(pkg) {
+    if (system.file(package = pkg) == '') install.packages(pkg)
+})
+#lapply(myPackages, library, character.only = TRUE)
 
 library(knitr)
 library(readxl)
 library(dplyr)
 library(zoo)
-
-myPackages <- c('pkr', 'knitr')
-
-lapply(myPackages, function(pkg) {
-    if (system.file(package = pkg) == '') install.packages(pkg)
-})
-
-lapply(myPackages, library, character.only = TRUE)
 ```
 
 # Preface {-}
@@ -182,9 +181,11 @@ Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. �
 
 ## Syllabus {-}
 
-![Syllabus page 1](inst/Syllabus-0.png)
+2017년 4월 10일 개정된 수업계획서입니다.
 
-![Syllabus page 2](inst/Syllabus-1.png)
+![Syllabus page 1](inst/syllabus/syllabus_rev-0.png)
+
+![Syllabus page 1](inst/syllabus/syllabus_rev-1.png)
 
 
 \mainmatter

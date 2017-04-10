@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Programming - Lecture Notes</title>
+  <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
+  <meta name="generator" content="bookdown 0.3.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Programming - Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://asancpt.github.io/Rprogramming/" />
+  <meta property="og:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+  <meta property="og:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="github-repo" content="asancpt/Rprogramming" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Programming - Lecture Notes" />
+  
+  <meta name="twitter:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="twitter:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+
+<meta name="author" content="Kyun-Seop Bae, Sungpil Han">
+
+
+<meta name="date" content="2017-04-07">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="using-coursera.html">
+<link rel="next" href="acknowledgement.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">R programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="teaching-assistant.html"><a href="teaching-assistant.html"><i class="fa fa-check"></i>Teaching Assistant</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html"><i class="fa fa-check"></i>FAQ</a><ul>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>접속 관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#ecb69cec849deab480eba0a8"><i class="fa fa-check"></i>출석관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>과제 관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#coursera-"><i class="fa fa-check"></i>Coursera 관련</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>1</b> R language</a></li>
+<li class="chapter" data-level="2" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>2</b> Graphics</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="upper.html"><a href="upper.html"><i class="fa fa-check"></i><b>2.2</b> 상위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="upper.html"><a href="upper.html#-----arguments"><i class="fa fa-check"></i><b>2.2.1</b> 상위수준 그림 함수의 주요 인자 (arguments)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="upper.html"><a href="upper.html#scatter-plot"><i class="fa fa-check"></i><b>2.2.2</b> scatter plot</a></li>
+<li class="chapter" data-level="2.2.3" data-path="upper.html"><a href="upper.html#histogram"><i class="fa fa-check"></i><b>2.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="2.2.4" data-path="upper.html"><a href="upper.html#box-whisker-plot"><i class="fa fa-check"></i><b>2.2.4</b> Box-Whisker Plot</a></li>
+<li class="chapter" data-level="2.2.5" data-path="upper.html"><a href="upper.html#bar-plot"><i class="fa fa-check"></i><b>2.2.5</b> Bar Plot</a></li>
+<li class="chapter" data-level="2.2.6" data-path="upper.html"><a href="upper.html#pie-chart"><i class="fa fa-check"></i><b>2.2.6</b> pie chart</a></li>
+<li class="chapter" data-level="2.2.7" data-path="upper.html"><a href="upper.html#matplot-"><i class="fa fa-check"></i><b>2.2.7</b> matplot 함수</a></li>
+<li class="chapter" data-level="2.2.8" data-path="upper.html"><a href="upper.html#scatter-plot-matrices-pairs-plots"><i class="fa fa-check"></i><b>2.2.8</b> Scatter plot matrices (pairs plots)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lower.html"><a href="lower.html"><i class="fa fa-check"></i><b>2.3</b> 하위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="lower.html"><a href="lower.html#-----add"><i class="fa fa-check"></i><b>2.3.1</b> 점, 선, 설명 추가 하기 {add}</a></li>
+<li class="chapter" data-level="2.3.2" data-path="lower.html"><a href="lower.html#polygon-"><i class="fa fa-check"></i><b>2.3.2</b> polygon 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="print.html"><a href="print.html"><i class="fa fa-check"></i><b>2.4</b> 그림 출력하기</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="print.html"><a href="print.html#pdf-graphics-devices"><i class="fa fa-check"></i><b>2.4.1</b> pdf graphics devices</a></li>
+<li class="chapter" data-level="2.4.2" data-path="print.html"><a href="print.html#png-graphics-devices"><i class="fa fa-check"></i><b>2.4.2</b> PNG graphics devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>3</b> Data Import / Export</a><ul>
+<li class="chapter" data-level="3.1" data-path="read-csv.html"><a href="read-csv.html"><i class="fa fa-check"></i><b>3.1</b> Read.csv</a></li>
+<li class="chapter" data-level="3.2" data-path="theoph-.html"><a href="theoph-.html"><i class="fa fa-check"></i><b>3.2</b> Theoph 데이타</a></li>
+<li class="chapter" data-level="3.3" data-path="lattice.html"><a href="lattice.html"><i class="fa fa-check"></i><b>3.3</b> lattice</a></li>
+<li class="chapter" data-level="3.4" data-path="subseting-and-write-csv.html"><a href="subseting-and-write-csv.html"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="command.html"><a href="command.html"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
+<li class="chapter" data-level="4.2" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
+<li class="chapter" data-level="4.3" data-path="common-data-structures.html"><a href="common-data-structures.html"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
+<li class="chapter" data-level="4.4" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
+<li class="chapter" data-level="4.6" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="5.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="part2.html"><a href="part2.html"><i class="fa fa-check"></i><b>5.2</b> Part2</a></li>
+<li class="chapter" data-level="5.3" data-path="part3.html"><a href="part3.html"><i class="fa fa-check"></i><b>5.3</b> Part3</a></li>
+<li class="chapter" data-level="5.4" data-path="part4.html"><a href="part4.html"><i class="fa fa-check"></i><b>5.4</b> Part4</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>A</b> As-is R Files</a><ul>
+<li class="chapter" data-level="A.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>A.1</b> Lecture 3</a></li>
+<li class="chapter" data-level="A.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>A.2</b> Lecture 4</a></li>
+<li class="chapter" data-level="A.3" data-path="lecture-5.html"><a href="lecture-5.html"><i class="fa fa-check"></i><b>A.3</b> Lecture 5</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>B</b> R Tips</a><ul>
+<li class="chapter" data-level="B.1" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>B.1</b> Using Coursera</a></li>
+<li class="chapter" data-level="B.2" data-path="anova-in-r.html"><a href="anova-in-r.html"><i class="fa fa-check"></i><b>B.2</b> ANOVA in R</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="anova-in-r.html"><a href="anova-in-r.html#descriptive-statistics"><i class="fa fa-check"></i><b>B.2.1</b> Descriptive statistics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>C</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Programming - Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova-in-r" class="section level2">
+<h2><span class="header-section-number">B.2</span> ANOVA in R</h2>
+<p>1-Way ANOVA We’re going to use a data set called InsectSprays. 6 different insect sprays (1 Independent Variable with 6 levels) were tested to see if there was a difference in the number of insects found in the field after each spraying (Dependent Variable).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attach</span>(InsectSprays)
+<span class="kw">data</span>(InsectSprays)
+<span class="kw">str</span>(InsectSprays)
+## &#39;data.frame&#39;:    72 obs. of  2 variables:
+##  $ count: num  10 7 20 14 14 12 10 23 17 20 ...
+##  $ spray: Factor w/ 6 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre></div>
+<div id="descriptive-statistics" class="section level3">
+<h3><span class="header-section-number">B.2.1</span> Descriptive statistics</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Mean, variance, number of elements in each cell</li>
+<li>Visualise the data – boxplot; look at distribution, look for outliers We’ll use the tapply() function which is a helpful shortcut in processing data, basically allowing you to specify a response variable, a factor (or factors) and a function that should be applied to each subset of the response variable defined by each level of the factor. I.e. Instead of doing:</li>
+</ol>
+<blockquote>
+<p> mean(count[spray==“A”])   # and the same for B, C, D etc. We use tapply(response,factor,function-name) as follows • Let’s look at the means: tapply(count, spray, mean) A B C D E F 14.500000 15.333333 2.083333 4.916667 3.500000 16.666667 • The variances: tapply(count, spray, var) A B C D E F 22.272727 18.242424 3.901515 6.265152 3.000000 38.606061 • And sample sizes tapply(count, spray, length) A B C D E F 12 12 12 12 12 12 • And a boxplot: boxplot(count ~ spray)</p>
+</blockquote>
+<p>A couple of Asides • Default order is alphabetical. R needs, for example, the control condition to be 1st for treatment contrasts to be easily interpreted. • If they’re not automatically in the correct order – i.e. if they were ordered variables, but came out alphabetically (e.g. “Very.short”,“Short”,“Long”,“Very.long” or “A”, “B”, “Control”), re-order the variables for ordered IV: To change to, for example, F &lt; B &lt; C &lt; D &lt; E &lt; A, use: &gt; Photoperiod&lt;-ordered(spray,levels=c(“F”,“B”,“C”,“D”,“E”,“A”)) Check it: &gt; tapply(count,Photoperiod,mean) F B C D E A 16.666667 15.333333 2.083333 4.916667 3.500000 14.500000 • If you want to check that a variable is a factor (especially for variables with numbers as factor levels). We use the is.factor directive to find this out is.factor(spray) [1] TRUE 2. Run 1-way ANOVA a. Oneway.test ( ) • Use, for example: &gt; oneway.test(count~spray) One-way analysis of means (not assuming equal variances) data: count and spray F = 36.0654, num df = 5.000, denom df = 30.043, p-value = 7.999e-12 • Default is equal variances (i.e. homogeneity of variance) not assumed – i.e. Welch’s correction applied (and this explains why the denom df (which is normally k*(n-1)) is not a whole number in the output) o To change this, set “var.equal=” option to TRUE • Oneway.test( ) corrects for non-homogeneity, but doesn’t give much information – i.e. just F, p-value and dfs for numerator and denominator – no MS etc. b. Run an ANOVA using aov( ) • Use this function and store output and use extraction functions to extract what you need. &gt; aov.out = aov(count ~ spray, data=InsectSprays) &gt; summary(aov.out)</p>
+<p>F(5,66) = 34.7; p &lt; .000 3. Post Hoc tests • Tukey HSD(Honestly Significant Difference) is default in R &gt; TukeyHSD(aov.out) Tukey multiple comparisons of means 95% family-wise confidence level Fit: aov(formula = count ~ spray, data = InsectSprays)</p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Contrasts NB: ANOVA and linear regression are the same thing – more on that tomorrow. For the moment, the main point to note is that you can look at the results from aov() in terms of the linear regression that was carried out, i.e. you can see the parameters that were estimated. &gt; summary.lm(aov.out) Implicitly this can be understood as a set of (non-orthogonal) contrasts of the first group against each of the other groups. R uses these so-called ‘Treatment’ contrasts as the default, but you can request alternative contrasts (see later) Interpreting a Treatment Contrasts Output</p></li>
+<li>Test assumptions</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Homogeneity of variance bartlett.test(count ~ spray, data=InsectSprays) Bartlett test of homogeneity of variances data: count by spray Bartlett’s K-squared = 25.9598, df = 5, p-value = 9.085e-05  Significant result, therefore variances cannot be assumed to be equal</li>
+<li>Model checking plots &gt; plot(aov.out) # the aov command prepares the data for these plots</li>
+</ol>
+<p>This shows if there is a pattern in the residuals, and ideally should show similar scatter for each condition. Here there is a worrying effect of larger residuals for larger fitted values. This is called ‘heteroscedascity’ meaning that not only is variance in the response not equal across groups, but that the variance has some specific relationship with the size of the response. In fact you could see this in the original boxplots. It contradicts assumptions made when doing an ANOVA.</p>
+<p>This looks for normality of the residuals; if they are not normal, the assumptions of ANOVA are potentially violated. This is like the first plot but now to specifically test if the residuals increase with the fitted values, which they do.</p>
+<p>This gives an idea of which levels of the factor are best fitted. 6. Non-parametric alternative to ANOVA: &gt; kruskal.test(count ~ spray, data=InsectSprays) Kruskal-Wallis rank sum test data: count by spray Kruskal-Wallis chi-squared = 54.6913, df = 5, p-value = 1.511e-10 As for the Wilcoxon test (or Mann-Whitney test) with two samples, this test converts the response values to ranks, and tests whether the ranks are distributed equally across the conditions, as would be expected under the null hypothesis. 7. ANOVA as Linear Regression Analysis This time, rather than ‘attaching’ the data frame, we will use the ‘with’ construct (see session one) to name the data frame and then do operations on variables within it.</p>
+<blockquote>
+<p>summary(PlantGrowth) weight group Min. :3.590 ctrl:10 1st Qu.:4.550 trt1:10 Median :5.155 trt2:10 Mean :5.073 3rd Qu.:5.530 Max. :6.310 with(PlantGrowth, tapply(weight, group, mean)) ctrl trt1 trt2 5.032 4.661 5.526 with(PlantGrowth, tapply(weight, group, var)) ctrl trt1 trt2 0.3399956 0.6299211 0.1958711 with(PlantGrowth, bartlett.test(weight ~ group)) Bartlett test of homogeneity of variances</p>
+</blockquote>
+<p>data: weight by group Bartlett’s K-squared = 2.8786, df = 2, p-value = 0.2371 Now instead of running an ANOVA with aov(), we will run a linear regression with lm() &gt; lm.out = with(PlantGrowth, lm(weight ~ group)) &gt; summary(lm.out) # the default summary display will be the linear regression Call: lm(formula = weight ~ group) Residuals: Min 1Q Median 3Q Max -1.0710 -0.4180 -0.0060 0.2627 1.3690 Coefficients: Estimate Std. Error t value Pr(&gt;|t|) (Intercept) 5.0320 0.1971 25.527 &lt;2e-16 *** grouptrt1 -0.3710 0.2788 -1.331 0.1944 grouptrt2 0.4940 0.2788 1.772 0.0877 . — Signif. codes: 0 ‘<em><strong>’ 0.001 ‘</strong>’ 0.01 ‘</em>’ 0.05 ‘.’ 0.1 ‘’ 1 Residual standard error: 0.6234 on 27 degrees of freedom Multiple R-squared: 0.2641, Adjusted R-squared: 0.2096 F-statistic: 4.846 on 2 and 27 DF, p-value: 0.01591 &gt; summary.aov(lm.out) # we can ask for the corresponding ANOVA table Df Sum Sq Mean Sq F value Pr(&gt;F) group 2 3.766 1.8832 4.846 0.0159 Residuals 27 10.492 0.3886 There is a difference, but where does this difference lie? Post Hoc test: &gt; TukeyHSD(results) Tukey multiple comparisons of means 95% family-wise confidence level Fit: aov(formula = weight ~ group) $group diff lwr upr p adj trt1-ctrl -0.371 -1.0622161 0.3202161 0.3908711 trt2-ctrl 0.494 -0.1972161 1.1852161 0.1979960 trt2-trt1 0.865 0.1737839 1.5562161 0.0120064</p>
+<p><a href="http://homepages.inf.ed.ac.uk/bwebb/statistics/ANOVA_in_R.pdf" class="uri">http://homepages.inf.ed.ac.uk/bwebb/statistics/ANOVA_in_R.pdf</a></p>
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="using-coursera.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="acknowledgement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/999-Appendix.Rmd",
+"text": "Edit"
+},
+"download": ["Rprogramming.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

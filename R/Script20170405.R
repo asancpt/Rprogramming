@@ -1,11 +1,12 @@
+
 # 2017-04-05 R-intro.pdf Chapter 08
 
 pois
-?dbeta
+# ?dbeta
 dnorm(0)
 pnorm(0)
 1 - pnorm(1.96)
-?pnorm
+# ?pnorm
 pnorm(1.96, lower.tail=FALSE)
 qnorm(0.5)
 qnorm(0.975)
@@ -23,7 +24,7 @@ sd(x)
 qnorm(0.995)
 qf(0.01, 2, 7, lower.tail = FALSE)
 
-?fivenum
+# ?fivenum
 faithful
 str(faithful)
 eruptions
@@ -38,11 +39,11 @@ hist(eruptions)
 hist(eruptions, seq(1.6, 5.2, 0.2), prob=TRUE)
 lines(density(eruptions, bw=0.1))
 rug(eruptions)
-?hist
-?density
-lines(density(eruptions, bw="SJ"))
+# ?hist
+# ?density
+lines(density(eruptions, bw="SJ"), lty=3)
 plot(ecdf(eruptions), do.points=FALSE, verticals=TRUE)
-?plot
+# ?plot
 ecdf(eruptions)
 x = ecdf(eruptions)
 x
@@ -54,22 +55,23 @@ long <- eruptions[eruptions > 3]
 x <- seq(3, 5.4, 0.01)
 pnorm(x, mean=mean(long), sd=sqrt(var(long)))
 
-?par
+# ?par
 x <- rt(250, df = 5)
 qqnorm(x); qqline(x)
+
 curve(dnorm, -5, 5)
 y = density(x)
 lines(y, lty=3)
-?ppoints
+# ?ppoints
 ppoints(250)
 ppoints(10)
 
 qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
 windows()
 qqplot(qt(runif(250), df = 5), x, xlab = "Q-Q plot for t dsn")
-?shapiro.test
-?ks.test
-?t.test
+# ?shapiro.test
+# ?ks.test
+# ?t.test
 
 
 A = c(79.98, 80.04, 80.02, 80.04, 80.03, 80.03, 80.04, 79.97, 80.05, 80.03, 80.02, 80.00, 80.02)
@@ -92,12 +94,21 @@ for (i in 1:10) {
   print(2*i)
 }
 
+for (i in 1:10) print(2*i)
+
+while (    ) {
+# Statements
+}
+
 # # if ~ else ~
 # if (   ) {
 # # Statements 1
 # } else {
 # # Statements 2
 # }
+# 
+# if (    ) # Statement1
+# else # Statement2
 # 
 # if (   ) {
 # # Statements 1
@@ -114,6 +125,11 @@ for (i in 1:10) {
 #
 
 # Chapter 10 Writing your own functions
+
+Square = function(x=0)
+{
+  return(x*x)
+}
 
 twosam = function(y1, y2) 
 {
@@ -145,15 +161,16 @@ T.test = function(y1, y2)
 
   tst = (yb1 - yb2)/sqrt(s*(1/n1 + 1/n2))
   DF = n1 + n2 - 2
-  p.val = pt(tst, df=DF)
+  p.val = 2*(1 - pt(abs(tst), df=DF))
   
-  Res = list(tst, DF, p.val)
-  names(Res) = c("t", "df", "p-value")
+  Res = list(tst, DF, p.val, yb1, yb2)
+  names(Res) = c("t", "df", "p-value", "mean of x", "mean of y")
   
   return (Res)
 }
 
-T.test(x, y)
+res = T.test(x, y)
+t.test(x, y)
 
 
 bslash = function(X, y) 
@@ -180,7 +197,7 @@ area = function(f, a, b, eps=1.0e-06, lim=10)
 {
   fun1 = function(f, a, b, fa, fb, a0, eps, lim, fun) 
   {
-  ## function 'fun1'is only visible inside 'area'
+  ## function 'fun1’is only visible inside 'area’
     d = (a + b)/2
     h = (b - a)/4
     fd = f(d)
@@ -236,7 +253,7 @@ open.account = function(total)
     withdraw = function(amount) 
     {
       if(amount > total)
-      stop("You don't have that much money!\n")
+      stop("You don’t have that much money!\n")
       total <<- total - amount
       cat(amount, "withdrawn. Your balance is", total, "\n\n")
     },
@@ -255,5 +272,35 @@ robert$balance()
 ross$deposit(50)
 ross$balance()
 ross$withdraw(500)
+
+
+
+# More basic keywords and functions
+1 %in% c(1,2,3,4)
+5 %in% c(1,2,3,4)
+is.finite(Inf)
+prod(1:3)
+cummax(1:10)
+cummax(10:1)
+# ?xor
+x = 11:20
+x
+which(x==3)
+which(x==13)
+
+length(x)
+y = "my string"
+length(y)
+nchar(y)
+strsplit(y, " ")
+strsplit(y, " ")[[1]]
+substr(y, 4, 5)
+
+
+sample(1:10)
+sample(1:10, 20)
+sample(1:10, 20, replace=TRUE)
+sample(rep(1:10,2))
+
 
 

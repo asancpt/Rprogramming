@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Programming - Lecture Notes</title>
+  <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
+  <meta name="generator" content="bookdown 0.3.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Programming - Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://asancpt.github.io/Rprogramming/" />
+  <meta property="og:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+  <meta property="og:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="github-repo" content="asancpt/Rprogramming" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Programming - Lecture Notes" />
+  
+  <meta name="twitter:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="twitter:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+
+<meta name="author" content="Kyun-Seop Bae, Sungpil Han">
+
+
+<meta name="date" content="2017-04-10">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="assignments.html">
+<link rel="next" href="as-is-r-files.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">R programming</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="teaching-assistant.html"><a href="teaching-assistant.html"><i class="fa fa-check"></i>Teaching Assistant</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html"><i class="fa fa-check"></i>FAQ</a><ul>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>접속 관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#ecb69cec849deab480eba0a8"><i class="fa fa-check"></i>출석관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>과제 관련</a></li>
+<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#coursera-"><i class="fa fa-check"></i>Coursera 관련</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>1</b> R language</a></li>
+<li class="chapter" data-level="2" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>2</b> Graphics</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="upper.html"><a href="upper.html"><i class="fa fa-check"></i><b>2.2</b> 상위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="upper.html"><a href="upper.html#-----arguments"><i class="fa fa-check"></i><b>2.2.1</b> 상위수준 그림 함수의 주요 인자 (arguments)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="upper.html"><a href="upper.html#scatter-plot"><i class="fa fa-check"></i><b>2.2.2</b> scatter plot</a></li>
+<li class="chapter" data-level="2.2.3" data-path="upper.html"><a href="upper.html#histogram"><i class="fa fa-check"></i><b>2.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="2.2.4" data-path="upper.html"><a href="upper.html#box-whisker-plot"><i class="fa fa-check"></i><b>2.2.4</b> Box-Whisker Plot</a></li>
+<li class="chapter" data-level="2.2.5" data-path="upper.html"><a href="upper.html#bar-plot"><i class="fa fa-check"></i><b>2.2.5</b> Bar Plot</a></li>
+<li class="chapter" data-level="2.2.6" data-path="upper.html"><a href="upper.html#pie-chart"><i class="fa fa-check"></i><b>2.2.6</b> pie chart</a></li>
+<li class="chapter" data-level="2.2.7" data-path="upper.html"><a href="upper.html#matplot-"><i class="fa fa-check"></i><b>2.2.7</b> matplot 함수</a></li>
+<li class="chapter" data-level="2.2.8" data-path="upper.html"><a href="upper.html#scatter-plot-matrices-pairs-plots"><i class="fa fa-check"></i><b>2.2.8</b> Scatter plot matrices (pairs plots)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="lower.html"><a href="lower.html"><i class="fa fa-check"></i><b>2.3</b> 하위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="lower.html"><a href="lower.html#-----add"><i class="fa fa-check"></i><b>2.3.1</b> 점, 선, 설명 추가 하기 {add}</a></li>
+<li class="chapter" data-level="2.3.2" data-path="lower.html"><a href="lower.html#polygon-"><i class="fa fa-check"></i><b>2.3.2</b> polygon 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="print.html"><a href="print.html"><i class="fa fa-check"></i><b>2.4</b> 그림 출력하기</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="print.html"><a href="print.html#pdf-graphics-devices"><i class="fa fa-check"></i><b>2.4.1</b> pdf graphics devices</a></li>
+<li class="chapter" data-level="2.4.2" data-path="print.html"><a href="print.html#png-graphics-devices"><i class="fa fa-check"></i><b>2.4.2</b> PNG graphics devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>3</b> Data Import / Export</a><ul>
+<li class="chapter" data-level="3.1" data-path="read-csv.html"><a href="read-csv.html"><i class="fa fa-check"></i><b>3.1</b> Read.csv</a></li>
+<li class="chapter" data-level="3.2" data-path="theoph-.html"><a href="theoph-.html"><i class="fa fa-check"></i><b>3.2</b> Theoph 데이타</a></li>
+<li class="chapter" data-level="3.3" data-path="lattice.html"><a href="lattice.html"><i class="fa fa-check"></i><b>3.3</b> lattice</a></li>
+<li class="chapter" data-level="3.4" data-path="subseting-and-write-csv.html"><a href="subseting-and-write-csv.html"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="command.html"><a href="command.html"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
+<li class="chapter" data-level="4.2" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
+<li class="chapter" data-level="4.3" data-path="common-data-structures.html"><a href="common-data-structures.html"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
+<li class="chapter" data-level="4.4" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
+<li class="chapter" data-level="4.6" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="5.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="part1.html"><a href="part1.html"><i class="fa fa-check"></i><b>5.2</b> Part1</a></li>
+<li class="chapter" data-level="5.3" data-path="part2.html"><a href="part2.html"><i class="fa fa-check"></i><b>5.3</b> Part2</a></li>
+<li class="chapter" data-level="5.4" data-path="part3.html"><a href="part3.html"><i class="fa fa-check"></i><b>5.4</b> Part3</a></li>
+<li class="chapter" data-level="5.5" data-path="part4.html"><a href="part4.html"><i class="fa fa-check"></i><b>5.5</b> Part4</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
+<li class="chapter" data-level="A.1" data-path="assignment-1.html"><a href="assignment-1.html"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="assignment-1.html"><a href="assignment-1.html#concunitconv-test.r"><i class="fa fa-check"></i><b>A.1.1</b> concUnitConv-test.R</a></li>
+<li class="chapter" data-level="A.1.2" data-path="assignment-1.html"><a href="assignment-1.html#concunitconv-test.rout"><i class="fa fa-check"></i><b>A.1.2</b> concUnitConv-test.Rout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>B</b> As-is R Files</a><ul>
+<li class="chapter" data-level="B.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>B.1</b> Lecture 3</a></li>
+<li class="chapter" data-level="B.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>B.2</b> Lecture 4</a></li>
+<li class="chapter" data-level="B.3" data-path="lecture-5.html"><a href="lecture-5.html"><i class="fa fa-check"></i><b>B.3</b> Lecture 5</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>C</b> R Tips</a><ul>
+<li class="chapter" data-level="C.1" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>C.1</b> Using Coursera</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Programming - Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="assignment-1" class="section level2">
+<h2><span class="header-section-number">A.1</span> Assignment 1</h2>
+<p>첨부한 concUnitConv-test.R과 유사한 R script를 실행하였을 때, concUnitConv-test.Rout과 유사한 결과나 나오는 concUnitConv.R 파일을 작성하시오.</p>
+<ul>
+<li>제출기한: 2017-05-10 18:00</li>
+<li>제출방법: R scirpt와 output을 <a href="mailto:k@acr.kr">k@acr.kr</a>, <a href="mailto:shan@acp.kr">shan@acp.kr</a>, <a href="mailto:sec@acp.kr">sec@acp.kr</a> 로 제출</li>
+</ul>
+<div id="concunitconv-test.r" class="section level3">
+<h3><span class="header-section-number">A.1.1</span> concUnitConv-test.R</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;D:/G/Desk/R/concUnitConv.R&quot;</span>)
+
+<span class="kw">concUnitConv</span>() <span class="co"># Wrong input</span>
+<span class="kw">concUnitConv</span>(<span class="st">&quot;kg/L&quot;</span>, <span class="st">&quot;g/L&quot;</span>) <span class="co"># Wrong input</span>
+<span class="kw">concUnitConv</span>(<span class="st">&quot;g/kL&quot;</span>, <span class="st">&quot;g/L&quot;</span>) <span class="co"># Wrong input</span>
+
+<span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;ug/mL&quot;</span>)
+Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;ug/L&quot;</span>)
+Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mg/mL&quot;</span>)
+Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>) <span class="co"># Wrong input</span>
+Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW=</span><span class="op">-</span><span class="dv">100</span>) <span class="co"># Wrong input</span>
+Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mM&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>) <span class="co"># Wrong input</span>
+Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+Theoph<span class="op">$</span>mM =<span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+Theoph<span class="op">$</span>mM <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mmol/L&quot;</span>, <span class="st">&quot;ug/L&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+Theoph<span class="op">$</span>mM <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mmol/L&quot;</span>, <span class="st">&quot;ug/mL&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)</code></pre></div>
+</div>
+<div id="concunitconv-test.rout" class="section level3">
+<h3><span class="header-section-number">A.1.2</span> concUnitConv-test.Rout</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">source</span>(<span class="st">&quot;D:/G/Desk/R/concUnitConv.R&quot;</span>)
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">concUnitConv</span>() <span class="co"># Wrong input</span>
+Error <span class="cf">in</span> <span class="kw">concUnitConv</span>() <span class="op">:</span><span class="st"> </span>Source concentration unit is not valid.
+<span class="op">&gt;</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;kg/L&quot;</span>, <span class="st">&quot;g/L&quot;</span>) <span class="co"># Wrong input</span>
+Error <span class="cf">in</span> <span class="kw">concUnitConv</span>(<span class="st">&quot;kg/L&quot;</span>, <span class="st">&quot;g/L&quot;</span>) <span class="op">:</span><span class="st"> </span>Source amount is not supported.
+<span class="op">&gt;</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;g/kL&quot;</span>, <span class="st">&quot;g/L&quot;</span>) <span class="co"># Wrong input</span>
+Error <span class="cf">in</span> <span class="kw">concUnitConv</span>(<span class="st">&quot;g/kL&quot;</span>, <span class="st">&quot;g/L&quot;</span>) <span class="op">:</span><span class="st"> </span>Volume unit is not supported.
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;ug/mL&quot;</span>)
+  
+<span class="dv">1</span> 
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;ug/L&quot;</span>)
+  [<span class="dv">1</span>]   <span class="dv">740</span>  <span class="dv">2840</span>  <span class="dv">6570</span> <span class="dv">10500</span>  <span class="dv">9660</span>  <span class="dv">8580</span>  <span class="dv">8360</span>  <span class="dv">7470</span>  <span class="dv">6890</span>  <span class="dv">5940</span>  <span class="dv">3280</span>     <span class="dv">0</span>  <span class="dv">1720</span>  <span class="dv">7910</span>  <span class="dv">8310</span>  <span class="dv">8330</span>  <span class="dv">6850</span>  <span class="dv">6080</span>  <span class="dv">5400</span>  <span class="dv">4550</span>  <span class="dv">3010</span>   <span class="dv">900</span>     <span class="dv">0</span>  <span class="dv">4400</span>  <span class="dv">6900</span>  <span class="dv">8200</span>  <span class="dv">7800</span>
+ [<span class="dv">28</span>]  <span class="dv">7500</span>  <span class="dv">6200</span>  <span class="dv">5300</span>  <span class="dv">4900</span>  <span class="dv">3700</span>  <span class="dv">1050</span>     <span class="dv">0</span>  <span class="dv">1890</span>  <span class="dv">4600</span>  <span class="dv">8600</span>  <span class="dv">8380</span>  <span class="dv">7540</span>  <span class="dv">6880</span>  <span class="dv">5780</span>  <span class="dv">5330</span>  <span class="dv">4190</span>  <span class="dv">1150</span>     <span class="dv">0</span>  <span class="dv">2020</span>  <span class="dv">5630</span> <span class="dv">11400</span>  <span class="dv">9330</span>  <span class="dv">8740</span>  <span class="dv">7560</span>  <span class="dv">7090</span>  <span class="dv">5900</span>  <span class="dv">4370</span>
+ [<span class="dv">55</span>]  <span class="dv">1570</span>     <span class="dv">0</span>  <span class="dv">1290</span>  <span class="dv">3080</span>  <span class="dv">6440</span>  <span class="dv">6320</span>  <span class="dv">5530</span>  <span class="dv">4940</span>  <span class="dv">4020</span>  <span class="dv">3460</span>  <span class="dv">2780</span>   <span class="dv">920</span>   <span class="dv">150</span>   <span class="dv">850</span>  <span class="dv">2350</span>  <span class="dv">5020</span>  <span class="dv">6580</span>  <span class="dv">7090</span>  <span class="dv">6660</span>  <span class="dv">5250</span>  <span class="dv">4390</span>  <span class="dv">3530</span>  <span class="dv">1150</span>     <span class="dv">0</span>  <span class="dv">3050</span>  <span class="dv">3050</span>  <span class="dv">7310</span>
+ [<span class="dv">82</span>]  <span class="dv">7560</span>  <span class="dv">6590</span>  <span class="dv">5880</span>  <span class="dv">4730</span>  <span class="dv">4570</span>  <span class="dv">3000</span>  <span class="dv">1250</span>     <span class="dv">0</span>  <span class="dv">7370</span>  <span class="dv">9030</span>  <span class="dv">7140</span>  <span class="dv">6330</span>  <span class="dv">5660</span>  <span class="dv">5670</span>  <span class="dv">4240</span>  <span class="dv">4110</span>  <span class="dv">3160</span>  <span class="dv">1120</span>   <span class="dv">240</span>  <span class="dv">2890</span>  <span class="dv">5220</span>  <span class="dv">6410</span>  <span class="dv">7830</span> <span class="dv">10210</span>  <span class="dv">9180</span>  <span class="dv">8020</span>  <span class="dv">7140</span>
+[<span class="dv">109</span>]  <span class="dv">5680</span>  <span class="dv">2420</span>     <span class="dv">0</span>  <span class="dv">4860</span>  <span class="dv">7240</span>  <span class="dv">8000</span>  <span class="dv">6810</span>  <span class="dv">5870</span>  <span class="dv">5220</span>  <span class="dv">4450</span>  <span class="dv">3620</span>  <span class="dv">2690</span>   <span class="dv">860</span>     <span class="dv">0</span>  <span class="dv">1250</span>  <span class="dv">3960</span>  <span class="dv">7820</span>  <span class="dv">9720</span>  <span class="dv">9750</span>  <span class="dv">8570</span>  <span class="dv">6590</span>  <span class="dv">6110</span>  <span class="dv">4570</span>  <span class="dv">1170</span>
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mg/mL&quot;</span>)
+  [<span class="dv">1</span>] <span class="fl">0.00074</span> <span class="fl">0.00284</span> <span class="fl">0.00657</span> <span class="fl">0.01050</span> <span class="fl">0.00966</span> <span class="fl">0.00858</span> <span class="fl">0.00836</span> <span class="fl">0.00747</span> <span class="fl">0.00689</span> <span class="fl">0.00594</span> <span class="fl">0.00328</span> <span class="fl">0.00000</span> <span class="fl">0.00172</span> <span class="fl">0.00791</span> <span class="fl">0.00831</span> <span class="fl">0.00833</span> <span class="fl">0.00685</span> <span class="fl">0.00608</span> <span class="fl">0.00540</span> <span class="fl">0.00455</span>
+ [<span class="dv">21</span>] <span class="fl">0.00301</span> <span class="fl">0.00090</span> <span class="fl">0.00000</span> <span class="fl">0.00440</span> <span class="fl">0.00690</span> <span class="fl">0.00820</span> <span class="fl">0.00780</span> <span class="fl">0.00750</span> <span class="fl">0.00620</span> <span class="fl">0.00530</span> <span class="fl">0.00490</span> <span class="fl">0.00370</span> <span class="fl">0.00105</span> <span class="fl">0.00000</span> <span class="fl">0.00189</span> <span class="fl">0.00460</span> <span class="fl">0.00860</span> <span class="fl">0.00838</span> <span class="fl">0.00754</span> <span class="fl">0.00688</span>
+ [<span class="dv">41</span>] <span class="fl">0.00578</span> <span class="fl">0.00533</span> <span class="fl">0.00419</span> <span class="fl">0.00115</span> <span class="fl">0.00000</span> <span class="fl">0.00202</span> <span class="fl">0.00563</span> <span class="fl">0.01140</span> <span class="fl">0.00933</span> <span class="fl">0.00874</span> <span class="fl">0.00756</span> <span class="fl">0.00709</span> <span class="fl">0.00590</span> <span class="fl">0.00437</span> <span class="fl">0.00157</span> <span class="fl">0.00000</span> <span class="fl">0.00129</span> <span class="fl">0.00308</span> <span class="fl">0.00644</span> <span class="fl">0.00632</span>
+ [<span class="dv">61</span>] <span class="fl">0.00553</span> <span class="fl">0.00494</span> <span class="fl">0.00402</span> <span class="fl">0.00346</span> <span class="fl">0.00278</span> <span class="fl">0.00092</span> <span class="fl">0.00015</span> <span class="fl">0.00085</span> <span class="fl">0.00235</span> <span class="fl">0.00502</span> <span class="fl">0.00658</span> <span class="fl">0.00709</span> <span class="fl">0.00666</span> <span class="fl">0.00525</span> <span class="fl">0.00439</span> <span class="fl">0.00353</span> <span class="fl">0.00115</span> <span class="fl">0.00000</span> <span class="fl">0.00305</span> <span class="fl">0.00305</span>
+ [<span class="dv">81</span>] <span class="fl">0.00731</span> <span class="fl">0.00756</span> <span class="fl">0.00659</span> <span class="fl">0.00588</span> <span class="fl">0.00473</span> <span class="fl">0.00457</span> <span class="fl">0.00300</span> <span class="fl">0.00125</span> <span class="fl">0.00000</span> <span class="fl">0.00737</span> <span class="fl">0.00903</span> <span class="fl">0.00714</span> <span class="fl">0.00633</span> <span class="fl">0.00566</span> <span class="fl">0.00567</span> <span class="fl">0.00424</span> <span class="fl">0.00411</span> <span class="fl">0.00316</span> <span class="fl">0.00112</span> <span class="fl">0.00024</span>
+[<span class="dv">101</span>] <span class="fl">0.00289</span> <span class="fl">0.00522</span> <span class="fl">0.00641</span> <span class="fl">0.00783</span> <span class="fl">0.01021</span> <span class="fl">0.00918</span> <span class="fl">0.00802</span> <span class="fl">0.00714</span> <span class="fl">0.00568</span> <span class="fl">0.00242</span> <span class="fl">0.00000</span> <span class="fl">0.00486</span> <span class="fl">0.00724</span> <span class="fl">0.00800</span> <span class="fl">0.00681</span> <span class="fl">0.00587</span> <span class="fl">0.00522</span> <span class="fl">0.00445</span> <span class="fl">0.00362</span> <span class="fl">0.00269</span>
+[<span class="dv">121</span>] <span class="fl">0.00086</span> <span class="fl">0.00000</span> <span class="fl">0.00125</span> <span class="fl">0.00396</span> <span class="fl">0.00782</span> <span class="fl">0.00972</span> <span class="fl">0.00975</span> <span class="fl">0.00857</span> <span class="fl">0.00659</span> <span class="fl">0.00611</span> <span class="fl">0.00457</span> <span class="fl">0.00117</span>
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>) <span class="co"># Wrong input</span>
+Error <span class="cf">in</span> <span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>) <span class="op">:</span><span class="st"> </span>
+<span class="st">  </span>Positive molecular weight should be given.
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW=</span><span class="op">-</span><span class="dv">100</span>) <span class="co"># Wrong input</span>
+Error <span class="cf">in</span> <span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW =</span> <span class="op">-</span><span class="dv">100</span>) <span class="op">:</span><span class="st"> </span>
+<span class="st">  </span>Positive molecular weight should be given.
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mM&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>) <span class="co"># Wrong input</span>
+Error <span class="cf">in</span> <span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mM&quot;</span>, <span class="dt">MW =</span> <span class="fl">180.164</span>) <span class="op">:</span><span class="st"> </span>
+<span class="st">  </span>Target concentration unit is not valid.
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+  [<span class="dv">1</span>] <span class="fl">0.0041073688</span> <span class="fl">0.0157634156</span> <span class="fl">0.0364667747</span> <span class="fl">0.0582802336</span> <span class="fl">0.0536178149</span> <span class="fl">0.0476232766</span> <span class="fl">0.0464021669</span> <span class="fl">0.0414622233</span> <span class="fl">0.0382429342</span> <span class="fl">0.0329699607</span> <span class="fl">0.0182056349</span> <span class="fl">0.0000000000</span>
+ [<span class="dv">13</span>] <span class="fl">0.0095468573</span> <span class="fl">0.0439044426</span> <span class="fl">0.0461246420</span> <span class="fl">0.0462356520</span> <span class="fl">0.0380209143</span> <span class="fl">0.0337470305</span> <span class="fl">0.0299726915</span> <span class="fl">0.0252547679</span> <span class="fl">0.0167070003</span> <span class="fl">0.0049954486</span> <span class="fl">0.0000000000</span> <span class="fl">0.0244221931</span>
+ [<span class="dv">25</span>] <span class="fl">0.0382984392</span> <span class="fl">0.0455140872</span> <span class="fl">0.0432938878</span> <span class="fl">0.0416287383</span> <span class="fl">0.0344130903</span> <span class="fl">0.0294176417</span> <span class="fl">0.0271974423</span> <span class="fl">0.0205368442</span> <span class="fl">0.0058280234</span> <span class="fl">0.0000000000</span> <span class="fl">0.0104904420</span> <span class="fl">0.0255322928</span>
+ [<span class="dv">37</span>] <span class="fl">0.0477342865</span> <span class="fl">0.0465131769</span> <span class="fl">0.0418507582</span> <span class="fl">0.0381874292</span> <span class="fl">0.0320818810</span> <span class="fl">0.0295841567</span> <span class="fl">0.0232565884</span> <span class="fl">0.0063830732</span> <span class="fl">0.0000000000</span> <span class="fl">0.0112120068</span> <span class="fl">0.0312493062</span> <span class="fl">0.0632756822</span>
+ [<span class="dv">49</span>] <span class="fl">0.0517861504</span> <span class="fl">0.0485113563</span> <span class="fl">0.0419617682</span> <span class="fl">0.0393530339</span> <span class="fl">0.0327479408</span> <span class="fl">0.0242556782</span> <span class="fl">0.0087142825</span> <span class="fl">0.0000000000</span> <span class="fl">0.0071601430</span> <span class="fl">0.0170955352</span> <span class="fl">0.0357452099</span> <span class="fl">0.0350791501</span>
+ [<span class="dv">61</span>] <span class="fl">0.0306942563</span> <span class="fl">0.0274194623</span> <span class="fl">0.0223130037</span> <span class="fl">0.0192047246</span> <span class="fl">0.0154303856</span> <span class="fl">0.0051064586</span> <span class="fl">0.0008325748</span> <span class="fl">0.0047179237</span> <span class="fl">0.0130436713</span> <span class="fl">0.0278635021</span> <span class="fl">0.0365222797</span> <span class="fl">0.0393530339</span>
+ [<span class="dv">73</span>] <span class="fl">0.0369663196</span> <span class="fl">0.0291401168</span> <span class="fl">0.0243666881</span> <span class="fl">0.0195932595</span> <span class="fl">0.0063830732</span> <span class="fl">0.0000000000</span> <span class="fl">0.0169290202</span> <span class="fl">0.0169290202</span> <span class="fl">0.0405741436</span> <span class="fl">0.0419617682</span> <span class="fl">0.0365777847</span> <span class="fl">0.0326369308</span>
+ [<span class="dv">85</span>] <span class="fl">0.0262538576</span> <span class="fl">0.0253657778</span> <span class="fl">0.0166514953</span> <span class="fl">0.0069381230</span> <span class="fl">0.0000000000</span> <span class="fl">0.0409071735</span> <span class="fl">0.0501210009</span> <span class="fl">0.0396305588</span> <span class="fl">0.0351346551</span> <span class="fl">0.0314158211</span> <span class="fl">0.0314713261</span> <span class="fl">0.0235341134</span>
+ [<span class="dv">97</span>] <span class="fl">0.0228125486</span> <span class="fl">0.0175395751</span> <span class="fl">0.0062165582</span> <span class="fl">0.0013321196</span> <span class="fl">0.0160409405</span> <span class="fl">0.0289736018</span> <span class="fl">0.0355786950</span> <span class="fl">0.0434604027</span> <span class="fl">0.0566705890</span> <span class="fl">0.0509535756</span> <span class="fl">0.0445149974</span> <span class="fl">0.0396305588</span>
+[<span class="dv">109</span>] <span class="fl">0.0315268311</span> <span class="fl">0.0134322062</span> <span class="fl">0.0000000000</span> <span class="fl">0.0269754224</span> <span class="fl">0.0401856087</span> <span class="fl">0.0444039875</span> <span class="fl">0.0377988943</span> <span class="fl">0.0325814258</span> <span class="fl">0.0289736018</span> <span class="fl">0.0246997180</span> <span class="fl">0.0200928043</span> <span class="fl">0.0149308408</span>
+[<span class="dv">121</span>] <span class="fl">0.0047734287</span> <span class="fl">0.0000000000</span> <span class="fl">0.0069381230</span> <span class="fl">0.0219799738</span> <span class="fl">0.0434048978</span> <span class="fl">0.0539508448</span> <span class="fl">0.0541173597</span> <span class="fl">0.0475677716</span> <span class="fl">0.0365777847</span> <span class="fl">0.0339135454</span> <span class="fl">0.0253657778</span> <span class="fl">0.0064940832</span>
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>mM =<span class="st"> </span>Theoph<span class="op">$</span>conc <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mg/L&quot;</span>, <span class="st">&quot;mmol/L&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>mM <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mmol/L&quot;</span>, <span class="st">&quot;ug/L&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+  [<span class="dv">1</span>]   <span class="dv">740</span>  <span class="dv">2840</span>  <span class="dv">6570</span> <span class="dv">10500</span>  <span class="dv">9660</span>  <span class="dv">8580</span>  <span class="dv">8360</span>  <span class="dv">7470</span>  <span class="dv">6890</span>  <span class="dv">5940</span>  <span class="dv">3280</span>     <span class="dv">0</span>  <span class="dv">1720</span>  <span class="dv">7910</span>  <span class="dv">8310</span>  <span class="dv">8330</span>  <span class="dv">6850</span>  <span class="dv">6080</span>  <span class="dv">5400</span>  <span class="dv">4550</span>  <span class="dv">3010</span>   <span class="dv">900</span>     <span class="dv">0</span>  <span class="dv">4400</span>  <span class="dv">6900</span>  <span class="dv">8200</span>  <span class="dv">7800</span>
+ [<span class="dv">28</span>]  <span class="dv">7500</span>  <span class="dv">6200</span>  <span class="dv">5300</span>  <span class="dv">4900</span>  <span class="dv">3700</span>  <span class="dv">1050</span>     <span class="dv">0</span>  <span class="dv">1890</span>  <span class="dv">4600</span>  <span class="dv">8600</span>  <span class="dv">8380</span>  <span class="dv">7540</span>  <span class="dv">6880</span>  <span class="dv">5780</span>  <span class="dv">5330</span>  <span class="dv">4190</span>  <span class="dv">1150</span>     <span class="dv">0</span>  <span class="dv">2020</span>  <span class="dv">5630</span> <span class="dv">11400</span>  <span class="dv">9330</span>  <span class="dv">8740</span>  <span class="dv">7560</span>  <span class="dv">7090</span>  <span class="dv">5900</span>  <span class="dv">4370</span>
+ [<span class="dv">55</span>]  <span class="dv">1570</span>     <span class="dv">0</span>  <span class="dv">1290</span>  <span class="dv">3080</span>  <span class="dv">6440</span>  <span class="dv">6320</span>  <span class="dv">5530</span>  <span class="dv">4940</span>  <span class="dv">4020</span>  <span class="dv">3460</span>  <span class="dv">2780</span>   <span class="dv">920</span>   <span class="dv">150</span>   <span class="dv">850</span>  <span class="dv">2350</span>  <span class="dv">5020</span>  <span class="dv">6580</span>  <span class="dv">7090</span>  <span class="dv">6660</span>  <span class="dv">5250</span>  <span class="dv">4390</span>  <span class="dv">3530</span>  <span class="dv">1150</span>     <span class="dv">0</span>  <span class="dv">3050</span>  <span class="dv">3050</span>  <span class="dv">7310</span>
+ [<span class="dv">82</span>]  <span class="dv">7560</span>  <span class="dv">6590</span>  <span class="dv">5880</span>  <span class="dv">4730</span>  <span class="dv">4570</span>  <span class="dv">3000</span>  <span class="dv">1250</span>     <span class="dv">0</span>  <span class="dv">7370</span>  <span class="dv">9030</span>  <span class="dv">7140</span>  <span class="dv">6330</span>  <span class="dv">5660</span>  <span class="dv">5670</span>  <span class="dv">4240</span>  <span class="dv">4110</span>  <span class="dv">3160</span>  <span class="dv">1120</span>   <span class="dv">240</span>  <span class="dv">2890</span>  <span class="dv">5220</span>  <span class="dv">6410</span>  <span class="dv">7830</span> <span class="dv">10210</span>  <span class="dv">9180</span>  <span class="dv">8020</span>  <span class="dv">7140</span>
+[<span class="dv">109</span>]  <span class="dv">5680</span>  <span class="dv">2420</span>     <span class="dv">0</span>  <span class="dv">4860</span>  <span class="dv">7240</span>  <span class="dv">8000</span>  <span class="dv">6810</span>  <span class="dv">5870</span>  <span class="dv">5220</span>  <span class="dv">4450</span>  <span class="dv">3620</span>  <span class="dv">2690</span>   <span class="dv">860</span>     <span class="dv">0</span>  <span class="dv">1250</span>  <span class="dv">3960</span>  <span class="dv">7820</span>  <span class="dv">9720</span>  <span class="dv">9750</span>  <span class="dv">8570</span>  <span class="dv">6590</span>  <span class="dv">6110</span>  <span class="dv">4570</span>  <span class="dv">1170</span>
+<span class="op">&gt;</span><span class="st"> </span>Theoph<span class="op">$</span>mM <span class="op">*</span><span class="st"> </span><span class="kw">concUnitConv</span>(<span class="st">&quot;mmol/L&quot;</span>, <span class="st">&quot;ug/mL&quot;</span>, <span class="dt">MW=</span><span class="fl">180.164</span>)
+  [<span class="dv">1</span>]  <span class="fl">0.74</span>  <span class="fl">2.84</span>  <span class="fl">6.57</span> <span class="fl">10.50</span>  <span class="fl">9.66</span>  <span class="fl">8.58</span>  <span class="fl">8.36</span>  <span class="fl">7.47</span>  <span class="fl">6.89</span>  <span class="fl">5.94</span>  <span class="fl">3.28</span>  <span class="fl">0.00</span>  <span class="fl">1.72</span>  <span class="fl">7.91</span>  <span class="fl">8.31</span>  <span class="fl">8.33</span>  <span class="fl">6.85</span>  <span class="fl">6.08</span>  <span class="fl">5.40</span>  <span class="fl">4.55</span>  <span class="fl">3.01</span>  <span class="fl">0.90</span>  <span class="fl">0.00</span>  <span class="fl">4.40</span>  <span class="fl">6.90</span>  <span class="fl">8.20</span>  <span class="fl">7.80</span>
+ [<span class="dv">28</span>]  <span class="fl">7.50</span>  <span class="fl">6.20</span>  <span class="fl">5.30</span>  <span class="fl">4.90</span>  <span class="fl">3.70</span>  <span class="fl">1.05</span>  <span class="fl">0.00</span>  <span class="fl">1.89</span>  <span class="fl">4.60</span>  <span class="fl">8.60</span>  <span class="fl">8.38</span>  <span class="fl">7.54</span>  <span class="fl">6.88</span>  <span class="fl">5.78</span>  <span class="fl">5.33</span>  <span class="fl">4.19</span>  <span class="fl">1.15</span>  <span class="fl">0.00</span>  <span class="fl">2.02</span>  <span class="fl">5.63</span> <span class="fl">11.40</span>  <span class="fl">9.33</span>  <span class="fl">8.74</span>  <span class="fl">7.56</span>  <span class="fl">7.09</span>  <span class="fl">5.90</span>  <span class="fl">4.37</span>
+ [<span class="dv">55</span>]  <span class="fl">1.57</span>  <span class="fl">0.00</span>  <span class="fl">1.29</span>  <span class="fl">3.08</span>  <span class="fl">6.44</span>  <span class="fl">6.32</span>  <span class="fl">5.53</span>  <span class="fl">4.94</span>  <span class="fl">4.02</span>  <span class="fl">3.46</span>  <span class="fl">2.78</span>  <span class="fl">0.92</span>  <span class="fl">0.15</span>  <span class="fl">0.85</span>  <span class="fl">2.35</span>  <span class="fl">5.02</span>  <span class="fl">6.58</span>  <span class="fl">7.09</span>  <span class="fl">6.66</span>  <span class="fl">5.25</span>  <span class="fl">4.39</span>  <span class="fl">3.53</span>  <span class="fl">1.15</span>  <span class="fl">0.00</span>  <span class="fl">3.05</span>  <span class="fl">3.05</span>  <span class="fl">7.31</span>
+ [<span class="dv">82</span>]  <span class="fl">7.56</span>  <span class="fl">6.59</span>  <span class="fl">5.88</span>  <span class="fl">4.73</span>  <span class="fl">4.57</span>  <span class="fl">3.00</span>  <span class="fl">1.25</span>  <span class="fl">0.00</span>  <span class="fl">7.37</span>  <span class="fl">9.03</span>  <span class="fl">7.14</span>  <span class="fl">6.33</span>  <span class="fl">5.66</span>  <span class="fl">5.67</span>  <span class="fl">4.24</span>  <span class="fl">4.11</span>  <span class="fl">3.16</span>  <span class="fl">1.12</span>  <span class="fl">0.24</span>  <span class="fl">2.89</span>  <span class="fl">5.22</span>  <span class="fl">6.41</span>  <span class="fl">7.83</span> <span class="fl">10.21</span>  <span class="fl">9.18</span>  <span class="fl">8.02</span>  <span class="fl">7.14</span>
+[<span class="dv">109</span>]  <span class="fl">5.68</span>  <span class="fl">2.42</span>  <span class="fl">0.00</span>  <span class="fl">4.86</span>  <span class="fl">7.24</span>  <span class="fl">8.00</span>  <span class="fl">6.81</span>  <span class="fl">5.87</span>  <span class="fl">5.22</span>  <span class="fl">4.45</span>  <span class="fl">3.62</span>  <span class="fl">2.69</span>  <span class="fl">0.86</span>  <span class="fl">0.00</span>  <span class="fl">1.25</span>  <span class="fl">3.96</span>  <span class="fl">7.82</span>  <span class="fl">9.72</span>  <span class="fl">9.75</span>  <span class="fl">8.57</span>  <span class="fl">6.59</span>  <span class="fl">6.11</span>  <span class="fl">4.57</span>  <span class="fl">1.17</span>
+<span class="op">&gt;</span><span class="st"> </span>
+<span class="er">&gt;</span><span class="st"> </span></code></pre></div>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="assignments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="as-is-r-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/988-assign1.Rmd",
+"text": "Edit"
+},
+"download": ["Rprogramming.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

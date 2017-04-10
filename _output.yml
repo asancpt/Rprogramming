@@ -43,10 +43,18 @@ bookdown::epub_book:
   dev: svglite
   stylesheet: css/style.css
 html_document:
-  theme: united
+  theme: flatly 
   toc: yes
 html_notebook: default
 pdf_document:
   includes:
     in_header: preamble.tex
-
+tufte::tufte_html: default
+tufte::tufte_handout:
+  citation_package: natbib
+  latex_engine: xelatex
+  includes:
+    in_header: preamble.tex
+tufte::tufte_book:
+  citation_package: natbib
+  latex_engine: xelatex
