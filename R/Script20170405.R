@@ -96,9 +96,9 @@ for (i in 1:10) {
 
 for (i in 1:10) print(2*i)
 
-while (    ) {
-# Statements
-}
+#while (    ) {
+## Statements
+#}
 
 # # if ~ else ~
 # if (   ) {
