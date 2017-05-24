@@ -1,71 +1,8 @@
-# Rstudio and some useful packages 2 - ggplot2 {#ggplot2}
-
-> 9주차 강의 예정 자료입니다.
-
-Rstudio는 R을 좀더 편리하고 풍부하게 사용하기 위한 도구로서 가장 널리 사용되고 있는 IDE입니다. https://www.rstudio.com/products/rstudio/download/ 에서 가장 최신의 Rstudio를 다운로드 받을 수 있습니다.
-Windows, MacOS, Devian/Redhat Linux 중 운영체제에 맞는 것을 설치하면 됩니다.
-
-ggplot2의 사용법을 예제를 통해 알아보겠습니다. [@R-ggplot2]
-<https://rpubs.com/kimwoohyung/ggplot2>의 자료를 많이 참고하였습니다.
-<https://rpubs.com/mccannecology/53464>도 좋은 자료입니다.
-
-
-
-
-## Introduction
-
-먼저 다음과 같은 패키지가 필요합니다.
-
 ```{r, echo = TRUE, message = FALSE}
 library(ggplot2)
 library(gcookbook)
 library(plyr)
 library(reshape2)
-library(moonBook)
-```
-
-```
-[1] "age"              "sex"              "cardiogenicShock" "entry"            "Dx"              
-[6] "EF"               "height"           "weight"           "BMI"              "obesity"         
-[11] "TC"               "LDLC"             "HDLC"             "TG"               "DM"              
-[16] "HBP"              "smoking"   
-
-> str(acs)
-'data.frame':	857 obs. of  17 variables:
- $ age             : int  62 78 76 89 56 73 58 62 59 71 ...
- $ sex             : chr  "Male" "Female" "Female" "Female" ...
- $ cardiogenicShock: chr  "No" "No" "Yes" "No" ...
- $ entry           : chr  "Femoral" "Femoral" "Femoral" "Femoral" ...
- $ Dx              : chr  "STEMI" "STEMI" "STEMI" "STEMI" ...
- $ EF              : num  18 18.4 20 21.8 21.8 22 24.7 26.6 28.5 31.1 ...
- $ height          : num  168 148 NA 165 162 153 167 160 152 168 ...
- $ weight          : num  72 48 NA 50 64 59 78 50 67 60 ...
- $ BMI             : num  25.5 21.9 NA 18.4 24.4 ...
- $ obesity         : chr  "Yes" "No" "No" "No" ...
- $ TC              : num  215 NA NA 121 195 184 161 136 239 169 ...
- $ LDLC            : int  154 NA NA 73 151 112 91 88 161 88 ...
- $ HDLC            : int  35 NA NA 20 36 38 34 33 34 54 ...
- $ TG              : int  155 166 NA 89 63 137 196 30 118 141 ...
- $ DM              : chr  "Yes" "No" "No" "No" ...
- $ HBP             : chr  "No" "Yes" "Yes" "No" ...
- $ smoking         : chr  "Smoker" "Never" "Never" "Never" ...
-```
-
-Scatter plot을 geom_point()를 사용해서 그려보도록 하겠습니다.
-
-```{r}
-plot(acs$BMI, acs$LDLC)
-grid()        # Add gridlines
-# Create a linear regression model
-model <- lm(formula = LDLC ~ BMI, # 순서에 조심!
-            data = acs)
-
-abline(model, col = 'blue')      # Add regression to plot
-```
-
-```{r}
-qplot(acs$BMI, acs$LDLC)
-ggplot(acs, aes(x = BMI, y = LDLC)) + geom_point()
 ```
 
 ## Part1
@@ -76,9 +13,6 @@ tophit <- tophit[,c("name", "lg", "avg")]
 
 # y축 이산형 그래프 
 ggplot(tophit, aes(x = avg, y = name, col=lg)) + geom_point()
-
-ggplot(acs, aes(x = BMI, y = LDLC, col=Dx)) + geom_point()
-
 
 # 그래프 정렬하기 & 그래프 격자 없애기 & 수평선 점선으로 바꾸기
 ggplot(tophit, aes(x = avg, y = reorder(name, avg))) + geom_point(size = 3) + theme_bw() + 

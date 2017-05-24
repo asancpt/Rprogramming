@@ -27,3 +27,10 @@ output:
 ```{r code = readLines("inst/assignment1/concUnitConv-test.Rout", encoding = "UTF-8"), eval = FALSE}
 ```
 
+## Assignment 2
+
+자신이 직접 R package를 만드는 것이 과제 2입니다.
+
+- 제출기한: 2017-06-21 18:00
+- 제출방법: R package를 shan@acp.kr과 ksbae@acp.kr 메일로 보내십시오. CRAN에 올리면 더 좋습니다.
+

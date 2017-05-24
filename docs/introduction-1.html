@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Programming - Lecture Notes</title>
   <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
-  <meta name="generator" content="bookdown 0.3.16 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Programming - Lecture Notes" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-04-10">
+<meta name="date" content="2017-05-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -87,7 +87,7 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css\style.css" type="text/css" />
 </head>
 
 <body>
@@ -162,6 +162,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.1.1" data-path="assignment-1.html"><a href="assignment-1.html#concunitconv-test.r"><i class="fa fa-check"></i><b>A.1.1</b> concUnitConv-test.R</a></li>
 <li class="chapter" data-level="A.1.2" data-path="assignment-1.html"><a href="assignment-1.html#concunitconv-test.rout"><i class="fa fa-check"></i><b>A.1.2</b> concUnitConv-test.Rout</a></li>
 </ul></li>
+<li class="chapter" data-level="A.2" data-path="assignment-2.html"><a href="assignment-2.html"><i class="fa fa-check"></i><b>A.2</b> Assignment 2</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>B</b> As-is R Files</a><ul>
 <li class="chapter" data-level="B.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>B.1</b> Lecture 3</a></li>
@@ -197,8 +198,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
 <p>먼저 다음과 같은 패키지가 필요합니다.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(gcookbook)
-<span class="kw">library</span>(plyr)
+<span class="kw">library</span>(gcookbook)</code></pre></div>
+<pre><code>## Error in library(gcookbook): there is no package called &#39;gcookbook&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)
 <span class="kw">library</span>(reshape2)
 <span class="kw">library</span>(moonBook)</code></pre></div>
 <pre><code>[1] &quot;age&quot;              &quot;sex&quot;              &quot;cardiogenicShock&quot; &quot;entry&quot;            &quot;Dx&quot;              

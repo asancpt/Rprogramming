@@ -45,8 +45,6 @@ Coursera 회원가입하시고 로그인 한 뒤, Enroll Now를 누르시면 Aud
 <https://bookdown.org/rdpeng/RProgDA/> 이 링크는 무료로 공개된 강의 책자입니다. 
 강의를 듣지 않고 책으로 보고 싶으신 분은 참고하시면 됩니다.
 
-
-
 # Acknowledgement
 
 이 웹북을 만드는데 도움을 주신 분들은 다음과 같습니다.
