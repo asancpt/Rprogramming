@@ -5,13 +5,13 @@ date: "`r Sys.time()`"
 output: 
   github_document:
     df_print: kable
-bibliography: 'allPackages.bib'
+bibliography: 'bib/allPackages.bib'
 editor_options: 
   chunk_output_type: console
 ---
 
 
-![](program.gif) 
+![](gif/program.gif) 
 
 ## Introduction
 
@@ -57,8 +57,8 @@ loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 ```
 
 ```{r include = FALSE}
-knitr::write_bib(x = Packages, file = 'RprogrammingPackages.bib')
-knitr::write_bib(x = .packages(), file = 'allPackages.bib')
+knitr::write_bib(x = Packages, file = 'bib/RprogrammingPackages.bib')
+knitr::write_bib(x = .packages(), file = 'bib/allPackages.bib')
 ```
 
 ## List of Submitted R Packages
@@ -67,7 +67,7 @@ An alphabetical order by the last name as of `r Sys.time()`
 
 ```{r, echo = FALSE, results = 'asis'}
 # bibtex::read.bib(file = 'RprogrammingPackages.bib')
-print(ReadBib('RprogrammingPackages.bib'), .opts = list(cite.style = "authoryear"))
+print(ReadBib('bib/RprogrammingPackages.bib'), .opts = list(cite.style = "authoryear"))
 ```
 
 ## Feedback

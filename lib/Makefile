@@ -1,2 +1,2 @@
 github:
-	Rscript -e "rmarkdown::render('README.Rmd')"
+	Rscript -e "rmarkdown::render('README.Rmd', encoding = 'UTF-8')"
