@@ -41,6 +41,7 @@ install.packages("sources/ECOG_0.1.0.tar.gz", lib = Path, repos = NULL, type = "
 install.packages("sources/windex_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/mDense_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/JHImageProcessingR_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/uconv_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 
 # Github Submission
 
@@ -51,7 +52,7 @@ devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRU
 
 ```{r include = FALSE}
 Packages <- c("Sunscreen", "imageML", "MyFunc", "MyUtil", "ECOG", "windex",
-              "mDense", "JHImageProcessingR", 
+              "mDense", "JHImageProcessingR", "uconv",
               "lottery", "cats", "glasgowcoma")
 loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 ```
@@ -72,6 +73,9 @@ print(ReadBib('bib/RprogrammingPackages.bib'), .opts = list(cite.style = "author
 
 ## Feedback
 
+![](gif/awesome.gif)
+
+- R 프로그래밍에서 어려운 한 단계를 넘어선 것을 축하드립니다.
 - 제출하셨으나 목록에 자신의 패키지가 보이지 않는 분은 2017-06-21 18:00 이후 shan@acp.kr 로 알려주세요. 
 
 ### 팁

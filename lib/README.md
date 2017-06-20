@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 08:12:35
+2017-06-21 08:23:35
 
 ![](gif/program.gif)
 
@@ -19,7 +19,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 08:12:38
+An alphabetical order by the last name as of 2017-06-21 08:23:38
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -29,23 +29,28 @@ An alphabetical order by the last name as of 2017-06-21 08:12:38
 
 \[4\] W. wrote it. *mDense: What the Package Does (Title Case)*. R package version 0.1.0. 2017.
 
-\[5\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
+\[5\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
 
-\[6\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
+\[6\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
 
-\[7\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+\[7\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
 
-\[8\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+\[8\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
 
-\[9\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+\[9\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
 
-\[10\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+\[10\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
 
-\[11\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+\[11\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+
+\[12\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
 
 Feedback
 --------
 
+![](gif/awesome.gif)
+
+-   R 프로그래밍에서 어려운 한 단계를 넘어선 것을 축하드립니다.
 -   제출하셨으나 목록에 자신의 패키지가 보이지 않는 분은 2017-06-21 18:00 이후 <shan@acp.kr> 로 알려주세요.
 
 ### 팁
