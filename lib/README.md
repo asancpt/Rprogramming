@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 11:51:36
+2017-06-21 16:56:50
 
 ![](gif/program.gif)
 
@@ -19,7 +19,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 11:51:37
+An alphabetical order by the last name as of 2017-06-21 16:56:52
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -29,25 +29,35 @@ An alphabetical order by the last name as of 2017-06-21 11:51:37
 
 \[4\] W. wrote it. *mDense: What the Package Does (Title Case)*. R package version 0.1.0. 2017.
 
-\[5\] M. C. Kang. *abgatool: Diagnostic tool of acid-base disorders for R*. R package version 1.0.0. 2017.
+\[5\] W. Ji. *bmi: BMI calculator*. R package version 0.0.0.9000. 2017.
 
-\[6\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
+\[6\] E. Kang. *sds: SDS*. R package version 0.1.0. 2017.
 
-\[7\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
+\[7\] M. C. Kang. *abgatool: Diagnostic tool of acid-base disorders for R*. R package version 1.0.0. 2017.
 
-\[8\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
+\[8\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
 
-\[9\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
+\[9\] J. Kim. *qSOFA: Calculate qSOFA (Quick Sepsis-Related Organ Failure Assessment) Following Sepsis Guideline 3*. R package version 0.1.0. 2017. &lt;URL: <https://github.com/asancpt/qSOFA>&gt;.
 
-\[10\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+\[10\] Y. Kim. *VariousIP: VariousIP for R*. R package version 0.1.0. 2017.
 
-\[11\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+\[11\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
 
-\[12\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+\[12\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
 
-\[13\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+\[13\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
 
-\[14\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+\[14\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+
+\[15\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+
+\[16\] D. Oh. *curb65: This function reports CURB65.* R package version 0.0.0.9000. 2017.
+
+\[17\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+
+\[18\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+
+\[19\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
 
 Feedback
 --------
