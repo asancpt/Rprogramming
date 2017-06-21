@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 19:22:37
+2017-06-21 19:57:38
 
 Introduction
 ------------
@@ -17,7 +17,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 19:22:38
+An alphabetical order by the last name as of 2017-06-21 19:57:39
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -51,25 +51,27 @@ An alphabetical order by the last name as of 2017-06-21 19:22:38
 
 \[16\] S. Kyu. *Picturepackage: My picture automations for R*. R package version 0.1.0. 2017.
 
-\[17\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
+\[17\] F. Last. *MedAd: What the Package Does (one line, title case)*. R package version 0.0.0.9000. 2017.
 
-\[18\] si hyeon Lee. *findOutlier: A package I made*. R package version 1.0. 2017.
+\[18\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
 
-\[19\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
+\[19\] si hyeon Lee. *findOutlier: A package I made*. R package version 1.0. 2017.
 
-\[20\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+\[20\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
 
-\[21\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+\[21\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
 
-\[22\] D. Oh. *curb65: This function reports CURB65.* R package version 0.0.0.9000. 2017.
+\[22\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
 
-\[23\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+\[23\] D. Oh. *curb65: This function reports CURB65.* R package version 0.0.0.9000. 2017.
 
-\[24\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+\[24\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
 
-\[25\] person). *SurvModelComp: Survival model comparison by bootstrapping*. R package version 0.1.0. 2017.
+\[25\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
 
-\[26\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+\[26\] person). *SurvModelComp: Survival model comparison by bootstrapping*. R package version 0.1.0. 2017.
+
+\[27\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
 
 Received packages: `IOLcalculator`, `hw`, `TempConvert`
 
