@@ -44,12 +44,14 @@ install.packages("sources/JHImageProcessingR_0.1.0.tar.gz", lib = Path, repos = 
 install.packages("sources/uconv_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/abgatool_1.0.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/unicox_0.0.0.9000.tar.gz", lib = Path, repos = NULL, type = "source")
-install.packages("Ttest_1.0.tar.gz", lib = Path, repos = NULL, type = "source") # not MacOS
+install.packages("sources/Ttest_1.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/Picturepackage_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/mrate_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/findOutlier_1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 
 # Pending - on PC
 install.packages("sources/hw.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
 install.packages("sources/IOLcal.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
-
 
 # Direct Submission - on MacBook
 
@@ -70,6 +72,7 @@ devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRU
 ```{r include = FALSE, eval = FALSE}
 Packages <- c("Sunscreen", "imageML", "MyFunc", "MyUtil", "ECOG", "windex",
               "mDense", "JHImageProcessingR", "uconv", "abgatool", "unicox",
+              "Ttest", "Picturepackage", "mrate", "findOutlier",
               "lottery", "cats", "glasgowcoma")
 loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 
@@ -90,6 +93,8 @@ print(c(ReadBib('bib/RprogrammingPackages.bib'),
         ReadBib('bib/RprogrammingPackages2.bib')), 
       .opts = list(cite.style = "authoryear"))
 ```
+
+Received packages: `IOLcalculator`, `hw`, `TempConvert`
 
 ## Feedback
 

@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 17:01:22
+2017-06-21 18:50:48
 
 ![](gif/program.gif)
 
@@ -19,45 +19,57 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 17:01:24
+An alphabetical order by the last name as of 2017-06-21 18:50:49
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
-\[2\] S. Han. *cats: A Test of Loving Cats or Not*. R package version 0.0.1. 2017. &lt;URL: <https://github.com/shanmdphd/cats>&gt;.
+\[2\] J. Choi. *unicox: Univariate anlaysis by Cox model*. R package version 0.0.0.9000. 2017. &lt;URL: <https://github.com/asancpt/unicox>&gt;.
 
-\[3\] S. Han. *glasgowcoma: A Reference of Glasgow Coma Scale*. R package version 0.0.1. 2017. &lt;URL: <https://github.com/shanmdphd/glasgowcoma>&gt;.
+\[3\] S. Han. *cats: A Test of Loving Cats or Not*. R package version 0.0.1. 2017. &lt;URL: <https://github.com/shanmdphd/cats>&gt;.
 
-\[4\] W. wrote it. *mDense: What the Package Does (Title Case)*. R package version 0.1.0. 2017.
+\[4\] S. Han. *glasgowcoma: A Reference of Glasgow Coma Scale*. R package version 0.0.1. 2017. &lt;URL: <https://github.com/shanmdphd/glasgowcoma>&gt;.
 
-\[5\] W. Ji. *bmi: BMI calculator*. R package version 0.0.0.9000. 2017.
+\[5\] W. wrote it. *mDense: What the Package Does (Title Case)*. R package version 0.1.0. 2017.
 
-\[6\] E. Kang. *sds: SDS*. R package version 0.1.0. 2017.
+\[6\] W. Ji. *bmi: BMI calculator*. R package version 0.0.0.9000. 2017.
 
-\[7\] M. C. Kang. *abgatool: Diagnostic tool of acid-base disorders for R*. R package version 1.0.0. 2017.
+\[7\] H. Ju. *Ttest: t-test, useful etc*. R package version 1.0. 2017.
 
-\[8\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
+\[8\] E. Kang. *sds: SDS*. R package version 0.1.0. 2017.
 
-\[9\] J. Kim. *qSOFA: Calculate qSOFA (Quick Sepsis-Related Organ Failure Assessment) Following Sepsis Guideline 3*. R package version 0.1.0. 2017. &lt;URL: <https://github.com/asancpt/qSOFA>&gt;.
+\[9\] M. C. Kang. *abgatool: Diagnostic tool of acid-base disorders for R*. R package version 1.0.0. 2017.
 
-\[10\] Y. Kim. *VariousIP: VariousIP for R*. R package version 0.1.0. 2017.
+\[10\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
 
-\[11\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
+\[11\] J. Kim. *mrate: Currency Converter*. R package version 0.1.0. 2017.
 
-\[12\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
+\[12\] J. Kim. *qSOFA: Calculate qSOFA (Quick Sepsis-Related Organ Failure Assessment) Following Sepsis Guideline 3*. R package version 0.1.0. 2017. &lt;URL: <https://github.com/asancpt/qSOFA>&gt;.
 
-\[13\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
+\[13\] Y. Kim. *VariousIP: VariousIP for R*. R package version 0.1.0. 2017.
 
-\[14\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+\[14\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
 
-\[15\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+\[15\] S. Kyu. *Picturepackage: My picture automations for R*. R package version 0.1.0. 2017.
 
-\[16\] D. Oh. *curb65: This function reports CURB65.* R package version 0.0.0.9000. 2017.
+\[16\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
 
-\[17\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+\[17\] si hyeon Lee. *findOutlier: A package I made*. R package version 1.0. 2017.
 
-\[18\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+\[18\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
 
-\[19\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+\[19\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+
+\[20\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+
+\[21\] D. Oh. *curb65: This function reports CURB65.* R package version 0.0.0.9000. 2017.
+
+\[22\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+
+\[23\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+
+\[24\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+
+Received packages: `IOLcalculator`, `hw`, `TempConvert`
 
 Feedback
 --------
