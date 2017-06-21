@@ -48,6 +48,8 @@ install.packages("sources/Ttest_1.0.tar.gz", lib = Path, repos = NULL, type = "s
 install.packages("sources/Picturepackage_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/mrate_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/findOutlier_1.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/SurvModelComp_0.1.0.zip", lib = Path, repos = NULL, type = "binary")
+install.packages("sources/doctor_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 
 # Pending - on PC
 install.packages("sources/hw.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
@@ -72,7 +74,8 @@ devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRU
 ```{r include = FALSE, eval = FALSE}
 Packages <- c("Sunscreen", "imageML", "MyFunc", "MyUtil", "ECOG", "windex",
               "mDense", "JHImageProcessingR", "uconv", "abgatool", "unicox",
-              "Ttest", "Picturepackage", "mrate", "findOutlier",
+              "Ttest", "Picturepackage", "mrate", "findOutlier", "SurvModelComp",
+              "doctor",
               "lottery", "cats", "glasgowcoma")
 loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 
