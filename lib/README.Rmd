@@ -56,6 +56,7 @@ install.packages("sources/VariousIP_0.1.0.tar.gz", lib = Path2, repos = NULL, ty
 # Pending
 install.packages("sources/Ttest.zip", lib = Path2, repos = NULL, type = "binary") # not MacOS
 install.packages("sources/hw.zip", lib = Path2, repos = NULL, type = "binary") # not MacOS
+install.packages("sources/IOLcal.zip", lib = Path2, repos = NULL, type = "binary") # not MacOS
 
 # Github Submission
 
