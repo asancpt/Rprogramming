@@ -1,6 +1,6 @@
 _bookdown_files
-lib/container
-lib/sources
+lib/container*
+lib/sources*
 
 *.zip
 

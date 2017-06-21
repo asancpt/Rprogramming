@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 10:26:43
+2017-06-21 11:51:36
 
 ![](gif/program.gif)
 
@@ -19,7 +19,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 10:26:46
+An alphabetical order by the last name as of 2017-06-21 11:51:37
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -35,17 +35,19 @@ An alphabetical order by the last name as of 2017-06-21 10:26:46
 
 \[7\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
 
-\[8\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
+\[8\] chang hoon lee. *MyUtil: My Utility for R*. R package version 0.1.0. 2017.
 
-\[9\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+\[9\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
 
-\[10\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+\[10\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
 
-\[11\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+\[11\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
 
-\[12\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+\[12\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
 
-\[13\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+\[13\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+
+\[14\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
 
 Feedback
 --------
