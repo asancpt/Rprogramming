@@ -42,6 +42,7 @@ install.packages("sources/windex_0.1.0.tar.gz", lib = Path, repos = NULL, type =
 install.packages("sources/mDense_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/JHImageProcessingR_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/uconv_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/abgatool_1.0.0.tar.gz", lib = Path, repos = NULL, type = "source")
 
 # Github Submission
 
@@ -52,7 +53,7 @@ devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRU
 
 ```{r include = FALSE}
 Packages <- c("Sunscreen", "imageML", "MyFunc", "MyUtil", "ECOG", "windex",
-              "mDense", "JHImageProcessingR", "uconv",
+              "mDense", "JHImageProcessingR", "uconv", "abgatool",
               "lottery", "cats", "glasgowcoma")
 loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 ```
@@ -82,5 +83,13 @@ print(ReadBib('bib/RprogrammingPackages.bib'), .opts = list(cite.style = "author
 
 - 목록의 개발자 이름, 패키지 이름/설명/버젼 등은 `DESCRIPTION` 파일에 적힌 것을 그대로 읽어온 것입니다. 다른 사람들이 여러분의 패키지를 사용하게 되거나 인용하게 될 때 표시되는 (사람으로 비유하면 얼굴과 같은) 정보이므로 신중하게 정하는 것이 좋습니다.
 - 패키지를 [CRAN](https://cran.r-project.org/web/packages/index.html) 혹은 [Github](https://github.com)나 [Bitbucket](https://bitbucket.org/) 등에 올린다면 다른 사람들이 쉽게 업데이트 할 수 있으므로 코드를 다른 사람과 공유 시 여러 장점을 갖게 됩니다.
+
+### Suggested Reading Materials
+
+무료로 볼 수 있는 html 자료입니다.
+
+- [R packages](http://r-pkgs.had.co.nz/) : R 패키지를 만드는 방법에 대해 쉽게 설명되어 있습니다.
+- [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) : 블로그 포스트로서 아주 단순한 패키지를 만드는데 참고하시면 됩니다.
+- [R package primer](http://kbroman.org/pkg_primer/) : 비교적 쉽게 서술되어 있습니다.
 
 ## References

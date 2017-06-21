@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 08:23:35
+2017-06-21 10:20:16
 
 ![](gif/program.gif)
 
@@ -19,7 +19,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 08:23:38
+An alphabetical order by the last name as of 2017-06-21 10:20:19
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -29,21 +29,23 @@ An alphabetical order by the last name as of 2017-06-21 08:23:38
 
 \[4\] W. wrote it. *mDense: What the Package Does (Title Case)*. R package version 0.1.0. 2017.
 
-\[5\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
+\[5\] M. C. Kang. *abgatool: Diagnostic tool of acid-base disorders for R*. R package version 1.0.0. 2017.
 
-\[6\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
+\[6\] S. Kang. *uconv: Unit converter*. R package version 0.1.0. 2017.
 
-\[7\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
+\[7\] J. H. Kwon. *MyUtil: My Utilities for R*. R package version 0.1.0. 2017.
 
-\[8\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
+\[8\] E. Lee. *lottery: This package is for homework.....* R package version 0.0.0.9000. 2017.
 
-\[9\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
+\[9\] G. Lee. *ECOG: ECOG*. R package version 0.1.0. 2017.
 
-\[10\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
+\[10\] Y. J. Lee. *Sunscreen: Amount of sunscreen you should apply*. R package version 0.1.0. 2017.
 
-\[11\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+\[11\] G. Park. *MyFunc: My function for R*. R package version 1.0.0. 2017.
 
-\[12\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
+\[12\] J. Park. *JHImageProcessingR: Basic Image processing In R*. R package version 0.1.0. 2017.
+
+\[13\] G. Seo. *windex: Weight Indices*. R package version 0.1.0. 2017.
 
 Feedback
 --------
@@ -57,6 +59,14 @@ Feedback
 
 -   목록의 개발자 이름, 패키지 이름/설명/버젼 등은 `DESCRIPTION` 파일에 적힌 것을 그대로 읽어온 것입니다. 다른 사람들이 여러분의 패키지를 사용하게 되거나 인용하게 될 때 표시되는 (사람으로 비유하면 얼굴과 같은) 정보이므로 신중하게 정하는 것이 좋습니다.
 -   패키지를 [CRAN](https://cran.r-project.org/web/packages/index.html) 혹은 [Github](https://github.com)나 [Bitbucket](https://bitbucket.org/) 등에 올린다면 다른 사람들이 쉽게 업데이트 할 수 있으므로 코드를 다른 사람과 공유 시 여러 장점을 갖게 됩니다.
+
+### Suggested Reading Materials
+
+무료로 볼 수 있는 html 자료입니다.
+
+-   [R packages](http://r-pkgs.had.co.nz/) : R 패키지를 만드는 방법에 대해 쉽게 설명되어 있습니다.
+-   [Writing an R package from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) : 블로그 포스트로서 아주 단순한 패키지를 만드는데 참고하시면 됩니다.
+-   [R package primer](http://kbroman.org/pkg_primer/) : 비교적 쉽게 서술되어 있습니다.
 
 References
 ----------
