@@ -1,7 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 10:20:16
+2017-06-21 10:26:43
 
 ![](gif/program.gif)
 
@@ -19,7 +19,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 10:20:19
+An alphabetical order by the last name as of 2017-06-21 10:26:46
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -58,6 +58,15 @@ Feedback
 ### 팁
 
 -   목록의 개발자 이름, 패키지 이름/설명/버젼 등은 `DESCRIPTION` 파일에 적힌 것을 그대로 읽어온 것입니다. 다른 사람들이 여러분의 패키지를 사용하게 되거나 인용하게 될 때 표시되는 (사람으로 비유하면 얼굴과 같은) 정보이므로 신중하게 정하는 것이 좋습니다.
+-   패키지 title은 title (proper) case로 작성되어야 합니다. `tools::toTitleCase()` 함수를 사용해도 됩니다.
+
+``` r
+# Conversion to the title (proper) case
+tools::toTitleCase("This package title should be corrected")
+```
+
+    ## [1] "This Package Title Should be Corrected"
+
 -   패키지를 [CRAN](https://cran.r-project.org/web/packages/index.html) 혹은 [Github](https://github.com)나 [Bitbucket](https://bitbucket.org/) 등에 올린다면 다른 사람들이 쉽게 업데이트 할 수 있으므로 코드를 다른 사람과 공유 시 여러 장점을 갖게 됩니다.
 
 ### Suggested Reading Materials
