@@ -1,9 +1,7 @@
 R Programming 2nd Assignments
 ================
 Sungpil Han
-2017-06-21 19:12:22
-
-![](gif/program.gif)
+2017-06-21 19:22:37
 
 Introduction
 ------------
@@ -19,7 +17,7 @@ Introduction
 List of Submitted R Packages
 ----------------------------
 
-An alphabetical order by the last name as of 2017-06-21 19:12:23
+An alphabetical order by the last name as of 2017-06-21 19:22:38
 
 \[1\] D. Cho. *imageML: Basic image processing and Machine Learning using MNIST data (Hand written digit) for R*. R package version 0.1.0. 2017.
 
@@ -78,14 +76,12 @@ Received packages: `IOLcalculator`, `hw`, `TempConvert`
 Feedback
 --------
 
-![](gif/awesome.gif)
-
 -   R 프로그래밍에서 어려운 한 단계를 넘어선 것을 축하드립니다.
 -   제출하셨으나 목록에 자신의 패키지가 보이지 않는 분은 2017-06-21 18:00 이후 <shan@acp.kr> 로 알려주세요.
 
 ### 팁
 
--   목록의 개발자 이름, 패키지 이름/설명/버젼 등은 `DESCRIPTION` 파일에 적힌 것을 그대로 읽어온 것입니다. 다른 사람들이 여러분의 패키지를 사용하게 되거나 인용하게 될 때 표시되는 (사람으로 비유하면 얼굴과 같은) 정보이므로 신중하게 정하는 것이 좋습니다.
+-   목록의 개발자 이름, 패키지 이름/설명/버젼 등은 `DESCRIPTION` 파일 혹은 `package.Rd` 파일에 에 적힌 것을 그대로 읽어온 것입니다. 다른 사람들이 여러분의 패키지를 사용하게 되거나 인용하게 될 때 표시되는 (사람으로 비유하면 얼굴과 같은) 정보이므로 신중하게 정하는 것이 좋습니다.
 -   패키지 title은 title (proper) case로 작성되어야 합니다. `tools::toTitleCase()` 함수를 사용해도 됩니다.
 
 ``` r
