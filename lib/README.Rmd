@@ -43,6 +43,13 @@ install.packages("sources/mDense_0.1.0.tar.gz", lib = Path, repos = NULL, type =
 install.packages("sources/JHImageProcessingR_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/uconv_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/abgatool_1.0.0.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("sources/unicox_0.0.0.9000.tar.gz", lib = Path, repos = NULL, type = "source")
+install.packages("Ttest_1.0.tar.gz", lib = Path, repos = NULL, type = "source") # not MacOS
+
+# Pending - on PC
+install.packages("sources/hw.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
+install.packages("sources/IOLcal.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
+
 
 # Direct Submission - on MacBook
 
@@ -53,11 +60,6 @@ install.packages("sources/sds_0.1.0.tar.gz", lib = Path2, repos = NULL, type = "
 install.packages("sources/curb65_0.0.0.9000.zip", lib = Path2, repos = NULL, type = "binary")
 install.packages("sources/VariousIP_0.1.0.tar.gz", lib = Path2, repos = NULL, type = "source")
 
-# Pending
-install.packages("sources/Ttest.zip", lib = Path2, repos = NULL, type = "binary") # not MacOS
-install.packages("sources/hw.zip", lib = Path2, repos = NULL, type = "binary") # not MacOS
-install.packages("sources/IOLcal.zip", lib = Path2, repos = NULL, type = "binary") # not MacOS
-
 # Github Submission
 
 devtools::install_github("Eunsol-Lee/Lottery", args = c(PathArg), force = TRUE)
@@ -67,15 +69,15 @@ devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRU
 
 ```{r include = FALSE, eval = FALSE}
 Packages <- c("Sunscreen", "imageML", "MyFunc", "MyUtil", "ECOG", "windex",
-              "mDense", "JHImageProcessingR", "uconv", "abgatool",
+              "mDense", "JHImageProcessingR", "uconv", "abgatool", "unicox",
               "lottery", "cats", "glasgowcoma")
 loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 
 Packages2 <- c("MyUtil", "qSOFA", "bmi", "sds", "curb65", "VariousIP")
 loadPackages2 <- lapply(Packages2, library, character.only = TRUE, lib.loc = Path2)
 
-# knitr::write_bib(x = Packages, file = 'bib/RprogrammingPackages.bib')
-knitr::write_bib(x = Packages2, file = 'bib/RprogrammingPackages2.bib')
+knitr::write_bib(x = Packages, file = 'bib/RprogrammingPackages.bib')
+# knitr::write_bib(x = Packages2, file = 'bib/RprogrammingPackages2.bib')
 # knitr::write_bib(x = .packages(), file = 'bib/allPackages.bib')
 ```
 
