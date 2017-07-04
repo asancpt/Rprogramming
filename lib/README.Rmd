@@ -33,6 +33,12 @@ library(RefManageR)
 ```
 
 ```{r eval = FALSE, include = FALSE}
+# Github Submission
+
+devtools::install_github("Eunsol-Lee/Lottery", args = c(PathArg), force = TRUE)
+devtools::install_github("shanmdphd/cats", args = c(PathArg), force = TRUE)
+devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRUE)
+
 # Direct Submission - on PC
 
 install.packages("sources/Sunscreen_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
@@ -54,10 +60,6 @@ install.packages("sources/SurvModelComp_0.1.0.zip", lib = Path, repos = NULL, ty
 install.packages("sources/doctor_0.1.0.tar.gz", lib = Path, repos = NULL, type = "source")
 install.packages("sources/MedAd_0.0.0.9000.tar.gz", lib = Path, repos = NULL, type = "source")
 
-# Pending - on PC
-install.packages("sources/hw.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
-install.packages("sources/IOLcal.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
-
 # Direct Submission - on MacBook
 
 install.packages("sources/MyUtil_0.1.0.zip", lib = Path2, repos = NULL, type = "binary")
@@ -66,27 +68,40 @@ install.packages("sources/bmi_0.0.0.9000.tar.gz", lib = Path2, repos = NULL, typ
 install.packages("sources/sds_0.1.0.tar.gz", lib = Path2, repos = NULL, type = "source")
 install.packages("sources/curb65_0.0.0.9000.zip", lib = Path2, repos = NULL, type = "binary")
 install.packages("sources/VariousIP_0.1.0.tar.gz", lib = Path2, repos = NULL, type = "source")
+install.packages("sources/kwpark/tempConvert_0.0.0.9000.tar.gz", lib = Path2, repos = NULL, type = "source") # 2017-07-04
+install.packages("sources/shchoi/CauseOfDeathCounter_0.0.2.tar.gz", lib = Path2, repos = NULL, type = "source") # 2017-07-04
 
-# Github Submission
+# Pending - on PC
 
-devtools::install_github("Eunsol-Lee/Lottery", args = c(PathArg), force = TRUE)
-devtools::install_github("shanmdphd/cats", args = c(PathArg), force = TRUE)
-devtools::install_github("shanmdphd/glasgowcoma", args = c(PathArg), force = TRUE)
+install.packages("sources/hw.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
+install.packages("sources/IOLcal.zip", lib = Path, repos = NULL, type = "binary") # not MacOS
+
+# Pending - on MacBook
+
+install.packages("sources/DIOPTER.zip", lib = Path2, repos = NULL, type = "binary")
+install.packages("sources/DIOPTER.zip", lib = Path2, repos = NULL, type = "source")
+# 1. Professor - My
+
 ```
 
 ```{r include = FALSE, eval = FALSE}
+# From PC
+
 Packages <- c("Sunscreen", "imageML", "MyFunc", "MyUtil", "ECOG", "windex",
               "mDense", "JHImageProcessingR", "uconv", "abgatool", "unicox",
               "Ttest", "Picturepackage", "mrate", "findOutlier", "SurvModelComp",
               "doctor", "MedAd", 
-              "lottery", "cats", "glasgowcoma")
+              "lottery", "cats", "glasgowcoma") # From github
 loadPackages <- lapply(Packages, library, character.only = TRUE, lib.loc = Path)
 
-Packages2 <- c("MyUtil", "qSOFA", "bmi", "sds", "curb65", "VariousIP")
+# From Mac
+
+Packages2 <- c("tempConvert", "CauseOfDeathCounter",
+  "MyUtil", "qSOFA", "bmi", "sds", "curb65", "VariousIP")
 loadPackages2 <- lapply(Packages2, library, character.only = TRUE, lib.loc = Path2)
 
-knitr::write_bib(x = Packages, file = 'bib/RprogrammingPackages.bib')
-# knitr::write_bib(x = Packages2, file = 'bib/RprogrammingPackages2.bib')
+#knitr::write_bib(x = Packages, file = 'bib/RprogrammingPackages.bib')
+knitr::write_bib(x = Packages2, file = 'bib/RprogrammingPackages2.bib')
 # knitr::write_bib(x = .packages(), file = 'bib/allPackages.bib')
 ```
 

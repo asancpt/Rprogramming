@@ -1,6 +1,8 @@
 _bookdown_files
 lib/container*
 lib/sources*
+lib/summary.md
+summary
 
 *.zip
 
