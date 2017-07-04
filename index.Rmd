@@ -93,7 +93,6 @@ The online version of this book is licensed under the [Creative Commons Attribut
 
 ![Creative Commons License](images/by-nc-sa.png)  
 
-
 ## Teaching Assistant {-}
 
 안녕하십니까? 서울아산병원 임상약리학과 전공의 한성필입니다. 
