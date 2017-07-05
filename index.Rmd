@@ -40,12 +40,6 @@ CACHE <- TRUE
 knitr::opts_chunk$set(results = 'markup', cache = CACHE, 
     error = TRUE, collapse = FALSE)# , dev = c('png', 'pdf'))
 
-myPackages <- c('knitr')
-lapply(myPackages, function(pkg) {
-    if (system.file(package = pkg) == '') install.packages(pkg)
-})
-#lapply(myPackages, library, character.only = TRUE)
-
 library(knitr)
 library(readxl)
 library(dplyr)
