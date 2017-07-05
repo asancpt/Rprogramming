@@ -6,6 +6,6 @@
 
 
 
-```{r code = readLines('R_stringr_lubridate.R', encoding = 'UTF-8')}
+```{r code = readLines('R-stringr.R', encoding = 'UTF-8')}
 ```
 

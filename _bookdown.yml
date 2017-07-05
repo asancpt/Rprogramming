@@ -13,9 +13,9 @@ rmd_files: [
     "index.Rmd", 
     
     # Manuscript
-    "rlang.Rmd", # 2017-03-15 ksbae
-    
-    # "stringr-lubridate.Rmd", # 2017-05-24 yscho
+    "ms-rlang.Rmd", # 2017-03-15 ksbae
+    "ms-graphics.Rmd", # 2017-03-22 hslim
+    "ms-stringr-lubridate.Rmd", # 2017-05-24 yscho
 
     # Appendix
     "A00-Appendix.Rmd",

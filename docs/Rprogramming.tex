@@ -276,9 +276,8 @@ R은 \url{http://cran.r-project.org} 에서 다운로드받아 설치할 수
 강의 장소에 불편함이 많은 것으로 생각되어, 다음과 같이 Skype 모임을
 개설하였습니다. 사정상 원거리에서 오시기 불편한 분들은 활용하시기
 바랍니다. 출석은 화면을 캡쳐하거나 휴대폰으로 찍은 뒤
-\href{mailto:sec@acp.kr}{\nolinkurl{sec@acp.kr}},
-\href{mailto:shan@acp.kr로}{\nolinkurl{shan@acp.kr로}} 보내주시면
-출석으로 인정해 드립니다.
+\texttt{sec@acp.kr}, \texttt{shan@acp.kr} 로 보내주시면 출석으로 인정해
+드립니다.
 
 Skype 모임 참가 \url{https://meet.lync.com/uucp-acp/ksbae/SKGJ3BNQ}
 
@@ -299,16 +298,14 @@ Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
 
 안녕하십니까? 서울아산병원 임상약리학과 전공의 한성필입니다. 수업과
 관련된 여러 제반 업무를 담당하고 있습니다. 언제든 의문사항 있으면
-\href{mailto:r@acr.kr}{\nolinkurl{r@acr.kr}} 로 전체 메일 보내시거나
-교수님 \href{mailto:k@acr.kr}{\nolinkurl{k@acr.kr}} 혹은 제 개인 메일
-\href{mailto:shan@acp.kr로}{\nolinkurl{shan@acp.kr로}} 연락해 주십시오.
+\texttt{r@acr.kr} 로 전체 메일 보내시거나 교수님 \texttt{k@acr.kr} 혹은
+제 개인 메일 \texttt{shan@acp.kr} 로 연락해 주십시오.
 
 교수님께서 세우신 방침에 따라 수업시간에 출석을 부르지 않을 예정입니다.
 수강하시는 화면(Skype)을 휴대폰으로 사진 찍으시거나 강의실의 스크린을
-사진으로 촬영하셔서 \href{mailto:sec@acp.kr}{\nolinkurl{sec@acp.kr}} /
-\href{mailto:shan@acp.kr}{\nolinkurl{shan@acp.kr}} 로 동시에 보내주시면
-됩니다. 가급적 ``2017-03-31 한성필 출석'' 과 같은 식의 제목을 유지해
-주시면 처리하는데 큰 도움이 될 것 같습니다.
+사진으로 촬영하셔서 \texttt{sec@acp.kr} / \texttt{shan@acp.kr} 로 동시에
+보내주시면 됩니다. 가급적 ``2017-03-31 한성필 출석'' 과 같은 식의 제목을
+유지해 주시면 처리하는데 큰 도움이 될 것 같습니다.
 
 \textbf{출석 체크를 위해 전체메일을 사용하지 말아주십시오!}
 
@@ -469,6 +466,1830 @@ Skype로 커버해야 합니다. 출석의 성적 반영비율은 25\%이지만,
 
 \href{https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf}{R
 Language Definition}의 초반 내용에 대해 설명하였습니다.
+
+\chapter{Graphics}\label{graphics}
+
+\begin{quote}
+2017-03-22 임형석 교수님 강의
+\end{quote}
+
+R을 사용해 그림 그리는 방법에 대해 알아보겠습니다.
+
+\section{Introduction}\label{introduction}
+
+R에서 상위수준 그림 함수는 그림을 생성합니다. 반면 하위수준 그림 함수는
+기존의 그림에 그림을 추가합니다.
+
+\section{상위수준 그림 함수}\label{upper}
+
+\subsection{상위수준 그림 함수의 주요 인자
+(arguments)}\label{-----arguments}
+
+\begin{itemize}
+\tightlist
+\item
+  main : 제목
+\item
+  xlab/ylab : x축 및 y축 레이블
+\item
+  xlim/ylim : x축 및 y축 범위
+\item
+  col : 색깔
+\item
+  lty : 선 모양
+\item
+  pch : 점 모양
+\item
+  cex : 그림 성분의 크기
+\item
+  lwd : 선 굵기
+\item
+  type : 그림 타입
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dta <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"PK.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(dta)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID TIME AMT    DV MDV
+## 1  1 0.00   0  0.00   0
+## 2  1 0.00   4  0.00   1
+## 3  1 0.33   0  9.40   0
+## 4  1 0.66   0 13.71   0
+## 5  1 1.00   0 16.52   0
+## 6  1 1.50   0 29.36   0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dta)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    456 obs. of  5 variables:
+##  $ ID  : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ TIME: num  0 0 0.33 0.66 1 1.5 2 3 4 6 ...
+##  $ AMT : num  0 4 0 0 0 0 0 0 0 0 ...
+##  $ DV  : num  0 0 9.4 13.7 16.5 ...
+##  $ MDV : num  0 1 0 0 0 0 0 0 0 0 ...
+\end{verbatim}
+
+\subsection{scatter plot}\label{scatter-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{log=}\StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in xy.coords(x, y, xlabel, ylabel, log): 86 y
+## values <= 0 omitted from logarithmic plot
+\end{verbatim}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-3-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\KeywordTok{log}\NormalTok{(dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-3-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{]}
+\NormalTok{     , }\DataTypeTok{xlab=}\StringTok{"Time (hr)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/mL)"} 
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"o"}\NormalTok{, }\DataTypeTok{pch=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\DecValTok{1}\NormalTok{, }\DataTypeTok{main=}\StringTok{"PK time-course of Drug X"}
+\NormalTok{     , }\DataTypeTok{xlim =}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{2}\NormalTok{,}\DecValTok{218}\NormalTok{), }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-3-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{axes=}\NormalTok{F,}
+\NormalTok{     , }\DataTypeTok{xlab=}\StringTok{"Time (hr)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/mL)"} 
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"o"}\NormalTok{, }\DataTypeTok{pch=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\DecValTok{1}\NormalTok{, }\DataTypeTok{main=}\StringTok{"PK time-course of Drug X"}
+\NormalTok{     , }\DataTypeTok{xlim =}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{2}\NormalTok{,}\DecValTok{218}\NormalTok{), }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{at=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{218}\NormalTok{, }\DecValTok{24}\NormalTok{))}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\KeywordTok{box}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-3-5.pdf}
+
+\subsection{Histogram}\label{histogram}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d.demog <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"DEMOG.csv"}\NormalTok{)}
+
+\KeywordTok{hist}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{breaks=}\DecValTok{10}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{nclass=}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\subsubsection{with density line}\label{with-density-line}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{ (d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{probability=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{breaks=}\DecValTok{10}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{ (d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{probability=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{breaks=}\DecValTok{9}\NormalTok{, }\DataTypeTok{xaxt=}\StringTok{"n"}
+\NormalTok{      , }\DataTypeTok{main=}\StringTok{"Histogram for Height"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Height (cm)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Probability (%)"}\NormalTok{)}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{at=}\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\DecValTok{3}\NormalTok{))}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{ (d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{probability=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{breaks=}\DecValTok{9}\NormalTok{, }\DataTypeTok{xaxt=}\StringTok{"n"}
+\NormalTok{      , }\DataTypeTok{main=}\StringTok{"Histogram for Height"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Height (cm)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Probability (%)"}
+\NormalTok{      , }\DataTypeTok{col =} \StringTok{"lightblue"}\NormalTok{, }\DataTypeTok{border =} \StringTok{"pink"}\NormalTok{)}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{at=}\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\DecValTok{3}\NormalTok{))}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-5-3.pdf}
+
+\subsection{Box-Whisker Plot}\label{box-whisker-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX)}
+
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{split}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT, d.demog}\OperatorTok{$}\NormalTok{SEX))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-6-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(WT }\OperatorTok{~}\StringTok{ }\NormalTok{SEX, }\DataTypeTok{data=}\NormalTok{d.demog)}
+
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX}
+\NormalTok{        , }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"AGE, year"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{        , }\DataTypeTok{col=}\StringTok{"pink"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-6-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX}
+\NormalTok{        , }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"AGE, year"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{        , }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{, }\StringTok{"salmon"}\NormalTok{), }\DataTypeTok{width=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-6-4.pdf}
+
+-varwidth: if varwidth is TRUE, the boxes are drawn with widths
+proportional to the square-roots of the number of observations in the
+groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX}
+\NormalTok{        , }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"AGE, year"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{        , }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{, }\StringTok{"salmon"}\NormalTok{)}
+\NormalTok{        , }\DataTypeTok{varwidth=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\subsection{Bar Plot}\label{bar-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{VADeaths}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Rural Male Rural Female Urban Male Urban Female
+## 50-54       11.7          8.7       15.4          8.4
+## 55-59       18.1         11.7       24.3         13.6
+## 60-64       26.9         20.3       37.0         19.3
+## 65-69       41.0         30.9       54.6         35.1
+## 70-74       66.0         54.3       71.1         50.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{border =} \StringTok{"dark blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{rainbow}\NormalTok{(}\DecValTok{20}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{heat.colors}\NormalTok{(}\DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{log=}\StringTok{"x"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{log=}\StringTok{"y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{log=}\StringTok{"xy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-8-8.pdf}
+
+\subsection{pie chart}\label{pie-chart}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{drug.X.market <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.12}\NormalTok{, }\FloatTok{0.29}\NormalTok{, }\FloatTok{0.32}\NormalTok{, }\FloatTok{0.22}\NormalTok{, }\FloatTok{0.11}\NormalTok{, }\FloatTok{0.28}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(drug.X.market) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"South Korea"}\NormalTok{,}\StringTok{"China"}\NormalTok{,}\StringTok{"USA"}\NormalTok{,}\StringTok{"Japan"}\NormalTok{,}\StringTok{"Austria"}\NormalTok{,}\StringTok{"EU"}\NormalTok{)}
+\KeywordTok{pie}\NormalTok{(drug.X.market)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsection{matplot 함수}\label{matplot-}
+
+\subsubsection{matrix와 column 사이의 그림}\label{matrix-column--}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pct.}\DecValTok{95}\NormalTok{ <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"pct95.csv"}\NormalTok{)}
+\KeywordTok{matplot}\NormalTok{(pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{1}\NormalTok{], pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{2}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(pct.}\DecValTok{95}\NormalTok{)], }\DataTypeTok{pch=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matplot}\NormalTok{(pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{1}\NormalTok{], pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{2}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(pct.}\DecValTok{95}\NormalTok{)], }\DataTypeTok{pch=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{lwd=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-10-2.pdf}
+
+\subsection{Scatter plot matrices (pairs
+plots)}\label{scatter-plot-matrices-pairs-plots}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(d.demog)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\subsubsection{add a loess smoother,
+type}\label{add-a-loess-smoother-type}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(d.demog, }\DataTypeTok{panel =}\NormalTok{ panel.smooth)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{panel.cor <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y, }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{, }\DataTypeTok{prefix=}\StringTok{""}\NormalTok{, cex.cor)}
+\NormalTok{\{}
+\NormalTok{    usr <-}\StringTok{ }\KeywordTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{); }\KeywordTok{on.exit}\NormalTok{(}\KeywordTok{par}\NormalTok{(usr))}
+    \KeywordTok{par}\NormalTok{(}\DataTypeTok{usr =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{    r =}\StringTok{ }\NormalTok{(}\KeywordTok{cor}\NormalTok{(x, y))}
+\NormalTok{    txt <-}\StringTok{ }\KeywordTok{format}\NormalTok{(}\KeywordTok{c}\NormalTok{(r, }\FloatTok{0.123456789}\NormalTok{), }\DataTypeTok{digits=}\NormalTok{digits)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    txt <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(prefix, txt, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
+    \ControlFlowTok{if}\NormalTok{(}\KeywordTok{missing}\NormalTok{(cex.cor)) cex <-}\StringTok{ }\FloatTok{1.5}
+    \KeywordTok{text}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{, txt, }\DataTypeTok{cex =} \FloatTok{1.5}\NormalTok{)}
+\NormalTok{\}}
+
+\KeywordTok{pairs}\NormalTok{(d.demog, }\DataTypeTok{lower.panel=}\NormalTok{panel.smooth, }\DataTypeTok{upper.panel=}\NormalTok{panel.cor) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-12-2.pdf}
+
+\section{하위수준 그림 함수}\label{lower}
+
+\begin{itemize}
+\tightlist
+\item
+  points : 점추가
+\item
+  lines : 선 추가
+\item
+  abline : 기준선 추가
+\item
+  mtext : 텍스트 추가
+\item
+  legend : 설명(legend) 추가
+\item
+  polygon : polygon 추가
+\end{itemize}
+
+\subsection{점, 선, 설명 추가 하기 \{add\}}\label{-----add}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(pct.}\DecValTok{95}\OperatorTok{$}\NormalTok{TIME, pct.}\DecValTok{95}\OperatorTok{$}\NormalTok{PCT50, }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{), }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{# abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\subsection{polygon 함수}\label{polygon-}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{), }\DataTypeTok{type =} \StringTok{"n"}\NormalTok{)}
+\KeywordTok{polygon}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{2}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{col=}\StringTok{"lightgreen"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{), }\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, }\DataTypeTok{type =} \StringTok{"n"}\NormalTok{)}
+\KeywordTok{polygon}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+        \DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{),}
+        \DataTypeTok{border =} \KeywordTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"yellow"}\NormalTok{),}
+        \DataTypeTok{lwd =} \DecValTok{3}\NormalTok{, }\DataTypeTok{lty =} \KeywordTok{c}\NormalTok{(}\StringTok{"dashed"}\NormalTok{, }\StringTok{"solid"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rprogramming_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\section{그림 출력하기}\label{print}
+
+\subsection{pdf graphics devices}\label{pdf-graphics-devices}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pdf}\NormalTok{(}\StringTok{"PK_of_Drug_X.pdf"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{#abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+
+\KeywordTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## cairo_pdf 
+##         2
+\end{verbatim}
+
+\subsection{PNG graphics devices}\label{png-graphics-devices}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{png}\NormalTok{(}\StringTok{"PK_of_Drug_X.png"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{#abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+
+\KeywordTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## cairo_pdf 
+##         2
+\end{verbatim}
+
+\chapter{stringr and lubridate}\label{stringr-and-lubridate}
+
+\begin{quote}
+2017-05-24 조용순 전공의 강의
+\end{quote}
+
+11주차 강의 자료입니다.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#"Stringr"}
+\CommentTok{#R 표준 base 패키지에 포함된 함수군와 비슷한 기능을 하는 것으로 보이지만 더 합리적인 출력형식을 가지므로 사용하기 편리함}
+\CommentTok{#패키지의 특징}
+\CommentTok{#1) factor와 character를 같은 방식으로 처리}
+\CommentTok{#2) 일관성 있는 함수 이름과 인수}
+\CommentTok{#3) 다른 함수의 입력값으로 사용하기 편리한 출력값.}
+\CommentTok{#  -입력값 NA가 포함되어 있을 때는 그 부분의 결과를 NA로 돌려줌}
+\CommentTok{#4) 사용빈도가 떨어지는 문자열 조작 처리를 과감하게 제거하여 간략화시킴}
+
+\CommentTok{#1. Installation}
+\CommentTok{#install.packages("stringr")}
+
+\KeywordTok{library}\NormalTok{(stringr)}
+
+\CommentTok{#2. Functions}
+\CommentTok{#1) str_length(string): 문자열의 길이를 계산}
+\CommentTok{#문자열의 길이를 계산해주는 함수}
+\CommentTok{#base::nchar(x)와 같은 기능을 하는 함수}
+\CommentTok{#단, NA 에 대해서는 2가 아닌 NA를 돌려줍니다.}
+\KeywordTok{str_length}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"i"}\NormalTok{, }\StringTok{"like"}\NormalTok{, }\StringTok{"programming"}\NormalTok{, }\OtherTok{NA}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  4 11 NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1]  1  4 11 NA}
+\KeywordTok{nchar}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"i"}\NormalTok{, }\StringTok{"like"}\NormalTok{, }\StringTok{"programming"}\NormalTok{, }\OtherTok{NA}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  4 11 NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1]  1  4 11  2}
+
+\CommentTok{#2) str_sub(string, start=1, end=-1)}
+\CommentTok{#문자열을 부분적으로 참조, 변경해주는 함수}
+\CommentTok{#base::substr()와 같은 기능을 하는 함수}
+\CommentTok{#음수를 사용하여 문자열의 끝으로 부터의 위치를 지정할 수 있습니다.}
+\NormalTok{x <-}\StringTok{ "Michael Carreon"}
+\KeywordTok{str_sub}\NormalTok{(x,}\DataTypeTok{start=}\DecValTok{1}\NormalTok{,}\DataTypeTok{end=}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Michael C"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "Michael C" * 띄어쓰기까지 포함하여 9번째 문자까지 반환해줍니다.}
+\KeywordTok{str_sub}\NormalTok{(x,}\DecValTok{1}\NormalTok{,}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Michael C"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "Michael C" * start와 end는 쓰지 않아도 무방합니다.}
+\KeywordTok{str_sub}\NormalTok{(x,}\DataTypeTok{end=}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Michael"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "Michael" * start 값을 지정해주지 않으면, default 값인 1로 지정됩니다. 즉, str_sub(x,1,7)과 같은 값이 반환됩니다.}
+\KeywordTok{str_sub}\NormalTok{(x,}\OperatorTok{-}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Carreon"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "Carreon" * 음수를 통하여 문자열 끝부터 7번째 오는 문자부터 반환해줍니다.}
+\CommentTok{#Base R}
+\KeywordTok{substr}\NormalTok{(x,}\DecValTok{1}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Michael"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "Michael"}
+
+\CommentTok{#3) str_c(..., sep='', collapse=NULL)}
+\CommentTok{#문자열을 통합해주는 함수}
+\CommentTok{#sep의 default가 스페이스 공백이 아니므로 base::paste0()와 비슷합니다.}
+\KeywordTok{str_c}\NormalTok{(letters[}\OperatorTok{-}\DecValTok{26}\NormalTok{], }\StringTok{" comes before "}\NormalTok{, letters[}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "a comes before b" "b comes before c"
+##  [3] "c comes before d" "d comes before e"
+##  [5] "e comes before f" "f comes before g"
+##  [7] "g comes before h" "h comes before i"
+##  [9] "i comes before j" "j comes before k"
+## [11] "k comes before l" "l comes before m"
+## [13] "m comes before n" "n comes before o"
+## [15] "o comes before p" "p comes before q"
+## [17] "q comes before r" "r comes before s"
+## [19] "s comes before t" "t comes before u"
+## [21] "u comes before v" "v comes before w"
+## [23] "w comes before x" "x comes before y"
+## [25] "y comes before z"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#[1] "a comes before b" "b comes before c" "c comes before d" "d comes before e" "e comes before f"}
+\CommentTok{#[6] "f comes before g" "g comes before h" "h comes before i" "i comes before j" "j comes before k"}
+\CommentTok{#[11] "k comes before l" "l comes before m" "m comes before n" "n comes before o" "o comes before p"}
+\CommentTok{#[16] "p comes before q" "q comes before r" "r comes before s" "s comes before t" "t comes before u"}
+\CommentTok{#[21] "u comes before v" "v comes before w" "w comes before x" "x comes before y" "y comes before z"}
+\NormalTok{##Base R}
+\KeywordTok{paste0}\NormalTok{(letters[}\OperatorTok{-}\DecValTok{26}\NormalTok{], }\StringTok{" comes before "}\NormalTok{, letters[}\OperatorTok{-}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "a comes before b" "b comes before c"
+##  [3] "c comes before d" "d comes before e"
+##  [5] "e comes before f" "f comes before g"
+##  [7] "g comes before h" "h comes before i"
+##  [9] "i comes before j" "j comes before k"
+## [11] "k comes before l" "l comes before m"
+## [13] "m comes before n" "n comes before o"
+## [15] "o comes before p" "p comes before q"
+## [17] "q comes before r" "r comes before s"
+## [19] "s comes before t" "t comes before u"
+## [21] "u comes before v" "v comes before w"
+## [23] "w comes before x" "x comes before y"
+## [25] "y comes before z"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str_c}\NormalTok{(letters, }\DataTypeTok{collapse =} \StringTok{", "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"}
+\CommentTok{#sep와 collapse의 차이는 한 벡터 안에 존재하느냐 아니냐입니다.}
+\KeywordTok{str_c}\NormalTok{(}\StringTok{"안"}\NormalTok{,}\StringTok{"녕"}\NormalTok{,}\StringTok{"하"}\NormalTok{,}\StringTok{"세"}\NormalTok{,}\StringTok{"요"}\NormalTok{,}\DataTypeTok{sep=}\StringTok{"_"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "안_녕_하_세_요"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "안_녕_하_세_요"  }
+\KeywordTok{str_c}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"안"}\NormalTok{,}\StringTok{"녕"}\NormalTok{,}\StringTok{"하"}\NormalTok{,}\StringTok{"세"}\NormalTok{,}\StringTok{"요"}\NormalTok{),}\DataTypeTok{collapse=}\StringTok{"_"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "안_녕_하_세_요"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "안_녕_하_세_요"}
+
+\CommentTok{#4) str_split(string, pattern, n=Inf)}
+\CommentTok{#문자열을 분리해주는 함수--> 결과값은 list입니다.}
+\CommentTok{#base::strsplit(x, split)와 대응하는 함수입니다.}
+\CommentTok{#str_split_fixed()도 있고, 결과값은 matrix}
+\NormalTok{fruits <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"apples and oranges and pears and bananas"}\NormalTok{, }\StringTok{"pineapples and mangos and guavas"}\NormalTok{)}
+\KeywordTok{str_split}\NormalTok{(fruits, }\StringTok{" and "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "apples"  "oranges" "pears"   "bananas"
+## 
+## [[2]]
+## [1] "pineapples" "mangos"     "guavas"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [[1]]}
+\CommentTok{#> [1] "apples"  "oranges" "pears"   "bananas"}
+\CommentTok{#> }
+\CommentTok{#> [[2]]}
+\CommentTok{#> [1] "pineapples" "mangos"     "guavas"}
+\CommentTok{#Base R}
+\KeywordTok{strsplit}\NormalTok{(fruits, }\StringTok{"and"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "apples "   " oranges " " pears "   " bananas" 
+## 
+## [[2]]
+## [1] "pineapples " " mangos "    " guavas"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [[1]]}
+\CommentTok{#> [1] "apples "   " oranges " " pears "   " bananas" }
+\CommentTok{#> }
+\CommentTok{#> [[2]]}
+\CommentTok{#> [1] "pineapples " " mangos "    " guavas"}
+\KeywordTok{str_split}\NormalTok{(fruits, }\StringTok{" and "}\NormalTok{, }\DataTypeTok{n =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "apples"            "oranges"          
+## [3] "pears and bananas"
+## 
+## [[2]]
+## [1] "pineapples" "mangos"     "guavas"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [[1]]}
+\CommentTok{#> [1] "apples"            "oranges"           "pears and bananas"}
+\CommentTok{#> }
+\CommentTok{#> [[2]]}
+\CommentTok{#> [1] "pineapples" "mangos"     "guavas"}
+\KeywordTok{str_split}\NormalTok{(fruits, }\StringTok{" and "}\NormalTok{, }\DataTypeTok{n =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "apples"                       
+## [2] "oranges and pears and bananas"
+## 
+## [[2]]
+## [1] "pineapples"        "mangos and guavas"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [[1]]}
+\CommentTok{#> [1] "apples"                        "oranges and pears and bananas"}
+\CommentTok{#> }
+\CommentTok{#> [[2]]}
+\CommentTok{#> [1] "pineapples"        "mangos and guavas"}
+\KeywordTok{str_split_fixed}\NormalTok{(fruits, }\StringTok{" and "}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]         [,2]      [,3]     [,4]     
+## [1,] "apples"     "oranges" "pears"  "bananas"
+## [2,] "pineapples" "mangos"  "guavas" ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>      [,1]         [,2]      [,3]     [,4]     }
+\CommentTok{#> [1,] "apples"     "oranges" "pears"  "bananas"}
+\CommentTok{#> [2,] "pineapples" "mangos"  "guavas" "}
+
+\CommentTok{#5)str_detect(string, pattern)}
+\CommentTok{#매치하는 곳이 있는지 없는지를 logical 값(True or False)으로 반환해주는 함수}
+\CommentTok{#base::grepl(pattern, x)과 대응}
+\NormalTok{fruit <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"apple"}\NormalTok{, }\StringTok{"banana"}\NormalTok{, }\StringTok{"pear"}\NormalTok{, }\StringTok{"pinapple"}\NormalTok{)}
+\KeywordTok{str_detect}\NormalTok{(fruit, }\StringTok{"a"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] TRUE TRUE TRUE TRUE}
+\KeywordTok{str_detect}\NormalTok{(fruit, }\StringTok{"^a"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1]  TRUE FALSE FALSE FALSE}
+\KeywordTok{str_detect}\NormalTok{(fruit, }\StringTok{"a$"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] FALSE  TRUE FALSE FALSE}
+\KeywordTok{str_detect}\NormalTok{(fruit, }\StringTok{"b"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] FALSE  TRUE FALSE FALSE}
+\KeywordTok{str_detect}\NormalTok{(fruit, }\StringTok{"[aeiou]"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] TRUE TRUE TRUE TRUE}
+
+\CommentTok{#6) str_count(string, pattern)}
+\CommentTok{#매치하는 곳의 수를 반환해주는 함수}
+\CommentTok{#그 글자가 몇 개 포함되어 있는지 알려줍니다.}
+\KeywordTok{str_count}\NormalTok{(fruit, }\StringTok{"p"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 0 1 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] 2 0 1 3}
+\KeywordTok{str_count}\NormalTok{(fruit, }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"p"}\NormalTok{, }\StringTok{"p"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 1 1 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] 1 1 1 3}
+
+\CommentTok{#7)str_locate(string, pattern)}
+\CommentTok{#처음으로 매치되는 곳의 start, end 위치를 행렬로 반환해주는 함수}
+\KeywordTok{str_locate}\NormalTok{(fruit, }\StringTok{"e"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      start end
+## [1,]     5   5
+## [2,]    NA  NA
+## [3,]     2   2
+## [4,]     8   8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>      start end}
+\CommentTok{#> [1,]     5   5}
+\CommentTok{#> [2,]    NA  NA}
+\CommentTok{#> [3,]     2   2}
+\CommentTok{#> [4,]     8   8}
+\KeywordTok{str_locate}\NormalTok{(fruit, }\StringTok{"pl"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      start end
+## [1,]     3   4
+## [2,]    NA  NA
+## [3,]    NA  NA
+## [4,]     6   7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>      start end}
+\CommentTok{#> [1,]     3   4}
+\CommentTok{#> [2,]    NA  NA}
+\CommentTok{#> [3,]    NA  NA}
+\CommentTok{#> [4,]     6   7}
+
+\CommentTok{#8)str_extract(string, pattern)}
+\CommentTok{#매치된 부분 문자열을 추출하는 함수}
+\CommentTok{#매치되지 않은 요소는 NA로 출력합니다}
+\CommentTok{#base::grep(pattern, x, value=TRUE)와 비슷하나 이 함수는 매치된 요소만 원래의 형태로 돌려줍니다}
+\NormalTok{shopping_list <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"apples x4"}\NormalTok{, }\StringTok{"flour"}\NormalTok{, }\StringTok{"sugar"}\NormalTok{, }\StringTok{"milk x2"}\NormalTok{)}
+\KeywordTok{str_extract}\NormalTok{(shopping_list, }\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "4" NA  NA  "2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "4" NA  NA  "2"}
+\KeywordTok{grep}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d"}\NormalTok{, shopping_list, }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "apples x4" "milk x2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "apples x4" "milk x2"}
+\KeywordTok{str_extract}\NormalTok{(shopping_list, }\StringTok{"[a-z]+"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "apples" "flour"  "sugar"  "milk"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "apples" "flour"  "sugar"  "milk"}
+\KeywordTok{grep}\NormalTok{(}\StringTok{"[a-z]+"}\NormalTok{, shopping_list, }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "apples x4" "flour"     "sugar"     "milk x2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "apples x4" "flour"     "sugar"     "milk x2"}
+
+\CommentTok{#9)str_match(string, pattern)}
+\CommentTok{#매치된 부분 문자열을 추출하고 참조를 행렬로 돌려주는 함수}
+\CommentTok{#str_extract 함수의 결과를 1열에 , 각 괄호에 매치된 이후의 결과가 2열 이후에 들어갑니다.}
+\NormalTok{strings <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{" 219 733 8965"}\NormalTok{, }\StringTok{"329-293-8753 "}\NormalTok{, }\StringTok{"banana"}\NormalTok{, }\StringTok{"595 794 7569"}\NormalTok{, }\StringTok{"387 287 6718"}\NormalTok{, }\StringTok{"apple"}\NormalTok{, }\StringTok{"233.398.9187  "}\NormalTok{, }\StringTok{"482 952 3315"}\NormalTok{, }\StringTok{"239 923 8115"}\NormalTok{, }\StringTok{"842 566 4692"}\NormalTok{, }\StringTok{"Work: 579-499-7527"}\NormalTok{, }\StringTok{"$1000"}\NormalTok{, }\StringTok{"Home: 543.355.3679"}\NormalTok{)}
+\NormalTok{phone <-}\StringTok{ "([2-9][0-9]\{2\})[- .]([0-9]\{3\})[- .]([0-9]\{4\})"}
+\KeywordTok{str_extract}\NormalTok{(strings, phone)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "219 733 8965" "329-293-8753" NA            
+##  [4] "595 794 7569" "387 287 6718" NA            
+##  [7] "233.398.9187" "482 952 3315" "239 923 8115"
+## [10] "842 566 4692" "579-499-7527" NA            
+## [13] "543.355.3679"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>  [1] "219 733 8965" "329-293-8753" NA             "595 794 7569"}
+\CommentTok{#>  [5] "387 287 6718" NA             "233.398.9187" "482 952 3315"}
+\CommentTok{#>  [9] "239 923 8115" "842 566 4692" "579-499-7527" NA            }
+\CommentTok{#> [13] "543.355.3679"}
+\KeywordTok{str_match}\NormalTok{(strings, phone)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]           [,2]  [,3]  [,4]  
+##  [1,] "219 733 8965" "219" "733" "8965"
+##  [2,] "329-293-8753" "329" "293" "8753"
+##  [3,] NA             NA    NA    NA    
+##  [4,] "595 794 7569" "595" "794" "7569"
+##  [5,] "387 287 6718" "387" "287" "6718"
+##  [6,] NA             NA    NA    NA    
+##  [7,] "233.398.9187" "233" "398" "9187"
+##  [8,] "482 952 3315" "482" "952" "3315"
+##  [9,] "239 923 8115" "239" "923" "8115"
+## [10,] "842 566 4692" "842" "566" "4692"
+## [11,] "579-499-7527" "579" "499" "7527"
+## [12,] NA             NA    NA    NA    
+## [13,] "543.355.3679" "543" "355" "3679"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>       [,1]           [,2]  [,3]  [,4]  }
+\CommentTok{#>  [1,] "219 733 8965" "219" "733" "8965"}
+\CommentTok{#>  [2,] "329-293-8753" "329" "293" "8753"}
+\CommentTok{#>  [3,] NA             NA    NA    NA    }
+\CommentTok{#>  [4,] "595 794 7569" "595" "794" "7569"}
+\CommentTok{#>  [5,] "387 287 6718" "387" "287" "6718"}
+\CommentTok{#>  [6,] NA             NA    NA    NA    }
+\CommentTok{#>  [7,] "233.398.9187" "233" "398" "9187"}
+\CommentTok{#>  [8,] "482 952 3315" "482" "952" "3315"}
+\CommentTok{#>  [9,] "239 923 8115" "239" "923" "8115"}
+\CommentTok{#> [10,] "842 566 4692" "842" "566" "4692"}
+\CommentTok{#> [11,] "579-499-7527" "579" "499" "7527"}
+\CommentTok{#> [12,] NA             NA    NA    NA    }
+\CommentTok{#> [13,] "543.355.3679" "543" "355" "3679"}
+
+\CommentTok{#10)str_replace(string, pattern, replacement)}
+\CommentTok{#매치되지 않은 부분은 그대로 두고 매치된 부분만 치환하는 함수}
+\CommentTok{#base::sub(매치할 부분,치환할 문자,문자열)와 같은 기능을 합니다.}
+\NormalTok{fruits <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"one apple"}\NormalTok{, }\StringTok{"two pears"}\NormalTok{, }\StringTok{"three bananas"}\NormalTok{)}
+\KeywordTok{str_replace}\NormalTok{(fruits, }\StringTok{"[aeiou]"}\NormalTok{, }\StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-ne apple"     "tw- pears"     "thr-e bananas"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "-ne apple"     "tw- pears"     "thr-e bananas"}
+\KeywordTok{str_replace_all}\NormalTok{(fruits, }\StringTok{"[aeiou]"}\NormalTok{, }\StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-n- -ppl-"     "tw- p--rs"     "thr-- b-n-n-s"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#> [1] "-n- -ppl-"     "tw- p--rs"     "thr-- b-n-n-s"}
+
+\CommentTok{#11)str_trim(string, side="both")}
+\CommentTok{#공백문자를 제거하는 함수}
+\KeywordTok{str_trim}\NormalTok{(}\StringTok{"        fruits        "}\NormalTok{, }\DataTypeTok{side=}\StringTok{"both"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "fruits"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>[1] "fruits" }
+\NormalTok{Trim =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{gsub}\NormalTok{(}\StringTok{"^}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{s+|}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{s+$"}\NormalTok{, }\StringTok{""}\NormalTok{, x)}
+\KeywordTok{Trim}\NormalTok{(}\StringTok{"        fruits        "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "fruits"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#>[1] "fruits"}
+
+\CommentTok{#"lubridate"}
+\CommentTok{#lubri:lubricate(기름을 치다, 기름을 바르다, 원활히 하다)+date}
+\CommentTok{#Lubridate is an R package that makes it easier to work with dates and times }
+\CommentTok{#1.Installation}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"lubridate"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in contrib.url(repos, "source"): trying to use CRAN without setting a mirror
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: methods
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'lubridate'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:plyr':
+## 
+##     here
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     date
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#2.Functions}
+\CommentTok{#1)Parsing dates and times(dates & times 객체 만들기)}
+\NormalTok{##Date}
+\CommentTok{#Base R}
+\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2011-06-04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2011-6-4"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2011/06/04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\NormalTok{## }
+\KeywordTok{as.Date}\NormalTok{(}\StringTok{"20110604"}\NormalTok{) }\CommentTok{# error }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in charToDate(x): character string is not in a standard unambiguous format
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.Date}\NormalTok{(}\StringTok{"06-04-2011"}\NormalTok{) ### [1] "0006-04-20" (미국식 표현) #Problem}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "0006-04-20"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#lubridate package }
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2011/06/04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\CommentTok{#심볼의 순서를 바꾸어도}
+\KeywordTok{mdy}\NormalTok{(}\StringTok{"06/04/2011"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{dmy}\NormalTok{(}\StringTok{"04/06/2011"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+
+\CommentTok{#lubridate에서의 날짜 양식의 관용}
+\CommentTok{#heterogeneous format(불균일한 양식)에 대한 다양한 준비들이 되어있음}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2011/06/04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2011-06-04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"20110604"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"110604"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"11.06.04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"11,06,04"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"11_06.04"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2011  06  04"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2011!?06??!04"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2011 =06??04"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04"}
+
+\NormalTok{##Dates + Times 객체 만들기}
+\CommentTok{#Base R}
+\KeywordTok{as.POSIXct}\NormalTok{(}\StringTok{"2011-06-04 13:30:50"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 13:30:50 KST"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 13:30:50 KST"}
+\KeywordTok{as.POSIXct}\NormalTok{(}\StringTok{"2011-06-04 13"}\NormalTok{) }\CommentTok{# No}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 KST"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 KST"}
+\KeywordTok{strptime}\NormalTok{(}\StringTok{"2011-06-04 13:30:50"}\NormalTok{, }\StringTok{"%Y-%m-%d %H:%M:%S"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 13:30:50 KST"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 13:30:50 KST"}
+
+\CommentTok{#lubridate package}
+\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2011-06-04 13:30:50"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 13:30:50 UTC"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 13:30:50 UTC"}
+\CommentTok{#조금 더 융통성이 있게 사용할 수 있는 점}
+\KeywordTok{ymd_h}\NormalTok{(}\StringTok{"2011-06-04 13"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 13:00:00 UTC"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 13:00:00 UTC"}
+
+\CommentTok{#2)Setting and Extracting information}
+\CommentTok{#부분정보를 추출하기 위한 간편 함수들}
+\CommentTok{#함수명칭도 상식적으로 이해하기 쉬운 것들}
+\CommentTok{#:second(), minute(), hour(), day(), wday(), yday(), week(), month(), year()}
+\NormalTok{ld1 <-}\StringTok{ }\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2011-06-04 13:30:50"}\NormalTok{)}
+
+\KeywordTok{year}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2011
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 2011}
+\KeywordTok{month}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 6}
+\KeywordTok{day}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 4}
+\KeywordTok{wday}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 7}
+\KeywordTok{yday}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 155
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 155}
+\KeywordTok{hour}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 13}
+\KeywordTok{minute}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 30}
+\KeywordTok{second}\NormalTok{(ld1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 50
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] 50}
+
+\CommentTok{# month, wday 의 경우 label 인자를 가지고 있는데 이를 TRUE 로 설정할 경우}
+\KeywordTok{month}\NormalTok{(ld1, }\DataTypeTok{label =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Jun
+## 12 Levels: Jan < Feb < Mar < Apr < May < ... < Dec
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] Jun}
+\NormalTok{## 12 Levels: Jan < Feb < Mar < Apr < May < Jun < Jul < Aug < Sep < ... < Dec}
+\KeywordTok{wday}\NormalTok{(ld1, }\DataTypeTok{label =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Sat
+## 7 Levels: Sun < Mon < Tues < Wed < Thurs < ... < Sat
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] Sat}
+\NormalTok{## Levels: Sun < Mon < Tues < Wed < Thurs < Fri < Sat}
+
+\CommentTok{#3)Update date-time}
+\CommentTok{#"2011년 6월 4일 13:30:50" 로 저장되어있던 ld1 에 대해 시각(hour)을 10시로 바꾸려면 }
+\KeywordTok{hour}\NormalTok{(ld1) <-}\StringTok{ }\DecValTok{10}
+\NormalTok{ld1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 10:30:50 UTC"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 10:30:50 UTC"}
+
+\CommentTok{#update() 함수를 이용해 10시로 변경된 ld1 을 다시 13로}
+\NormalTok{ld1 <-}\StringTok{ }\KeywordTok{update}\NormalTok{(ld1, }\DataTypeTok{hour =} \DecValTok{13}\NormalTok{)}
+\NormalTok{ld1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2011-06-04 13:30:50 UTC"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2011-06-04 13:30:50 UTC"}
+
+\CommentTok{#4) Arithmetic with date times}
+\CommentTok{#lubridate 와 같은 패키지를 공부하는 목적 중 가장 중요한 특징}
+\CommentTok{#산술연산에서 사용할 수 있는 패밀리:간편함수마지막에 "s" 가 붙음으로써 쓰임이 달라진 것}
+\CommentTok{#days(), seconds(), minutes(), hours(), weeks(), years(), milliseconds(), microseconds(), nanoseconds(), picoseconds()}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2016-01-30"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{days}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2016-02-01"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## [1] "2016-02-01"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2016-01-30"}\NormalTok{) }\OperatorTok{-}\StringTok{ }\KeywordTok{days}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "2016-01-29" "2016-01-28" "2016-01-27"
+##  [4] "2016-01-26" "2016-01-25" "2016-01-24"
+##  [7] "2016-01-23" "2016-01-22" "2016-01-21"
+## [10] "2016-01-20" "2016-01-19" "2016-01-18"
+## [13] "2016-01-17" "2016-01-16" "2016-01-15"
+## [16] "2016-01-14" "2016-01-13" "2016-01-12"
+## [19] "2016-01-11" "2016-01-10" "2016-01-09"
+## [22] "2016-01-08" "2016-01-07" "2016-01-06"
+## [25] "2016-01-05" "2016-01-04" "2016-01-03"
+## [28] "2016-01-02" "2016-01-01" "2015-12-31"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{##  [1] "2016-01-29" "2016-01-28" "2016-01-27" "2016-01-26" "2016-01-25"}
+\NormalTok{##  [6] "2016-01-24" "2016-01-23" "2016-01-22" "2016-01-21" "2016-01-20"}
+\NormalTok{## [11] "2016-01-19" "2016-01-18" "2016-01-17" "2016-01-16" "2016-01-15"}
+\NormalTok{## [16] "2016-01-14" "2016-01-13" "2016-01-12" "2016-01-11" "2016-01-10"}
+\NormalTok{## [21] "2016-01-09" "2016-01-08" "2016-01-07" "2016-01-06" "2016-01-05"}
+\NormalTok{## [26] "2016-01-04" "2016-01-03" "2016-01-02" "2016-01-01" "2015-12-31"}
+\KeywordTok{ymd}\NormalTok{(}\StringTok{"2013-01-31"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{months}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "2013-01-31" NA           "2013-03-31"
+##  [4] NA           "2013-05-31" NA          
+##  [7] "2013-07-31" "2013-08-31" NA          
+## [10] "2013-10-31" NA           "2013-12-31"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{##  [1] "2013-01-31" NA           "2013-03-31" NA           "2013-05-31"}
+\NormalTok{##  [6] NA           "2013-07-31" "2013-08-31" NA           "2013-10-31"}
+\NormalTok{## [11] NA           "2013-12-31"}
+
+\CommentTok{#5) Application with lubridate and dplyr}
+\CommentTok{#lubridate package 에 내장된 데이터셋 lakers 를 이용}
+\CommentTok{#data(lakers)}
+
+\NormalTok{lakers <-}\StringTok{ }\NormalTok{lakers }\OperatorTok{%>%}\StringTok{ }\NormalTok{tbl_df}
+\NormalTok{lakers }\CommentTok{#--> date, time 변수가 서로 나뉘어 있다.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 34,624 x 13
+##        date opponent game_type  time period      etype
+##       <int>    <chr>     <chr> <chr>  <int>      <chr>
+##  1 20081028      POR      home 12:00      1  jump ball
+##  2 20081028      POR      home 11:39      1       shot
+##  3 20081028      POR      home 11:37      1    rebound
+##  4 20081028      POR      home 11:25      1       shot
+##  5 20081028      POR      home 11:23      1    rebound
+##  6 20081028      POR      home 11:22      1       shot
+##  7 20081028      POR      home 11:22      1       foul
+##  8 20081028      POR      home 11:22      1 free throw
+##  9 20081028      POR      home 11:00      1       foul
+## 10 20081028      POR      home 10:53      1       shot
+## # ... with 34,614 more rows, and 7 more variables:
+## #   team <chr>, player <chr>, result <chr>,
+## #   points <int>, type <chr>, x <int>, y <int>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## # A tibble: 34,624 <U+00D7> 13}
+\NormalTok{##        date opponent game_type  time period      etype  team}
+\NormalTok{##       <int>    <chr>     <chr> <chr>  <int>      <chr> <chr>}
+\NormalTok{## 1  20081028      POR      home 12:00      1  jump ball   OFF}
+\NormalTok{## 2  20081028      POR      home 11:39      1       shot   LAL}
+\NormalTok{## 3  20081028      POR      home 11:37      1    rebound   LAL}
+\NormalTok{## 4  20081028      POR      home 11:25      1       shot   LAL}
+\NormalTok{## 5  20081028      POR      home 11:23      1    rebound   LAL}
+\NormalTok{## 6  20081028      POR      home 11:22      1       shot   LAL}
+\NormalTok{## 7  20081028      POR      home 11:22      1       foul   POR}
+\NormalTok{## 8  20081028      POR      home 11:22      1 free throw   LAL}
+\NormalTok{## 9  20081028      POR      home 11:00      1       foul   LAL}
+\NormalTok{## 10 20081028      POR      home 10:53      1       shot   POR}
+\NormalTok{## # ... with 34,614 more rows, and 6 more variables: player <chr>,}
+\NormalTok{## #   result <chr>, points <int>, type <chr>, x <int>, y <int>}
+
+\NormalTok{lakers <-}\StringTok{ }\NormalTok{lakers }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{date =} \KeywordTok{paste}\NormalTok{(date, time) }\OperatorTok{%>%}\StringTok{ }\NormalTok{ymd_hm) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{time_index =}\NormalTok{ date) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{time)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in rename(., time_index = date): 사용되지 않은 인자 (time_index = date)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#date, time 두변수를 붙인 문자열에 대해 ymd_hm() 함수로 넘긴 후}
+\CommentTok{#time_index 라는 변수에 담고,}
+\CommentTok{#date, time 두 변수를 제외한 것이다.}
+
+\NormalTok{lakers}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 34,624 x 13
+##        date opponent game_type  time period      etype
+##       <int>    <chr>     <chr> <chr>  <int>      <chr>
+##  1 20081028      POR      home 12:00      1  jump ball
+##  2 20081028      POR      home 11:39      1       shot
+##  3 20081028      POR      home 11:37      1    rebound
+##  4 20081028      POR      home 11:25      1       shot
+##  5 20081028      POR      home 11:23      1    rebound
+##  6 20081028      POR      home 11:22      1       shot
+##  7 20081028      POR      home 11:22      1       foul
+##  8 20081028      POR      home 11:22      1 free throw
+##  9 20081028      POR      home 11:00      1       foul
+## 10 20081028      POR      home 10:53      1       shot
+## # ... with 34,614 more rows, and 7 more variables:
+## #   team <chr>, player <chr>, result <chr>,
+## #   points <int>, type <chr>, x <int>, y <int>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## # A tibble: 34,624 <U+00D7> 12}
+\NormalTok{##             time_index opponent game_type period      etype  team}
+\NormalTok{##                 <dttm>    <chr>     <chr>  <int>      <chr> <chr>}
+\NormalTok{## 1  2008-10-28 12:00:00      POR      home      1  jump ball   OFF}
+\NormalTok{## 2  2008-10-28 11:39:00      POR      home      1       shot   LAL}
+\NormalTok{## 3  2008-10-28 11:37:00      POR      home      1    rebound   LAL}
+\NormalTok{## 4  2008-10-28 11:25:00      POR      home      1       shot   LAL}
+\NormalTok{## 5  2008-10-28 11:23:00      POR      home      1    rebound   LAL}
+\NormalTok{## 6  2008-10-28 11:22:00      POR      home      1       shot   LAL}
+\NormalTok{## 7  2008-10-28 11:22:00      POR      home      1       foul   POR}
+\NormalTok{## 8  2008-10-28 11:22:00      POR      home      1 free throw   LAL}
+\NormalTok{## 9  2008-10-28 11:00:00      POR      home      1       foul   LAL}
+\NormalTok{## 10 2008-10-28 10:53:00      POR      home      1       shot   POR}
+\NormalTok{## # ... with 34,614 more rows, and 6 more variables: player <chr>,}
+\NormalTok{## #   result <chr>, points <int>, type <chr>, x <int>, y <int>}
+
+\CommentTok{#Using "group by" 월별 평균을 x, y 변수에 대해서 계산:month() 함수를 이용cf) 연별 평균을 계산하고 싶다면 year() 이용}
+\NormalTok{lakers }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{group_by}\NormalTok{(}\KeywordTok{month}\NormalTok{(time_index)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{mean_x =} \KeywordTok{mean}\NormalTok{(x, }\DataTypeTok{na.rm =}\NormalTok{ T), }\DataTypeTok{mean_y =} \KeywordTok{mean}\NormalTok{(y, }\DataTypeTok{na.rm =}\NormalTok{ T))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in mutate_impl(.data, dots): Evaluation error: 객체 'time_index'를 찾을 수 없습니다.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## # A tibble: 7 <U+00D7> 3}
+\NormalTok{##   `month(time_index)`   mean_x   mean_y}
+\NormalTok{##                 <dbl>    <dbl>    <dbl>}
+\NormalTok{## 1                   1 25.49382 13.89279}
+\NormalTok{## 2                   2 25.01759 13.17499}
+\NormalTok{## 3                   3 25.51587 13.20571}
+\NormalTok{## 4                   4 25.38344 13.46396}
+\NormalTok{## 5                  10 24.92188 13.12500}
+\NormalTok{## 6                  11 25.47463 13.36926}
+\NormalTok{## 7                  12 25.05895 13.48262}
+
+
+\CommentTok{#Using "filter" "2008-10-28 12:00:00" 이전의 기간을 서브세팅}
+\NormalTok{lakers }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(time_index }\OperatorTok{<=}\StringTok{ }\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2008-10-28 12:00:00"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in filter_impl(.data, quo): Evaluation error: 객체 'time_index'를 찾을 수 없습니다.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## # A tibble: 416 <U+00D7> 12}
+\NormalTok{##             time_index opponent game_type period      etype  team}
+\NormalTok{##                 <dttm>    <chr>     <chr>  <int>      <chr> <chr>}
+\NormalTok{## 1  2008-10-28 12:00:00      POR      home      1  jump ball   OFF}
+\NormalTok{## 2  2008-10-28 11:39:00      POR      home      1       shot   LAL}
+\NormalTok{## 3  2008-10-28 11:37:00      POR      home      1    rebound   LAL}
+\NormalTok{## 4  2008-10-28 11:25:00      POR      home      1       shot   LAL}
+\NormalTok{## 5  2008-10-28 11:23:00      POR      home      1    rebound   LAL}
+\NormalTok{## 6  2008-10-28 11:22:00      POR      home      1       shot   LAL}
+\NormalTok{## 7  2008-10-28 11:22:00      POR      home      1       foul   POR}
+\NormalTok{## 8  2008-10-28 11:22:00      POR      home      1 free throw   LAL}
+\NormalTok{## 9  2008-10-28 11:00:00      POR      home      1       foul   LAL}
+\NormalTok{## 10 2008-10-28 10:53:00      POR      home      1       shot   POR}
+\NormalTok{## # ... with 406 more rows, and 6 more variables: player <chr>,}
+\NormalTok{## #   result <chr>, points <int>, type <chr>, x <int>, y <int>}
+
+\CommentTok{# "2008-10-28 12:00:00" ~ "2009-03-09 00:33:00" 의 기간에 대해서 서브세팅}
+\NormalTok{lakers }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(time_index }\OperatorTok{>=}\StringTok{ }\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2008-10-28 12:00:00"}\NormalTok{), time_index }\OperatorTok{<=}\StringTok{ }\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2009-03-09 00:33:00"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in filter_impl(.data, quo): Evaluation error: 객체 'time_index'를 찾을 수 없습니다.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#interval() 함수와 %within% 연산자를 이용하면 조금 더 직관적인 서브세팅(interval() 함수대신 %--% 연산자를 써도 된다)}
+\NormalTok{inter <-}\StringTok{ }\KeywordTok{interval}\NormalTok{(}\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2008-10-28 12:00:00"}\NormalTok{), }\KeywordTok{ymd_hms}\NormalTok{(}\StringTok{"2009-03-09 00:33:00"}\NormalTok{))}
+\NormalTok{lakers }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{filter}\NormalTok{(time_index }\OperatorTok{%within%}\StringTok{ }\NormalTok{inter)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in filter_impl(.data, quo): Evaluation error: 객체 'time_index'를 찾을 수 없습니다.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## # A tibble: 25,554 <U+00D7> 12}
+\NormalTok{##             time_index opponent game_type period     etype  team}
+\NormalTok{##                 <dttm>    <chr>     <chr>  <int>     <chr> <chr>}
+\NormalTok{## 1  2008-10-28 12:00:00      POR      home      1 jump ball   OFF}
+\NormalTok{## 2  2008-10-29 12:00:00      LAC      away      1 jump ball   OFF}
+\NormalTok{## 3  2008-10-29 11:36:00      LAC      away      1      shot   LAL}
+\NormalTok{## 4  2008-10-29 11:24:00      LAC      away      1      shot   LAC}
+\NormalTok{## 5  2008-10-29 11:24:00      LAC      away      1   rebound   LAL}
+\NormalTok{## 6  2008-10-29 11:08:00      LAC      away      1      shot   LAL}
+\NormalTok{## 7  2008-10-29 10:58:00      LAC      away      1      shot   LAC}
+\NormalTok{## 8  2008-10-29 10:57:00      LAC      away      1   rebound   LAL}
+\NormalTok{## 9  2008-10-29 10:41:00      LAC      away      1      shot   LAL}
+\NormalTok{## 10 2008-10-29 10:40:00      LAC      away      1   rebound   LAC}
+\NormalTok{## # ... with 25,544 more rows, and 6 more variables: player <chr>,}
+\NormalTok{## #   result <chr>, points <int>, type <chr>, x <int>, y <int>}
+\end{Highlighting}
+\end{Shaded}
 
 \cleardoublepage 
 

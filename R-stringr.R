@@ -1,11 +1,11 @@
 #"Stringr"
-#R Ç¥ÁØ base ÆĞÅ°Áö¿¡ Æ÷ÇÔµÈ ÇÔ¼ö±º¿Í ºñ½ÁÇÑ ±â´ÉÀ» ÇÏ´Â °ÍÀ¸·Î º¸ÀÌÁö¸¸ ´õ ÇÕ¸®ÀûÀÎ Ãâ·ÂÇü½ÄÀ» °¡Áö¹Ç·Î »ç¿ëÇÏ±â Æí¸®ÇÔ
-#ÆĞÅ°ÁöÀÇ Æ¯Â¡
-#1) factor¿Í character¸¦ °°Àº ¹æ½ÄÀ¸·Î Ã³¸®
-#2) ÀÏ°ü¼º ÀÖ´Â ÇÔ¼ö ÀÌ¸§°ú ÀÎ¼ö
-#3) ´Ù¸¥ ÇÔ¼öÀÇ ÀÔ·Â°ªÀ¸·Î »ç¿ëÇÏ±â Æí¸®ÇÑ Ãâ·Â°ª.
-#  -ÀÔ·Â°ª NA°¡ Æ÷ÇÔµÇ¾î ÀÖÀ» ¶§´Â ±× ºÎºĞÀÇ °á°ú¸¦ NA·Î µ¹·ÁÁÜ
-#4) »ç¿ëºóµµ°¡ ¶³¾îÁö´Â ¹®ÀÚ¿­ Á¶ÀÛ Ã³¸®¸¦ °ú°¨ÇÏ°Ô Á¦°ÅÇÏ¿© °£·«È­½ÃÅ´
+#R í‘œì¤€ base íŒ¨í‚¤ì§€ì— í¬í•¨ëœ í•¨ìˆ˜êµ°ì™€ ë¹„ìŠ·í•œ ê¸°ëŠ¥ì„ í•˜ëŠ” ê²ƒìœ¼ë¡œ ë³´ì´ì§€ë§Œ ë” í•©ë¦¬ì ì¸ ì¶œë ¥í˜•ì‹ì„ ê°€ì§€ë¯€ë¡œ ì‚¬ìš©í•˜ê¸° í¸ë¦¬í•¨
+#íŒ¨í‚¤ì§€ì˜ íŠ¹ì§•
+#1) factorì™€ characterë¥¼ ê°™ì€ ë°©ì‹ìœ¼ë¡œ ì²˜ë¦¬
+#2) ì¼ê´€ì„± ìˆëŠ” í•¨ìˆ˜ ì´ë¦„ê³¼ ì¸ìˆ˜
+#3) ë‹¤ë¥¸ í•¨ìˆ˜ì˜ ì…ë ¥ê°’ìœ¼ë¡œ ì‚¬ìš©í•˜ê¸° í¸ë¦¬í•œ ì¶œë ¥ê°’.
+#  -ì…ë ¥ê°’ NAê°€ í¬í•¨ë˜ì–´ ìˆì„ ë•ŒëŠ” ê·¸ ë¶€ë¶„ì˜ ê²°ê³¼ë¥¼ NAë¡œ ëŒë ¤ì¤Œ
+#4) ì‚¬ìš©ë¹ˆë„ê°€ ë–¨ì–´ì§€ëŠ” ë¬¸ìì—´ ì¡°ì‘ ì²˜ë¦¬ë¥¼ ê³¼ê°í•˜ê²Œ ì œê±°í•˜ì—¬ ê°„ëµí™”ì‹œí‚´
 
 #1. Installation
 #install.packages("stringr")
@@ -13,35 +13,35 @@
 library(stringr)
 
 #2. Functions
-#1) str_length(string): ¹®ÀÚ¿­ÀÇ ±æÀÌ¸¦ °è»ê
-#¹®ÀÚ¿­ÀÇ ±æÀÌ¸¦ °è»êÇØÁÖ´Â ÇÔ¼ö
-#base::nchar(x)¿Í °°Àº ±â´ÉÀ» ÇÏ´Â ÇÔ¼ö
-#´Ü, NA ¿¡ ´ëÇØ¼­´Â 2°¡ ¾Æ´Ñ NA¸¦ µ¹·ÁÁİ´Ï´Ù.
+#1) str_length(string): ë¬¸ìì—´ì˜ ê¸¸ì´ë¥¼ ê³„ì‚°
+#ë¬¸ìì—´ì˜ ê¸¸ì´ë¥¼ ê³„ì‚°í•´ì£¼ëŠ” í•¨ìˆ˜
+#base::nchar(x)ì™€ ê°™ì€ ê¸°ëŠ¥ì„ í•˜ëŠ” í•¨ìˆ˜
+#ë‹¨, NA ì— ëŒ€í•´ì„œëŠ” 2ê°€ ì•„ë‹Œ NAë¥¼ ëŒë ¤ì¤ë‹ˆë‹¤.
 str_length(c("i", "like", "programming", NA))
 #> [1]  1  4 11 NA
 nchar(c("i", "like", "programming", NA))
 #> [1]  1  4 11  2
 
 #2) str_sub(string, start=1, end=-1)
-#¹®ÀÚ¿­À» ºÎºĞÀûÀ¸·Î ÂüÁ¶, º¯°æÇØÁÖ´Â ÇÔ¼ö
-#base::substr()¿Í °°Àº ±â´ÉÀ» ÇÏ´Â ÇÔ¼ö
-#À½¼ö¸¦ »ç¿ëÇÏ¿© ¹®ÀÚ¿­ÀÇ ³¡À¸·Î ºÎÅÍÀÇ À§Ä¡¸¦ ÁöÁ¤ÇÒ ¼ö ÀÖ½À´Ï´Ù.
+#ë¬¸ìì—´ì„ ë¶€ë¶„ì ìœ¼ë¡œ ì°¸ì¡°, ë³€ê²½í•´ì£¼ëŠ” í•¨ìˆ˜
+#base::substr()ì™€ ê°™ì€ ê¸°ëŠ¥ì„ í•˜ëŠ” í•¨ìˆ˜
+#ìŒìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ ë¬¸ìì—´ì˜ ëìœ¼ë¡œ ë¶€í„°ì˜ ìœ„ì¹˜ë¥¼ ì§€ì •í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
 x <- "Michael Carreon"
 str_sub(x,start=1,end=9)
-#> [1] "Michael C" * ¶ç¾î¾²±â±îÁö Æ÷ÇÔÇÏ¿© 9¹øÂ° ¹®ÀÚ±îÁö ¹İÈ¯ÇØÁİ´Ï´Ù.
+#> [1] "Michael C" * ë„ì–´ì“°ê¸°ê¹Œì§€ í¬í•¨í•˜ì—¬ 9ë²ˆì§¸ ë¬¸ìê¹Œì§€ ë°˜í™˜í•´ì¤ë‹ˆë‹¤.
 str_sub(x,1,9)
-#> [1] "Michael C" * start¿Í end´Â ¾²Áö ¾Ê¾Æµµ ¹«¹æÇÕ´Ï´Ù.
+#> [1] "Michael C" * startì™€ endëŠ” ì“°ì§€ ì•Šì•„ë„ ë¬´ë°©í•©ë‹ˆë‹¤.
 str_sub(x,end=7)
-#> [1] "Michael" * start °ªÀ» ÁöÁ¤ÇØÁÖÁö ¾ÊÀ¸¸é, default °ªÀÎ 1·Î ÁöÁ¤µË´Ï´Ù. Áï, str_sub(x,1,7)°ú °°Àº °ªÀÌ ¹İÈ¯µË´Ï´Ù.
+#> [1] "Michael" * start ê°’ì„ ì§€ì •í•´ì£¼ì§€ ì•Šìœ¼ë©´, default ê°’ì¸ 1ë¡œ ì§€ì •ë©ë‹ˆë‹¤. ì¦‰, str_sub(x,1,7)ê³¼ ê°™ì€ ê°’ì´ ë°˜í™˜ë©ë‹ˆë‹¤.
 str_sub(x,-7)
-#> [1] "Carreon" * À½¼ö¸¦ ÅëÇÏ¿© ¹®ÀÚ¿­ ³¡ºÎÅÍ 7¹øÂ° ¿À´Â ¹®ÀÚºÎÅÍ ¹İÈ¯ÇØÁİ´Ï´Ù.
+#> [1] "Carreon" * ìŒìˆ˜ë¥¼ í†µí•˜ì—¬ ë¬¸ìì—´ ëë¶€í„° 7ë²ˆì§¸ ì˜¤ëŠ” ë¬¸ìë¶€í„° ë°˜í™˜í•´ì¤ë‹ˆë‹¤.
 #Base R
 substr(x,1,7)
 #> [1] "Michael"
 
 #3) str_c(..., sep='', collapse=NULL)
-#¹®ÀÚ¿­À» ÅëÇÕÇØÁÖ´Â ÇÔ¼ö
-#sepÀÇ default°¡ ½ºÆäÀÌ½º °ø¹éÀÌ ¾Æ´Ï¹Ç·Î base::paste0()¿Í ºñ½ÁÇÕ´Ï´Ù.
+#ë¬¸ìì—´ì„ í†µí•©í•´ì£¼ëŠ” í•¨ìˆ˜
+#sepì˜ defaultê°€ ìŠ¤í˜ì´ìŠ¤ ê³µë°±ì´ ì•„ë‹ˆë¯€ë¡œ base::paste0()ì™€ ë¹„ìŠ·í•©ë‹ˆë‹¤.
 str_c(letters[-26], " comes before ", letters[-1])
 #[1] "a comes before b" "b comes before c" "c comes before d" "d comes before e" "e comes before f"
 #[6] "f comes before g" "g comes before h" "h comes before i" "i comes before j" "j comes before k"
@@ -52,16 +52,16 @@ str_c(letters[-26], " comes before ", letters[-1])
 paste0(letters[-26], " comes before ", letters[-1])
 str_c(letters, collapse = ", ")
 #> [1] "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"
-#sep¿Í collapseÀÇ Â÷ÀÌ´Â ÇÑ º¤ÅÍ ¾È¿¡ Á¸ÀçÇÏ´À³Ä ¾Æ´Ï³ÄÀÔ´Ï´Ù.
-str_c("¾È","³ç","ÇÏ","¼¼","¿ä",sep="_")
-#> [1] "¾È_³ç_ÇÏ_¼¼_¿ä"  
-str_c(c("¾È","³ç","ÇÏ","¼¼","¿ä"),collapse="_")
-#> [1] "¾È_³ç_ÇÏ_¼¼_¿ä"
+#sepì™€ collapseì˜ ì°¨ì´ëŠ” í•œ ë²¡í„° ì•ˆì— ì¡´ì¬í•˜ëŠëƒ ì•„ë‹ˆëƒì…ë‹ˆë‹¤.
+str_c("ì•ˆ","ë…•","í•˜","ì„¸","ìš”",sep="_")
+#> [1] "ì•ˆ_ë…•_í•˜_ì„¸_ìš”"  
+str_c(c("ì•ˆ","ë…•","í•˜","ì„¸","ìš”"),collapse="_")
+#> [1] "ì•ˆ_ë…•_í•˜_ì„¸_ìš”"
 
 #4) str_split(string, pattern, n=Inf)
-#¹®ÀÚ¿­À» ºĞ¸®ÇØÁÖ´Â ÇÔ¼ö--> °á°ú°ªÀº listÀÔ´Ï´Ù.
-#base::strsplit(x, split)¿Í ´ëÀÀÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
-#str_split_fixed()µµ ÀÖ°í, °á°ú°ªÀº matrix
+#ë¬¸ìì—´ì„ ë¶„ë¦¬í•´ì£¼ëŠ” í•¨ìˆ˜--> ê²°ê³¼ê°’ì€ listì…ë‹ˆë‹¤.
+#base::strsplit(x, split)ì™€ ëŒ€ì‘í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
+#str_split_fixed()ë„ ìˆê³ , ê²°ê³¼ê°’ì€ matrix
 fruits <- c("apples and oranges and pears and bananas", "pineapples and mangos and guavas")
 str_split(fruits, " and ")
 #> [[1]]
@@ -94,8 +94,8 @@ str_split_fixed(fruits, " and ", 4)
 #> [2,] "pineapples" "mangos"  "guavas" "
 
 #5)str_detect(string, pattern)
-#¸ÅÄ¡ÇÏ´Â °÷ÀÌ ÀÖ´ÂÁö ¾ø´ÂÁö¸¦ logical °ª(True or False)À¸·Î ¹İÈ¯ÇØÁÖ´Â ÇÔ¼ö
-#base::grepl(pattern, x)°ú ´ëÀÀ
+#ë§¤ì¹˜í•˜ëŠ” ê³³ì´ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ë¥¼ logical ê°’(True or False)ìœ¼ë¡œ ë°˜í™˜í•´ì£¼ëŠ” í•¨ìˆ˜
+#base::grepl(pattern, x)ê³¼ ëŒ€ì‘
 fruit <- c("apple", "banana", "pear", "pinapple")
 str_detect(fruit, "a")
 #> [1] TRUE TRUE TRUE TRUE
@@ -109,15 +109,15 @@ str_detect(fruit, "[aeiou]")
 #> [1] TRUE TRUE TRUE TRUE
 
 #6) str_count(string, pattern)
-#¸ÅÄ¡ÇÏ´Â °÷ÀÇ ¼ö¸¦ ¹İÈ¯ÇØÁÖ´Â ÇÔ¼ö
-#±× ±ÛÀÚ°¡ ¸î °³ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö ¾Ë·ÁÁİ´Ï´Ù.
+#ë§¤ì¹˜í•˜ëŠ” ê³³ì˜ ìˆ˜ë¥¼ ë°˜í™˜í•´ì£¼ëŠ” í•¨ìˆ˜
+#ê·¸ ê¸€ìê°€ ëª‡ ê°œ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ ì•Œë ¤ì¤ë‹ˆë‹¤.
 str_count(fruit, "p")
 #> [1] 2 0 1 3
 str_count(fruit, c("a", "b", "p", "p"))
 #> [1] 1 1 1 3
 
 #7)str_locate(string, pattern)
-#Ã³À½À¸·Î ¸ÅÄ¡µÇ´Â °÷ÀÇ start, end À§Ä¡¸¦ Çà·Ä·Î ¹İÈ¯ÇØÁÖ´Â ÇÔ¼ö
+#ì²˜ìŒìœ¼ë¡œ ë§¤ì¹˜ë˜ëŠ” ê³³ì˜ start, end ìœ„ì¹˜ë¥¼ í–‰ë ¬ë¡œ ë°˜í™˜í•´ì£¼ëŠ” í•¨ìˆ˜
 str_locate(fruit, "e")
 #>      start end
 #> [1,]     5   5
@@ -132,9 +132,9 @@ str_locate(fruit, "pl")
 #> [4,]     6   7
 
 #8)str_extract(string, pattern)
-#¸ÅÄ¡µÈ ºÎºĞ ¹®ÀÚ¿­À» ÃßÃâÇÏ´Â ÇÔ¼ö
-#¸ÅÄ¡µÇÁö ¾ÊÀº ¿ä¼Ò´Â NA·Î Ãâ·ÂÇÕ´Ï´Ù
-#base::grep(pattern, x, value=TRUE)¿Í ºñ½ÁÇÏ³ª ÀÌ ÇÔ¼ö´Â ¸ÅÄ¡µÈ ¿ä¼Ò¸¸ ¿ø·¡ÀÇ ÇüÅÂ·Î µ¹·ÁÁİ´Ï´Ù
+#ë§¤ì¹˜ëœ ë¶€ë¶„ ë¬¸ìì—´ì„ ì¶”ì¶œí•˜ëŠ” í•¨ìˆ˜
+#ë§¤ì¹˜ë˜ì§€ ì•Šì€ ìš”ì†ŒëŠ” NAë¡œ ì¶œë ¥í•©ë‹ˆë‹¤
+#base::grep(pattern, x, value=TRUE)ì™€ ë¹„ìŠ·í•˜ë‚˜ ì´ í•¨ìˆ˜ëŠ” ë§¤ì¹˜ëœ ìš”ì†Œë§Œ ì›ë˜ì˜ í˜•íƒœë¡œ ëŒë ¤ì¤ë‹ˆë‹¤
 shopping_list <- c("apples x4", "flour", "sugar", "milk x2")
 str_extract(shopping_list, "\\d")
 #> [1] "4" NA  NA  "2"
@@ -146,8 +146,8 @@ grep("[a-z]+", shopping_list, value = TRUE)
 #> [1] "apples x4" "flour"     "sugar"     "milk x2"
 
 #9)str_match(string, pattern)
-#¸ÅÄ¡µÈ ºÎºĞ ¹®ÀÚ¿­À» ÃßÃâÇÏ°í ÂüÁ¶¸¦ Çà·Ä·Î µ¹·ÁÁÖ´Â ÇÔ¼ö
-#str_extract ÇÔ¼öÀÇ °á°ú¸¦ 1¿­¿¡ , °¢ °ıÈ£¿¡ ¸ÅÄ¡µÈ ÀÌÈÄÀÇ °á°ú°¡ 2¿­ ÀÌÈÄ¿¡ µé¾î°©´Ï´Ù.
+#ë§¤ì¹˜ëœ ë¶€ë¶„ ë¬¸ìì—´ì„ ì¶”ì¶œí•˜ê³  ì°¸ì¡°ë¥¼ í–‰ë ¬ë¡œ ëŒë ¤ì£¼ëŠ” í•¨ìˆ˜
+#str_extract í•¨ìˆ˜ì˜ ê²°ê³¼ë¥¼ 1ì—´ì— , ê° ê´„í˜¸ì— ë§¤ì¹˜ëœ ì´í›„ì˜ ê²°ê³¼ê°€ 2ì—´ ì´í›„ì— ë“¤ì–´ê°‘ë‹ˆë‹¤.
 strings <- c(" 219 733 8965", "329-293-8753 ", "banana", "595 794 7569", "387 287 6718", "apple", "233.398.9187  ", "482 952 3315", "239 923 8115", "842 566 4692", "Work: 579-499-7527", "$1000", "Home: 543.355.3679")
 phone <- "([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})"
 str_extract(strings, phone)
@@ -172,8 +172,8 @@ str_match(strings, phone)
 #> [13,] "543.355.3679" "543" "355" "3679"
 
 #10)str_replace(string, pattern, replacement)
-#¸ÅÄ¡µÇÁö ¾ÊÀº ºÎºĞÀº ±×´ë·Î µÎ°í ¸ÅÄ¡µÈ ºÎºĞ¸¸ Ä¡È¯ÇÏ´Â ÇÔ¼ö
-#base::sub(¸ÅÄ¡ÇÒ ºÎºĞ,Ä¡È¯ÇÒ ¹®ÀÚ,¹®ÀÚ¿­)¿Í °°Àº ±â´ÉÀ» ÇÕ´Ï´Ù.
+#ë§¤ì¹˜ë˜ì§€ ì•Šì€ ë¶€ë¶„ì€ ê·¸ëŒ€ë¡œ ë‘ê³  ë§¤ì¹˜ëœ ë¶€ë¶„ë§Œ ì¹˜í™˜í•˜ëŠ” í•¨ìˆ˜
+#base::sub(ë§¤ì¹˜í•  ë¶€ë¶„,ì¹˜í™˜í•  ë¬¸ì,ë¬¸ìì—´)ì™€ ê°™ì€ ê¸°ëŠ¥ì„ í•©ë‹ˆë‹¤.
 fruits <- c("one apple", "two pears", "three bananas")
 str_replace(fruits, "[aeiou]", "-")
 #> [1] "-ne apple"     "tw- pears"     "thr-e bananas"
@@ -181,7 +181,7 @@ str_replace_all(fruits, "[aeiou]", "-")
 #> [1] "-n- -ppl-"     "tw- p--rs"     "thr-- b-n-n-s"
 
 #11)str_trim(string, side="both")
-#°ø¹é¹®ÀÚ¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö
+#ê³µë°±ë¬¸ìë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜
 str_trim("        fruits        ", side="both")
 #>[1] "fruits" 
 Trim = function(x) gsub("^\\s+|\\s+$", "", x)
@@ -189,14 +189,14 @@ Trim("        fruits        ")
 #>[1] "fruits"
 
 #"lubridate"
-#lubri:lubricate(±â¸§À» Ä¡´Ù, ±â¸§À» ¹Ù¸£´Ù, ¿øÈ°È÷ ÇÏ´Ù)+date
+#lubri:lubricate(ê¸°ë¦„ì„ ì¹˜ë‹¤, ê¸°ë¦„ì„ ë°”ë¥´ë‹¤, ì›í™œíˆ í•˜ë‹¤)+date
 #Lubridate is an R package that makes it easier to work with dates and times 
 #1.Installation
 install.packages("lubridate")
 library(lubridate)
 
 #2.Functions
-#1)Parsing dates and times(dates & times °´Ã¼ ¸¸µé±â)
+#1)Parsing dates and times(dates & times ê°ì²´ ë§Œë“¤ê¸°)
 ##Date
 #Base R
 as.Date("2011-06-04")
@@ -207,19 +207,19 @@ as.Date("2011/06/04")
 ## [1] "2011-06-04"
 ## 
 as.Date("20110604") # error 
-as.Date("06-04-2011") ### [1] "0006-04-20" (¹Ì±¹½Ä Ç¥Çö) #Problem
+as.Date("06-04-2011") ### [1] "0006-04-20" (ë¯¸êµ­ì‹ í‘œí˜„) #Problem
 
 #lubridate package 
 ymd("2011/06/04")
 ## [1] "2011-06-04"
-#½Éº¼ÀÇ ¼ø¼­¸¦ ¹Ù²Ù¾îµµ
+#ì‹¬ë³¼ì˜ ìˆœì„œë¥¼ ë°”ê¾¸ì–´ë„
 mdy("06/04/2011")
 ## [1] "2011-06-04"
 dmy("04/06/2011")
 ## [1] "2011-06-04"
 
-#lubridate¿¡¼­ÀÇ ³¯Â¥ ¾ç½ÄÀÇ °ü¿ë
-#heterogeneous format(ºÒ±ÕÀÏÇÑ ¾ç½Ä)¿¡ ´ëÇÑ ´Ù¾çÇÑ ÁØºñµéÀÌ µÇ¾îÀÖÀ½
+#lubridateì—ì„œì˜ ë‚ ì§œ ì–‘ì‹ì˜ ê´€ìš©
+#heterogeneous format(ë¶ˆê· ì¼í•œ ì–‘ì‹)ì— ëŒ€í•œ ë‹¤ì–‘í•œ ì¤€ë¹„ë“¤ì´ ë˜ì–´ìˆìŒ
 ymd("2011/06/04")
 ## [1] "2011-06-04"
 ymd("2011-06-04")
@@ -241,7 +241,7 @@ ymd("2011!?06??!04")
 ymd("2011 =06??04") 
 ## [1] "2011-06-04"
 
-##Dates + Times °´Ã¼ ¸¸µé±â
+##Dates + Times ê°ì²´ ë§Œë“¤ê¸°
 #Base R
 as.POSIXct("2011-06-04 13:30:50")
 ## [1] "2011-06-04 13:30:50 KST"
@@ -253,13 +253,13 @@ strptime("2011-06-04 13:30:50", "%Y-%m-%d %H:%M:%S")
 #lubridate package
 ymd_hms("2011-06-04 13:30:50")
 ## [1] "2011-06-04 13:30:50 UTC"
-#Á¶±İ ´õ À¶Åë¼ºÀÌ ÀÖ°Ô »ç¿ëÇÒ ¼ö ÀÖ´Â Á¡
+#ì¡°ê¸ˆ ë” ìœµí†µì„±ì´ ìˆê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì 
 ymd_h("2011-06-04 13")
 ## [1] "2011-06-04 13:00:00 UTC"
 
 #2)Setting and Extracting information
-#ºÎºĞÁ¤º¸¸¦ ÃßÃâÇÏ±â À§ÇÑ °£Æí ÇÔ¼öµé
-#ÇÔ¼ö¸íÄªµµ »ó½ÄÀûÀ¸·Î ÀÌÇØÇÏ±â ½¬¿î °Íµé
+#ë¶€ë¶„ì •ë³´ë¥¼ ì¶”ì¶œí•˜ê¸° ìœ„í•œ ê°„í¸ í•¨ìˆ˜ë“¤
+#í•¨ìˆ˜ëª…ì¹­ë„ ìƒì‹ì ìœ¼ë¡œ ì´í•´í•˜ê¸° ì‰¬ìš´ ê²ƒë“¤
 #:second(), minute(), hour(), day(), wday(), yday(), week(), month(), year()
 ld1 <- ymd_hms("2011-06-04 13:30:50")
 
@@ -280,7 +280,7 @@ minute(ld1)
 second(ld1)
 ## [1] 50
 
-# month, wday ÀÇ °æ¿ì label ÀÎÀÚ¸¦ °¡Áö°í ÀÖ´Âµ¥ ÀÌ¸¦ TRUE ·Î ¼³Á¤ÇÒ °æ¿ì
+# month, wday ì˜ ê²½ìš° label ì¸ìë¥¼ ê°€ì§€ê³  ìˆëŠ”ë° ì´ë¥¼ TRUE ë¡œ ì„¤ì •í•  ê²½ìš°
 month(ld1, label = T)
 ## [1] Jun
 ## 12 Levels: Jan < Feb < Mar < Apr < May < Jun < Jul < Aug < Sep < ... < Dec
@@ -289,19 +289,19 @@ wday(ld1, label = T)
 ## Levels: Sun < Mon < Tues < Wed < Thurs < Fri < Sat
 
 #3)Update date-time
-#"2011³â 6¿ù 4ÀÏ 13:30:50" ·Î ÀúÀåµÇ¾îÀÖ´ø ld1 ¿¡ ´ëÇØ ½Ã°¢(hour)À» 10½Ã·Î ¹Ù²Ù·Á¸é 
+#"2011ë…„ 6ì›” 4ì¼ 13:30:50" ë¡œ ì €ì¥ë˜ì–´ìˆë˜ ld1 ì— ëŒ€í•´ ì‹œê°(hour)ì„ 10ì‹œë¡œ ë°”ê¾¸ë ¤ë©´ 
 hour(ld1) <- 10
 ld1
 ## [1] "2011-06-04 10:30:50 UTC"
 
-#update() ÇÔ¼ö¸¦ ÀÌ¿ëÇØ 10½Ã·Î º¯°æµÈ ld1 À» ´Ù½Ã 13·Î
+#update() í•¨ìˆ˜ë¥¼ ì´ìš©í•´ 10ì‹œë¡œ ë³€ê²½ëœ ld1 ì„ ë‹¤ì‹œ 13ë¡œ
 ld1 <- update(ld1, hour = 13)
 ld1
 ## [1] "2011-06-04 13:30:50 UTC"
 
 #4) Arithmetic with date times
-#lubridate ¿Í °°Àº ÆĞÅ°Áö¸¦ °øºÎÇÏ´Â ¸ñÀû Áß °¡Àå Áß¿äÇÑ Æ¯Â¡
-#»ê¼ú¿¬»ê¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖ´Â ÆĞ¹Ğ¸®:°£ÆíÇÔ¼ö¸¶Áö¸·¿¡ "s" °¡ ºÙÀ½À¸·Î½á ¾²ÀÓÀÌ ´Ş¶óÁø °Í
+#lubridate ì™€ ê°™ì€ íŒ¨í‚¤ì§€ë¥¼ ê³µë¶€í•˜ëŠ” ëª©ì  ì¤‘ ê°€ì¥ ì¤‘ìš”í•œ íŠ¹ì§•
+#ì‚°ìˆ ì—°ì‚°ì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” íŒ¨ë°€ë¦¬:ê°„í¸í•¨ìˆ˜ë§ˆì§€ë§‰ì— "s" ê°€ ë¶™ìŒìœ¼ë¡œì¨ ì“°ì„ì´ ë‹¬ë¼ì§„ ê²ƒ
 #days(), seconds(), minutes(), hours(), weeks(), years(), milliseconds(), microseconds(), nanoseconds(), picoseconds()
 ymd("2016-01-30") + days(2)
 ## [1] "2016-02-01"
@@ -318,11 +318,11 @@ ymd("2013-01-31") + months(0:11)
 ## [11] NA           "2013-12-31"
 
 #5) Application with lubridate and dplyr
-#lubridate package ¿¡ ³»ÀåµÈ µ¥ÀÌÅÍ¼Â lakers ¸¦ ÀÌ¿ë
+#lubridate package ì— ë‚´ì¥ëœ ë°ì´í„°ì…‹ lakers ë¥¼ ì´ìš©
 #data(lakers)
 
 lakers <- lakers %>% tbl_df
-lakers #--> date, time º¯¼ö°¡ ¼­·Î ³ª´µ¾î ÀÖ´Ù.
+lakers #--> date, time ë³€ìˆ˜ê°€ ì„œë¡œ ë‚˜ë‰˜ì–´ ìˆë‹¤.
 ## # A tibble: 34,624 <U+00D7> 13
 ##        date opponent game_type  time period      etype  team
 ##       <int>    <chr>     <chr> <chr>  <int>      <chr> <chr>
@@ -344,9 +344,9 @@ lakers <- lakers %>%
     rename(time_index = date) %>% 
     select(-time)
 
-#date, time µÎº¯¼ö¸¦ ºÙÀÎ ¹®ÀÚ¿­¿¡ ´ëÇØ ymd_hm() ÇÔ¼ö·Î ³Ñ±ä ÈÄ
-#time_index ¶ó´Â º¯¼ö¿¡ ´ã°í,
-#date, time µÎ º¯¼ö¸¦ Á¦¿ÜÇÑ °ÍÀÌ´Ù.
+#date, time ë‘ë³€ìˆ˜ë¥¼ ë¶™ì¸ ë¬¸ìì—´ì— ëŒ€í•´ ymd_hm() í•¨ìˆ˜ë¡œ ë„˜ê¸´ í›„
+#time_index ë¼ëŠ” ë³€ìˆ˜ì— ë‹´ê³ ,
+#date, time ë‘ ë³€ìˆ˜ë¥¼ ì œì™¸í•œ ê²ƒì´ë‹¤.
 
 lakers
 ## # A tibble: 34,624 <U+00D7> 12
@@ -365,7 +365,7 @@ lakers
 ## # ... with 34,614 more rows, and 6 more variables: player <chr>,
 ## #   result <chr>, points <int>, type <chr>, x <int>, y <int>
 
-#Using "group by" ¿ùº° Æò±ÕÀ» x, y º¯¼ö¿¡ ´ëÇØ¼­ °è»ê:month() ÇÔ¼ö¸¦ ÀÌ¿ëcf) ¿¬º° Æò±ÕÀ» °è»êÇÏ°í ½Í´Ù¸é year() ÀÌ¿ë
+#Using "group by" ì›”ë³„ í‰ê· ì„ x, y ë³€ìˆ˜ì— ëŒ€í•´ì„œ ê³„ì‚°:month() í•¨ìˆ˜ë¥¼ ì´ìš©cf) ì—°ë³„ í‰ê· ì„ ê³„ì‚°í•˜ê³  ì‹¶ë‹¤ë©´ year() ì´ìš©
 lakers %>% 
     group_by(month(time_index)) %>% 
     summarize(mean_x = mean(x, na.rm = T), mean_y = mean(y, na.rm = T))
@@ -381,7 +381,7 @@ lakers %>%
 ## 7                  12 25.05895 13.48262
 
 
-#Using "filter" "2008-10-28 12:00:00" ÀÌÀüÀÇ ±â°£À» ¼­ºê¼¼ÆÃ
+#Using "filter" "2008-10-28 12:00:00" ì´ì „ì˜ ê¸°ê°„ì„ ì„œë¸Œì„¸íŒ…
 lakers %>% 
     filter(time_index <= ymd_hms("2008-10-28 12:00:00"))
 ## # A tibble: 416 <U+00D7> 12
@@ -400,10 +400,10 @@ lakers %>%
 ## # ... with 406 more rows, and 6 more variables: player <chr>,
 ## #   result <chr>, points <int>, type <chr>, x <int>, y <int>
 
-# "2008-10-28 12:00:00" ~ "2009-03-09 00:33:00" ÀÇ ±â°£¿¡ ´ëÇØ¼­ ¼­ºê¼¼ÆÃ
+# "2008-10-28 12:00:00" ~ "2009-03-09 00:33:00" ì˜ ê¸°ê°„ì— ëŒ€í•´ì„œ ì„œë¸Œì„¸íŒ…
 lakers %>% 
     filter(time_index >= ymd_hms("2008-10-28 12:00:00"), time_index <= ymd_hms("2009-03-09 00:33:00"))
-#interval() ÇÔ¼ö¿Í %within% ¿¬»êÀÚ¸¦ ÀÌ¿ëÇÏ¸é Á¶±İ ´õ Á÷°üÀûÀÎ ¼­ºê¼¼ÆÃ(interval() ÇÔ¼ö´ë½Å %--% ¿¬»êÀÚ¸¦ ½áµµ µÈ´Ù)
+#interval() í•¨ìˆ˜ì™€ %within% ì—°ì‚°ìë¥¼ ì´ìš©í•˜ë©´ ì¡°ê¸ˆ ë” ì§ê´€ì ì¸ ì„œë¸Œì„¸íŒ…(interval() í•¨ìˆ˜ëŒ€ì‹  %--% ì—°ì‚°ìë¥¼ ì¨ë„ ëœë‹¤)
 inter <- interval(ymd_hms("2008-10-28 12:00:00"), ymd_hms("2009-03-09 00:33:00"))
 lakers %>% 
     filter(time_index %within% inter)
