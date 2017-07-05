@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>R Programming - Lecture Notes</title>
+  <title>R Programming: Lecture Notes</title>
   <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
   <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
-  <meta property="og:title" content="R Programming - Lecture Notes" />
+  <meta property="og:title" content="R Programming: Lecture Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://asancpt.github.io/Rprogramming/" />
   <meta property="og:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="asancpt/Rprogramming" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R Programming - Lecture Notes" />
+  <meta name="twitter:title" content="R Programming: Lecture Notes" />
   
   <meta name="twitter:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
   <meta name="twitter:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-05-24">
+<meta name="date" content="2017-07-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -104,85 +104,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="teaching-assistant.html"><a href="teaching-assistant.html"><i class="fa fa-check"></i>Teaching Assistant</a></li>
-<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html"><i class="fa fa-check"></i>FAQ</a><ul>
-<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>접속 관련</a></li>
-<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#ecb69cec849deab480eba0a8"><i class="fa fa-check"></i>출석관련</a></li>
-<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#-"><i class="fa fa-check"></i>과제 관련</a></li>
-<li class="chapter" data-level="" data-path="faq.html"><a href="faq.html#coursera-"><i class="fa fa-check"></i>Coursera 관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-assistant"><i class="fa fa-check"></i>Teaching Assistant</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#faq"><i class="fa fa-check"></i>FAQ</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#-"><i class="fa fa-check"></i>접속 관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ecb69cec849deab480eba0a8"><i class="fa fa-check"></i>출석관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#-"><i class="fa fa-check"></i>과제 관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coursera-"><i class="fa fa-check"></i>Coursera 관련</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="syllabus.html"><a href="syllabus.html"><i class="fa fa-check"></i>Syllabus</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>1</b> R language</a></li>
-<li class="chapter" data-level="2" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>2</b> Graphics</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="upper.html"><a href="upper.html"><i class="fa fa-check"></i><b>2.2</b> 상위수준 그림 함수</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="upper.html"><a href="upper.html#-----arguments"><i class="fa fa-check"></i><b>2.2.1</b> 상위수준 그림 함수의 주요 인자 (arguments)</a></li>
-<li class="chapter" data-level="2.2.2" data-path="upper.html"><a href="upper.html#scatter-plot"><i class="fa fa-check"></i><b>2.2.2</b> scatter plot</a></li>
-<li class="chapter" data-level="2.2.3" data-path="upper.html"><a href="upper.html#histogram"><i class="fa fa-check"></i><b>2.2.3</b> Histogram</a></li>
-<li class="chapter" data-level="2.2.4" data-path="upper.html"><a href="upper.html#box-whisker-plot"><i class="fa fa-check"></i><b>2.2.4</b> Box-Whisker Plot</a></li>
-<li class="chapter" data-level="2.2.5" data-path="upper.html"><a href="upper.html#bar-plot"><i class="fa fa-check"></i><b>2.2.5</b> Bar Plot</a></li>
-<li class="chapter" data-level="2.2.6" data-path="upper.html"><a href="upper.html#pie-chart"><i class="fa fa-check"></i><b>2.2.6</b> pie chart</a></li>
-<li class="chapter" data-level="2.2.7" data-path="upper.html"><a href="upper.html#matplot-"><i class="fa fa-check"></i><b>2.2.7</b> matplot 함수</a></li>
-<li class="chapter" data-level="2.2.8" data-path="upper.html"><a href="upper.html#scatter-plot-matrices-pairs-plots"><i class="fa fa-check"></i><b>2.2.8</b> Scatter plot matrices (pairs plots)</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="lower.html"><a href="lower.html"><i class="fa fa-check"></i><b>2.3</b> 하위수준 그림 함수</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="lower.html"><a href="lower.html#-----add"><i class="fa fa-check"></i><b>2.3.1</b> 점, 선, 설명 추가 하기 {add}</a></li>
-<li class="chapter" data-level="2.3.2" data-path="lower.html"><a href="lower.html#polygon-"><i class="fa fa-check"></i><b>2.3.2</b> polygon 함수</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="print.html"><a href="print.html"><i class="fa fa-check"></i><b>2.4</b> 그림 출력하기</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="print.html"><a href="print.html#pdf-graphics-devices"><i class="fa fa-check"></i><b>2.4.1</b> pdf graphics devices</a></li>
-<li class="chapter" data-level="2.4.2" data-path="print.html"><a href="print.html#png-graphics-devices"><i class="fa fa-check"></i><b>2.4.2</b> PNG graphics devices</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>3</b> Data Import / Export</a><ul>
-<li class="chapter" data-level="3.1" data-path="read-csv.html"><a href="read-csv.html"><i class="fa fa-check"></i><b>3.1</b> Read.csv</a></li>
-<li class="chapter" data-level="3.2" data-path="theoph-.html"><a href="theoph-.html"><i class="fa fa-check"></i><b>3.2</b> Theoph 데이타</a></li>
-<li class="chapter" data-level="3.3" data-path="lattice.html"><a href="lattice.html"><i class="fa fa-check"></i><b>3.3</b> lattice</a></li>
-<li class="chapter" data-level="3.4" data-path="subseting-and-write-csv.html"><a href="subseting-and-write-csv.html"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
-<li class="chapter" data-level="4.1" data-path="command.html"><a href="command.html"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
-<li class="chapter" data-level="4.2" data-path="the-basics.html"><a href="the-basics.html"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
-<li class="chapter" data-level="4.3" data-path="common-data-structures.html"><a href="common-data-structures.html"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
-<li class="chapter" data-level="4.4" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
-<li class="chapter" data-level="4.5" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
-<li class="chapter" data-level="4.6" data-path="io.html"><a href="io.html"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>5</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
-<li class="chapter" data-level="5.1" data-path="part1.html"><a href="part1.html"><i class="fa fa-check"></i><b>5.1</b> Part1</a></li>
-<li class="chapter" data-level="5.2" data-path="part2.html"><a href="part2.html"><i class="fa fa-check"></i><b>5.2</b> Part2</a></li>
-<li class="chapter" data-level="5.3" data-path="part3.html"><a href="part3.html"><i class="fa fa-check"></i><b>5.3</b> Part3</a></li>
-<li class="chapter" data-level="5.4" data-path="part4.html"><a href="part4.html"><i class="fa fa-check"></i><b>5.4</b> Part4</a></li>
-</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
-<li class="chapter" data-level="A.1" data-path="assignment-1.html"><a href="assignment-1.html"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="assignment-1.html"><a href="assignment-1.html#concunitconv-test.r"><i class="fa fa-check"></i><b>A.1.1</b> concUnitConv-test.R</a></li>
-<li class="chapter" data-level="A.1.2" data-path="assignment-1.html"><a href="assignment-1.html#concunitconv-test.rout"><i class="fa fa-check"></i><b>A.1.2</b> concUnitConv-test.Rout</a></li>
+<li class="chapter" data-level="A.1" data-path="assignments.html"><a href="assignments.html#assignment-1"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="assignments.html"><a href="assignments.html#concunitconv-test.r"><i class="fa fa-check"></i><b>A.1.1</b> concUnitConv-test.R</a></li>
+<li class="chapter" data-level="A.1.2" data-path="assignments.html"><a href="assignments.html#concunitconv-test.rout"><i class="fa fa-check"></i><b>A.1.2</b> concUnitConv-test.Rout</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="assignment-2.html"><a href="assignment-2.html"><i class="fa fa-check"></i><b>A.2</b> Assignment 2</a></li>
+<li class="chapter" data-level="A.2" data-path="assignments.html"><a href="assignments.html#assignment-2"><i class="fa fa-check"></i><b>A.2</b> Assignment 2</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>B</b> Rmarkdown</a><ul>
-<li class="chapter" data-level="B.1" data-path="text-formatting.html"><a href="text-formatting.html"><i class="fa fa-check"></i><b>B.1</b> Text formatting</a></li>
-<li class="chapter" data-level="B.2" data-path="headings.html"><a href="headings.html"><i class="fa fa-check"></i><b>B.2</b> Headings</a></li>
-<li class="chapter" data-level="B.3" data-path="lists.html"><a href="lists.html"><i class="fa fa-check"></i><b>B.3</b> Lists</a></li>
-<li class="chapter" data-level="B.4" data-path="links-and-images.html"><a href="links-and-images.html"><i class="fa fa-check"></i><b>B.4</b> Links and images</a></li>
-<li class="chapter" data-level="B.5" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>B.5</b> Tables</a></li>
-<li class="chapter" data-level="B.6" data-path="head-of-theoph.html"><a href="head-of-theoph.html"><i class="fa fa-check"></i><b>B.6</b> Head of Theoph</a></li>
-<li class="chapter" data-level="B.7" data-path="plot-of-theoph.html"><a href="plot-of-theoph.html"><i class="fa fa-check"></i><b>B.7</b> Plot of Theoph</a></li>
-<li class="chapter" data-level="B.8" data-path="navigation.html"><a href="navigation.html"><i class="fa fa-check"></i><b>B.8</b> Navigation</a></li>
-<li class="chapter" data-level="B.9" data-path="reference.html"><a href="reference.html"><i class="fa fa-check"></i><b>B.9</b> Reference</a></li>
+<li class="chapter" data-level="B" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>B</b> As-is R Files</a><ul>
+<li class="chapter" data-level="B.1" data-path="as-is-r-files.html"><a href="as-is-r-files.html#lecture-3"><i class="fa fa-check"></i><b>B.1</b> Lecture 3</a></li>
+<li class="chapter" data-level="B.2" data-path="as-is-r-files.html"><a href="as-is-r-files.html#lecture-4"><i class="fa fa-check"></i><b>B.2</b> Lecture 4</a></li>
+<li class="chapter" data-level="B.3" data-path="as-is-r-files.html"><a href="as-is-r-files.html#lecture-5"><i class="fa fa-check"></i><b>B.3</b> Lecture 5</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>C</b> As-is R Files</a><ul>
-<li class="chapter" data-level="C.1" data-path="lecture-3.html"><a href="lecture-3.html"><i class="fa fa-check"></i><b>C.1</b> Lecture 3</a></li>
-<li class="chapter" data-level="C.2" data-path="lecture-4.html"><a href="lecture-4.html"><i class="fa fa-check"></i><b>C.2</b> Lecture 4</a></li>
-<li class="chapter" data-level="C.3" data-path="lecture-5.html"><a href="lecture-5.html"><i class="fa fa-check"></i><b>C.3</b> Lecture 5</a></li>
+<li class="chapter" data-level="C" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>C</b> R Tips</a><ul>
+<li class="chapter" data-level="C.1" data-path="r-tips.html"><a href="r-tips.html#using-coursera"><i class="fa fa-check"></i><b>C.1</b> Using Coursera</a></li>
 </ul></li>
-<li class="chapter" data-level="D" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>D</b> R Tips</a><ul>
-<li class="chapter" data-level="D.1" data-path="using-coursera.html"><a href="using-coursera.html"><i class="fa fa-check"></i><b>D.1</b> Using Coursera</a></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>E</b> Acknowledgement</a></li>
+<li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
@@ -196,7 +144,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Programming - Lecture Notes</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Programming: Lecture Notes</a>
           </h1>
         </div>
 
@@ -207,108 +155,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Week09 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;shiny&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;flexdashboard&quot;</span>, <span class="st">&quot;ggsci&quot;</span>)
-
-<span class="co">#install.packages(Week09)</span>
-LibraryWeek09 &lt;-<span class="st"> </span><span class="kw">lapply</span>(Week09, library, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>## Loading tidyverse: tibble
-## Loading tidyverse: tidyr
-## Loading tidyverse: readr
-## Loading tidyverse: purrr</code></pre>
-<pre><code>## Conflicts with tidy packages --------------------------</code></pre>
-<pre><code>## arrange():   dplyr, plyr
-## compact():   purrr, plyr
-## count():     dplyr, plyr
-## failwith():  dplyr, plyr
-## filter():    dplyr, stats
-## id():        dplyr, plyr
-## lag():       dplyr, stats
-## mutate():    dplyr, plyr
-## rename():    dplyr, plyr
-## select():    dplyr, MASS
-## summarise(): dplyr, plyr
-## summarize(): dplyr, plyr</code></pre>
-<pre><code>## Loading required package: methods</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#assign data to a variable</span>
-x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">77</span>, <span class="dv">66</span>, <span class="dv">88</span>)
-<span class="kw">mean</span>(x)</code></pre></div>
-<pre><code>## [1] 77</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(x)</code></pre></div>
-<pre><code>## [1] 88</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#charts</span>
-<span class="kw">plot</span>(x)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-41-1.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(x)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-41-2.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pie</span>(x)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-41-3.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#&#39; Plot navigation</span>
-<span class="co">#&#39; export to the clipboard</span>
-<span class="co">#&#39; Publish to http://rpubs.com/</span>
-
-<span class="co"># Demo: RStudio</span>
-
-<span class="co">#&#39; - History</span>
-<span class="co">#&#39; - Run from the beginneing</span>
-<span class="co">#&#39; - Run to the end</span>
-<span class="co">#&#39; - Plot</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create Shiny Web App</span>
-
-shiny<span class="op">::</span><span class="kw">runApp</span>(<span class="st">&quot;Shiny&quot;</span>)
-shiny<span class="op">::</span><span class="kw">runApp</span>(<span class="st">&quot;pk_pd&quot;</span>) <span class="co"># PMx_2016</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Examples: ggplot2
-
-<span class="kw">library</span>(ggplot2)
-<span class="kw">qplot</span>(displ, hwy, <span class="dt">data =</span> mpg)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-43-1.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(displ, hwy, <span class="dt">data =</span> mpg, <span class="dt">color =</span> drv)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-43-2.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(displ, hwy, <span class="dt">data =</span> mpg, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>))</code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-43-3.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(hwy, <span class="dt">data =</span> mpg, <span class="dt">fill =</span> drv)</code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
-## with `binwidth`.</code></pre>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-43-4.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(displ, hwy, <span class="dt">data =</span> mpg, <span class="dt">facets =</span> . <span class="op">~</span><span class="st"> </span>drv)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-43-5.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(hwy, <span class="dt">data =</span> mpg, <span class="dt">facets =</span> drv <span class="op">~</span><span class="st"> </span>., <span class="dt">binwidth =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Rprogramming_files/figure-html/unnamed-chunk-43-6.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">maacs &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;maacs.csv&quot;</span>, <span class="dt">as.is =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file
-## &#39;maacs.csv&#39;: No such file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(maacs)</code></pre></div>
-<pre><code>## Error in str(maacs): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># examples of qplot</span>
-<span class="kw">qplot</span>(<span class="kw">log</span>(eno), <span class="dt">data =</span> maacs)</code></pre></div>
-<pre><code>## Error in eval(aesthetics$x, data, env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">fill =</span> mopos)</code></pre></div>
-<pre><code>## Error in eval(aesthetics$x, data, env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">geom =</span> <span class="st">&quot;density&quot;</span>)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">geom =</span> <span class="st">&quot;density&quot;</span>, <span class="dt">color =</span> mopos)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(pm25), <span class="kw">log</span>(eno), <span class="dt">data =</span> maacs)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(pm25), <span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">shape =</span> mopos)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(pm25), <span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">color =</span> mopos)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(pm25), <span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">color =</span> mopos, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">log</span>(pm25), <span class="kw">log</span>(eno), <span class="dt">data =</span> maacs, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>, <span class="st">&quot;smooth&quot;</span>), <span class="dt">methods =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">facets =</span> . <span class="op">~</span><span class="st"> </span>mopos)</code></pre></div>
-<pre><code>## Error in ggplot(data, aesthetics, environment = env): object &#39;maacs&#39; not found</code></pre>
-
 <div id="refs" class="references">
 <div>
 <p>Krishnamoorthy, K. 2006. <em>Handbook of Statistical Distributions with Applications</em>. Boca Raton: Chapman &amp; Hall/CRC.</p>
-</div>
-<div>
-<p>Sarkar, Deepayan. 2017. <em>Lattice: Trellis Graphics for R</em>. <a href="https://CRAN.R-project.org/package=lattice" class="uri">https://CRAN.R-project.org/package=lattice</a>.</p>
-</div>
-<div>
-<p>Wickham, Hadley, and Winston Chang. 2016. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
 </div>
 <div>
 <p>Xie, Yihui. 2017. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
@@ -353,7 +202,7 @@ gitbook.start({
 "link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/A99-Finalize.Rmd",
 "text": "Edit"
 },
-"download": ["Rprogramming.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

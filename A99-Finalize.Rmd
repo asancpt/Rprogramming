@@ -58,6 +58,6 @@ Coursera 회원가입하시고 로그인 한 뒤, Enroll Now를 누르시면 Aud
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'htmlwidgets', 'webshot', 'DT',
   'miniUI', 'tufte', 'servr', 'citr', 'rticles'
-), 'packages.bib')
+), 'bib/packages.bib')
 ```
 

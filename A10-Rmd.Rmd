@@ -123,6 +123,6 @@ Ctrl + Alt + J
 ## Reference
 
 ```{r}
-knitr::write_bib(file = "packages.bib")
+knitr::write_bib(file = "bib/packages.bib")
 ```
 

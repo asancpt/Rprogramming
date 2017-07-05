@@ -125,7 +125,7 @@ str_locate(fruit, "e")
 #> [3,]     2   2
 #> [4,]     8   8
 str_locate(fruit, "pl")
-     start end
+#>      start end
 #> [1,]     3   4
 #> [2,]    NA  NA
 #> [3,]    NA  NA
