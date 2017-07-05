@@ -1,0 +1,1319 @@
+\documentclass[10pt,]{krantz}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \setmonofont[Mapping=tex-ansi,Scale=0.7]{Source Code Pro}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{
+            pdftitle={R Programming: Lecture Notes},
+            pdfauthor={Kyun-Seop Bae, Sungpil Han},
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[bf,singlelinecheck=off]{caption}
+
+\usepackage{kotex}
+
+\setmainfont[UprightFeatures={SmallCapsFont=AlegreyaSC-Regular}]{Alegreya}
+
+\usepackage{framed,color}
+\definecolor{shadecolor}{RGB}{248,248,248}
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\floatpagefraction}{0.75}
+
+\renewenvironment{quote}{\begin{VF}}{\end{VF}}
+\let\oldhref\href
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\ifxetex
+  \usepackage{letltxmacro}
+  \setlength{\XeTeXLinkMargin}{1pt}
+  \LetLtxMacro\SavedIncludeGraphics\includegraphics
+  \def\includegraphics#1#{% #1 catches optional stuff (star/opt. arg.)
+    \IncludeGraphicsAux{#1}%
+  }%
+  \newcommand*{\IncludeGraphicsAux}[2]{%
+    \XeTeXLinkBox{%
+      \SavedIncludeGraphics#1{#2}%
+    }%
+  }%
+\fi
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}
+
+\newenvironment{rmdblock}[1]
+  {
+  \begin{itemize}
+  \renewcommand{\labelitemi}{
+    \raisebox{-.7\height}[0pt][0pt]{
+      {\setkeys{Gin}{width=3em,keepaspectratio}\includegraphics{images/#1}}
+    }
+  }
+  \setlength{\fboxsep}{1em}
+  \begin{kframe}
+  \item
+  }
+  {
+  \end{kframe}
+  \end{itemize}
+  }
+\newenvironment{rmdnote}
+  {\begin{rmdblock}{note}}
+  {\end{rmdblock}}
+\newenvironment{rmdcaution}
+  {\begin{rmdblock}{caution}}
+  {\end{rmdblock}}
+\newenvironment{rmdimportant}
+  {\begin{rmdblock}{important}}
+  {\end{rmdblock}}
+\newenvironment{rmdtip}
+  {\begin{rmdblock}{tip}}
+  {\end{rmdblock}}
+\newenvironment{rmdwarning}
+  {\begin{rmdblock}{warning}}
+  {\end{rmdblock}}
+
+\usepackage{makeidx}
+\makeindex
+
+\urlstyle{tt}
+
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\frontmatter
+
+\title{R Programming: Lecture Notes}
+\author{Kyun-Seop Bae, Sungpil Han}
+\date{2017-07-05}
+
+\begin{document}
+\maketitle
+
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage\thispagestyle{empty}\null
+%\cleardoublepage\newpage
+\thispagestyle{empty}
+\begin{center}
+\includegraphics{images/cover.pdf}
+\end{center}
+
+\setlength{\abovedisplayskip}{-1pt}
+\setlength{\abovedisplayshortskip}{-1pt}
+
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\listoftables
+\listoffigures
+\chapter*{Preface}\label{preface}
+
+
+안녕하십니까?
+
+2017년 1학기 울산대학교 의학과 대학원 수업 \texttt{R\ Programming} 과목
+담당교수 배균섭입니다.
+
+R은 \url{http://cran.r-project.org} 에서 다운로드받아 설치할 수
+있습니다. 역시 같은 사이트에서 Manual이 나와 있으니 참고하시기 바랍니다.
+구글에서 `R Programming pdf'와 같은 키워드로 검색하시면 많은 자료를 보실
+수 있습니다.
+
+첨부한
+\href{https://groups.google.com/a/acr.kr/group/r/attach/409db97bf453a/R.stx?part=0.1\&authuser=0}{R.stx}
+파일은 AcroEdit이라는 editor에서 사용할 syntax highlighting용 구문
+파일입니다. \url{http://www.acrosoft.pe.kr} 에서 다운로드 받아
+설치하시기 바랍니다. AcroEdit대신 notepad++를 선호하시는 분은 그대로
+사용하셔도 됩니다.
+
+저는 RStudio, tinnR 등을 이용해서 강의하지 않습니다만, 필요하신 분은
+쓰셔도 괜찮습니다. 향후 R package 작성을 위해서는 MiKTeX와 Rtools를
+설치하십시오.
+
+추가로 말씀드리자면, \url{http://www.coursera.org} 에 많은 R 강좌가
+개설되어 있습니다. Specialization course로 들어가면 유로이지만,
+(Specialization course는 여러 개의 과목이 합쳐져 있는 것입니다.) 개별
+과목을 검색해서 들어가면, 무료로도 볼 수 있습니다. (대신 시험을 칠 수
+없거나, certificate를 받을 수 없습니다.)
+
+좋은 강좌가 많으니 많이 활용하시기 바립니다.
+
+강의 장소에 불편함이 많은 것으로 생각되어, 다음과 같이 Skype 모임을
+개설하였습니다. 사정상 원거리에서 오시기 불편한 분들은 활용하시기
+바랍니다. 출석은 화면을 캡쳐하거나 휴대폰으로 찍은 뒤
+\href{mailto:sec@acp.kr}{\nolinkurl{sec@acp.kr}},
+\href{mailto:shan@acp.kr로}{\nolinkurl{shan@acp.kr로}} 보내주시면
+출석으로 인정해 드립니다.
+
+Skype 모임 참가 \url{https://meet.lync.com/uucp-acp/ksbae/SKGJ3BNQ}
+
+2017년 3월, 배균섭 배상
+
+The online version of this book is licensed under the
+\href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{Creative
+Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
+
+\begin{figure}
+\centering
+\includegraphics{images/by-nc-sa.png}
+\caption{Creative Commons License}
+\end{figure}
+
+\section*{Teaching Assistant}\label{teaching-assistant}
+
+
+안녕하십니까? 서울아산병원 임상약리학과 전공의 한성필입니다. 수업과
+관련된 여러 제반 업무를 담당하고 있습니다. 언제든 의문사항 있으면
+\href{mailto:r@acr.kr}{\nolinkurl{r@acr.kr}} 로 전체 메일 보내시거나
+교수님 \href{mailto:k@acr.kr}{\nolinkurl{k@acr.kr}} 혹은 제 개인 메일
+\href{mailto:shan@acp.kr로}{\nolinkurl{shan@acp.kr로}} 연락해 주십시오.
+
+교수님께서 세우신 방침에 따라 수업시간에 출석을 부르지 않을 예정입니다.
+수강하시는 화면(Skype)을 휴대폰으로 사진 찍으시거나 강의실의 스크린을
+사진으로 촬영하셔서 \href{mailto:sec@acp.kr}{\nolinkurl{sec@acp.kr}} /
+\href{mailto:shan@acp.kr}{\nolinkurl{shan@acp.kr}} 로 동시에 보내주시면
+됩니다. 가급적 ``2017-03-31 한성필 출석'' 과 같은 식의 제목을 유지해
+주시면 처리하는데 큰 도움이 될 것 같습니다.
+
+\textbf{출석 체크를 위해 전체메일을 사용하지 말아주십시오!}
+
+아울러 수업 중에 사용한 코드/스크립트를 사용하여 R의 패키지인
+\texttt{bookdown}을 사용해 웹북을 제작 중에 있습니다. \citep{R-bookdown}
+\index{bookdown} 여러분이 읽고 있는 이 책 자체가 R 코드의 일종인
+\texttt{Rmarkdown}의 결과물이라고 보시면 됩니다.
+\href{https://github.com/asancpt/Rprogramming}{Github 저장소}가 있으니
+소스 코드를 보실 수 있습니다. 누구나 소스를 편집하여
+\texttt{Pull\ Request}를 요청할 수 있으므로 혹시 Github를 사용하셔서
+웹북의 질을 높이고자 하시는 수강생 선생님들께서는 도움을 주십시오.
+\index{Github}
+
+감사합니다.
+
+2017년 3월, 한성필 올림
+
+\section*{FAQ}\label{faq}
+
+
+\subsection*{접속 관련}\label{-}
+
+
+\begin{quote}
+Q. 스카이프를 한번도 안써봐서 이참에 사용법을 배우고있는데, 수업시작시에
+상대방을 어떻게 검색해서 들어가면 될지 알려주시면 감사하겠습니다.
+\end{quote}
+
+\begin{quote}
+Q. 온라인 수강시 접속하는 스카이프 주소는 무엇인지요?
+\end{quote}
+
+\url{https://meet.lync.com/uucp-acp/ksbae/SKGJ3BNQ}
+
+Chrome 등 웹브라우저에서 위 주소를 입력하면 직접 대화방으로 연결됩니다.
+(검색할 필요 없습니다.) 처음 설치시에는 Add-on이 설치될 수 있습니다.
+MacOS Sierra, Win7, Win10에서 Chrome, Internet Explorer 등을 사용하여
+테스트해 보았고 모두 잘 동작하였습니다. 대부분의 경우 Skype For Business
+계정이 없을 것으로 생각되는데 따로 로그인할 필요 없습니다.
+
+수업 시작 30분 전부터 대화방을 개설해 놓도록 하겠습니다.
+
+\url{https://groups.google.com/a/acr.kr/d/msg/r/nUkrE37W2kQ/waG-FkM_BgAJ}
+교수님께서 처음 보낸 메일을 참고해 주십시오.
+
+\begin{quote}
+Q. 앞으로 수업은 지난 첫수업처럼 계속 온라인 수강이 가능한 것인가요?
+\end{quote}
+
+네, 계속 온라인으로 가능합니다.
+
+\begin{quote}
+Q. 저도 웹캠을 설치하여야 하여야 하나요?
+\end{quote}
+
+설치할 필요 없습니다. 오히려 수강자의 웹캠의 전원을 꺼두시길
+권고드립니다.
+
+\begin{quote}
+Q. 수강전 온라인 강의 테스트 해볼 수 있나요?
+\end{quote}
+
+수업 시작 30분 전부터 대화방을 개설하여 놓도록 하겠습니다.
+
+\subsection*{출석관련}
+
+
+\begin{quote}
+Q. 미국학회 참석으로 수업시간이 귀국행 비행기 기내에 있을거같아 출석이
+안될것 같습니다. 방법이 있을지요?
+\end{quote}
+
+결석 사유서를 제출해 주시면 출석 처리 하겠습니다.
+\href{http://www.medulsan.ac.kr/graduate/?mid=72\&curpage=files}{대학원
+홈페이지 참고 바랍니다.} 이 링크로 들어가시면 가장 위에 있습니다.
+(\texttt{결석사유서.hwp}) 참고로 수업 영상은 녹화하여 Youtube에 비공개
+링크를 만들 예정이라서 추후에 관련 영상을 시청할 수 있을 것 같습니다.
+결석사유서를 제출한다고 100\% 출석이 인정되는 것은 아닙니다. 이것이
+기본적으로는 offline강의이기 때문에 강의시간에 강의실에 있든지, 또는
+온라인으로 접속해 있어야 합니다. 출석사유서를 제출하거나, 추후 동영상
+시청을 해서 그 증거(사진)을 제출하는 경우에 감점을 줄여드릴 수 있습니다.
+예를 들어, 결석시에는 2점 감점인데, 결석사유서를 제출하면 1점만
+감점한다는지, 동영상을 보면 0.5점만 감점한다는지 하는 것입니다. 결석
+사유서 제출 시 출석 처리 원칙에 대한 설명을 드리오니, 참고하시길
+바랍니다.
+
+\subsection*{과제 관련}\label{-}
+
+
+\begin{quote}
+Q. 과제물이 있다고 들었는데 언제 assign하게 되는지요?
+\end{quote}
+
+과제물은 빨라야 5주차 이후에 나갑니다.
+
+\begin{quote}
+수업계획서가 변경되었다고하셨는데, 과정을보니 시험을 몇째주에 보는지
+기재되어있지 않아서요, 성적평가에는 중간고사,기말고사,과제가 모두
+적혀있는데 어떤것이 맞는 것 일까요?
+\end{quote}
+
+중간 기말 고사는 따로 없습니다. 대신 강의를 합니다. (수업계획서 참고)
+
+\subsection*{Coursera 관련}\label{coursera-}
+
+
+\begin{quote}
+Q. 첫 수업 때, certification 관련 말씀을 하셨는데, 정확히 coursera
+사이트에서 어떤 것을 듣고, 제출을 해야하는지 궁금합니다. (비슷한 내용이
+많아, 어떤것을 들어야하는지 헷갈립니다.) \index{Coursera}
+\end{quote}
+
+Coursera는 꼭 어느 것을 들어야 하는 것은 아니고, R programming과 관련된
+것이라면 자유로이 골라서 들으면 됩니다. 대표적인 두 가지만 들자면 다음과
+같습니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://www.coursera.org/learn/r-programming}
+\item
+  \url{https://www.coursera.org/learn/r-programming-environment}
+\end{itemize}
+
+\begin{quote}
+Q. Coursera 강의를 듣고 증명서를 내면 출석을 얼마나 커버할 수
+있을런지요?
+\end{quote}
+
+Coursera는 출석 커버보다는 grade를 올려 주기 위한 것입니다. 출석은
+Skype로 커버해야 합니다. 출석의 성적 반영비율은 25\%이지만, 규정상 4회
+이상 결석이면 성적이 나갈 수 없습니다.
+
+\section*{Syllabus}\label{syllabus}
+
+
+2017-04-10 현재 개정된 수업계획서입니다.
+
+\begin{figure}
+\centering
+\includegraphics{inst/syllabus/syllabus_rev-0.png}
+\caption{Syllabus page 1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{inst/syllabus/syllabus_rev-1.png}
+\caption{Syllabus page 1}
+\end{figure}
+
+\mainmatter
+
+\chapter{R language}\label{r-language}
+
+\begin{quote}
+2017-03-15 배균섭 교수님 강의
+\end{quote}
+
+\href{https://cran.r-project.org/doc/manuals/r-release/R-lang.pdf}{R
+Language Definition}의 초반 내용에 대해 설명하였습니다.
+
+\cleardoublepage 
+
+\appendix \addcontentsline{toc}{chapter}{\appendixname}
+
+
+\section{Assignment 1}\label{assignment-1}
+
+첨부한 concUnitConv-test.R과 유사한 R script를 실행하였을 때,
+concUnitConv-test.Rout과 유사한 결과나 나오는 concUnitConv.R 파일을
+작성하시오.
+
+\begin{itemize}
+\tightlist
+\item
+  제출기한: 2017-05-10 18:00
+\item
+  제출방법: R scirpt와 output을
+  \href{mailto:k@acr.kr}{\nolinkurl{k@acr.kr}},
+  \href{mailto:shan@acp.kr}{\nolinkurl{shan@acp.kr}},
+  \href{mailto:sec@acp.kr}{\nolinkurl{sec@acp.kr}} 로 제출
+\end{itemize}
+
+\subsection{concUnitConv-test.R}\label{concunitconv-test.r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\StringTok{"D:/G/Desk/R/concUnitConv.R"}\NormalTok{)}
+
+\KeywordTok{concUnitConv}\NormalTok{() }\CommentTok{# Wrong input}
+\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"kg/L"}\NormalTok{, }\StringTok{"g/L"}\NormalTok{) }\CommentTok{# Wrong input}
+\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"g/kL"}\NormalTok{, }\StringTok{"g/L"}\NormalTok{) }\CommentTok{# Wrong input}
+
+\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"ug/mL"}\NormalTok{)}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"ug/L"}\NormalTok{)}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mg/mL"}\NormalTok{)}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW=}\OperatorTok{-}\DecValTok{100}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mM"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{mM =}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{mM }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mmol/L"}\NormalTok{, }\StringTok{"ug/L"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\NormalTok{Theoph}\OperatorTok{$}\NormalTok{mM }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mmol/L"}\NormalTok{, }\StringTok{"ug/mL"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{concUnitConv-test.Rout}\label{concunitconv-test.rout}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{source}\NormalTok{(}\StringTok{"D:/G/Desk/R/concUnitConv.R"}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }
+\ErrorTok{>}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{() }\CommentTok{# Wrong input}
+\NormalTok{Error }\ControlFlowTok{in} \KeywordTok{concUnitConv}\NormalTok{() }\OperatorTok{:}\StringTok{ }\NormalTok{Source concentration unit is not valid.}
+\OperatorTok{>}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"kg/L"}\NormalTok{, }\StringTok{"g/L"}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Error }\ControlFlowTok{in} \KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"kg/L"}\NormalTok{, }\StringTok{"g/L"}\NormalTok{) }\OperatorTok{:}\StringTok{ }\NormalTok{Source amount is not supported.}
+\OperatorTok{>}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"g/kL"}\NormalTok{, }\StringTok{"g/L"}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Error }\ControlFlowTok{in} \KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"g/kL"}\NormalTok{, }\StringTok{"g/L"}\NormalTok{) }\OperatorTok{:}\StringTok{ }\NormalTok{Volume unit is not supported.}
+\OperatorTok{>}\StringTok{ }
+\ErrorTok{>}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"ug/mL"}\NormalTok{)}
+  
+\DecValTok{1} 
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"ug/L"}\NormalTok{)}
+\NormalTok{  [}\DecValTok{1}\NormalTok{]   }\DecValTok{740}  \DecValTok{2840}  \DecValTok{6570} \DecValTok{10500}  \DecValTok{9660}  \DecValTok{8580}  \DecValTok{8360}  \DecValTok{7470}  \DecValTok{6890}  \DecValTok{5940}  \DecValTok{3280}     \DecValTok{0}  \DecValTok{1720}  \DecValTok{7910}  \DecValTok{8310}  \DecValTok{8330}  \DecValTok{6850}  \DecValTok{6080}  \DecValTok{5400}  \DecValTok{4550}  \DecValTok{3010}   \DecValTok{900}     \DecValTok{0}  \DecValTok{4400}  \DecValTok{6900}  \DecValTok{8200}  \DecValTok{7800}
+\NormalTok{ [}\DecValTok{28}\NormalTok{]  }\DecValTok{7500}  \DecValTok{6200}  \DecValTok{5300}  \DecValTok{4900}  \DecValTok{3700}  \DecValTok{1050}     \DecValTok{0}  \DecValTok{1890}  \DecValTok{4600}  \DecValTok{8600}  \DecValTok{8380}  \DecValTok{7540}  \DecValTok{6880}  \DecValTok{5780}  \DecValTok{5330}  \DecValTok{4190}  \DecValTok{1150}     \DecValTok{0}  \DecValTok{2020}  \DecValTok{5630} \DecValTok{11400}  \DecValTok{9330}  \DecValTok{8740}  \DecValTok{7560}  \DecValTok{7090}  \DecValTok{5900}  \DecValTok{4370}
+\NormalTok{ [}\DecValTok{55}\NormalTok{]  }\DecValTok{1570}     \DecValTok{0}  \DecValTok{1290}  \DecValTok{3080}  \DecValTok{6440}  \DecValTok{6320}  \DecValTok{5530}  \DecValTok{4940}  \DecValTok{4020}  \DecValTok{3460}  \DecValTok{2780}   \DecValTok{920}   \DecValTok{150}   \DecValTok{850}  \DecValTok{2350}  \DecValTok{5020}  \DecValTok{6580}  \DecValTok{7090}  \DecValTok{6660}  \DecValTok{5250}  \DecValTok{4390}  \DecValTok{3530}  \DecValTok{1150}     \DecValTok{0}  \DecValTok{3050}  \DecValTok{3050}  \DecValTok{7310}
+\NormalTok{ [}\DecValTok{82}\NormalTok{]  }\DecValTok{7560}  \DecValTok{6590}  \DecValTok{5880}  \DecValTok{4730}  \DecValTok{4570}  \DecValTok{3000}  \DecValTok{1250}     \DecValTok{0}  \DecValTok{7370}  \DecValTok{9030}  \DecValTok{7140}  \DecValTok{6330}  \DecValTok{5660}  \DecValTok{5670}  \DecValTok{4240}  \DecValTok{4110}  \DecValTok{3160}  \DecValTok{1120}   \DecValTok{240}  \DecValTok{2890}  \DecValTok{5220}  \DecValTok{6410}  \DecValTok{7830} \DecValTok{10210}  \DecValTok{9180}  \DecValTok{8020}  \DecValTok{7140}
+\NormalTok{[}\DecValTok{109}\NormalTok{]  }\DecValTok{5680}  \DecValTok{2420}     \DecValTok{0}  \DecValTok{4860}  \DecValTok{7240}  \DecValTok{8000}  \DecValTok{6810}  \DecValTok{5870}  \DecValTok{5220}  \DecValTok{4450}  \DecValTok{3620}  \DecValTok{2690}   \DecValTok{860}     \DecValTok{0}  \DecValTok{1250}  \DecValTok{3960}  \DecValTok{7820}  \DecValTok{9720}  \DecValTok{9750}  \DecValTok{8570}  \DecValTok{6590}  \DecValTok{6110}  \DecValTok{4570}  \DecValTok{1170}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mg/mL"}\NormalTok{)}
+\NormalTok{  [}\DecValTok{1}\NormalTok{] }\FloatTok{0.00074} \FloatTok{0.00284} \FloatTok{0.00657} \FloatTok{0.01050} \FloatTok{0.00966} \FloatTok{0.00858} \FloatTok{0.00836} \FloatTok{0.00747} \FloatTok{0.00689} \FloatTok{0.00594} \FloatTok{0.00328} \FloatTok{0.00000} \FloatTok{0.00172} \FloatTok{0.00791} \FloatTok{0.00831} \FloatTok{0.00833} \FloatTok{0.00685} \FloatTok{0.00608} \FloatTok{0.00540} \FloatTok{0.00455}
+\NormalTok{ [}\DecValTok{21}\NormalTok{] }\FloatTok{0.00301} \FloatTok{0.00090} \FloatTok{0.00000} \FloatTok{0.00440} \FloatTok{0.00690} \FloatTok{0.00820} \FloatTok{0.00780} \FloatTok{0.00750} \FloatTok{0.00620} \FloatTok{0.00530} \FloatTok{0.00490} \FloatTok{0.00370} \FloatTok{0.00105} \FloatTok{0.00000} \FloatTok{0.00189} \FloatTok{0.00460} \FloatTok{0.00860} \FloatTok{0.00838} \FloatTok{0.00754} \FloatTok{0.00688}
+\NormalTok{ [}\DecValTok{41}\NormalTok{] }\FloatTok{0.00578} \FloatTok{0.00533} \FloatTok{0.00419} \FloatTok{0.00115} \FloatTok{0.00000} \FloatTok{0.00202} \FloatTok{0.00563} \FloatTok{0.01140} \FloatTok{0.00933} \FloatTok{0.00874} \FloatTok{0.00756} \FloatTok{0.00709} \FloatTok{0.00590} \FloatTok{0.00437} \FloatTok{0.00157} \FloatTok{0.00000} \FloatTok{0.00129} \FloatTok{0.00308} \FloatTok{0.00644} \FloatTok{0.00632}
+\NormalTok{ [}\DecValTok{61}\NormalTok{] }\FloatTok{0.00553} \FloatTok{0.00494} \FloatTok{0.00402} \FloatTok{0.00346} \FloatTok{0.00278} \FloatTok{0.00092} \FloatTok{0.00015} \FloatTok{0.00085} \FloatTok{0.00235} \FloatTok{0.00502} \FloatTok{0.00658} \FloatTok{0.00709} \FloatTok{0.00666} \FloatTok{0.00525} \FloatTok{0.00439} \FloatTok{0.00353} \FloatTok{0.00115} \FloatTok{0.00000} \FloatTok{0.00305} \FloatTok{0.00305}
+\NormalTok{ [}\DecValTok{81}\NormalTok{] }\FloatTok{0.00731} \FloatTok{0.00756} \FloatTok{0.00659} \FloatTok{0.00588} \FloatTok{0.00473} \FloatTok{0.00457} \FloatTok{0.00300} \FloatTok{0.00125} \FloatTok{0.00000} \FloatTok{0.00737} \FloatTok{0.00903} \FloatTok{0.00714} \FloatTok{0.00633} \FloatTok{0.00566} \FloatTok{0.00567} \FloatTok{0.00424} \FloatTok{0.00411} \FloatTok{0.00316} \FloatTok{0.00112} \FloatTok{0.00024}
+\NormalTok{[}\DecValTok{101}\NormalTok{] }\FloatTok{0.00289} \FloatTok{0.00522} \FloatTok{0.00641} \FloatTok{0.00783} \FloatTok{0.01021} \FloatTok{0.00918} \FloatTok{0.00802} \FloatTok{0.00714} \FloatTok{0.00568} \FloatTok{0.00242} \FloatTok{0.00000} \FloatTok{0.00486} \FloatTok{0.00724} \FloatTok{0.00800} \FloatTok{0.00681} \FloatTok{0.00587} \FloatTok{0.00522} \FloatTok{0.00445} \FloatTok{0.00362} \FloatTok{0.00269}
+\NormalTok{[}\DecValTok{121}\NormalTok{] }\FloatTok{0.00086} \FloatTok{0.00000} \FloatTok{0.00125} \FloatTok{0.00396} \FloatTok{0.00782} \FloatTok{0.00972} \FloatTok{0.00975} \FloatTok{0.00857} \FloatTok{0.00659} \FloatTok{0.00611} \FloatTok{0.00457} \FloatTok{0.00117}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Error }\ControlFlowTok{in} \KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{) }\OperatorTok{:}\StringTok{ }
+\StringTok{  }\NormalTok{Positive molecular weight should be given.}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW=}\OperatorTok{-}\DecValTok{100}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Error }\ControlFlowTok{in} \KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW =} \OperatorTok{-}\DecValTok{100}\NormalTok{) }\OperatorTok{:}\StringTok{ }
+\StringTok{  }\NormalTok{Positive molecular weight should be given.}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mM"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{) }\CommentTok{# Wrong input}
+\NormalTok{Error }\ControlFlowTok{in} \KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mM"}\NormalTok{, }\DataTypeTok{MW =} \FloatTok{180.164}\NormalTok{) }\OperatorTok{:}\StringTok{ }
+\StringTok{  }\NormalTok{Target concentration unit is not valid.}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\NormalTok{  [}\DecValTok{1}\NormalTok{] }\FloatTok{0.0041073688} \FloatTok{0.0157634156} \FloatTok{0.0364667747} \FloatTok{0.0582802336} \FloatTok{0.0536178149} \FloatTok{0.0476232766} \FloatTok{0.0464021669} \FloatTok{0.0414622233} \FloatTok{0.0382429342} \FloatTok{0.0329699607} \FloatTok{0.0182056349} \FloatTok{0.0000000000}
+\NormalTok{ [}\DecValTok{13}\NormalTok{] }\FloatTok{0.0095468573} \FloatTok{0.0439044426} \FloatTok{0.0461246420} \FloatTok{0.0462356520} \FloatTok{0.0380209143} \FloatTok{0.0337470305} \FloatTok{0.0299726915} \FloatTok{0.0252547679} \FloatTok{0.0167070003} \FloatTok{0.0049954486} \FloatTok{0.0000000000} \FloatTok{0.0244221931}
+\NormalTok{ [}\DecValTok{25}\NormalTok{] }\FloatTok{0.0382984392} \FloatTok{0.0455140872} \FloatTok{0.0432938878} \FloatTok{0.0416287383} \FloatTok{0.0344130903} \FloatTok{0.0294176417} \FloatTok{0.0271974423} \FloatTok{0.0205368442} \FloatTok{0.0058280234} \FloatTok{0.0000000000} \FloatTok{0.0104904420} \FloatTok{0.0255322928}
+\NormalTok{ [}\DecValTok{37}\NormalTok{] }\FloatTok{0.0477342865} \FloatTok{0.0465131769} \FloatTok{0.0418507582} \FloatTok{0.0381874292} \FloatTok{0.0320818810} \FloatTok{0.0295841567} \FloatTok{0.0232565884} \FloatTok{0.0063830732} \FloatTok{0.0000000000} \FloatTok{0.0112120068} \FloatTok{0.0312493062} \FloatTok{0.0632756822}
+\NormalTok{ [}\DecValTok{49}\NormalTok{] }\FloatTok{0.0517861504} \FloatTok{0.0485113563} \FloatTok{0.0419617682} \FloatTok{0.0393530339} \FloatTok{0.0327479408} \FloatTok{0.0242556782} \FloatTok{0.0087142825} \FloatTok{0.0000000000} \FloatTok{0.0071601430} \FloatTok{0.0170955352} \FloatTok{0.0357452099} \FloatTok{0.0350791501}
+\NormalTok{ [}\DecValTok{61}\NormalTok{] }\FloatTok{0.0306942563} \FloatTok{0.0274194623} \FloatTok{0.0223130037} \FloatTok{0.0192047246} \FloatTok{0.0154303856} \FloatTok{0.0051064586} \FloatTok{0.0008325748} \FloatTok{0.0047179237} \FloatTok{0.0130436713} \FloatTok{0.0278635021} \FloatTok{0.0365222797} \FloatTok{0.0393530339}
+\NormalTok{ [}\DecValTok{73}\NormalTok{] }\FloatTok{0.0369663196} \FloatTok{0.0291401168} \FloatTok{0.0243666881} \FloatTok{0.0195932595} \FloatTok{0.0063830732} \FloatTok{0.0000000000} \FloatTok{0.0169290202} \FloatTok{0.0169290202} \FloatTok{0.0405741436} \FloatTok{0.0419617682} \FloatTok{0.0365777847} \FloatTok{0.0326369308}
+\NormalTok{ [}\DecValTok{85}\NormalTok{] }\FloatTok{0.0262538576} \FloatTok{0.0253657778} \FloatTok{0.0166514953} \FloatTok{0.0069381230} \FloatTok{0.0000000000} \FloatTok{0.0409071735} \FloatTok{0.0501210009} \FloatTok{0.0396305588} \FloatTok{0.0351346551} \FloatTok{0.0314158211} \FloatTok{0.0314713261} \FloatTok{0.0235341134}
+\NormalTok{ [}\DecValTok{97}\NormalTok{] }\FloatTok{0.0228125486} \FloatTok{0.0175395751} \FloatTok{0.0062165582} \FloatTok{0.0013321196} \FloatTok{0.0160409405} \FloatTok{0.0289736018} \FloatTok{0.0355786950} \FloatTok{0.0434604027} \FloatTok{0.0566705890} \FloatTok{0.0509535756} \FloatTok{0.0445149974} \FloatTok{0.0396305588}
+\NormalTok{[}\DecValTok{109}\NormalTok{] }\FloatTok{0.0315268311} \FloatTok{0.0134322062} \FloatTok{0.0000000000} \FloatTok{0.0269754224} \FloatTok{0.0401856087} \FloatTok{0.0444039875} \FloatTok{0.0377988943} \FloatTok{0.0325814258} \FloatTok{0.0289736018} \FloatTok{0.0246997180} \FloatTok{0.0200928043} \FloatTok{0.0149308408}
+\NormalTok{[}\DecValTok{121}\NormalTok{] }\FloatTok{0.0047734287} \FloatTok{0.0000000000} \FloatTok{0.0069381230} \FloatTok{0.0219799738} \FloatTok{0.0434048978} \FloatTok{0.0539508448} \FloatTok{0.0541173597} \FloatTok{0.0475677716} \FloatTok{0.0365777847} \FloatTok{0.0339135454} \FloatTok{0.0253657778} \FloatTok{0.0064940832}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{mM =}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{conc }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mg/L"}\NormalTok{, }\StringTok{"mmol/L"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{mM }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mmol/L"}\NormalTok{, }\StringTok{"ug/L"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\NormalTok{  [}\DecValTok{1}\NormalTok{]   }\DecValTok{740}  \DecValTok{2840}  \DecValTok{6570} \DecValTok{10500}  \DecValTok{9660}  \DecValTok{8580}  \DecValTok{8360}  \DecValTok{7470}  \DecValTok{6890}  \DecValTok{5940}  \DecValTok{3280}     \DecValTok{0}  \DecValTok{1720}  \DecValTok{7910}  \DecValTok{8310}  \DecValTok{8330}  \DecValTok{6850}  \DecValTok{6080}  \DecValTok{5400}  \DecValTok{4550}  \DecValTok{3010}   \DecValTok{900}     \DecValTok{0}  \DecValTok{4400}  \DecValTok{6900}  \DecValTok{8200}  \DecValTok{7800}
+\NormalTok{ [}\DecValTok{28}\NormalTok{]  }\DecValTok{7500}  \DecValTok{6200}  \DecValTok{5300}  \DecValTok{4900}  \DecValTok{3700}  \DecValTok{1050}     \DecValTok{0}  \DecValTok{1890}  \DecValTok{4600}  \DecValTok{8600}  \DecValTok{8380}  \DecValTok{7540}  \DecValTok{6880}  \DecValTok{5780}  \DecValTok{5330}  \DecValTok{4190}  \DecValTok{1150}     \DecValTok{0}  \DecValTok{2020}  \DecValTok{5630} \DecValTok{11400}  \DecValTok{9330}  \DecValTok{8740}  \DecValTok{7560}  \DecValTok{7090}  \DecValTok{5900}  \DecValTok{4370}
+\NormalTok{ [}\DecValTok{55}\NormalTok{]  }\DecValTok{1570}     \DecValTok{0}  \DecValTok{1290}  \DecValTok{3080}  \DecValTok{6440}  \DecValTok{6320}  \DecValTok{5530}  \DecValTok{4940}  \DecValTok{4020}  \DecValTok{3460}  \DecValTok{2780}   \DecValTok{920}   \DecValTok{150}   \DecValTok{850}  \DecValTok{2350}  \DecValTok{5020}  \DecValTok{6580}  \DecValTok{7090}  \DecValTok{6660}  \DecValTok{5250}  \DecValTok{4390}  \DecValTok{3530}  \DecValTok{1150}     \DecValTok{0}  \DecValTok{3050}  \DecValTok{3050}  \DecValTok{7310}
+\NormalTok{ [}\DecValTok{82}\NormalTok{]  }\DecValTok{7560}  \DecValTok{6590}  \DecValTok{5880}  \DecValTok{4730}  \DecValTok{4570}  \DecValTok{3000}  \DecValTok{1250}     \DecValTok{0}  \DecValTok{7370}  \DecValTok{9030}  \DecValTok{7140}  \DecValTok{6330}  \DecValTok{5660}  \DecValTok{5670}  \DecValTok{4240}  \DecValTok{4110}  \DecValTok{3160}  \DecValTok{1120}   \DecValTok{240}  \DecValTok{2890}  \DecValTok{5220}  \DecValTok{6410}  \DecValTok{7830} \DecValTok{10210}  \DecValTok{9180}  \DecValTok{8020}  \DecValTok{7140}
+\NormalTok{[}\DecValTok{109}\NormalTok{]  }\DecValTok{5680}  \DecValTok{2420}     \DecValTok{0}  \DecValTok{4860}  \DecValTok{7240}  \DecValTok{8000}  \DecValTok{6810}  \DecValTok{5870}  \DecValTok{5220}  \DecValTok{4450}  \DecValTok{3620}  \DecValTok{2690}   \DecValTok{860}     \DecValTok{0}  \DecValTok{1250}  \DecValTok{3960}  \DecValTok{7820}  \DecValTok{9720}  \DecValTok{9750}  \DecValTok{8570}  \DecValTok{6590}  \DecValTok{6110}  \DecValTok{4570}  \DecValTok{1170}
+\OperatorTok{>}\StringTok{ }\NormalTok{Theoph}\OperatorTok{$}\NormalTok{mM }\OperatorTok{*}\StringTok{ }\KeywordTok{concUnitConv}\NormalTok{(}\StringTok{"mmol/L"}\NormalTok{, }\StringTok{"ug/mL"}\NormalTok{, }\DataTypeTok{MW=}\FloatTok{180.164}\NormalTok{)}
+\NormalTok{  [}\DecValTok{1}\NormalTok{]  }\FloatTok{0.74}  \FloatTok{2.84}  \FloatTok{6.57} \FloatTok{10.50}  \FloatTok{9.66}  \FloatTok{8.58}  \FloatTok{8.36}  \FloatTok{7.47}  \FloatTok{6.89}  \FloatTok{5.94}  \FloatTok{3.28}  \FloatTok{0.00}  \FloatTok{1.72}  \FloatTok{7.91}  \FloatTok{8.31}  \FloatTok{8.33}  \FloatTok{6.85}  \FloatTok{6.08}  \FloatTok{5.40}  \FloatTok{4.55}  \FloatTok{3.01}  \FloatTok{0.90}  \FloatTok{0.00}  \FloatTok{4.40}  \FloatTok{6.90}  \FloatTok{8.20}  \FloatTok{7.80}
+\NormalTok{ [}\DecValTok{28}\NormalTok{]  }\FloatTok{7.50}  \FloatTok{6.20}  \FloatTok{5.30}  \FloatTok{4.90}  \FloatTok{3.70}  \FloatTok{1.05}  \FloatTok{0.00}  \FloatTok{1.89}  \FloatTok{4.60}  \FloatTok{8.60}  \FloatTok{8.38}  \FloatTok{7.54}  \FloatTok{6.88}  \FloatTok{5.78}  \FloatTok{5.33}  \FloatTok{4.19}  \FloatTok{1.15}  \FloatTok{0.00}  \FloatTok{2.02}  \FloatTok{5.63} \FloatTok{11.40}  \FloatTok{9.33}  \FloatTok{8.74}  \FloatTok{7.56}  \FloatTok{7.09}  \FloatTok{5.90}  \FloatTok{4.37}
+\NormalTok{ [}\DecValTok{55}\NormalTok{]  }\FloatTok{1.57}  \FloatTok{0.00}  \FloatTok{1.29}  \FloatTok{3.08}  \FloatTok{6.44}  \FloatTok{6.32}  \FloatTok{5.53}  \FloatTok{4.94}  \FloatTok{4.02}  \FloatTok{3.46}  \FloatTok{2.78}  \FloatTok{0.92}  \FloatTok{0.15}  \FloatTok{0.85}  \FloatTok{2.35}  \FloatTok{5.02}  \FloatTok{6.58}  \FloatTok{7.09}  \FloatTok{6.66}  \FloatTok{5.25}  \FloatTok{4.39}  \FloatTok{3.53}  \FloatTok{1.15}  \FloatTok{0.00}  \FloatTok{3.05}  \FloatTok{3.05}  \FloatTok{7.31}
+\NormalTok{ [}\DecValTok{82}\NormalTok{]  }\FloatTok{7.56}  \FloatTok{6.59}  \FloatTok{5.88}  \FloatTok{4.73}  \FloatTok{4.57}  \FloatTok{3.00}  \FloatTok{1.25}  \FloatTok{0.00}  \FloatTok{7.37}  \FloatTok{9.03}  \FloatTok{7.14}  \FloatTok{6.33}  \FloatTok{5.66}  \FloatTok{5.67}  \FloatTok{4.24}  \FloatTok{4.11}  \FloatTok{3.16}  \FloatTok{1.12}  \FloatTok{0.24}  \FloatTok{2.89}  \FloatTok{5.22}  \FloatTok{6.41}  \FloatTok{7.83} \FloatTok{10.21}  \FloatTok{9.18}  \FloatTok{8.02}  \FloatTok{7.14}
+\NormalTok{[}\DecValTok{109}\NormalTok{]  }\FloatTok{5.68}  \FloatTok{2.42}  \FloatTok{0.00}  \FloatTok{4.86}  \FloatTok{7.24}  \FloatTok{8.00}  \FloatTok{6.81}  \FloatTok{5.87}  \FloatTok{5.22}  \FloatTok{4.45}  \FloatTok{3.62}  \FloatTok{2.69}  \FloatTok{0.86}  \FloatTok{0.00}  \FloatTok{1.25}  \FloatTok{3.96}  \FloatTok{7.82}  \FloatTok{9.72}  \FloatTok{9.75}  \FloatTok{8.57}  \FloatTok{6.59}  \FloatTok{6.11}  \FloatTok{4.57}  \FloatTok{1.17}
+\OperatorTok{>}\StringTok{ }
+\ErrorTok{>}\StringTok{ }
+\end{Highlighting}
+\end{Shaded}
+
+\section{Assignment 2}\label{assignment-2}
+
+자신이 직접 R package를 만드는 것이 과제 2입니다.
+
+\begin{itemize}
+\tightlist
+\item
+  제출기한: 2017-06-21 18:00
+\item
+  제출방법: R package를
+  \href{mailto:shan@acp.kr과}{\nolinkurl{shan@acp.kr과}}
+  \href{mailto:ksbae@acp.kr}{\nolinkurl{ksbae@acp.kr}} 메일로
+  보내십시오. CRAN에 올리면 더 좋습니다.
+\end{itemize}
+
+\chapter{As-is R Files}\label{as-is-r-files}
+
+교수님께서 주신 원본 R 파일 입니다.
+
+\section{Lecture 3}\label{lecture-3}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{#################################################}
+\NormalTok{##---------------------------------------------##}
+\NormalTok{##                  Graphics                   ##}
+\NormalTok{##---------------------------------------------##}
+\NormalTok{#################################################}
+
+\CommentTok{# 상위수준 그림 함수는 그림을 생성한다.}
+\CommentTok{# 하위수준 그림 함수는 기존의 그림에 그림을 추가한다.}
+
+\NormalTok{## 상위수준 그림 함수의 주요 인자 (arguments) }\AlertTok{###}
+
+\CommentTok{# main : 제목}
+\CommentTok{# xlab/ylab : x축 및 y축 레이블}
+\CommentTok{# xlim/ylim : x축 및 y축 범위}
+\CommentTok{# col : 색깔}
+\CommentTok{# lty : 선 모양}
+\CommentTok{# pch : 점 모양}
+\CommentTok{# cex : 그림 성분의 크기}
+\CommentTok{# lwd : 선 굵기}
+\CommentTok{# type : 그림 타입}
+
+
+\NormalTok{#################################################}
+\NormalTok{##########     상위수준 그림 함수    ############}
+\NormalTok{#################################################}
+
+\NormalTok{WD <-}\StringTok{ "D:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{AMC}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Education}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{UU}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{2017}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{R}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Graphics}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{"}
+
+\KeywordTok{setwd}\NormalTok{(WD)}
+
+\NormalTok{dta <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"PK.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(dta)}
+\KeywordTok{str}\NormalTok{(dta)}
+
+\NormalTok{################ scatter plot ###################}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{])}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{log=}\StringTok{"y"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\KeywordTok{log}\NormalTok{(dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{]))}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{]}
+\NormalTok{    , }\DataTypeTok{xlab=}\StringTok{"Time (hr)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/mL)"} 
+\NormalTok{    , }\DataTypeTok{type=}\StringTok{"o"}\NormalTok{, }\DataTypeTok{pch=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\DecValTok{1}\NormalTok{, }\DataTypeTok{main=}\StringTok{"PK time-course of Drug X"}
+\NormalTok{    , }\DataTypeTok{xlim =}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{2}\NormalTok{,}\DecValTok{218}\NormalTok{), }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{axes=}\NormalTok{F,}
+\NormalTok{    , }\DataTypeTok{xlab=}\StringTok{"Time (hr)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/mL)"} 
+\NormalTok{    , }\DataTypeTok{type=}\StringTok{"o"}\NormalTok{, }\DataTypeTok{pch=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\DecValTok{1}\NormalTok{, }\DataTypeTok{main=}\StringTok{"PK time-course of Drug X"}
+\NormalTok{    , }\DataTypeTok{xlim =}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{2}\NormalTok{,}\DecValTok{218}\NormalTok{), }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{at=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{218}\NormalTok{, }\DecValTok{24}\NormalTok{))}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\KeywordTok{box}\NormalTok{()}
+
+
+
+\NormalTok{################## Histogram ####################}
+
+\NormalTok{d.demog <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"DEMOG.csv"}\NormalTok{)}
+
+\CommentTok{# histogram}
+\KeywordTok{hist}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT)}
+
+\KeywordTok{hist}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{breaks=}\DecValTok{10}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{nclass=}\DecValTok{10}\NormalTok{)}
+
+\CommentTok{# with density line}
+\KeywordTok{hist}\NormalTok{ (d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{probability=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{breaks=}\DecValTok{10}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT))}
+
+
+\KeywordTok{hist}\NormalTok{ (d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{probability=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{breaks=}\DecValTok{9}\NormalTok{, }\DataTypeTok{xaxt=}\StringTok{"n"}
+\NormalTok{      , }\DataTypeTok{main=}\StringTok{"Histogram for Height"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Height (cm)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Probability (%)"}\NormalTok{)}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{at=}\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\DecValTok{3}\NormalTok{))}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT))}
+
+
+\KeywordTok{hist}\NormalTok{ (d.demog}\OperatorTok{$}\NormalTok{HT, }\DataTypeTok{probability=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{breaks=}\DecValTok{9}\NormalTok{, }\DataTypeTok{xaxt=}\StringTok{"n"}
+\NormalTok{      , }\DataTypeTok{main=}\StringTok{"Histogram for Height"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Height (cm)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Probability (%)"}
+\NormalTok{      , }\DataTypeTok{col =} \StringTok{"lightblue"}\NormalTok{, }\DataTypeTok{border =} \StringTok{"pink"}\NormalTok{)}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{at=}\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT), }\DecValTok{3}\NormalTok{))}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT))}
+
+
+\NormalTok{############## Box-Whisker Plot #################}
+
+\CommentTok{# Box-and-Whisker Plot}
+
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}
+
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX)}
+
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{split}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT, d.demog}\OperatorTok{$}\NormalTok{SEX))}
+
+\KeywordTok{boxplot}\NormalTok{(WT }\OperatorTok{~}\StringTok{ }\NormalTok{SEX, }\DataTypeTok{data=}\NormalTok{d.demog)}
+
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX}
+\NormalTok{        , }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"AGE, year"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{            , }\DataTypeTok{col=}\StringTok{"pink"}\NormalTok{)}
+
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX}
+\NormalTok{        , }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"AGE, year"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{            , }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{, }\StringTok{"salmon"}\NormalTok{), }\DataTypeTok{width=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.6}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+
+\CommentTok{#varwidth: if varwidth is TRUE, the boxes are drawn with widths proportional  }
+\CommentTok{#to the square-roots of the number of observations in the groups.}
+
+\KeywordTok{boxplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT }\OperatorTok{~}\StringTok{ }\NormalTok{d.demog}\OperatorTok{$}\NormalTok{SEX}
+\NormalTok{        , }\DataTypeTok{names=}\KeywordTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{,}\StringTok{"Female"}\NormalTok{), }\DataTypeTok{ylab=}\StringTok{"AGE, year"}\NormalTok{, }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\KeywordTok{min}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\KeywordTok{max}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{WT)}\OperatorTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{            , }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"lightblue"}\NormalTok{, }\StringTok{"salmon"}\NormalTok{)}
+\NormalTok{            , }\DataTypeTok{varwidth=}\OtherTok{TRUE}\NormalTok{)}
+
+
+
+\NormalTok{################## Bar Plot #####################}
+
+\KeywordTok{barplot}\NormalTok{(d.demog}\OperatorTok{$}\NormalTok{HT)}
+
+\NormalTok{VADeaths}
+
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{border =} \StringTok{"dark blue"}\NormalTok{)}
+
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{rainbow}\NormalTok{(}\DecValTok{20}\NormalTok{))}
+
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{heat.colors}\NormalTok{(}\DecValTok{8}\NormalTok{))}
+
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{))}
+
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{log=}\StringTok{"x"}\NormalTok{)}
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{log=}\StringTok{"y"}\NormalTok{)}
+\KeywordTok{barplot}\NormalTok{(VADeaths, }\DataTypeTok{col =} \KeywordTok{gray.colors}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{log=}\StringTok{"xy"}\NormalTok{)}
+
+
+
+\NormalTok{################## pie chart ####################}
+
+\NormalTok{drug.X.market <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.12}\NormalTok{, }\FloatTok{0.29}\NormalTok{, }\FloatTok{0.32}\NormalTok{, }\FloatTok{0.22}\NormalTok{, }\FloatTok{0.11}\NormalTok{, }\FloatTok{0.28}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(drug.X.market) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"South Korea"}\NormalTok{,}\StringTok{"China"}\NormalTok{,}\StringTok{"USA"}\NormalTok{,}\StringTok{"Japan"}\NormalTok{,}\StringTok{"Austria"}\NormalTok{,}\StringTok{"EU"}\NormalTok{)}
+\KeywordTok{pie}\NormalTok{(drug.X.market)}
+
+
+\NormalTok{################ matplot 함수 ###################}
+
+\CommentTok{# matrix와 column 사이의 그림}
+
+\NormalTok{pct.}\DecValTok{95}\NormalTok{ <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"pct95.csv"}\NormalTok{)}
+\KeywordTok{matplot}\NormalTok{(pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{1}\NormalTok{], pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{2}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(pct.}\DecValTok{95}\NormalTok{)], }\DataTypeTok{pch=}\DecValTok{1}\NormalTok{)}
+
+\KeywordTok{matplot}\NormalTok{(pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{1}\NormalTok{], pct.}\DecValTok{95}\NormalTok{[,}\DecValTok{2}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(pct.}\DecValTok{95}\NormalTok{)], }\DataTypeTok{pch=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{lwd=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+
+
+
+\NormalTok{###### Scatter plot matrices (pairs plots) ######}
+
+\KeywordTok{pairs}\NormalTok{(d.demog)}
+
+\CommentTok{#add a loess smoother, type:}
+\KeywordTok{pairs}\NormalTok{(d.demog, }\DataTypeTok{panel =}\NormalTok{ panel.smooth)}
+
+\NormalTok{  panel.cor <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, y, }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{, }\DataTypeTok{prefix=}\StringTok{""}\NormalTok{, cex.cor)}
+\NormalTok{   \{}
+\NormalTok{       usr <-}\StringTok{ }\KeywordTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{); }\KeywordTok{on.exit}\NormalTok{(}\KeywordTok{par}\NormalTok{(usr))}
+       \KeywordTok{par}\NormalTok{(}\DataTypeTok{usr =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{       r =}\StringTok{ }\NormalTok{(}\KeywordTok{cor}\NormalTok{(x, y))}
+\NormalTok{       txt <-}\StringTok{ }\KeywordTok{format}\NormalTok{(}\KeywordTok{c}\NormalTok{(r, }\FloatTok{0.123456789}\NormalTok{), }\DataTypeTok{digits=}\NormalTok{digits)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{       txt <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(prefix, txt, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{)}
+       \ControlFlowTok{if}\NormalTok{(}\KeywordTok{missing}\NormalTok{(cex.cor)) cex <-}\StringTok{ }\FloatTok{1.5}
+       \KeywordTok{text}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{, txt, }\DataTypeTok{cex =} \FloatTok{1.5}\NormalTok{)}
+\NormalTok{   \}}
+
+\KeywordTok{pairs}\NormalTok{(d.demog, }\DataTypeTok{lower.panel=}\NormalTok{panel.smooth, }\DataTypeTok{upper.panel=}\NormalTok{panel.cor) }
+
+
+
+\NormalTok{#################################################}
+\NormalTok{##             하위수준 그림 함수              ##}
+\NormalTok{#################################################}
+
+\CommentTok{# points : 점추가}
+\CommentTok{# lines : 선 추가}
+\CommentTok{# abline : 기준선 추가}
+\CommentTok{# mtext : 텍스트 추가}
+\CommentTok{# legend : 설명(legend) 추가}
+\CommentTok{# polygon : polygon 추가}
+
+
+\NormalTok{############ 점, 선, 설명 추가 하기 #############}
+
+\KeywordTok{plot}\NormalTok{(pct.}\DecValTok{95}\OperatorTok{$}\NormalTok{TIME, pct.}\DecValTok{95}\OperatorTok{$}\NormalTok{PCT50, }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{), }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{#abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+
+
+\NormalTok{################# polygon 함수 ###################}
+
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{), }\DataTypeTok{type =} \StringTok{"n"}\NormalTok{)}
+\KeywordTok{polygon}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{2}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{col=}\StringTok{"lightgreen"}\NormalTok{)}
+
+
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{), }\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, }\DataTypeTok{type =} \StringTok{"n"}\NormalTok{)}
+\KeywordTok{polygon}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+        \DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{),}
+        \DataTypeTok{border =} \KeywordTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"yellow"}\NormalTok{),}
+        \DataTypeTok{lwd =} \DecValTok{3}\NormalTok{, }\DataTypeTok{lty =} \KeywordTok{c}\NormalTok{(}\StringTok{"dashed"}\NormalTok{, }\StringTok{"solid"}\NormalTok{))}
+
+
+\NormalTok{################# 그림 출력하기 ##################}
+
+\CommentTok{#--pdf graphics devices }
+\KeywordTok{pdf}\NormalTok{(}\StringTok{"PK_of_Drug_X.pdf"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{#abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+
+\KeywordTok{dev.off}\NormalTok{()}
+
+
+\CommentTok{#--PNG graphics devices}
+\KeywordTok{png}\NormalTok{(}\StringTok{"PK_of_Drug_X.png"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{#abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+       
+\KeywordTok{dev.off}\NormalTok{()}
+
+
+
+\CommentTok{#--Windows graphics devices }
+\KeywordTok{win.metafile}\NormalTok{(}\StringTok{"PK_of_Drug_X.wmf"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{main=}\StringTok{"PK of Drug X"}
+\NormalTok{     , }\DataTypeTok{type=}\StringTok{"n"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Time (h)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Concentration (ng/ml)"}
+\NormalTok{     , }\DataTypeTok{ylim=}\KeywordTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{80}\NormalTok{))}
+\KeywordTok{points}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(dta}\OperatorTok{$}\NormalTok{TIME[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], dta}\OperatorTok{$}\NormalTok{DV[dta}\OperatorTok{$}\NormalTok{MDV}\OperatorTok{==}\DecValTok{0}\NormalTok{], }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)                               }\CommentTok{#abline(a,b): y=a+b*x}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Individual concentrations"}\NormalTok{)}
+\NormalTok{       , }\DataTypeTok{lty=}\DecValTok{1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{)}
+       
+\KeywordTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Lecture 4}\label{lecture-4}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 2017-03-29}
+
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"D:/Rt"}\NormalTok{)}
+\KeywordTok{dir}\NormalTok{()}
+
+\NormalTok{mydata =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"MyData2017.csv"}\NormalTok{, }\DataTypeTok{as.is=}\OtherTok{TRUE}\NormalTok{)}
+
+\NormalTok{Theoph}
+\KeywordTok{library}\NormalTok{(lattice) }\CommentTok{# trellis}
+
+\KeywordTok{xyplot}\NormalTok{(conc }\OperatorTok{~}\StringTok{ }\NormalTok{Time }\OperatorTok{|}\StringTok{ }\NormalTok{Subject, }\DataTypeTok{data=}\NormalTok{Theoph)}
+
+\KeywordTok{xyplot}\NormalTok{(conc }\OperatorTok{~}\StringTok{ }\NormalTok{Time }\OperatorTok{|}\StringTok{ }\NormalTok{Subject, }\DataTypeTok{data=}\NormalTok{Theoph, }\DataTypeTok{type=}\StringTok{"b"}\NormalTok{)}
+
+\NormalTok{Theoph[,}\StringTok{"ID"}\NormalTok{] =}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(Theoph[,}\StringTok{"Subject"}\NormalTok{]))}
+
+\KeywordTok{xyplot}\NormalTok{(conc }\OperatorTok{~}\StringTok{ }\NormalTok{Time }\OperatorTok{|}\StringTok{ }\NormalTok{ID, }\DataTypeTok{data=}\NormalTok{Theoph, }\DataTypeTok{type=}\StringTok{"b"}\NormalTok{)}
+
+\KeywordTok{xyplot}\NormalTok{(conc }\OperatorTok{~}\StringTok{ }\NormalTok{Time }\OperatorTok{|}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(ID), }\DataTypeTok{data=}\NormalTok{Theoph, }\DataTypeTok{type=}\StringTok{"b"}\NormalTok{)}
+
+\KeywordTok{write.csv}\NormalTok{(Theoph, }\StringTok{"Theoph.csv"}\NormalTok{, }\DataTypeTok{row.names=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{quote=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na=}\StringTok{""}\NormalTok{)}
+
+
+\NormalTok{IDs =}\StringTok{ }\KeywordTok{sort}\NormalTok{(}\KeywordTok{unique}\NormalTok{(Theoph[,}\StringTok{"ID"}\NormalTok{])) ; IDs}
+\NormalTok{nID =}\StringTok{ }\KeywordTok{length}\NormalTok{(IDs) ; nID}
+
+\NormalTok{demog =}\StringTok{ }\KeywordTok{unique}\NormalTok{(Theoph[,}\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{,}\StringTok{"Wt"}\NormalTok{)])}
+\KeywordTok{colnames}\NormalTok{(demog) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"BWT"}\NormalTok{)}
+\KeywordTok{write.csv}\NormalTok{(demog, }\StringTok{"1-demog.csv"}\NormalTok{, }\DataTypeTok{row.names=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{quote=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na=}\StringTok{""}\NormalTok{)}
+
+\NormalTok{DV =}\StringTok{ }\NormalTok{Theoph[,}\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{,}\StringTok{"Time"}\NormalTok{, }\StringTok{"conc"}\NormalTok{)]}
+\KeywordTok{colnames}\NormalTok{(DV) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{, }\StringTok{"DV"}\NormalTok{)}
+\KeywordTok{write.csv}\NormalTok{(DV, }\StringTok{"3-DV.csv"}\NormalTok{, }\DataTypeTok{row.names=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{quote=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na=}\StringTok{""}\NormalTok{)}
+
+\NormalTok{adm =}\StringTok{ }\KeywordTok{cbind}\NormalTok{(IDs, }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, nID), }\KeywordTok{rep}\NormalTok{(}\DecValTok{320}\NormalTok{, nID))}
+\KeywordTok{colnames}\NormalTok{(adm) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{, }\StringTok{"TIME"}\NormalTok{, }\StringTok{"AMT"}\NormalTok{)}
+\KeywordTok{write.csv}\NormalTok{(adm, }\StringTok{"2-adm.csv"}\NormalTok{, }\DataTypeTok{row.names=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{quote=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{na=}\StringTok{""}\NormalTok{)}
+
+
+\NormalTok{demog =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"1-demog.csv"}\NormalTok{, }\DataTypeTok{as.is=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{adm =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"2-adm.csv"}\NormalTok{, }\DataTypeTok{as.is=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{dv =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"3-dv.csv"}\NormalTok{, }\DataTypeTok{as.is=}\OtherTok{TRUE}\NormalTok{)}
+
+\NormalTok{AdmDv =}\StringTok{ }\KeywordTok{merge}\NormalTok{(adm, dv, }\DataTypeTok{by=}\KeywordTok{intersect}\NormalTok{(}\KeywordTok{colnames}\NormalTok{(adm), }\KeywordTok{colnames}\NormalTok{(dv)), }\DataTypeTok{all=}\OtherTok{TRUE}\NormalTok{)}
+
+\NormalTok{DataAll =}\StringTok{ }\KeywordTok{merge}\NormalTok{(demog, AdmDv, }\DataTypeTok{by=}\KeywordTok{c}\NormalTok{(}\StringTok{"ID"}\NormalTok{), }\DataTypeTok{all=}\OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Lecture 5}\label{lecture-5}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 2017-04-05 R-intro.pdf Chapter 08}
+
+\NormalTok{pois}
+\CommentTok{# ?dbeta}
+\KeywordTok{dnorm}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\DecValTok{1} \OperatorTok{-}\StringTok{ }\KeywordTok{pnorm}\NormalTok{(}\FloatTok{1.96}\NormalTok{)}
+\CommentTok{# ?pnorm}
+\KeywordTok{pnorm}\NormalTok{(}\FloatTok{1.96}\NormalTok{, }\DataTypeTok{lower.tail=}\OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{)}
+\KeywordTok{format}\NormalTok{(}\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{), }\DataTypeTok{digits=}\DecValTok{22}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{x =}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(x)}
+\KeywordTok{sd}\NormalTok{(x)}
+
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\OperatorTok{-}\FloatTok{2.43}\NormalTok{, }\DataTypeTok{df =} \DecValTok{13}\NormalTok{)}
+
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\OperatorTok{-}\FloatTok{2.43}\NormalTok{, }\DataTypeTok{df =} \DecValTok{1000}\NormalTok{)}
+
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.995}\NormalTok{)}
+\KeywordTok{qf}\NormalTok{(}\FloatTok{0.01}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DataTypeTok{lower.tail =} \OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{# ?fivenum}
+\NormalTok{faithful}
+\KeywordTok{str}\NormalTok{(faithful)}
+\NormalTok{eruptions}
+\KeywordTok{attach}\NormalTok{(faithful)}
+\NormalTok{eruptions}
+\NormalTok{waiting}
+
+\KeywordTok{stem}\NormalTok{(waiting)}
+\KeywordTok{sort}\NormalTok{(eruptions)}
+
+\KeywordTok{hist}\NormalTok{(eruptions)}
+\KeywordTok{hist}\NormalTok{(eruptions, }\KeywordTok{seq}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\FloatTok{5.2}\NormalTok{, }\FloatTok{0.2}\NormalTok{), }\DataTypeTok{prob=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(eruptions, }\DataTypeTok{bw=}\FloatTok{0.1}\NormalTok{))}
+\KeywordTok{rug}\NormalTok{(eruptions)}
+\CommentTok{# ?hist}
+\CommentTok{# ?density}
+\KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(eruptions, }\DataTypeTok{bw=}\StringTok{"SJ"}\NormalTok{), }\DataTypeTok{lty=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{ecdf}\NormalTok{(eruptions), }\DataTypeTok{do.points=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{verticals=}\OtherTok{TRUE}\NormalTok{)}
+\CommentTok{# ?plot}
+\KeywordTok{ecdf}\NormalTok{(eruptions)}
+\NormalTok{x =}\StringTok{ }\KeywordTok{ecdf}\NormalTok{(eruptions)}
+\NormalTok{x}
+\KeywordTok{str}\NormalTok{(x)}
+\KeywordTok{x}\NormalTok{()}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{ecdf}\NormalTok{(eruptions), }\DataTypeTok{do.points=}\OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{ecdf}\NormalTok{(eruptions))}
+\NormalTok{long <-}\StringTok{ }\NormalTok{eruptions[eruptions }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{]}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{3}\NormalTok{, }\FloatTok{5.4}\NormalTok{, }\FloatTok{0.01}\NormalTok{)}
+\KeywordTok{pnorm}\NormalTok{(x, }\DataTypeTok{mean=}\KeywordTok{mean}\NormalTok{(long), }\DataTypeTok{sd=}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{var}\NormalTok{(long)))}
+
+\CommentTok{# ?par}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{rt}\NormalTok{(}\DecValTok{250}\NormalTok{, }\DataTypeTok{df =} \DecValTok{5}\NormalTok{)}
+\KeywordTok{qqnorm}\NormalTok{(x); }\KeywordTok{qqline}\NormalTok{(x)}
+
+\KeywordTok{curve}\NormalTok{(dnorm, }\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{y =}\StringTok{ }\KeywordTok{density}\NormalTok{(x)}
+\KeywordTok{lines}\NormalTok{(y, }\DataTypeTok{lty=}\DecValTok{3}\NormalTok{)}
+\CommentTok{# ?ppoints}
+\KeywordTok{ppoints}\NormalTok{(}\DecValTok{250}\NormalTok{)}
+\KeywordTok{ppoints}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+
+\KeywordTok{qqplot}\NormalTok{(}\KeywordTok{qt}\NormalTok{(}\KeywordTok{ppoints}\NormalTok{(}\DecValTok{250}\NormalTok{), }\DataTypeTok{df =} \DecValTok{5}\NormalTok{), x, }\DataTypeTok{xlab =} \StringTok{"Q-Q plot for t dsn"}\NormalTok{)}
+\KeywordTok{windows}\NormalTok{()}
+\KeywordTok{qqplot}\NormalTok{(}\KeywordTok{qt}\NormalTok{(}\KeywordTok{runif}\NormalTok{(}\DecValTok{250}\NormalTok{), }\DataTypeTok{df =} \DecValTok{5}\NormalTok{), x, }\DataTypeTok{xlab =} \StringTok{"Q-Q plot for t dsn"}\NormalTok{)}
+\CommentTok{# ?shapiro.test}
+\CommentTok{# ?ks.test}
+\CommentTok{# ?t.test}
+
+
+\NormalTok{A =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{79.98}\NormalTok{, }\FloatTok{80.04}\NormalTok{, }\FloatTok{80.02}\NormalTok{, }\FloatTok{80.04}\NormalTok{, }\FloatTok{80.03}\NormalTok{, }\FloatTok{80.03}\NormalTok{, }\FloatTok{80.04}\NormalTok{, }\FloatTok{79.97}\NormalTok{, }\FloatTok{80.05}\NormalTok{, }\FloatTok{80.03}\NormalTok{, }\FloatTok{80.02}\NormalTok{, }\FloatTok{80.00}\NormalTok{, }\FloatTok{80.02}\NormalTok{)}
+\NormalTok{B =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{80.02}\NormalTok{, }\FloatTok{79.94}\NormalTok{, }\FloatTok{79.98}\NormalTok{, }\FloatTok{79.97}\NormalTok{, }\FloatTok{79.97}\NormalTok{, }\FloatTok{80.03}\NormalTok{, }\FloatTok{79.95}\NormalTok{, }\FloatTok{79.97}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(A, B)}
+\KeywordTok{t.test}\NormalTok{(A, B)}
+
+\KeywordTok{var.test}\NormalTok{(A, B)}
+\KeywordTok{t.test}\NormalTok{(A, B, }\DataTypeTok{var.equal=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{wilcox.test}\NormalTok{(A, B)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{ecdf}\NormalTok{(A), }\DataTypeTok{do.points=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{verticals=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{xlim=}\KeywordTok{range}\NormalTok{(A, B))}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{ecdf}\NormalTok{(B), }\DataTypeTok{do.points=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{verticals=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{add=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{ks.test}\NormalTok{(A, B)}
+
+\CommentTok{# Chapter 9 Grouping, loops and conditional execution}
+
+\CommentTok{# \{ \} does grouping}
+\CommentTok{# Usefulness of loops: for >> while >> repeat}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{) \{}
+  \KeywordTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{i)}
+\NormalTok{\}}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{) }\KeywordTok{print}\NormalTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{i)}
+
+\CommentTok{#while (    ) \{}
+\NormalTok{## Statements}
+\CommentTok{#\}}
+
+\CommentTok{# # if ~ else ~}
+\CommentTok{# if (   ) \{}
+\CommentTok{# # Statements 1}
+\CommentTok{# \} else \{}
+\CommentTok{# # Statements 2}
+\CommentTok{# \}}
+\CommentTok{# }
+\CommentTok{# if (    ) # Statement1}
+\CommentTok{# else # Statement2}
+\CommentTok{# }
+\CommentTok{# if (   ) \{}
+\CommentTok{# # Statements 1}
+\CommentTok{# \} else if (   ) \{}
+\CommentTok{# # Statements 2}
+\CommentTok{# \} else if (   ) \{}
+\CommentTok{# # Statements 3}
+\CommentTok{# \} else \{}
+\CommentTok{# # Statements 4  }
+\CommentTok{# \}}
+
+   
+\CommentTok{#}
+\CommentTok{#}
+
+\CommentTok{# Chapter 10 Writing your own functions}
+
+\NormalTok{Square =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{x=}\DecValTok{0}\NormalTok{)}
+\NormalTok{\{}
+  \KeywordTok{return}\NormalTok{(x}\OperatorTok{*}\NormalTok{x)}
+\NormalTok{\}}
+
+\NormalTok{twosam =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(y1, y2) }
+\NormalTok{\{}
+\NormalTok{  n1  =}\StringTok{ }\KeywordTok{length}\NormalTok{(y1)}
+\NormalTok{  n2  =}\StringTok{ }\KeywordTok{length}\NormalTok{(y2)}
+\NormalTok{  yb1 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(y1)}
+\NormalTok{  yb2 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(y2)}
+\NormalTok{  s1  =}\StringTok{ }\KeywordTok{var}\NormalTok{(y1)}
+\NormalTok{  s2  =}\StringTok{ }\KeywordTok{var}\NormalTok{(y2) }
+\NormalTok{  s   =}\StringTok{ }\NormalTok{((n1 }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{s1 }\OperatorTok{+}\StringTok{ }\NormalTok{(n2 }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{s2)}\OperatorTok{/}\NormalTok{(n1 }\OperatorTok{+}\StringTok{ }\NormalTok{n2 }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{)}
+\NormalTok{  tst =}\StringTok{ }\NormalTok{(yb1 }\OperatorTok{-}\StringTok{ }\NormalTok{yb2)}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(s}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\NormalTok{n1 }\OperatorTok{+}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{n2))}
+  \KeywordTok{return}\NormalTok{ (tst)}
+\NormalTok{\}}
+
+\NormalTok{x =}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\NormalTok{y =}\StringTok{ }\KeywordTok{rt}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+
+\KeywordTok{twosam}\NormalTok{(x, y)}
+
+\NormalTok{T.test =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(y1, y2) }
+\NormalTok{\{}
+\NormalTok{  n1  =}\StringTok{ }\KeywordTok{length}\NormalTok{(y1)}
+\NormalTok{  n2  =}\StringTok{ }\KeywordTok{length}\NormalTok{(y2)}
+\NormalTok{  yb1 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(y1)}
+\NormalTok{  yb2 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(y2)}
+\NormalTok{  s1  =}\StringTok{ }\KeywordTok{var}\NormalTok{(y1)}
+\NormalTok{  s2  =}\StringTok{ }\KeywordTok{var}\NormalTok{(y2) }
+\NormalTok{  s   =}\StringTok{ }\NormalTok{((n1 }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{s1 }\OperatorTok{+}\StringTok{ }\NormalTok{(n2 }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{)}\OperatorTok{*}\NormalTok{s2)}\OperatorTok{/}\NormalTok{(n1 }\OperatorTok{+}\StringTok{ }\NormalTok{n2 }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{)}
+
+\NormalTok{  tst =}\StringTok{ }\NormalTok{(yb1 }\OperatorTok{-}\StringTok{ }\NormalTok{yb2)}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(s}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\OperatorTok{/}\NormalTok{n1 }\OperatorTok{+}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{n2))}
+\NormalTok{  DF =}\StringTok{ }\NormalTok{n1 }\OperatorTok{+}\StringTok{ }\NormalTok{n2 }\OperatorTok{-}\StringTok{ }\DecValTok{2}
+\NormalTok{  p.val =}\StringTok{ }\DecValTok{2}\OperatorTok{*}\NormalTok{(}\DecValTok{1} \OperatorTok{-}\StringTok{ }\KeywordTok{pt}\NormalTok{(}\KeywordTok{abs}\NormalTok{(tst), }\DataTypeTok{df=}\NormalTok{DF))}
+  
+\NormalTok{  Res =}\StringTok{ }\KeywordTok{list}\NormalTok{(tst, DF, p.val, yb1, yb2)}
+  \KeywordTok{names}\NormalTok{(Res) =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"t"}\NormalTok{, }\StringTok{"df"}\NormalTok{, }\StringTok{"p-value"}\NormalTok{, }\StringTok{"mean of x"}\NormalTok{, }\StringTok{"mean of y"}\NormalTok{)}
+  
+  \KeywordTok{return}\NormalTok{ (Res)}
+\NormalTok{\}}
+
+\NormalTok{res =}\StringTok{ }\KeywordTok{T.test}\NormalTok{(x, y)}
+\KeywordTok{t.test}\NormalTok{(x, y)}
+
+
+\NormalTok{bslash =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(X, y) }
+\NormalTok{\{}
+\NormalTok{  X =}\StringTok{ }\KeywordTok{qr}\NormalTok{(X)}
+  \KeywordTok{return}\NormalTok{ (}\KeywordTok{qr.coef}\NormalTok{(X, y))}
+\NormalTok{\}}
+
+\NormalTok{regcoeff =}\StringTok{ }\KeywordTok{bslash}\NormalTok{(Xmat, yvar)}
+
+
+\StringTok{"%^%"}\NormalTok{ =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(S, pow) }\KeywordTok{with}\NormalTok{(}\KeywordTok{eigen}\NormalTok{(S), vectors }\OperatorTok{%*%}\StringTok{ }\NormalTok{(}\KeywordTok{abs}\NormalTok{(values)}\OperatorTok{^}\NormalTok{pow }\OperatorTok{*}\StringTok{ }\KeywordTok{t}\NormalTok{(vectors)))}
+
+\NormalTok{M =}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{2}\NormalTok{) ; M}
+\NormalTok{M }\OperatorTok{%^%}\StringTok{ }\FloatTok{0.5}
+\NormalTok{sqrtM =}\StringTok{ }\NormalTok{M}\OperatorTok{%^%}\FloatTok{0.5}\NormalTok{ ; sqrtM}
+\NormalTok{sqrtM }\OperatorTok{%*%}\StringTok{ }\NormalTok{sqrtM}
+
+
+
+
+
+\NormalTok{area =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(f, a, b, }\DataTypeTok{eps=}\FloatTok{1.0e-06}\NormalTok{, }\DataTypeTok{lim=}\DecValTok{10}\NormalTok{) }
+\NormalTok{\{}
+\NormalTok{  fun1 =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(f, a, b, fa, fb, a0, eps, lim, fun) }
+\NormalTok{  \{}
+\NormalTok{  ## function 'fun1’is only visible inside 'area’}
+\NormalTok{    d =}\StringTok{ }\NormalTok{(a }\OperatorTok{+}\StringTok{ }\NormalTok{b)}\OperatorTok{/}\DecValTok{2}
+\NormalTok{    h =}\StringTok{ }\NormalTok{(b }\OperatorTok{-}\StringTok{ }\NormalTok{a)}\OperatorTok{/}\DecValTok{4}
+\NormalTok{    fd =}\StringTok{ }\KeywordTok{f}\NormalTok{(d)}
+\NormalTok{    a1 =}\StringTok{ }\NormalTok{h }\OperatorTok{*}\StringTok{ }\NormalTok{(fa }\OperatorTok{+}\StringTok{ }\NormalTok{fd)}
+\NormalTok{    a2 =}\StringTok{ }\NormalTok{h }\OperatorTok{*}\StringTok{ }\NormalTok{(fd }\OperatorTok{+}\StringTok{ }\NormalTok{fb)}
+    \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{abs}\NormalTok{(a0 }\OperatorTok{-}\StringTok{ }\NormalTok{a1 }\OperatorTok{-}\StringTok{ }\NormalTok{a2) }\OperatorTok{<}\StringTok{ }\NormalTok{eps }\OperatorTok{||}\StringTok{ }\NormalTok{lim }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+      \KeywordTok{return}\NormalTok{ (a1 }\OperatorTok{+}\StringTok{ }\NormalTok{a2)}
+    \ControlFlowTok{else}\NormalTok{ \{}
+      \KeywordTok{return}\NormalTok{ (}\KeywordTok{fun}\NormalTok{(f, a, d, fa, fd, a1, eps, lim }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, fun) }\OperatorTok{+}\StringTok{ }\KeywordTok{fun}\NormalTok{(f, d, b, fd, fb, a2, eps, lim }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, fun))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{  fa =}\StringTok{ }\KeywordTok{f}\NormalTok{(a)}
+\NormalTok{  fb =}\StringTok{ }\KeywordTok{f}\NormalTok{(b)}
+\NormalTok{  a0 =}\StringTok{ }\NormalTok{((fa }\OperatorTok{+}\StringTok{ }\NormalTok{fb) }\OperatorTok{*}\StringTok{ }\NormalTok{(b }\OperatorTok{-}\StringTok{ }\NormalTok{a))}\OperatorTok{/}\DecValTok{2}
+  \KeywordTok{fun1}\NormalTok{(f, a, b, fa, fb, a0, eps, lim, fun1)}
+\NormalTok{\} }
+
+\KeywordTok{area}\NormalTok{(dnorm, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{integrate}\NormalTok{(dnorm, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{1}\NormalTok{) }\OperatorTok{-}\StringTok{ }\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+
+
+\NormalTok{f =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }
+\NormalTok{\{}
+\NormalTok{  y =}\StringTok{ }\DecValTok{2}\OperatorTok{*}\NormalTok{x}
+  \KeywordTok{print}\NormalTok{(x)}
+  \KeywordTok{print}\NormalTok{(y)}
+  \KeywordTok{print}\NormalTok{(z)}
+\NormalTok{\}}
+
+\KeywordTok{f}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{z =}\StringTok{ }\DecValTok{3}
+\KeywordTok{f}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+
+\NormalTok{cube =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(n) \{}
+\NormalTok{  sq =}\StringTok{ }\ControlFlowTok{function}\NormalTok{() n}\OperatorTok{*}\NormalTok{n}
+\NormalTok{  n}\OperatorTok{*}\KeywordTok{sq}\NormalTok{()}
+\NormalTok{\}}
+
+\KeywordTok{cube}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+
+\NormalTok{open.account =}\StringTok{ }\ControlFlowTok{function}\NormalTok{(total) }
+\NormalTok{\{}
+  \KeywordTok{list}\NormalTok{(}
+    \DataTypeTok{deposit =} \ControlFlowTok{function}\NormalTok{(amount) }
+\NormalTok{    \{}
+      \ControlFlowTok{if}\NormalTok{(amount }\OperatorTok{<=}\StringTok{ }\DecValTok{0}\NormalTok{)}
+      \KeywordTok{stop}\NormalTok{(}\StringTok{"Deposits must be positive!}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{      total <<-}\StringTok{ }\NormalTok{total }\OperatorTok{+}\StringTok{ }\NormalTok{amount}
+      \KeywordTok{cat}\NormalTok{(amount, }\StringTok{"deposited. Your balance is"}\NormalTok{, total, }\StringTok{"}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{    \},}
+    \DataTypeTok{withdraw =} \ControlFlowTok{function}\NormalTok{(amount) }
+\NormalTok{    \{}
+      \ControlFlowTok{if}\NormalTok{(amount }\OperatorTok{>}\StringTok{ }\NormalTok{total)}
+      \KeywordTok{stop}\NormalTok{(}\StringTok{"You don’t have that much money!}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{      total <<-}\StringTok{ }\NormalTok{total }\OperatorTok{-}\StringTok{ }\NormalTok{amount}
+      \KeywordTok{cat}\NormalTok{(amount, }\StringTok{"withdrawn. Your balance is"}\NormalTok{, total, }\StringTok{"}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{    \},}
+    \DataTypeTok{balance =} \ControlFlowTok{function}\NormalTok{() }
+\NormalTok{    \{}
+      \KeywordTok{cat}\NormalTok{(}\StringTok{"Your balance is"}\NormalTok{, total, }\StringTok{"}\CharTok{\textbackslash{}n\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{    \}}
+\NormalTok{  )}
+\NormalTok{\}}
+
+\NormalTok{ross =}\StringTok{ }\KeywordTok{open.account}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{robert =}\StringTok{ }\KeywordTok{open.account}\NormalTok{(}\DecValTok{200}\NormalTok{)}
+
+\NormalTok{ross}\OperatorTok{$}\KeywordTok{balance}\NormalTok{()}
+\NormalTok{robert}\OperatorTok{$}\KeywordTok{balance}\NormalTok{()}
+\NormalTok{ross}\OperatorTok{$}\KeywordTok{deposit}\NormalTok{(}\DecValTok{50}\NormalTok{)}
+\NormalTok{ross}\OperatorTok{$}\KeywordTok{balance}\NormalTok{()}
+\NormalTok{ross}\OperatorTok{$}\KeywordTok{withdraw}\NormalTok{(}\DecValTok{500}\NormalTok{)}
+
+
+
+\CommentTok{# More basic keywords and functions}
+\DecValTok{1} \OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\DecValTok{5} \OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\KeywordTok{is.finite}\NormalTok{(}\OtherTok{Inf}\NormalTok{)}
+\KeywordTok{prod}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\KeywordTok{cummax}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\KeywordTok{cummax}\NormalTok{(}\DecValTok{10}\OperatorTok{:}\DecValTok{1}\NormalTok{)}
+\CommentTok{# ?xor}
+\NormalTok{x =}\StringTok{ }\DecValTok{11}\OperatorTok{:}\DecValTok{20}
+\NormalTok{x}
+\KeywordTok{which}\NormalTok{(x}\OperatorTok{==}\DecValTok{3}\NormalTok{)}
+\KeywordTok{which}\NormalTok{(x}\OperatorTok{==}\DecValTok{13}\NormalTok{)}
+
+\KeywordTok{length}\NormalTok{(x)}
+\NormalTok{y =}\StringTok{ "my string"}
+\KeywordTok{length}\NormalTok{(y)}
+\KeywordTok{nchar}\NormalTok{(y)}
+\KeywordTok{strsplit}\NormalTok{(y, }\StringTok{" "}\NormalTok{)}
+\KeywordTok{strsplit}\NormalTok{(y, }\StringTok{" "}\NormalTok{)[[}\DecValTok{1}\NormalTok{]]}
+\KeywordTok{substr}\NormalTok{(y, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+
+
+\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{sample}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\chapter{R Tips}\label{r-tips}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{http://www.stat.rice.edu/~dobelman/textfiles/DistributionsHandbook.pdf}{Handbook
+  of statistical distributions with applications}
+  \citep{krishnamoorthy2006handbook}
+\item
+  Materials
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://cran.r-project.org/manuals.html}
+  \item
+    \url{https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf}
+  \end{itemize}
+\item
+  Changing defualt R console size and etc : 배균섭 교수님께서 알려주신
+  tip을 참고하여 video clip을 만들었습니다. 매일같이 마주하게 되는 R
+  console이 너무 작게 느껴지셨다면 다음의 동영상을 참고하셔서 초기 세팅
+  (Rconsole 파일)을 바꿔서 해결할 수 있습니다.
+  \url{https://youtu.be/uSunEN8W5Mo}
+\end{itemize}
+
+\section{Using Coursera}\label{using-coursera}
+
+\begin{quote}
+PAGK에 보낸 이메일을 그대로 옮겼습니다.
+\end{quote}
+
+배균섭 교수님의 추천을 받아 다음과 같은 강의와 책을 공유하고자 합니다.
+Coursera.com 에 유익한 R 강좌가 열렸습니다. ``Mastering Software
+Development in R Specialization''이란 제목의 강좌인데 4개 Course를
+무료로 들을 수 있게 되어있습니다.
+\url{https://www.coursera.org/specializations/r} 이것이 본래의 Link인데
+여기서 각각의 Course를 찾거나 혹은 아래의 링크를 각각 클릭하여 하단에
+나오는 ``Audit''을 클릭하면 무료로 들을 수 있습니다.
+
+Audit 버튼이 안보이신다고 하신 분들이 몇분 계셔서 첨언합니다. Coursera
+회원가입하시고 로그인 한 뒤, Enroll Now를 누르시면 Audit 혹은 청강하기
+라디오버튼을 보실 수 있습니다. 앱에서도 마찬가지입니다. 이외에도
+코세라에는 많은 유익한 강의가 있는 것 같습니다. 다만 코스(Course)의
+묶음인 ``Specialization'' 에서는 유료등록(Enroll) 밖에 없으므로
+Certificate가 필요하지 않다면, 각각의 코스를 구글검색 혹은 코세라 내에서
+검색해서 ``Audit(청강)'' 하시면 무료로 강의를 들을 수 있습니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://www.coursera.org/learn/r-programming-environment}
+\item
+  \url{https://www.coursera.org/learn/advanced-r}
+\item
+  \url{https://www.coursera.org/learn/r-packages}
+\item
+  \url{https://www.coursera.org/learn/r-data-visualization}
+\end{itemize}
+
+\url{https://bookdown.org/rdpeng/RProgDA/} 이 링크는 무료로 공개된 강의
+책자입니다. 강의를 듣지 않고 책으로 보고 싶으신 분은 참고하시면 됩니다.
+
+\chapter{Acknowledgement}\label{acknowledgement}
+
+이 웹북을 만드는데 도움을 주신 분들은 다음과 같습니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Dr.~Jekyll
+\item
+  Hyde
+\end{enumerate}
+
+\bibliography{bib/manual,bib/packages}
+
+\backmatter
+\printindex
+
+\end{document}
