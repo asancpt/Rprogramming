@@ -35,7 +35,7 @@ options(
 )
 
 CACHE <- TRUE
-# CACHE <- FALSE
+CACHE <- FALSE
 
 knitr::opts_chunk$set(results = 'markup', cache = CACHE, 
     error = TRUE, collapse = FALSE)# , dev = c('png', 'pdf'))
@@ -43,7 +43,7 @@ knitr::opts_chunk$set(results = 'markup', cache = CACHE,
 library(knitr)
 library(readxl)
 library(dplyr)
-library(zoo)
+# library(zoo)
 ```
 
 # Preface {-}

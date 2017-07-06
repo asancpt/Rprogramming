@@ -320,6 +320,7 @@ ymd("2013-01-31") + months(0:11)
 #5) Application with lubridate and dplyr
 #lubridate package 에 내장된 데이터셋 lakers 를 이용
 #data(lakers)
+sessionInfo()
 
 lakers <- lakers %>% tbl_df
 lakers #--> date, time 변수가 서로 나뉘어 있다.
@@ -339,10 +340,9 @@ lakers #--> date, time 변수가 서로 나뉘어 있다.
 ## # ... with 34,614 more rows, and 6 more variables: player <chr>,
 ## #   result <chr>, points <int>, type <chr>, x <int>, y <int>
 
-#lakers <- lakers %>% 
-lakers %>% 
+lakers <- lakers %>% 
     mutate(date = paste(date, time) %>% ymd_hm) %>% 
-    rename(time_index = date) %>% 
+    dplyr::rename(time_index = date) %>% 
     select(-time)
 
 #date, time 두변수를 붙인 문자열에 대해 ymd_hm() 함수로 넘긴 후
