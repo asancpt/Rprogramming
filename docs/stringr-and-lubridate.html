@@ -481,17 +481,9 @@ Trim =<span class="st"> </span><span class="cf">function</span>(x) <span class="
 <span class="co">#1.Installation</span>
 <span class="kw">install.packages</span>(<span class="st">&quot;lubridate&quot;</span>)</code></pre></div>
 <pre><code>## Error in contrib.url(repos, &quot;source&quot;): trying to use CRAN without setting a mirror</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lubridate)</code></pre></div>
-<pre><code>## Loading required package: methods</code></pre>
-<pre><code>## 
-## Attaching package: &#39;lubridate&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:plyr&#39;:
-## 
-##     here</code></pre>
-<pre><code>## The following object is masked from &#39;package:base&#39;:
-## 
-##     date</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#2.Functions</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lubridate)
+
+<span class="co">#2.Functions</span>
 <span class="co">#1)Parsing dates and times(dates &amp; times 객체 만들기)</span>
 ##Date
 <span class="co">#Base R</span>
@@ -702,7 +694,8 @@ lakers <span class="co">#--&gt; date, time 변수가 서로 나뉘어 있다.</s
 ## # ... with 34,614 more rows, and 6 more variables: player &lt;chr&gt;,
 ## #   result &lt;chr&gt;, points &lt;int&gt;, type &lt;chr&gt;, x &lt;int&gt;, y &lt;int&gt;
 
-lakers &lt;-<span class="st"> </span>lakers <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="co">#lakers &lt;- lakers %&gt;% </span>
+lakers <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">paste</span>(date, time) <span class="op">%&gt;%</span><span class="st"> </span>ymd_hm) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">rename</span>(<span class="dt">time_index =</span> date) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>time)</code></pre></div>

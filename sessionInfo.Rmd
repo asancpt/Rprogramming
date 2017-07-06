@@ -1,0 +1,9 @@
+```{r}
+sessionInfo()
+library(lubridate)
+library(dplyr)
+lakers %>% tbl_df %>% 
+  mutate(date = paste(date, time) %>% ymd_hm) %>% 
+  rename(time_index = date) %>% 
+  select(-time)
+```

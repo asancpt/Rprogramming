@@ -339,7 +339,8 @@ lakers #--> date, time 변수가 서로 나뉘어 있다.
 ## # ... with 34,614 more rows, and 6 more variables: player <chr>,
 ## #   result <chr>, points <int>, type <chr>, x <int>, y <int>
 
-lakers <- lakers %>% 
+#lakers <- lakers %>% 
+lakers %>% 
     mutate(date = paste(date, time) %>% ymd_hm) %>% 
     rename(time_index = date) %>% 
     select(-time)
