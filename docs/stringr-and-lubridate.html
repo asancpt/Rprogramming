@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graphics.html">
+<link rel="prev" href="frequently-used-functions.html">
 <link rel="next" href="assignments.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -135,7 +135,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4.2" data-path="graphics.html"><a href="graphics.html#png-graphics-devices"><i class="fa fa-check"></i><b>2.4.2</b> PNG graphics devices</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="stringr-and-lubridate.html"><a href="stringr-and-lubridate.html"><i class="fa fa-check"></i><b>3</b> stringr and lubridate</a></li>
+<li class="chapter" data-level="3" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>3</b> Data Import / Export</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-import-export.html"><a href="data-import-export.html#read.csv"><i class="fa fa-check"></i><b>3.1</b> Read.csv</a></li>
+<li class="chapter" data-level="3.2" data-path="data-import-export.html"><a href="data-import-export.html#theoph-"><i class="fa fa-check"></i><b>3.2</b> Theoph 데이타</a></li>
+<li class="chapter" data-level="3.3" data-path="data-import-export.html"><a href="data-import-export.html#lattice"><i class="fa fa-check"></i><b>3.3</b> lattice</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import-export.html"><a href="data-import-export.html#subseting-and-write.csv"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#command"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
+<li class="chapter" data-level="4.2" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#the-basics"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
+<li class="chapter" data-level="4.3" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#common-data-structures"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
+<li class="chapter" data-level="4.4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#statistics"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#working-with-r"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
+<li class="chapter" data-level="4.6" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#io"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stringr-and-lubridate.html"><a href="stringr-and-lubridate.html"><i class="fa fa-check"></i><b>5</b> stringr and lubridate</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
 <li class="chapter" data-level="A.1" data-path="assignments.html"><a href="assignments.html#assignment-1"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
@@ -175,7 +189,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="stringr-and-lubridate" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> stringr and lubridate</h1>
+<h1><span class="header-section-number">Chapter 5</span> stringr and lubridate</h1>
 <blockquote>
 <p>2017-05-24 조용순 전공의 강의</p>
 </blockquote>
@@ -681,18 +695,20 @@ ld1</code></pre></div>
 ## [6] datasets  base     
 ## 
 ## other attached packages:
-## [1] lubridate_1.6.0 stringr_1.2.0   gdtools_0.1.4  
-## [4] dplyr_0.7.1     readxl_1.0.0    knitr_1.16     
+## [1] lubridate_1.6.0 stringr_1.2.0   lattice_0.20-35
+## [4] gdtools_0.1.4   dplyr_0.7.1     readxl_1.0.0   
+## [7] knitr_1.16     
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_0.12.11     rstudioapi_0.6   bindr_0.1       
 ##  [4] magrittr_1.5     R6_2.2.2         rlang_0.1.1     
-##  [7] tools_3.4.0      htmltools_0.3.6  yaml_2.1.14     
-## [10] rprojroot_1.2    digest_0.6.12    assertthat_0.2.0
-## [13] tibble_1.3.3     bookdown_0.4.1   bindrcpp_0.2    
-## [16] glue_1.1.1       evaluate_0.10.1  rmarkdown_1.6   
-## [19] stringi_1.1.5    compiler_3.4.0   cellranger_1.1.0
-## [22] backports_1.1.0  svglite_1.2.0    pkgconfig_2.0.1</code></pre>
+##  [7] tools_3.4.0      grid_3.4.0       htmltools_0.3.6 
+## [10] yaml_2.1.14      rprojroot_1.2    digest_0.6.12   
+## [13] assertthat_0.2.0 tibble_1.3.3     bookdown_0.4.1  
+## [16] bindrcpp_0.2     glue_1.1.1       evaluate_0.10.1 
+## [19] rmarkdown_1.6    stringi_1.1.5    compiler_3.4.0  
+## [22] cellranger_1.1.0 backports_1.1.0  svglite_1.2.0   
+## [25] pkgconfig_2.0.1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lakers &lt;-<span class="st"> </span>lakers <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
 lakers <span class="co">#--&gt; date, time 변수가 서로 나뉘어 있다.</span></code></pre></div>
 <pre><code>## # A tibble: 34,624 x 13
@@ -894,13 +910,14 @@ lakers <span class="op">%&gt;%</span><span class="st"> </span>
 
 
 
+<p><code># r if (knitr:::is_html_output()) '# Assignments'</code></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="graphics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="frequently-used-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="assignments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

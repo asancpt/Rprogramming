@@ -8,7 +8,9 @@ output:
     toc: yes
 ---
 
-`r if (knitr:::is_html_output()) '# Assignments'`
+`# r if (knitr:::is_html_output()) '# Assignments'`
+
+# Assignments
 
 ## Assignment 1 
 
