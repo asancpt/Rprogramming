@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Programming: Lecture Notes</title>
   <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
-  <meta name="generator" content="bookdown 0.4.1 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Programming: Lecture Notes" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-07-06">
+<meta name="date" content="2017-10-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -87,7 +87,7 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css\style.css" type="text/css" />
 </head>
 
 <body>
@@ -100,7 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./index.html">R programming</a></li>
+<li><a href="./index.html">R 프로그래밍</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://asancpt.github.io/" target="blank">Asancpt Github</a></li>
+<li><a href="https://github.com/asancpt/Rprogramming" target="blank">Asancpt Github</a></li>
 
 </ul>
 
@@ -494,6 +494,8 @@ Trim =<span class="st"> </span><span class="cf">function</span>(x) <span class="
 <span class="co">#Lubridate is an R package that makes it easier to work with dates and times </span>
 <span class="co">#1.Installation</span>
 <span class="kw">install.packages</span>(<span class="st">&quot;lubridate&quot;</span>)</code></pre></div>
+<pre><code>## Installing package into &#39;C:/Users/mdlhs/Rlib&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## Error in contrib.url(repos, &quot;source&quot;): trying to use CRAN without setting a mirror</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lubridate)</code></pre></div>
 <pre><code>## Loading required package: methods</code></pre>
@@ -679,16 +681,18 @@ ld1</code></pre></div>
 <span class="co">#lubridate package 에 내장된 데이터셋 lakers 를 이용</span>
 <span class="co">#data(lakers)</span>
 <span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.4.0 (2017-04-21)
-## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: macOS Sierra 10.12.5
+<pre><code>## R version 3.4.2 (2017-09-28)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 7 x64 (build 7601) Service Pack 1
 ## 
 ## Matrix products: default
-## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
-## [1] ko_KR.UTF-8/ko_KR.UTF-8/ko_KR.UTF-8/C/ko_KR.UTF-8/ko_KR.UTF-8
+## [1] LC_COLLATE=Korean_Korea.949 
+## [2] LC_CTYPE=Korean_Korea.949   
+## [3] LC_MONETARY=Korean_Korea.949
+## [4] LC_NUMERIC=C                
+## [5] LC_TIME=Korean_Korea.949    
 ## 
 ## attached base packages:
 ## [1] methods   stats     graphics  grDevices utils    
@@ -696,18 +700,18 @@ ld1</code></pre></div>
 ## 
 ## other attached packages:
 ## [1] lubridate_1.6.0 stringr_1.2.0   lattice_0.20-35
-## [4] gdtools_0.1.4   dplyr_0.7.1     readxl_1.0.0   
-## [7] knitr_1.16     
+## [4] gdtools_0.1.6   dplyr_0.7.4     readxl_1.0.0   
+## [7] knitr_1.17     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.11     rstudioapi_0.6   bindr_0.1       
-##  [4] magrittr_1.5     R6_2.2.2         rlang_0.1.1     
-##  [7] tools_3.4.0      grid_3.4.0       htmltools_0.3.6 
+##  [1] Rcpp_0.12.13     rstudioapi_0.7   bindr_0.1       
+##  [4] magrittr_1.5     R6_2.2.2         rlang_0.1.2.9000
+##  [7] tools_3.4.2      grid_3.4.2       htmltools_0.3.6 
 ## [10] yaml_2.1.14      rprojroot_1.2    digest_0.6.12   
-## [13] assertthat_0.2.0 tibble_1.3.3     bookdown_0.4.1  
+## [13] assertthat_0.2.0 tibble_1.3.4     bookdown_0.5.4  
 ## [16] bindrcpp_0.2     glue_1.1.1       evaluate_0.10.1 
-## [19] rmarkdown_1.6    stringi_1.1.5    compiler_3.4.0  
-## [22] cellranger_1.1.0 backports_1.1.0  svglite_1.2.0   
+## [19] rmarkdown_1.6    stringi_1.1.5    compiler_3.4.2  
+## [22] cellranger_1.1.0 backports_1.1.1  svglite_1.2.1   
 ## [25] pkgconfig_2.0.1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lakers &lt;-<span class="st"> </span>lakers <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
 lakers <span class="co">#--&gt; date, time 변수가 서로 나뉘어 있다.</span></code></pre></div>
@@ -947,12 +951,12 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/ms-stringr-lubridate.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/ms-stringr-lubridate.Rmd",
 "text": "Edit"
 },
 "download": ["Rprogramming.pdf"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

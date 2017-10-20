@@ -1,5 +1,5 @@
 gitbook:
-	rm Rprogramming.Rmd; Rscript _render.R "bookdown::gitbook"
+	Rscript _render.R "bookdown::gitbook"
 
 word:
 	Rscript --quiet _render.R "bookdown::word_document2"

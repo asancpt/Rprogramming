@@ -26,6 +26,61 @@ description: "2017년 1학기 울산대학교 의학과 대학원 수업 R Progr
 url: 'https\://asancpt.github.io/Rprogramming/'
 github-repo: asancpt/Rprogramming
 cover-image: images/cover.jpg
+output:
+  bookdown::gitbook:
+    dev: svglite
+    css: css/style.css
+    split_by: chapter #section
+    config:
+      toc:
+        collapse: section
+        before: |
+          <li><a href="./index.html">R 프로그래밍</a></li>
+        after: |
+          <li><a href="https://github.com/asancpt/Rprogramming" target="blank">Asancpt Github</a></li>
+      # download: [pdf]
+      edit: https://github.com/asancpt/Rprogramming/edit/master/inst/examples/%s
+      sharing:
+        github: yes
+        facebook: yes 
+#  includes:
+#    after_body: disqus.html
+  bookdown::html_chapters:
+    css: [css/style.css, css/toc.css]
+  bookdown::pdf_book:
+    includes:
+      in_header: latex/preamble.tex
+      before_body: latex/before_body.tex
+      after_body: latex/after_body.tex
+    keep_tex: yes
+    dev: "cairo_pdf"
+    latex_engine: xelatex
+    citation_package: natbib
+    template: null
+    pandoc_args: --chapters
+    toc_depth: 3
+    toc_unnumbered: no
+    toc_appendix: yes
+    quote_footer: ["\\VA{", "}{}"]
+  bookdown::epub_book:
+    dev: svglite
+    stylesheet: css/style.css
+  html_document:
+    theme: flatly 
+    toc: yes
+  html_notebook: default
+  pdf_document:
+    includes:
+      in_header: preamble.tex
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+    includes:
+      in_header: preamble.tex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}

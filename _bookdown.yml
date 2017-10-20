@@ -13,16 +13,30 @@ rmd_files: [
     "index.Rmd", 
     
     # Manuscript
-    "ms-rlang.Rmd", # 2017-03-15 ksbae
-    "ms-graphics.Rmd", # 2017-03-22 hslim
-    "ms-data.Rmd", # 2017-03-29 ksbae
-    "ms-freq.Rmd", # 2017-03-29 
-    "ms-stringr-lubridate.Rmd", # 2017-05-24 yscho
+    "Rmarkdown/ms-rlang.Rmd", # 2017-03-15 ksbae
+    "Rmarkdown/ms-graphics.Rmd", # 2017-03-22 hslim
+    "Rmarkdown/ms-data.Rmd", # 2017-03-29 ksbae
+    "Rmarkdown/ms-freq.Rmd", # 2017-03-29 
+    "Rmarkdown/ms-stringr-lubridate.Rmd", # 2017-05-24 yscho
 
     # Appendix
-    "A00-Appendix.Rmd",
-    "A01-assign.Rmd",
-    "A99-Finalize.Rmd"
+    "Rmarkdown/ap-appendix.Rmd",
+    "Rmarkdown/ap-assign.Rmd",
+    "Rmarkdown/ap-final.Rmd"
 ] 
 
-
+# r
+# 101-shan.Rmd
+# 102-ggplot.Rmd
+# A01-assign.Rmd
+# ap-appendix.Rmd
+# ap-assignment.Rmd
+# ap-final.Rmd
+# ex-Rmd.Rmd
+# ms-data.Rmd
+# ms-freq.Rmd
+# ms-graphics.Rmd
+# ms-rlang.Rmd
+# ms-stringr-lubridate.Rmd
+# sessionInfo.Rmd
+# week9.Rmd

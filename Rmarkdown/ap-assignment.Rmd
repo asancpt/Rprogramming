@@ -1,0 +1,36 @@
+---
+title: Assignments
+date: 2017-04-10
+author: Kyun-Seop Bae
+output:
+  html_document:
+    theme: flatly 
+    toc: yes
+---
+
+`r if (knitr:::is_html_output()) '# Assignments'`
+
+## Assignment 1 
+
+첨부한 concUnitConv-test.R과 유사한 R script를 실행하였을 때, concUnitConv-test.Rout과 유사한 결과나 나오는 concUnitConv.R 파일을 작성하시오.
+ 
+- 제출기한: 2017-05-10 18:00
+- 제출방법: R scirpt와 output을 k@acr.kr, shan@acp.kr, sec@acp.kr 로 제출
+
+### concUnitConv-test.R
+
+```{r code = readLines("inst/assignment1/concUnitConv-test.R", encoding = "UTF-8"), eval = FALSE}
+```
+
+### concUnitConv-test.Rout
+
+```{r code = readLines("inst/assignment1/concUnitConv-test.Rout", encoding = "UTF-8"), eval = FALSE}
+```
+
+## Assignment 2
+
+자신이 직접 R package를 만드는 것이 과제 2입니다.
+
+- 제출기한: 2017-06-21 18:00
+- 제출방법: R package를 shan@acp.kr과 ksbae@acp.kr 메일로 보내십시오. CRAN에 올리면 더 좋습니다.
+
