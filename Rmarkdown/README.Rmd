@@ -24,7 +24,7 @@ editor_options:
 
 - `DESCRIPTION` 파일 정보를 읽어 인용을 위한 `bibtex`파일을 생성해 주는 `knitr::write_bib()` [@R-knitr]와 `RefManageR::ReadBib()` [@R-RefManageR] 함수를 사용하여 나타내었습니다. 
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 Path <- './container'
 Path2 <- './container2'
 PathArg <- '--library="~/asancpt/Rprogramming/lib/container"'

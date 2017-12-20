@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Programming: Lecture Notes</title>
   <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
-  <meta name="generator" content="bookdown 0.5.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Programming: Lecture Notes" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-10-20">
+<meta name="date" content="2017-12-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -150,6 +150,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#io"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stringr-and-lubridate.html"><a href="stringr-and-lubridate.html"><i class="fa fa-check"></i><b>5</b> stringr and lubridate</a></li>
+<li class="chapter" data-level="6" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>6</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="ggplot2.html"><a href="ggplot2.html#part1"><i class="fa fa-check"></i><b>6.1</b> Part1</a></li>
+<li class="chapter" data-level="6.2" data-path="ggplot2.html"><a href="ggplot2.html#part2"><i class="fa fa-check"></i><b>6.2</b> Part2</a></li>
+<li class="chapter" data-level="6.3" data-path="ggplot2.html"><a href="ggplot2.html#part3"><i class="fa fa-check"></i><b>6.3</b> Part3</a></li>
+<li class="chapter" data-level="6.4" data-path="ggplot2.html"><a href="ggplot2.html#part4"><i class="fa fa-check"></i><b>6.4</b> Part4</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
 <li class="chapter" data-level="A.1" data-path="assignments.html"><a href="assignments.html#assignment-1"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
@@ -167,7 +173,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.1" data-path="r-tips.html"><a href="r-tips.html#using-coursera"><i class="fa fa-check"></i><b>C.1</b> Using Coursera</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="D.1" data-path="references.html"><a href="references.html#introduction-1"><i class="fa fa-check"></i><b>D.1</b> Introduction</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="references.html"><a href="references.html#--"><i class="fa fa-check"></i><b>D.1.1</b> 목록 생성 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="references.html"><a href="references.html#list-of-submitted-r-packages"><i class="fa fa-check"></i><b>D.2</b> List of Submitted R Packages</a></li>
+<li class="chapter" data-level="D.3" data-path="references.html"><a href="references.html#feedback"><i class="fa fa-check"></i><b>D.3</b> Feedback</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="Rmarkdown/a99-final.html"><a href="#section-D.3.1"><i class="fa fa-check"></i><b>D.3.1</b> 팁</a></li>
+<li class="chapter" data-level="D.3.2" data-path="references.html"><a href="references.html#suggested-reading-materials"><i class="fa fa-check"></i><b>D.3.2</b> Suggested Reading Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="references.html"><a href="references.html#references-1"><i class="fa fa-check"></i><b>D.4</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/asancpt/Rprogramming" target="blank">Asancpt Github</a></li>
 
@@ -191,6 +207,55 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">D.1</span> Introduction</h2>
+<p>한학기 동안 고생 많으셨습니다.</p>
+<p>두번째 과제의 제출 현황을 정리하였습니다. 성공적으로 설치된 R Packages의 목록이 나와있습니다.</p>
+<div id="--" class="section level3">
+<h3><span class="header-section-number">D.1.1</span> 목록 생성 방법</h3>
+<ul>
+<li><code>DESCRIPTION</code> 파일 정보를 읽어 인용을 위한 <code>bibtex</code>파일을 생성해 주는 <code>knitr::write_bib()</code> <span class="citation">(Xie <a href="#ref-R-knitr">2017</a><a href="#ref-R-knitr">b</a>)</span>와 <code>RefManageR::ReadBib()</code> <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-RefManageR"><strong>???</strong></span>)</span> 함수를 사용하여 나타내었습니다.</li>
+</ul>
+</div>
+</div>
+<div id="list-of-submitted-r-packages" class="section level2">
+<h2><span class="header-section-number">D.2</span> List of Submitted R Packages</h2>
+<p>An alphabetical order by the last name as of 2017-12-20 09:26:46</p>
+<pre><code>## Error in do_read_bib(file, encoding = .Encoding, srcfile): unable to open file to read</code></pre>
+<p>Received packages: <code>IOLcalculator</code>, <code>hw</code>, <code>TempConvert</code></p>
+</div>
+<div id="feedback" class="section level2">
+<h2><span class="header-section-number">D.3</span> Feedback</h2>
+<ul>
+<li>R 프로그래밍에서 어려운 한 단계를 넘어선 것을 축하드립니다.</li>
+<li>제출하셨으나 목록에 자신의 패키지가 보이지 않는 분은 2017-06-21 18:00 이후 <a href="mailto:shan@acp.kr">shan@acp.kr</a> 로 알려주세요.</li>
+</ul>
+<div id="section-10.3.1" class="section level3">
+<h3><span class="header-section-number">D.3.1</span> 팁</h3>
+<ul>
+<li>목록의 개발자 이름, 패키지 이름/설명/버젼 등은 <code>DESCRIPTION</code> 파일 혹은 <code>package.Rd</code> 파일에 에 적힌 것을 그대로 읽어온 것입니다. 다른 사람들이 여러분의 패키지를 사용하게 되거나 인용하게 될 때 표시되는 (사람으로 비유하면 얼굴과 같은) 정보이므로 신중하게 정하는 것이 좋습니다.</li>
+<li>패키지 title은 title (proper) case로 작성되어야 합니다. <code>tools::toTitleCase()</code> 함수를 사용해도 됩니다.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Conversion to the title (proper) case</span>
+tools<span class="op">::</span><span class="kw">toTitleCase</span>(<span class="st">&quot;This package title should be corrected&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;This Package Title Should be Corrected&quot;</code></pre>
+<ul>
+<li>패키지를 <a href="https://cran.r-project.org/web/packages/index.html">CRAN</a> 혹은 <a href="https://github.com">Github</a>나 <a href="https://bitbucket.org/">Bitbucket</a> 등에 올린다면 다른 사람들이 쉽게 업데이트 할 수 있으므로 코드를 다른 사람과 공유 시 여러 장점을 갖게 됩니다.</li>
+</ul>
+</div>
+<div id="suggested-reading-materials" class="section level3">
+<h3><span class="header-section-number">D.3.2</span> Suggested Reading Materials</h3>
+<p>무료로 볼 수 있는 html 자료입니다.</p>
+<ul>
+<li><a href="http://r-pkgs.had.co.nz/">R packages</a> : R 패키지를 만드는 방법에 대해 쉽게 설명되어 있습니다.</li>
+<li><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Writing an R package from scratch</a> : 블로그 포스트로서 아주 단순한 패키지를 만드는데 참고하시면 됩니다.</li>
+<li><a href="http://kbroman.org/pkg_primer/">R package primer</a> : 비교적 쉽게 서술되어 있습니다.</li>
+</ul>
+</div>
+</div>
+<div id="references-1" class="section level2">
+<h2><span class="header-section-number">D.4</span> References</h2>
+
 <div id="refs" class="references">
 <div>
 <p>Krishnamoorthy, K. 2006. <em>Handbook of Statistical Distributions with Applications</em>. Boca Raton: Chapman &amp; Hall/CRC.</p>
@@ -199,8 +264,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Sarkar, Deepayan. 2017. <em>Lattice: Trellis Graphics for R</em>. <a href="https://CRAN.R-project.org/package=lattice" class="uri">https://CRAN.R-project.org/package=lattice</a>.</p>
 </div>
 <div>
-<p>Xie, Yihui. 2017. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+<p>Wickham, Hadley, and Winston Chang. 2016. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
 </div>
+<div>
+<p>Xie, Yihui. 2017a. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div>
+<p>———. 2017b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://yihui.name/knitr/" class="uri">https://yihui.name/knitr/</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-knitr">
+<p>Xie, Yihui. 2017b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://yihui.name/knitr/" class="uri">https://yihui.name/knitr/</a>.</p>
 </div>
 </div>
             </section>
@@ -238,10 +316,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/ap-final.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/a99-final.Rmd",
 "text": "Edit"
 },
-"download": ["Rprogramming.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }

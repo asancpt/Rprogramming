@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Programming: Lecture Notes</title>
   <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
-  <meta name="generator" content="bookdown 0.5.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Programming: Lecture Notes" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-10-20">
+<meta name="date" content="2017-12-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="frequently-used-functions.html">
-<link rel="next" href="assignments.html">
+<link rel="next" href="ggplot2.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -150,6 +150,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#io"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stringr-and-lubridate.html"><a href="stringr-and-lubridate.html"><i class="fa fa-check"></i><b>5</b> stringr and lubridate</a></li>
+<li class="chapter" data-level="6" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>6</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="ggplot2.html"><a href="ggplot2.html#part1"><i class="fa fa-check"></i><b>6.1</b> Part1</a></li>
+<li class="chapter" data-level="6.2" data-path="ggplot2.html"><a href="ggplot2.html#part2"><i class="fa fa-check"></i><b>6.2</b> Part2</a></li>
+<li class="chapter" data-level="6.3" data-path="ggplot2.html"><a href="ggplot2.html#part3"><i class="fa fa-check"></i><b>6.3</b> Part3</a></li>
+<li class="chapter" data-level="6.4" data-path="ggplot2.html"><a href="ggplot2.html#part4"><i class="fa fa-check"></i><b>6.4</b> Part4</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
 <li class="chapter" data-level="A.1" data-path="assignments.html"><a href="assignments.html#assignment-1"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
@@ -167,7 +173,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.1" data-path="r-tips.html"><a href="r-tips.html#using-coursera"><i class="fa fa-check"></i><b>C.1</b> Using Coursera</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="D.1" data-path="references.html"><a href="references.html#introduction-1"><i class="fa fa-check"></i><b>D.1</b> Introduction</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="references.html"><a href="references.html#--"><i class="fa fa-check"></i><b>D.1.1</b> 목록 생성 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="references.html"><a href="references.html#list-of-submitted-r-packages"><i class="fa fa-check"></i><b>D.2</b> List of Submitted R Packages</a></li>
+<li class="chapter" data-level="D.3" data-path="references.html"><a href="references.html#feedback"><i class="fa fa-check"></i><b>D.3</b> Feedback</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="Rmarkdown/050-stringr-lubridate.html"><a href="#section-D.3.1"><i class="fa fa-check"></i><b>D.3.1</b> 팁</a></li>
+<li class="chapter" data-level="D.3.2" data-path="references.html"><a href="references.html#suggested-reading-materials"><i class="fa fa-check"></i><b>D.3.2</b> Suggested Reading Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="references.html"><a href="references.html#references-1"><i class="fa fa-check"></i><b>D.4</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/asancpt/Rprogramming" target="blank">Asancpt Github</a></li>
 
@@ -621,13 +637,13 @@ ld1 &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="s
 
 <span class="co"># month, wday 의 경우 label 인자를 가지고 있는데 이를 TRUE 로 설정할 경우</span>
 <span class="kw">month</span>(ld1, <span class="dt">label =</span> T)</code></pre></div>
-<pre><code>## [1] Jun
-## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; ... &lt; Dec</code></pre>
+<pre><code>## [1] 6
+## 12 Levels: 1 &lt; 2 &lt; 3 &lt; 4 &lt; 5 &lt; 6 &lt; 7 &lt; 8 &lt; ... &lt; 12</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## [1] Jun
 ## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec
 <span class="kw">wday</span>(ld1, <span class="dt">label =</span> T)</code></pre></div>
-<pre><code>## [1] Sat
-## 7 Levels: Sun &lt; Mon &lt; Tues &lt; Wed &lt; Thurs &lt; ... &lt; Sat</code></pre>
+<pre><code>## [1] 토
+## Levels: 일 &lt; 월 &lt; 화 &lt; 수 &lt; 목 &lt; 금 &lt; 토</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## [1] Sat
 ## Levels: Sun &lt; Mon &lt; Tues &lt; Wed &lt; Thurs &lt; Fri &lt; Sat
 
@@ -681,7 +697,7 @@ ld1</code></pre></div>
 <span class="co">#lubridate package 에 내장된 데이터셋 lakers 를 이용</span>
 <span class="co">#data(lakers)</span>
 <span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.4.2 (2017-09-28)
+<pre><code>## R version 3.4.3 (2017-11-30)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 7 x64 (build 7601) Service Pack 1
 ## 
@@ -699,20 +715,20 @@ ld1</code></pre></div>
 ## [6] datasets  base     
 ## 
 ## other attached packages:
-## [1] lubridate_1.6.0 stringr_1.2.0   lattice_0.20-35
-## [4] gdtools_0.1.6   dplyr_0.7.4     readxl_1.0.0   
-## [7] knitr_1.17     
+## [1] lubridate_1.7.1  stringr_1.2.0    lattice_0.20-35 
+## [4] gdtools_0.1.6    dplyr_0.7.4.9000 readxl_1.0.0    
+## [7] knitr_1.17.20   
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.13     rstudioapi_0.7   bindr_0.1       
-##  [4] magrittr_1.5     R6_2.2.2         rlang_0.1.2.9000
-##  [7] tools_3.4.2      grid_3.4.2       htmltools_0.3.6 
-## [10] yaml_2.1.14      rprojroot_1.2    digest_0.6.12   
-## [13] assertthat_0.2.0 tibble_1.3.4     bookdown_0.5.4  
-## [16] bindrcpp_0.2     glue_1.1.1       evaluate_0.10.1 
-## [19] rmarkdown_1.6    stringi_1.1.5    compiler_3.4.2  
-## [22] cellranger_1.1.0 backports_1.1.1  svglite_1.2.1   
-## [25] pkgconfig_2.0.1</code></pre>
+##  [1] Rcpp_0.12.14     rstudioapi_0.7   bindr_0.1       
+##  [4] magrittr_1.5     tidyselect_0.2.3 R6_2.2.2        
+##  [7] rlang_0.1.4      tools_3.4.3      grid_3.4.3      
+## [10] htmltools_0.3.6  yaml_2.1.16      rprojroot_1.3-1 
+## [13] digest_0.6.13    assertthat_0.2.0 tibble_1.3.4    
+## [16] bookdown_0.5.10  bindrcpp_0.2     purrr_0.2.4.9000
+## [19] glue_1.2.0       evaluate_0.10.1  rmarkdown_1.8.3 
+## [22] stringi_1.1.6    compiler_3.4.3   cellranger_1.1.0
+## [25] backports_1.1.2  svglite_1.2.1    pkgconfig_2.0.1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lakers &lt;-<span class="st"> </span>lakers <span class="op">%&gt;%</span><span class="st"> </span>tbl_df
 lakers <span class="co">#--&gt; date, time 변수가 서로 나뉘어 있다.</span></code></pre></div>
 <pre><code>## # A tibble: 34,624 x 13
@@ -909,12 +925,6 @@ lakers <span class="op">%&gt;%</span><span class="st"> </span>
 ## # ... with 25,544 more rows, and 6 more variables: player &lt;chr&gt;,
 ## #   result &lt;chr&gt;, points &lt;int&gt;, type &lt;chr&gt;, x &lt;int&gt;, y &lt;int&gt;</code></pre></div>
 
-
-</div>
-
-
-
-<p><code># r if (knitr:::is_html_output()) '# Assignments'</code></p>
 </div>
             </section>
 
@@ -922,7 +932,7 @@ lakers <span class="op">%&gt;%</span><span class="st"> </span>
         </div>
       </div>
 <a href="frequently-used-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="assignments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -951,10 +961,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/ms-stringr-lubridate.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/050-stringr-lubridate.Rmd",
 "text": "Edit"
 },
-"download": ["Rprogramming.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }

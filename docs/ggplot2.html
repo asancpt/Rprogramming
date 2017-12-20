@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R Programming: Lecture Notes</title>
+  <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
+  <meta name="generator" content="bookdown 0.5.10 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R Programming: Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://asancpt.github.io/Rprogramming/" />
+  <meta property="og:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+  <meta property="og:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="github-repo" content="asancpt/Rprogramming" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Programming: Lecture Notes" />
+  
+  <meta name="twitter:description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다." />
+  <meta name="twitter:image" content="https://asancpt.github.io/Rprogramming/images/cover.jpg" />
+
+<meta name="author" content="Kyun-Seop Bae, Sungpil Han">
+
+
+<meta name="date" content="2017-12-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="stringr-and-lubridate.html">
+<link rel="next" href="assignments.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">R 프로그래밍</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-assistant"><i class="fa fa-check"></i>Teaching Assistant</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#faq"><i class="fa fa-check"></i>FAQ</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#-"><i class="fa fa-check"></i>접속 관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#ecb69cec849deab480eba0a8"><i class="fa fa-check"></i>출석관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#-"><i class="fa fa-check"></i>과제 관련</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#coursera-"><i class="fa fa-check"></i>Coursera 관련</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#syllabus"><i class="fa fa-check"></i>Syllabus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>1</b> R language</a></li>
+<li class="chapter" data-level="2" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>2</b> Graphics</a><ul>
+<li class="chapter" data-level="2.1" data-path="graphics.html"><a href="graphics.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="graphics.html"><a href="graphics.html#upper"><i class="fa fa-check"></i><b>2.2</b> 상위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="graphics.html"><a href="graphics.html#-----arguments"><i class="fa fa-check"></i><b>2.2.1</b> 상위수준 그림 함수의 주요 인자 (arguments)</a></li>
+<li class="chapter" data-level="2.2.2" data-path="graphics.html"><a href="graphics.html#scatter-plot"><i class="fa fa-check"></i><b>2.2.2</b> scatter plot</a></li>
+<li class="chapter" data-level="2.2.3" data-path="graphics.html"><a href="graphics.html#histogram"><i class="fa fa-check"></i><b>2.2.3</b> Histogram</a></li>
+<li class="chapter" data-level="2.2.4" data-path="graphics.html"><a href="graphics.html#box-whisker-plot"><i class="fa fa-check"></i><b>2.2.4</b> Box-Whisker Plot</a></li>
+<li class="chapter" data-level="2.2.5" data-path="graphics.html"><a href="graphics.html#bar-plot"><i class="fa fa-check"></i><b>2.2.5</b> Bar Plot</a></li>
+<li class="chapter" data-level="2.2.6" data-path="graphics.html"><a href="graphics.html#pie-chart"><i class="fa fa-check"></i><b>2.2.6</b> pie chart</a></li>
+<li class="chapter" data-level="2.2.7" data-path="graphics.html"><a href="graphics.html#matplot-"><i class="fa fa-check"></i><b>2.2.7</b> matplot 함수</a></li>
+<li class="chapter" data-level="2.2.8" data-path="graphics.html"><a href="graphics.html#scatter-plot-matrices-pairs-plots"><i class="fa fa-check"></i><b>2.2.8</b> Scatter plot matrices (pairs plots)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="graphics.html"><a href="graphics.html#lower"><i class="fa fa-check"></i><b>2.3</b> 하위수준 그림 함수</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="graphics.html"><a href="graphics.html#-----add"><i class="fa fa-check"></i><b>2.3.1</b> 점, 선, 설명 추가 하기 {add}</a></li>
+<li class="chapter" data-level="2.3.2" data-path="graphics.html"><a href="graphics.html#polygon-"><i class="fa fa-check"></i><b>2.3.2</b> polygon 함수</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="graphics.html"><a href="graphics.html#print"><i class="fa fa-check"></i><b>2.4</b> 그림 출력하기</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="graphics.html"><a href="graphics.html#pdf-graphics-devices"><i class="fa fa-check"></i><b>2.4.1</b> pdf graphics devices</a></li>
+<li class="chapter" data-level="2.4.2" data-path="graphics.html"><a href="graphics.html#png-graphics-devices"><i class="fa fa-check"></i><b>2.4.2</b> PNG graphics devices</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-import-export.html"><a href="data-import-export.html"><i class="fa fa-check"></i><b>3</b> Data Import / Export</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-import-export.html"><a href="data-import-export.html#read.csv"><i class="fa fa-check"></i><b>3.1</b> Read.csv</a></li>
+<li class="chapter" data-level="3.2" data-path="data-import-export.html"><a href="data-import-export.html#theoph-"><i class="fa fa-check"></i><b>3.2</b> Theoph 데이타</a></li>
+<li class="chapter" data-level="3.3" data-path="data-import-export.html"><a href="data-import-export.html#lattice"><i class="fa fa-check"></i><b>3.3</b> lattice</a></li>
+<li class="chapter" data-level="3.4" data-path="data-import-export.html"><a href="data-import-export.html#subseting-and-write.csv"><i class="fa fa-check"></i><b>3.4</b> Subseting and write.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html"><i class="fa fa-check"></i><b>4</b> Frequently Used Functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#command"><i class="fa fa-check"></i><b>4.1</b> Command</a></li>
+<li class="chapter" data-level="4.2" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#the-basics"><i class="fa fa-check"></i><b>4.2</b> The basics</a></li>
+<li class="chapter" data-level="4.3" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#common-data-structures"><i class="fa fa-check"></i><b>4.3</b> Common data structures</a></li>
+<li class="chapter" data-level="4.4" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#statistics"><i class="fa fa-check"></i><b>4.4</b> Statistics</a></li>
+<li class="chapter" data-level="4.5" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#working-with-r"><i class="fa fa-check"></i><b>4.5</b> Working with R</a></li>
+<li class="chapter" data-level="4.6" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#io"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stringr-and-lubridate.html"><a href="stringr-and-lubridate.html"><i class="fa fa-check"></i><b>5</b> stringr and lubridate</a></li>
+<li class="chapter" data-level="6" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>6</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="ggplot2.html"><a href="ggplot2.html#part1"><i class="fa fa-check"></i><b>6.1</b> Part1</a></li>
+<li class="chapter" data-level="6.2" data-path="ggplot2.html"><a href="ggplot2.html#part2"><i class="fa fa-check"></i><b>6.2</b> Part2</a></li>
+<li class="chapter" data-level="6.3" data-path="ggplot2.html"><a href="ggplot2.html#part3"><i class="fa fa-check"></i><b>6.3</b> Part3</a></li>
+<li class="chapter" data-level="6.4" data-path="ggplot2.html"><a href="ggplot2.html#part4"><i class="fa fa-check"></i><b>6.4</b> Part4</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
+<li class="chapter" data-level="A.1" data-path="assignments.html"><a href="assignments.html#assignment-1"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="assignments.html"><a href="assignments.html#concunitconv-test.r"><i class="fa fa-check"></i><b>A.1.1</b> concUnitConv-test.R</a></li>
+<li class="chapter" data-level="A.1.2" data-path="assignments.html"><a href="assignments.html#concunitconv-test.rout"><i class="fa fa-check"></i><b>A.1.2</b> concUnitConv-test.Rout</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="assignments.html"><a href="assignments.html#assignment-2"><i class="fa fa-check"></i><b>A.2</b> Assignment 2</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="as-is-r-files.html"><a href="as-is-r-files.html"><i class="fa fa-check"></i><b>B</b> As-is R Files</a><ul>
+<li class="chapter" data-level="B.1" data-path="as-is-r-files.html"><a href="as-is-r-files.html#lecture-3"><i class="fa fa-check"></i><b>B.1</b> Lecture 3</a></li>
+<li class="chapter" data-level="B.2" data-path="as-is-r-files.html"><a href="as-is-r-files.html#lecture-4"><i class="fa fa-check"></i><b>B.2</b> Lecture 4</a></li>
+<li class="chapter" data-level="B.3" data-path="as-is-r-files.html"><a href="as-is-r-files.html#lecture-5"><i class="fa fa-check"></i><b>B.3</b> Lecture 5</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="r-tips.html"><a href="r-tips.html"><i class="fa fa-check"></i><b>C</b> R Tips</a><ul>
+<li class="chapter" data-level="C.1" data-path="r-tips.html"><a href="r-tips.html#using-coursera"><i class="fa fa-check"></i><b>C.1</b> Using Coursera</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="D.1" data-path="references.html"><a href="references.html#introduction-1"><i class="fa fa-check"></i><b>D.1</b> Introduction</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="references.html"><a href="references.html#--"><i class="fa fa-check"></i><b>D.1.1</b> 목록 생성 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="references.html"><a href="references.html#list-of-submitted-r-packages"><i class="fa fa-check"></i><b>D.2</b> List of Submitted R Packages</a></li>
+<li class="chapter" data-level="D.3" data-path="references.html"><a href="references.html#feedback"><i class="fa fa-check"></i><b>D.3</b> Feedback</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="Rmarkdown/101-shan.html"><a href="#section-D.3.1"><i class="fa fa-check"></i><b>D.3.1</b> 팁</a></li>
+<li class="chapter" data-level="D.3.2" data-path="references.html"><a href="references.html#suggested-reading-materials"><i class="fa fa-check"></i><b>D.3.2</b> Suggested Reading Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="references.html"><a href="references.html#references-1"><i class="fa fa-check"></i><b>D.4</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/asancpt/Rprogramming" target="blank">Asancpt Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Programming: Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ggplot2" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Rstudio and some useful packages 2 - ggplot2</h1>
+<blockquote>
+<p>2017-05-10 한성필 전공의 강의</p>
+</blockquote>
+<p>9주차 강의 자료입니다.</p>
+<p>Rstudio는 R을 좀더 편리하고 풍부하게 사용하기 위한 도구로서 가장 널리 사용되고 있는 IDE입니다. <a href="https://www.rstudio.com/products/rstudio/download" class="uri">https://www.rstudio.com/products/rstudio/download</a> 에서 가장 최신의 Rstudio를 다운로드 받을 수 있습니다. Windows, MacOS, Devian/Redhat Linux 중 운영체제에 맞는 것을 설치하면 됩니다.</p>
+<p>아울러 이번 강의 에서는 ggplot2의 사용법을 예제를 통해 알아보겠습니다. <span class="citation">(Wickham and Chang <a href="#ref-R-ggplot2">2016</a>)</span> <a href="https://rpubs.com/kimwoohyung/ggplot2" class="uri">https://rpubs.com/kimwoohyung/ggplot2</a>의 자료를 많이 참고하였습니다. <a href="https://rpubs.com/mccannecology/53464" class="uri">https://rpubs.com/mccannecology/53464</a>도 좋은 자료입니다.</p>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(gcookbook)</code></pre></div>
+<pre><code>## Error in library(gcookbook): there is no package called &#39;gcookbook&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr)
+<span class="kw">library</span>(reshape2)</code></pre></div>
+<div id="part1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Part1</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tophit &lt;-<span class="st"> </span>tophitters2001[<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>,]</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;tophitters2001&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tophit &lt;-<span class="st"> </span>tophit[,<span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;lg&quot;</span>, <span class="st">&quot;avg&quot;</span>)]</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># y축 이산형 그래프 </span>
+<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name, <span class="dt">col=</span>lg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code>## Error in ggplot(tophit, aes(x = avg, y = name, col = lg)): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프 정렬하기 &amp; 그래프 격자 없애기 &amp; 수평선 점선으로 바꾸기</span>
+<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> <span class="kw">reorder</span>(name, avg))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.x =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.minor.x =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.major.y =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>))</code></pre></div>
+<pre><code>## Error in ggplot(tophit, aes(x = avg, y = reorder(name, avg))): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x, y축 바꿔서 그치기 &amp; 그래프 격자 없애기 &amp; 수직선 점선으로 바꾸기 &amp; X축 값 정의 및 회전</span>
+<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(name, avg), <span class="dt">y =</span> avg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">60</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),
+        <span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.minor.y =</span> <span class="kw">element_blank</span>(),
+        <span class="dt">panel.grid.major.x =</span> <span class="kw">element_line</span>(<span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>))</code></pre></div>
+<pre><code>## Error in ggplot(tophit, aes(x = reorder(name, avg), y = avg)): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두개 변수로 정의하여 그리기</span>
+nameorder &lt;-<span class="st"> </span>tophit<span class="op">$</span>name[<span class="kw">order</span>(tophit<span class="op">$</span>lg, tophit<span class="op">$</span>avg)]</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tophit<span class="op">$</span>name &lt;-<span class="st"> </span><span class="kw">factor</span>(tophit<span class="op">$</span>name, <span class="dt">levels =</span> nameorder)</code></pre></div>
+<pre><code>## Error in factor(tophit$name, levels = nameorder): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 격자 선이 그래프의 끝에서 끝까지 횡단하지 않고, 점까지만 가도록 표현 [ geom_segment ]</span>
+<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">yend =</span> name), <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">color =</span> lg)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;NL&quot;</span>, <span class="st">&quot;AL&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>(), <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.55</span>), <span class="co"># 범례를 그래프 안쪽으로 옮김 </span>
+        <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">0.5</span>))</code></pre></div>
+<pre><code>## Error in ggplot(tophit, aes(x = avg, y = name)): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그룹 별 그래프 분할 </span>
+<span class="kw">ggplot</span>(tophit, <span class="kw">aes</span>(<span class="dt">x =</span> avg, <span class="dt">y =</span> name)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">yend =</span> name), <span class="dt">xend =</span> <span class="dv">0</span>, <span class="dt">color =</span> <span class="st">&quot;grey50&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">5</span>, <span class="kw">aes</span>(<span class="dt">color =</span> lg)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>, <span class="dt">limits =</span> <span class="kw">c</span>(<span class="st">&quot;NL&quot;</span>, <span class="st">&quot;AL&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.y =</span> <span class="kw">element_blank</span>()) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(lg <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="dt">space =</span> <span class="st">&quot;free_y&quot;</span>) </code></pre></div>
+<pre><code>## Error in ggplot(tophit, aes(x = avg, y = name)): 객체 &#39;tophit&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그룹 별 데이터 구별</span>
+<span class="co"># 색상기준</span>
+<span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code>## Error in ggplot(heightweight, aes(x = ageYear, y = heightIn, color = sex)): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 모양 기준</span>
+<span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code>## Error in ggplot(heightweight, aes(x = ageYear, y = heightIn, shape = sex)): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(heightweight, aes(x = ageYear, y = heightIn, color = sex, : 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex, <span class="dt">shape =</span> sex)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(heightweight, aes(x = ageYear, y = heightIn, color = sex, : 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 기준 정의에 따라 구별</span>
+hw &lt;-heightweight</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hw<span class="op">$</span>weightGroup &lt;-<span class="st"> </span><span class="kw">cut</span>(hw<span class="op">$</span>weightLb, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>, <span class="dv">100</span>, <span class="ot">Inf</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt; 100&quot;</span>, <span class="st">&quot;&gt;= 100&quot;</span>))</code></pre></div>
+<pre><code>## Error in cut(hw$weightLb, breaks = c(-Inf, 100, Inf), labels = c(&quot;&lt; 100&quot;, : 객체 &#39;hw&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x축이 이산형일 때 점들을 랜덤하게 조금식 이동시켜 표현 </span>
+<span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="co"># 이동 적용</span></code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 적합된 회귀선 추가하기</span>
+sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(ChickWeight, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> weight)) 
+sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>) </code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#그룹 별 회귀선 추가하기</span>
+sps &lt;-<span class="st"> </span><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn, <span class="dt">color =</span> sex)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set1&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(heightweight, aes(x = ageYear, y = heightIn, color = sex)): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sps <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;sps&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 예측값 실제값 그래프로 표현하기 (함수)</span>
+predictvals &lt;-<span class="st"> </span><span class="cf">function</span>(model, xvar, yvar, <span class="dt">xrange =</span> <span class="ot">NULL</span>, <span class="dt">sample =</span> <span class="dv">100</span>, ...){
+  <span class="cf">if</span>(<span class="kw">is.null</span>(xrange)){
+    <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">class</span>(model) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;lm&quot;</span>, <span class="st">&quot;glm&quot;</span>)))
+      xrange &lt;-<span class="st"> </span><span class="kw">range</span>(model<span class="op">$</span>model[[xvar]])
+    <span class="cf">else</span> <span class="cf">if</span>(<span class="kw">any</span>(<span class="kw">class</span>(model) <span class="op">%in%</span><span class="st"> &quot;loess&quot;</span>))
+      xrange &lt;-<span class="st"> </span><span class="kw">range</span>(model<span class="op">$</span>x)
+  }
+  
+  newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(xrange[<span class="dv">1</span>], xrange[<span class="dv">2</span>], <span class="dt">length.out =</span> sample))
+  <span class="kw">names</span>(newdata) &lt;-<span class="st"> </span>xvar
+  newdata[[yvar]] &lt;-<span class="st"> </span><span class="kw">predict</span>(model, <span class="dt">newdata =</span> newdata, ...)
+  newdata
+}
+
+modlinear &lt;-<span class="st"> </span><span class="kw">lm</span>(heightIn <span class="op">~</span><span class="st"> </span>ageYear, heightweight)</code></pre></div>
+<pre><code>## Error in is.data.frame(data): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modloess &lt;-<span class="st"> </span><span class="kw">loess</span>(heightIn <span class="op">~</span><span class="st"> </span>ageYear, heightweight)</code></pre></div>
+<pre><code>## Error in is.data.frame(data): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_predicted   &lt;-<span class="st"> </span><span class="kw">predictvals</span>(modlinear, <span class="st">&quot;ageYear&quot;</span>, <span class="st">&quot;heightIn&quot;</span>)</code></pre></div>
+<pre><code>## Error in class(model) %in% c(&quot;lm&quot;, &quot;glm&quot;): 객체 &#39;modlinear&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">loess_predicted &lt;-<span class="st"> </span><span class="kw">predictvals</span>(modloess, <span class="st">&quot;ageYear&quot;</span>, <span class="st">&quot;heightIn&quot;</span>)</code></pre></div>
+<pre><code>## Error in class(model) %in% c(&quot;lm&quot;, &quot;glm&quot;): 객체 &#39;modloess&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(heightweight, <span class="kw">aes</span>(<span class="dt">x =</span> ageYear, <span class="dt">y =</span> heightIn)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;grey40&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(heightweight, aes(x = ageYear, y = heightIn)): 객체 &#39;heightweight&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">data =</span> lm_predicted, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> loess_predicted, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>)</code></pre></div>
+<pre><code>## Error in fortify(data): 객체 &#39;lm_predicted&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#산점도의 점에 라벨 붙이기</span>
+sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span> <span class="op">&amp;</span><span class="st"> </span>healthexp <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span>),
+             <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code>## Error in subset(countries, Year == 2009 &amp; healthexp &gt; 2000): 객체 &#39;countries&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 특정 값에 특정 단어로 라벨 붙이기</span>
+sp <span class="op">+</span><span class="st"> </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">4350</span>, <span class="dt">y =</span> <span class="fl">5.4</span>, <span class="dt">label =</span> <span class="st">&quot;Canada&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">7400</span>, <span class="dt">y =</span> <span class="fl">6.8</span>, <span class="dt">label =</span> <span class="st">&quot;USA&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터 값을 라벨로 붙이기</span>
+sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<pre><code>## Error in FUN(X[[i]], ...): 객체 &#39;Name&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 라벨의 위치를 데이터값보다 조금 크게 설정</span>
+sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</code></pre></div>
+<pre><code>## Error in FUN(X[[i]], ...): 객체 &#39;infmortality&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x =</span> healthexp <span class="op">+</span><span class="st"> </span><span class="dv">100</span>, <span class="dt">label =</span> Name), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">hjust =</span> <span class="dv">0</span>)</code></pre></div>
+<pre><code>## Error in FUN(X[[i]], ...): 객체 &#39;healthexp&#39;를 찾을 수 없습니다</code></pre>
+<p><img src="Rprogramming_files/figure-html/unnamed-chunk-31-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 특정 값만 라벨 붙이기</span>
+cdat &lt;-<span class="st"> </span><span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span> <span class="op">&amp;</span><span class="st"> </span>healthexp <span class="op">&gt;</span><span class="st"> </span><span class="dv">2000</span>)</code></pre></div>
+<pre><code>## Error in subset(countries, Year == 2009 &amp; healthexp &gt; 2000): 객체 &#39;countries&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cdat<span class="op">$</span>Name1 &lt;-<span class="st"> </span>cdat<span class="op">$</span>Name </code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;cdat&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">idx &lt;-<span class="st"> </span>cdat<span class="op">$</span>Name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Andorra&quot;</span>, <span class="st">&quot;France&quot;</span>, <span class="st">&quot;Canada&quot;</span>) </code></pre></div>
+<pre><code>## Error in cdat$Name %in% c(&quot;Andorra&quot;, &quot;France&quot;, &quot;Canada&quot;): 객체 &#39;cdat&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cdat<span class="op">$</span>Name1[<span class="op">!</span>idx] &lt;-<span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<pre><code>## Error in cdat$Name1[!idx] &lt;- NA: 객체 &#39;cdat&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(cdat, <span class="kw">aes</span>(<span class="dt">x =</span> healthexp, <span class="dt">y =</span> infmortality)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> infmortality <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Name1), <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cdat, aes(x = healthexp, y = infmortality)): 객체 &#39;cdat&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Warning: Removed 24 rows containing missing values (geom_text).</code></pre></div>
+</div>
+<div id="part2" class="section level2">
+<h2><span class="header-section-number">6.2</span> Part2</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 거품그래프(balloon plot)</span>
+hec &lt;-<span class="st"> </span>HairEyeColor[,,<span class="st">&quot;Male&quot;</span>] <span class="op">+</span><span class="st"> </span>HairEyeColor[,,<span class="st">&quot;Female&quot;</span>]
+hec &lt;-<span class="st"> </span><span class="kw">melt</span>(hec, <span class="dt">value.name =</span> <span class="st">&quot;count&quot;</span>) 
+<span class="kw">ggplot</span>(hec, <span class="kw">aes</span>(<span class="dt">x =</span> Eye, <span class="dt">y =</span> Hair)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> count), <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;cornsilk&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_size_area</span>(<span class="dt">max_size =</span> <span class="dv">20</span>, <span class="dt">guide =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">as.numeric</span>(Hair)<span class="op">-</span><span class="kw">sqrt</span>(count)<span class="op">/</span><span class="dv">22</span>, <span class="dt">label =</span> count), <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 산점도 행렬 만들기</span>
+c2009 &lt;-<span class="st"> </span><span class="kw">subset</span>(countries, Year <span class="op">==</span><span class="st"> </span><span class="dv">2009</span>, <span class="dt">select =</span> <span class="kw">c</span>(Name, GDP, laborrate, healthexp, infmortality)) </code></pre></div>
+<pre><code>## Error in subset(countries, Year == 2009, select = c(Name, GDP, laborrate, : 객체 &#39;countries&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>])</code></pre></div>
+<pre><code>## Error in plot(c2009[, 2:5]): 객체 &#39;c2009&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">panel.hist &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...)
+{
+  usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
+  <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(usr[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">0</span>, <span class="fl">1.5</span>) )
+  h &lt;-<span class="st"> </span><span class="kw">hist</span>(x, <span class="dt">plot =</span> <span class="ot">FALSE</span>)
+  breaks &lt;-<span class="st"> </span>h<span class="op">$</span>breaks; nB &lt;-<span class="st"> </span><span class="kw">length</span>(breaks)
+  y &lt;-<span class="st"> </span>h<span class="op">$</span>counts; y &lt;-<span class="st"> </span>y<span class="op">/</span><span class="kw">max</span>(y)
+  <span class="kw">rect</span>(breaks[<span class="op">-</span>nB], <span class="dv">0</span>, breaks[<span class="op">-</span><span class="dv">1</span>], y, <span class="dt">col =</span> <span class="st">&quot;cyan&quot;</span>, ...)
+}
+panel.cor &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">digits =</span> <span class="dv">2</span>, <span class="dt">prefix =</span> <span class="st">&quot;&quot;</span>, cex.cor, ...)
+{
+  usr &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="st">&quot;usr&quot;</span>); <span class="kw">on.exit</span>(<span class="kw">par</span>(usr))
+  <span class="kw">par</span>(<span class="dt">usr =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>))
+  r &lt;-<span class="st"> </span><span class="kw">abs</span>(<span class="kw">cor</span>(x, y))
+  txt &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">c</span>(r, <span class="fl">0.123456789</span>), <span class="dt">digits =</span> digits)[<span class="dv">1</span>]
+  txt &lt;-<span class="st"> </span><span class="kw">paste0</span>(prefix, txt)
+  <span class="cf">if</span>(<span class="kw">missing</span>(cex.cor)) cex.cor &lt;-<span class="st"> </span><span class="fl">0.8</span><span class="op">/</span><span class="kw">strwidth</span>(txt)
+  <span class="kw">text</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, txt, <span class="dt">cex =</span> cex.cor <span class="op">*</span><span class="st"> </span>r)
+}
+panel.lm &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, <span class="dt">col =</span> <span class="kw">par</span>(<span class="st">&quot;col&quot;</span>), <span class="dt">bg =</span> <span class="ot">NA</span>, <span class="dt">pch =</span> <span class="kw">par</span>(<span class="st">&quot;pch&quot;</span>), <span class="dt">cex =</span> <span class="dv">1</span>, <span class="dt">col.smooth =</span> <span class="st">&quot;black&quot;</span>, ...){
+  <span class="kw">points</span>(x, y, <span class="dt">pch =</span> pch, <span class="dt">col =</span> col, <span class="dt">bg =</span> bg, <span class="dt">cex =</span> cex)
+  <span class="kw">abline</span>(stats<span class="op">::</span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x), <span class="dt">col =</span> col.smooth, ...)
+}
+<span class="co"># 데이터에 대한 LOWESS선(평활선) 추가 </span>
+<span class="kw">pairs</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">upper.panel =</span> panel.cor, <span class="dt">diag.panel =</span> panel.hist, <span class="dt">lower.panel =</span> panel.lm)</code></pre></div>
+<pre><code>## Error in pairs(c2009[, 2:5], pch = &quot;.&quot;, upper.panel = panel.cor, diag.panel = panel.hist, : 객체 &#39;c2009&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터에 대한 회귀적합선 추가 </span>
+<span class="kw">pairs</span>(c2009[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>], <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">upper.panel =</span> panel.cor, <span class="dt">diag.panel =</span> panel.hist, <span class="dt">lower.panel =</span> panel.smooth)</code></pre></div>
+<pre><code>## Error in pairs(c2009[, 2:5], pch = &quot;.&quot;, upper.panel = panel.cor, diag.panel = panel.hist, : 객체 &#39;c2009&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
+## scatter + line plot  (geom_point/ geom_line)
+######################################################################################
+<span class="kw">plot</span>(pressure<span class="op">$</span>temperature, pressure<span class="op">$</span>pressure, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)
+<span class="kw">points</span>(pressure<span class="op">$</span>temperature, pressure<span class="op">$</span>pressure)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(temperature, pressure, <span class="dt">data =</span> pressure, <span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;line&quot;</span>, <span class="st">&quot;point&quot;</span>))</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(pressure, <span class="kw">aes</span>(<span class="dt">x =</span> temperature, <span class="dt">y =</span> pressure)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
+## line plot  (geom_line)
+######################################################################################
+<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="kw">max</span>(BOD<span class="op">$</span>demand))</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">expand_limits</span>(<span class="dt">y =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 이산형 변수값에 따른 구분 </span>
+tg &lt;-<span class="st"> </span><span class="kw">ddply</span>(ToothGrowth, <span class="kw">c</span>(<span class="st">&quot;supp&quot;</span>, <span class="st">&quot;dose&quot;</span>), summarize, <span class="dt">length =</span> <span class="kw">mean</span>(len))
+<span class="co"># 색상으로 구분</span>
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">color =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-8.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(dose), <span class="dt">y =</span> length, <span class="dt">color =</span> supp, <span class="dt">group =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-9.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># group = supp 주의! : 이 명령문이 없으면 데이터를 어떻게 묶어서 그릴지 모름</span>
+<span class="co"># Line type으로 구분</span>
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">linetype =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-10.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 형태로 구분</span>
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">shape =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-11.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 색상으로 구분</span>
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">fill =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">shape =</span> <span class="dv">21</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-12.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두 선이 겹칠때 하나의 선을 옆으로 이동시켜 표현  </span>
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">shape =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.1</span>)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.1</span>), <span class="dt">size =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-13.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 선 형태 바꾸기 [ linetype ]</span>
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">color =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">22</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part2-14.svg" width="672" /></p>
+</div>
+<div id="part3" class="section level2">
+<h2><span class="header-section-number">6.3</span> Part3</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 점 형태 바꾸기 [ shape ]</span>
+#################################
+pd &lt;-<span class="st"> </span><span class="kw">position_dodge</span>(<span class="fl">0.2</span>)       <span class="co">#</span>
+#################################
+
+<span class="kw">ggplot</span>(tg, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> length, <span class="dt">fill =</span> supp)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> pd) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">position =</span> pd) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;white&quot;</span>))</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sample Data</span>
+sunspotyear &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Year     =</span> <span class="kw">as.numeric</span>(<span class="kw">time</span>(sunspot.year)),
+                          <span class="dt">Sunspots =</span> <span class="kw">as.numeric</span>(sunspot.year))
+<span class="co"># 음영 영역 그래프 그리기</span>
+<span class="kw">ggplot</span>(sunspotyear, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Sunspots)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 음영 투명도 설정하기 [ alpha ]</span>
+<span class="kw">ggplot</span>(sunspotyear, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Sunspots)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 누적 영역 그래프 그리기</span>
+<span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>()</code></pre></div>
+<pre><code>## Error in ggplot(uspopage, aes(x = Year, y = Thousands, fill = AgeGroup)): 객체 &#39;uspopage&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 영역색상 그라데이션 넣기</span>
+<span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">breaks =</span> <span class="kw">rev</span>(<span class="kw">levels</span>(uspopage<span class="op">$</span>AgeGroup)))</code></pre></div>
+<pre><code>## Error in ggplot(uspopage, aes(x = Year, y = Thousands, fill = AgeGroup)): 객체 &#39;uspopage&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 데이터 순서정렬하기 &amp; 양쪽 테두리 지우기 </span>
+<span class="kw">ggplot</span>(uspopage, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Thousands, <span class="dt">fill =</span> AgeGroup, <span class="dt">order =</span> <span class="kw">desc</span>(AgeGroup))) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>)</code></pre></div>
+<pre><code>## Error in ggplot(uspopage, aes(x = Year, y = Thousands, fill = AgeGroup, : 객체 &#39;uspopage&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  비율 누적 영역 그래프 그리기</span>
+uspopage_prop &lt;-<span class="st"> </span><span class="kw">ddply</span>(uspopage, <span class="st">&quot;Year&quot;</span>, transform, <span class="dt">Percent =</span> Thousands <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(Thousands) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </code></pre></div>
+<pre><code>## Error in empty(.data): 객체 &#39;uspopage&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(uspopage_prop, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Percent, <span class="dt">fill =</span> AgeGroup)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_area</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.2</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="dt">breaks =</span> <span class="kw">rev</span>(<span class="kw">levels</span>(uspopage<span class="op">$</span>AgeGroup)))</code></pre></div>
+<pre><code>## Error in ggplot(uspopage_prop, aes(x = Year, y = Percent, fill = AgeGroup)): 객체 &#39;uspopage_prop&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프에 신뢰 영역 추가하기</span>
+clim &lt;-<span class="st"> </span><span class="kw">subset</span>(climate, Source <span class="op">==</span><span class="st"> &quot;Berkeley&quot;</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Anomaly10y&quot;</span>, <span class="st">&quot;Unc10y&quot;</span>))</code></pre></div>
+<pre><code>## Error in subset(climate, Source == &quot;Berkeley&quot;, select = c(&quot;Year&quot;, &quot;Anomaly10y&quot;, : 객체 &#39;climate&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 신뢰영역 음영으로 표현 </span>
+<span class="kw">ggplot</span>(clim, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Anomaly10y <span class="op">-</span><span class="st"> </span>Unc10y, <span class="dt">ymax =</span> Anomaly10y <span class="op">+</span><span class="st"> </span>Unc10y), <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
+<pre><code>## Error in ggplot(clim, aes(x = Year, y = Anomaly10y)): 객체 &#39;clim&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 신뢰영역 점선으로 표현</span>
+<span class="kw">ggplot</span>(clim, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Anomaly10y <span class="op">-</span><span class="st"> </span>Unc10y), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Anomaly10y <span class="op">+</span><span class="st"> </span>Unc10y), <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()</code></pre></div>
+<pre><code>## Error in ggplot(clim, aes(x = Year, y = Anomaly10y)): 객체 &#39;clim&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># </span>
+######################################################################################
+## barplot  (geom_bar)
+######################################################################################
+<span class="kw">barplot</span>(BOD<span class="op">$</span>demand, <span class="dt">names.arg =</span> BOD<span class="op">$</span>Time)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(mtcars<span class="op">$</span>cyl))</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x값을 숫자로 인식</span>
+<span class="co"># qplot(BOD$Time, BOD$demand, geom = &quot;bar&quot;, stat = &quot;identity&quot;)</span>
+<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x값을 요인으로 변환</span>
+<span class="co"># qplot(as.factor(BOD$Time), BOD$demand, geom = &quot;bar&quot;, stat = &quot;identity&quot;)</span>
+<span class="kw">ggplot</span>(BOD, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(Time), <span class="dt">y =</span> demand)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part3-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 색상 채우기/테두리 설정하기 (fill : 채우기/ colour(or color) : 테두리)</span>
+<span class="kw">ggplot</span>(pg_mean, <span class="kw">aes</span>(<span class="dt">x =</span> group, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(pg_mean, aes(x = group, y = weight)): 객체 &#39;pg_mean&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 묶어서 표현하기(나누어 표현하고 싶은 변수를 색상으로 지정)  </span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dodge : &quot;피하다&quot;라는 의미로 막대를 새로운 값을 기준으로 나누어 표현 </span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Pastel1&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+</div>
+<div id="part4" class="section level2">
+<h2><span class="header-section-number">6.4</span> Part4</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 빈도수 막대 그래프 그리기 </span>
+<span class="co"># x가 이산형</span>
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> cut)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x가 연속형</span>
+<span class="kw">ggplot</span>(diamonds, <span class="kw">aes</span>(<span class="dt">x =</span> carat)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-2.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 색상 넣기/ 축 이름 정의하기(reorder) </span>
+upc &lt;-<span class="st"> </span><span class="kw">subset</span>(uspopchange, <span class="kw">rank</span>(Change) <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>)</code></pre></div>
+<pre><code>## Error in subset(uspopchange, rank(Change) &gt; 40): 객체 &#39;uspopchange&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(upc, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(Abb, Change), <span class="dt">y =</span> Change, <span class="dt">fill =</span> Region)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#669933&quot;</span>, <span class="st">&quot;#FFCC66&quot;</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;State&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(upc, aes(x = reorder(Abb, Change), y = Change, fill = Region)): 객체 &#39;upc&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 양수/음수 다른 색상으로 표현 (구분 inde를 만들어 색상 변수로 지정)</span>
+csub &lt;-<span class="st"> </span><span class="kw">subset</span>(climate, Source <span class="op">==</span><span class="st"> &quot;Berkeley&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1900</span> )</code></pre></div>
+<pre><code>## Error in subset(climate, Source == &quot;Berkeley&quot; &amp; Year &gt;= 1900): 객체 &#39;climate&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">csub<span class="op">$</span>pos &lt;-<span class="st"> </span>csub<span class="op">$</span>Anomaly10y <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span></code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): 객체 &#39;csub&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(csub, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y, <span class="dt">fill =</span> pos)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(csub, aes(x = Year, y = Anomaly10y, fill = pos)): 객체 &#39;csub&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그래프 테두리 두께 설정(size) / 범례 지우기(guide = FALSE)</span>
+<span class="kw">ggplot</span>(csub, <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Anomaly10y, <span class="dt">fill =</span> pos)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">0.0001</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#CCEEFF&quot;</span>, <span class="st">&quot;#FFDDDD&quot;</span>), <span class="dt">guide =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## Error in ggplot(csub, aes(x = Year, y = Anomaly10y, fill = pos)): 객체 &#39;csub&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 너비/ 간격 조절하기(width : 최대 너비는 1)</span>
+<span class="kw">ggplot</span>(pg_mean, <span class="kw">aes</span>(<span class="dt">x =</span> group, <span class="dt">y =</span> weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.5</span>)</code></pre></div>
+<pre><code>## Error in ggplot(pg_mean, aes(x = group, y = weight)): 객체 &#39;pg_mean&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그룹 간의 간격 조절하기 (default : 0.9) </span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.4</span>, <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 그룹 내부간의 간격 조절 (default : 0.9)</span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">width =</span> <span class="fl">0.3</span>, <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.5</span>))</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 범례 순서 바꾸기 (reverse = TRUE) </span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대 쌓는 순서 바꾸기  </span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar, <span class="dt">order =</span> <span class="kw">desc</span>(Cultivar))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar, : 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 비율 누적 막대 그래프 그리기(막대 전체가 100%가 되도록)</span>
+ce &lt;-<span class="st"> </span><span class="kw">ddply</span>(cabbage_exp, <span class="st">&quot;Date&quot;</span>, transform, <span class="dt">percent_weight =</span> Weight <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(Weight) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>)</code></pre></div>
+<pre><code>## Error in empty(.data): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ce, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> percent_weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(ce, aes(x = Date, y = percent_weight, fill = Cultivar)): 객체 &#39;ce&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대에 라벨 추가하기 [ geom_text ]</span>
+<span class="co"># 선 상단 [ vjust &lt; 0 ]</span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="op">-</span><span class="fl">0.2</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 선 하단 [ vjust &gt; 0 ]</span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="fl">1.5</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 그래프 범위 설정</span>
+<span class="co"># max(데이터)로 지정</span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> Weight), <span class="dt">vjust =</span> <span class="op">-</span><span class="fl">0.2</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="kw">max</span>(cabbage_exp<span class="op">$</span>Weight) <span class="op">*</span><span class="st"> </span><span class="fl">1.05</span>)</code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 막대의 상단보다 조금 높은 위치로 지정(데이터에 따라 자동 조정)</span>
+<span class="kw">ggplot</span>(cabbage_exp, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(Date, Cultivar), <span class="dt">y =</span> Weight)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Weight <span class="op">+</span><span class="st"> </span><span class="fl">0.1</span>, <span class="dt">label =</span> Weight)) </code></pre></div>
+<pre><code>## Error in ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 누적 합계 그래프 그리기</span>
+ce &lt;-<span class="st"> </span><span class="kw">arrange</span>(cabbage_exp, Date, Cultivar)</code></pre></div>
+<pre><code>## Error in is.data.frame(df): 객체 &#39;cabbage_exp&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ce &lt;-<span class="st"> </span><span class="kw">ddply</span>(ce, <span class="st">&quot;Date&quot;</span>, transform, <span class="dt">label =</span> <span class="kw">cumsum</span>(Weight))</code></pre></div>
+<pre><code>## Error in empty(.data): 객체 &#39;ce&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ddply(data.frame, 그룹 기준 마지막 변수)</span>
+<span class="kw">ggplot</span>(ce, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Weight, <span class="dt">fill =</span> Cultivar)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">y =</span> label, <span class="dt">label =</span> <span class="kw">paste</span>(<span class="kw">format</span>(Weight, <span class="dt">nsmall=</span><span class="dv">2</span>), <span class="st">&quot;kg&quot;</span>)), <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">vjust =</span> <span class="fl">1.5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Pastel1&quot;</span>)</code></pre></div>
+<pre><code>## Error in ggplot(ce, aes(x = Date, y = Weight, fill = Cultivar)): 객체 &#39;ce&#39;를 찾을 수 없습니다</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
+## histogram  (geom_histogram)
+######################################################################################
+<span class="kw">hist</span>(mtcars<span class="op">$</span>mpg)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-3.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 상자(bin) 개수 지정</span>
+<span class="kw">hist</span>(mtcars<span class="op">$</span>mpg, <span class="dt">breaks =</span> <span class="dv">10</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-4.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(mpg, <span class="dt">data =</span> mtcars, <span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-5.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ggplot(mtcars, aes(x = mpg)) + geom_histogram() </span>
+<span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="dt">x =</span> mpg)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-6.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">h &lt;-<span class="st"> </span><span class="kw">ggplot</span>(faithful, <span class="kw">aes</span>(<span class="dt">x =</span> waiting))
+h <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">8</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">origin =</span> <span class="dv">31</span>)</code></pre></div>
+<pre><code>## Warning: `origin` is deprecated. Please use `boundary`
+## instead.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-7.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Warning: `origin` is deprecated. Please use `boundary` instead.
+
+
+<span class="co"># 그룹화된 데이터로 여러개의 히스토그램 만들기</span>
+<span class="kw">library</span>(MASS)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
+## 
+##     area</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-8.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+
+<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>.)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-9.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+
+<span class="co"># 그룹 라벨 정의 </span>
+birthwt1 &lt;-<span class="st"> </span>birthwt
+birthwt1<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw">factor</span>(birthwt1<span class="op">$</span>smoke)
+<span class="kw">levels</span>(birthwt1<span class="op">$</span>smoke)</code></pre></div>
+<pre><code>## [1] &quot;0&quot; &quot;1&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## [1] &quot;0&quot; &quot;1&quot;
+birthwt<span class="op">$</span>smoke &lt;-<span class="st"> </span><span class="kw">revalue</span>(birthwt1<span class="op">$</span>smoke, <span class="kw">c</span>(<span class="st">&quot;0&quot;</span> =<span class="st"> &quot;Nosmoke&quot;</span>, <span class="st">&quot;1&quot;</span> =<span class="st"> &quot;Smoke&quot;</span>))
+
+<span class="kw">ggplot</span>(birthwt, <span class="kw">aes</span>(<span class="dt">x =</span> bwt)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(smoke <span class="op">~</span><span class="st"> </span>., <span class="dt">scales =</span> <span class="st">&quot;free&quot;</span>)</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## with `binwidth`.</code></pre>
+<p><img src="Rprogramming_files/figure-html/part4-10.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+
+######################################################################################
+## boxplot  (geom_boxplot)
+######################################################################################
+<span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp, <span class="dt">data =</span> ToothGrowth)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-11.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-12.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> supp, <span class="dt">y =</span> len))<span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-13.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 두 변수의 상호작용을 X축으로</span>
+<span class="kw">boxplot</span>(len <span class="op">~</span><span class="st"> </span>supp <span class="op">+</span><span class="st"> </span>dose, <span class="dt">data =</span> ToothGrowth)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-14.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qplot</span>(<span class="kw">interaction</span>(ToothGrowth<span class="op">$</span>supp, ToothGrowth<span class="op">$</span>dose), ToothGrowth<span class="op">$</span>len, <span class="dt">geom =</span> <span class="st">&quot;boxplot&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-15.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(ToothGrowth, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">interaction</span>(supp, dose), <span class="dt">y =</span> len)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-16.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">######################################################################################
+## 함수곡선 그리기  (stat_function)
+######################################################################################
+<span class="co"># 사용자함수 정의</span>
+myfun &lt;-<span class="st"> </span><span class="cf">function</span>(xvar){
+  <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="kw">exp</span>(<span class="op">-</span>xvar <span class="op">+</span><span class="st"> </span><span class="dv">10</span>))
+}
+
+<span class="kw">curve</span>(<span class="kw">myfun</span>(x), <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">20</span>)
+<span class="kw">curve</span>(<span class="dv">1</span><span class="op">-</span><span class="kw">myfun</span>(x), <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-17.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># qplot(c(0,20), fun = myfun, stat = &quot;function&quot;, geom = &quot;line&quot;)</span>
+<span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">20</span>)), <span class="kw">aes</span>(<span class="dt">x =</span>x)) <span class="op">+</span><span class="st"> </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> myfun, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>)</code></pre></div>
+<p><img src="Rprogramming_files/figure-html/part4-18.svg" width="672" /></p>
+
+
+</div>
+</div>
+
+
+
+<p><code># r if (knitr:::is_html_output()) '# Assignments'</code></p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-ggplot2">
+<p>Wickham, Hadley, and Winston Chang. 2016. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2" class="uri">https://CRAN.R-project.org/package=ggplot2</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="stringr-and-lubridate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="assignments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/101-shan.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

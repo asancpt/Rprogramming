@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>R Programming: Lecture Notes</title>
   <meta name="description" content="2017년 1학기 울산대학교 의학과 대학원 수업 R Programming의 강의 노트입니다.">
-  <meta name="generator" content="bookdown 0.5.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5.10 and GitBook 2.6.7">
 
   <meta property="og:title" content="R Programming: Lecture Notes" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Kyun-Seop Bae, Sungpil Han">
 
 
-<meta name="date" content="2017-10-20">
+<meta name="date" content="2017-12-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -150,6 +150,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.6" data-path="frequently-used-functions.html"><a href="frequently-used-functions.html#io"><i class="fa fa-check"></i><b>4.6</b> I/O</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="stringr-and-lubridate.html"><a href="stringr-and-lubridate.html"><i class="fa fa-check"></i><b>5</b> stringr and lubridate</a></li>
+<li class="chapter" data-level="6" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>6</b> Rstudio and some useful packages 2 - ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="ggplot2.html"><a href="ggplot2.html#part1"><i class="fa fa-check"></i><b>6.1</b> Part1</a></li>
+<li class="chapter" data-level="6.2" data-path="ggplot2.html"><a href="ggplot2.html#part2"><i class="fa fa-check"></i><b>6.2</b> Part2</a></li>
+<li class="chapter" data-level="6.3" data-path="ggplot2.html"><a href="ggplot2.html#part3"><i class="fa fa-check"></i><b>6.3</b> Part3</a></li>
+<li class="chapter" data-level="6.4" data-path="ggplot2.html"><a href="ggplot2.html#part4"><i class="fa fa-check"></i><b>6.4</b> Part4</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="assignments.html"><a href="assignments.html"><i class="fa fa-check"></i><b>A</b> Assignments</a><ul>
 <li class="chapter" data-level="A.1" data-path="assignments.html"><a href="assignments.html#assignment-1"><i class="fa fa-check"></i><b>A.1</b> Assignment 1</a><ul>
@@ -167,7 +173,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.1" data-path="r-tips.html"><a href="r-tips.html#using-coursera"><i class="fa fa-check"></i><b>C.1</b> Using Coursera</a></li>
 </ul></li>
 <li class="chapter" data-level="D" data-path="acknowledgement.html"><a href="acknowledgement.html"><i class="fa fa-check"></i><b>D</b> Acknowledgement</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a><ul>
+<li class="chapter" data-level="D.1" data-path="references.html"><a href="references.html#introduction-1"><i class="fa fa-check"></i><b>D.1</b> Introduction</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="references.html"><a href="references.html#--"><i class="fa fa-check"></i><b>D.1.1</b> 목록 생성 방법</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="references.html"><a href="references.html#list-of-submitted-r-packages"><i class="fa fa-check"></i><b>D.2</b> List of Submitted R Packages</a></li>
+<li class="chapter" data-level="D.3" data-path="references.html"><a href="references.html#feedback"><i class="fa fa-check"></i><b>D.3</b> Feedback</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="Rmarkdown/040-frequently-used.html"><a href="#section-D.3.1"><i class="fa fa-check"></i><b>D.3.1</b> 팁</a></li>
+<li class="chapter" data-level="D.3.2" data-path="references.html"><a href="references.html#suggested-reading-materials"><i class="fa fa-check"></i><b>D.3.2</b> Suggested Reading Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="references.html"><a href="references.html#references-1"><i class="fa fa-check"></i><b>D.4</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/asancpt/Rprogramming" target="blank">Asancpt Github</a></li>
 
@@ -217,14 +233,14 @@ pois</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">format</span>(<span class="kw">qnorm</span>(<span class="fl">0.975</span>), <span class="dt">digits=</span><span class="dv">22</span>)</code></pre></div>
 <pre><code>## [1] &quot;1.9599639845400536&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>)</code></pre></div>
-<pre><code>## [1] -0.8370  0.1499 -1.0937  0.6894  0.6281</code></pre>
+<pre><code>## [1] -0.6873 -0.3959 -0.3452 -1.3598 -1.1089</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>)</code></pre></div>
-<pre><code>## [1]  9.034 10.272 10.250 10.258  8.961</code></pre>
+<pre><code>## [1]  8.947  8.920  9.268  9.747 10.913</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">1</span>)
 <span class="kw">mean</span>(x)</code></pre></div>
-<pre><code>## [1] 9.974</code></pre>
+<pre><code>## [1] 9.923</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(x)</code></pre></div>
-<pre><code>## [1] 0.9635</code></pre>
+<pre><code>## [1] 1.062</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">2.43</span>, <span class="dt">df =</span> <span class="dv">13</span>)</code></pre></div>
 <pre><code>## [1] 0.03033</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="fl">2.43</span>, <span class="dt">df =</span> <span class="dv">1000</span>)</code></pre></div>
@@ -900,7 +916,7 @@ x =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</s
 y =<span class="st"> </span><span class="kw">rt</span>(<span class="dv">10</span>, <span class="dv">5</span>)
 
 <span class="kw">twosam</span>(x, y)</code></pre></div>
-<pre><code>## [1] -0.4306</code></pre>
+<pre><code>## [1] 0.2976</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">T.test =<span class="st"> </span><span class="cf">function</span>(y1, y2) 
 {
   n1  =<span class="st"> </span><span class="kw">length</span>(y1)
@@ -927,13 +943,13 @@ res =<span class="st"> </span><span class="kw">T.test</span>(x, y)
 ##  Welch Two Sample t-test
 ## 
 ## data:  x and y
-## t = -0.43, df = 16, p-value = 0.7
+## t = 0.3, df = 18, p-value = 0.8
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.0186  0.6741
+##  -1.057  1.405
 ## sample estimates:
 ## mean of x mean of y 
-##    0.1040    0.2763</code></pre>
+##    0.3344    0.1604</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bslash =<span class="st"> </span><span class="cf">function</span>(X, y) 
 {
   X =<span class="st"> </span><span class="kw">qr</span>(X)
@@ -1085,15 +1101,14 @@ x</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">substr</span>(y, <span class="dv">4</span>, <span class="dv">5</span>)</code></pre></div>
 <pre><code>## [1] &quot;st&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</code></pre></div>
-<pre><code>##  [1]  8  4  5  6  7  3  1  2 10  9</code></pre>
+<pre><code>##  [1] 10  4  8  1  3  5  9  6  2  7</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">20</span>)</code></pre></div>
 <pre><code>## Error in sample.int(length(x), size, replace, prob): &#39;replace = FALSE&#39; 일때는 모집단보다 큰 샘플을 가질 수 없습니다</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">20</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>##  [1]  3  2  2  4  7  8  2  3  8  1  5  1  6  6  4  2  9
-## [18] 10  5  9</code></pre>
+<pre><code>##  [1] 2 9 9 4 1 2 3 5 3 4 7 4 4 7 8 9 3 7 3 8</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dv">2</span>))</code></pre></div>
-<pre><code>##  [1]  6  2  4  5  1  1  2  3  9 10  3 10  7  4  6  8  8
-## [18]  9  5  7</code></pre>
+<pre><code>##  [1]  2  8  8  6  6  3  4  3  5  1  7  1  5 10  2 10  4
+## [18]  9  7  9</code></pre>
 <pre><code>## Error in na.locf(.): 함수 &quot;na.locf&quot;를 찾을 수 없습니다</code></pre>
 <pre><code>## Error in split(Freqlist, Freqlist[, &quot;Title&quot;]): 객체 &#39;Freqlist&#39;를 찾을 수 없습니다</code></pre>
 </div>
@@ -1180,10 +1195,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/ms-freq.Rmd",
+"link": "https://github.com/asancpt/Rprogramming/edit/master/inst/examples/Rmarkdown/040-frequently-used.Rmd",
 "text": "Edit"
 },
-"download": ["Rprogramming.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }
