@@ -1,3 +1,6 @@
+clean:
+	Rscript -e "options(bookdown.clean_book = TRUE);bookdown::clean_book()"
+
 gitbook:
 	Rscript _render.R "bookdown::gitbook"
 
